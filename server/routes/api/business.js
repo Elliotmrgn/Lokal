@@ -1,6 +1,9 @@
 const router = require("express").Router();
 const businessController = require("../../controllers/businessController");
 
-router.route("/").post(businessController.create);
+router
+  .route("/")
+  .get(businessController.findAll)
+  .post(businessController.create);
 
 module.exports = router;

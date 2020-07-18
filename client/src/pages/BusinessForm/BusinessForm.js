@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 
 import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
+
 import { Card } from "../../components/Card";
 import { Input, TextArea, FormBtn } from "../../components/Form";
-import DeleteBtn from "../../components/DeleteBtn";
+
 import API from "../../utils/API";
 
 function BusinessForm() {
@@ -22,7 +21,7 @@ function BusinessForm() {
     setFormObject({ ...formObject, [name]: value });
   }
 
-  function handlFormSubmit(event) {
+  function handleFormSubmit(event) {
     event.preventDefault();
     API.saveBusiness({
       owner: formObject.owner,
@@ -40,7 +39,7 @@ function BusinessForm() {
   return (
     <Container fluid>
       <Row>
-        <Col>
+        <Col size="size md-12">
           <Card title="Welcome! Please fill out the following forms to set up your business.">
             <form ref={formEl}>
               <Input
