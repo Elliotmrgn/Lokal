@@ -29,6 +29,15 @@ function BusinessForm() {
       phoneNumber: formObject.phoneNumber,
       email: formObject.email,
       about: formObject.about,
+      address: formObject.address,
+      instagram: formObject.instagram,
+      facebook: formObject.facebook,
+      website: formObject.website,
+      hours: formObject.hours,
+      menuOrServices: formObject.menuOrServices,
+      tagline: formObject.tagline,
+      masks: formObject.masks,
+      photos: formObject.photos,
     })
       .then((res) => {
         formEl.current.reset();
@@ -45,23 +54,74 @@ function BusinessForm() {
               <Input
                 onChange={handleInputChange}
                 name="businessName"
-                placeholder="Name of Business"
+                placeholder="Name of Business (Required)"
               />
               <Input
                 onChange={handleInputChange}
                 name="phoneNumber"
-                placeholder="Phone Number"
+                placeholder="Phone Number (Required)"
               />
               <Input
                 onChange={handleInputChange}
                 name="email"
-                placeholder="Email Address"
+                placeholder="Email Address (Required)"
               />
               <Input
                 onChange={handleInputChange}
                 name="owner"
-                placeholder="Owner Name"
+                placeholder="Owner Name (Required)"
               />
+              <Input
+                onChange={handleInputChange}
+                name="hours"
+                placeholder="Hours of Operation  (Required)"
+              />
+              <Input
+                onChange={handleInputChange}
+                name="tagline"
+                placeholder="Tagline (Required)"
+              />
+              <lable for="photos">
+                Select Photos, or click and drag to upload.
+              </lable>
+              <Input
+                type="file"
+                onChange={handleInputChange}
+                name="photos"
+                multiple
+              />
+              <Input
+                onChange={handleInputChange}
+                name="masks"
+                placeholder="Masks"
+              />
+              <Input
+                onChange={handleInputChange}
+                name="address"
+                placeholder="Address"
+              />
+              <Input
+                onChange={handleInputChange}
+                name="instagram"
+                placeholder="Instagram"
+              />
+              <Input
+                onChange={handleInputChange}
+                name="facebook"
+                placeholder="Facebook"
+              />
+              <Input
+                onChange={handleInputChange}
+                name="website"
+                placeholder="Website"
+              />
+
+              <Input
+                onChange={handleInputChange}
+                name="menuOrServices"
+                placeholder="A list of Services or Menu"
+              />
+
               <TextArea
                 onChange={handleInputChange}
                 name="about"
@@ -74,7 +134,8 @@ function BusinessForm() {
                     formObject.phoneNumber &&
                     formObject.email &&
                     formObject.owner &&
-                    formObject.about
+                    formObject.tagline &&
+                    formObject.hours
                   )
                 }
                 onClick={handleFormSubmit}

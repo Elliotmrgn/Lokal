@@ -6,7 +6,16 @@ const businessSchema = new Schema({
   businessName: { type: String, required: true },
   phoneNumber: { type: String, required: true },
   email: { type: String, required: true },
-  about: { type: String, required: true },
+  about: { type: String, required: false },
+  tagline: { type: String, required: true },
+  hours: { type: String, required: true },
+  instagram: { type: String },
+  facebook: { type: String },
+  website: { type: String },
+  hours: { type: String, required: true },
+  menuOrServices: { data: Buffer, contentType: String },
+  masks: { type: String },
+  photos: { data: Buffer, contentType: String },
   date: { type: Date, default: Date.now },
 });
 
