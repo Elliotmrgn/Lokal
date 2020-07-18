@@ -18,6 +18,6 @@ export default {
     return axios.post("/api/books", bookData);
   },
   saveBusiness: function (businessData) {
-    return axios.post("api/saveBusiness", businessData);
+    return axios.post("/api/saveBusiness", businessData);
   },
 };

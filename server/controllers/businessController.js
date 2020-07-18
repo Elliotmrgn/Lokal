@@ -1,4 +1,3 @@
-const ObjectId = require("mongoose").Types.ObjectId;
 const db = require("../models");
 
 module.exports = {
@@ -13,19 +12,18 @@ module.exports = {
       })
       .then((dbUser) => {
         res.json(dbUser);
+        console.log(dbUser);
       })
       .catch((err) => res.status(422).json(err));
   },
   findAll: function (req, res) {
-    if (req.user) {
-      db.User.find({ _id: req.user._id })
-        .populate({ path: "businesses", options: { sort: { date: -1 } } })
-        .then((users) => {
-          res.json({ books: users[0].businesses });
+    {
+      db.Business.find({})
+        .then((businesses) => {
+          res.json(businesses);
+          console.log(businesses);
         })
         .catch((err) => res.status(422).json(err));
-    } else {
-      return res.json({ businesses: null });
     }
   },
 };
