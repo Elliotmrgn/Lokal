@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-
 import { Col, Row, Container } from "../../components/Grid";
-
 import { Card } from "../../components/Card";
 import { Input, TextArea, FormBtn } from "../../components/Form";
-
 import API from "../../utils/API";
 
 function BusinessForm() {
@@ -45,12 +42,61 @@ function BusinessForm() {
       .catch((err) => console.log(err));
   }
 
+  function showUploadWidget() {
+    window.cloudinary.openUploadWidget(
+      {
+        cloudName: "dolssrjeq",
+        uploadPreset: "cloudinaryPreset",
+        sources: [
+          "local",
+          "url",
+          "camera",
+          "image_search",
+          "google_drive",
+          "facebook",
+          "dropbox",
+          "shutterstock",
+          "instagram",
+        ],
+        googleApiKey: "<image_search_google_api_key>",
+        showAdvancedOptions: true,
+        cropping: true,
+        multiple: false,
+        defaultSource: "local",
+        styles: {
+          palette: {
+            window: "#FFFFFF",
+            windowBorder: "#90A0B3",
+            tabIcon: "#0078FF",
+            menuIcons: "#5A616A",
+            textDark: "#000000",
+            textLight: "#FFFFFF",
+            link: "#0078FF",
+            action: "#FF620C",
+            inactiveTabIcon: "#0E2F5A",
+            error: "#F44235",
+            inProgress: "#0078FF",
+            complete: "#15A727",
+            sourceBg: "#E4EBF1",
+          },
+          fonts: { default: { active: true } },
+        },
+      },
+      (err, info) => {
+        if (!err) {
+          console.log("Upload Widget event - ", info);
+        }
+      }
+    );
+  }
+
   return (
     <Container fluid>
       <Row>
         <Col size="size md-12">
           <Card title="Welcome! Please fill out the following forms to set up your business.">
             <form ref={formEl}>
+              <button onClick={showUploadWidget}>Upload Images</button>
               <Input
                 onChange={handleInputChange}
                 name="businessName"
