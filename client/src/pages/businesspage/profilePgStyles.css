@@ -1,0 +1,30 @@
+img {
+    width: 100%;
+}
+
+.box {
+    border: 1px solid aqua;
+    margin: 10px;
+} 
+
+h1{
+    font-family: 'Livvic', sans-serif;
+    font-weight: 100;
+}
+
+.ButtonText{
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 50%
+}
+
+.largeLink{
+    font-size: 20px;
+    color: grey;
+}
+
+.taglineShort{
+    font-size: 25px;
+    font-weight: 400;
+}
