@@ -32,7 +32,7 @@ function businessPage() {
         <div>
             <Jumbotron />
 
-            <Container fluid>
+            <Container >
 
                 <Row>
 

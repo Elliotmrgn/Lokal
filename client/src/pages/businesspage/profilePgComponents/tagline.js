@@ -5,7 +5,9 @@ function taglinePF() {
 
     return (
         <div>
-            tagline of business name section
+            <span className="taglineShort">
+            Short Descriptino of company / headline type situ- ation Short Descriptino of company / headline type situation
+            </span>
         </div>
     )
 }
