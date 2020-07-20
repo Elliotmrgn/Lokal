@@ -4,6 +4,7 @@ import LoginForm from './pages/Auth/LoginForm';
 import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
 import Books from './pages/Books';
+import SearchResult from './pages/SearchResult';
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
@@ -60,7 +61,7 @@ function App() {
           <Nav user={user} logout={logout}/>
           <div className="main-view">
             <Switch>
-              <Route exact path="/" component={Books} />
+              <Route exact path="/" component={SearchResult} />
               <Route exact path="/books" component={Books} />
               <Route exact path="/books/:id" component={Detail} />
               <Route component={NoMatch} />
