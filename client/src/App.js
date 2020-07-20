@@ -8,6 +8,7 @@ import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import ProfilePage from "./pages/businesspage/businesspage"
 import AUTH from './utils/AUTH';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
