@@ -9,18 +9,21 @@ import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 
 function SearchResult() {
+    
   return (
-  <Container fluid>
+    <Container fluid>
       <Row>
-          <Col size="md-4">
-                <h2>FEATURED</h2>
-                <Card></Card>
-          </Col>
-          <Col size="md-8">
-            <h2>SEARCH</h2>
-          </Col>
+        <Col size="md-4">
+          <h2>FEATURED</h2>
+          <Card title="Buisness name">
+
+          </Card>
+        </Col>
+        <Col size="md-8">
+          <h2>SEARCH</h2>
+        </Col>
       </Row>
-  </Container>
+    </Container>
   );
 }
 export default SearchResult;
