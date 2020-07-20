@@ -3,10 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 import LoginForm from './pages/Auth/LoginForm';
 import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 import Books from './pages/Books';
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -75,6 +77,10 @@ function App() {
           <Route exact path="/signup" component={SignupForm} />
         </div>
       )}
+      <div>
+        <Footer />
+      </div>
+    
     </div>
   );
 }

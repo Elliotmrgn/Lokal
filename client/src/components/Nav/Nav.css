@@ -1,3 +1,8 @@
+.navbar {
+  background-color: navy !important;
+  color: white;
+}
+
 .logout {
   color: #fff;
 }

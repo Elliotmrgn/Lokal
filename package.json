@@ -26,6 +26,7 @@
     "axios": "^0.19.2",
     "bcrypt": "^3.0.2",
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.5.0",
     "concurrently": "^5.2.0",
     "connect-mongo": "^2.0.1",
     "dotenv": "^8.2.0",
@@ -35,6 +36,7 @@
     "mongoose": "^5.9.14",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "react-bootstrap": "^1.2.2"
   }
 }
