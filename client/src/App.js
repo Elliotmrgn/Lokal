@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Books from './pages/Books';
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
+import ProfilePage from "./pages/businesspage/businesspage"
 import AUTH from './utils/AUTH';
 
 function App() {
@@ -73,6 +74,7 @@ function App() {
           <Route exact path="/" component={() => <LoginForm login={login}/>} />
           <Route exact path="/books" component={() => <LoginForm user={login} />} />
           <Route exact path="/signup" component={SignupForm} />
+          <Route exact path="/profilepage" component={ProfilePage} />
         </div>
       )}
     </div>
