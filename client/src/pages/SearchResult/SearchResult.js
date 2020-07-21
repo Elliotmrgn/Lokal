@@ -9,15 +9,28 @@ import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 
 function SearchResult() {
-    
+  const [buisnessList, setBuisnessList] = useState([]);
+
+  useEffect(() => {
+    API.getBuisness().then((res) => {
+      setBuisnessList(res.data);
+      console.log("response-------", res.data);
+    });
+  }, []);
   return (
     <Container fluid>
       <Row>
         <Col size="md-4">
           <h2>FEATURED</h2>
-          <Card title="Buisness name">
-
-          </Card>
+          {buisnessList.map((business, index) => {
+            console.log("**", business.businessName);
+            return(
+            <Card key={business.id} title={business.businessName}>
+                <ul>
+            <li>{business.email}</li>
+                </ul>
+            </Card>)
+          })}
         </Col>
         <Col size="md-8">
           <h2>SEARCH</h2>
