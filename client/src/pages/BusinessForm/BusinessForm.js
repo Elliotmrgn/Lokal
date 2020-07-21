@@ -7,6 +7,7 @@ import API from "../../utils/API";
 function BusinessForm() {
   const [business, setBusiness] = useState([]);
   const [formObject, setFormObject] = useState([]);
+  const [images, setImages] = useState([]);
   const formEl = useRef(null);
 
   useEffect(() => {
@@ -34,7 +35,7 @@ function BusinessForm() {
       menuOrServices: formObject.menuOrServices,
       tagline: formObject.tagline,
       masks: formObject.masks,
-      photos: formObject.photos,
+      photos: images,
     })
       .then((res) => {
         formEl.current.reset();
@@ -42,7 +43,8 @@ function BusinessForm() {
       .catch((err) => console.log(err));
   }
 
-  function showUploadWidget() {
+  function showUploadWidget(event) {
+    event.preventDefault();
     window.cloudinary.openUploadWidget(
       {
         cloudName: "dolssrjeq",
@@ -51,17 +53,16 @@ function BusinessForm() {
           "local",
           "url",
           "camera",
-          "image_search",
           "google_drive",
           "facebook",
           "dropbox",
           "shutterstock",
           "instagram",
         ],
-        googleApiKey: "<image_search_google_api_key>",
-        showAdvancedOptions: true,
-        cropping: true,
-        multiple: false,
+
+        showAdvancedOptions: false,
+        cropping: false,
+        multiple: true,
         defaultSource: "local",
         styles: {
           palette: {
@@ -82,13 +83,21 @@ function BusinessForm() {
           fonts: { default: { active: true } },
         },
       },
-      (err, info) => {
-        if (!err) {
-          console.log("Upload Widget event - ", info);
+      (err, result) => {
+        if (result.event === "queues-end") {
+          const imageUrl = result.info.files;
+          saveImages(imageUrl);
         }
       }
     );
   }
+
+  const saveImages = (imageUrl) => {
+    imageUrl.forEach((entry) => {
+      const imageUrl = entry.uploadInfo.url;
+      setImages((images) => [...images, imageUrl]);
+    });
+  };
 
   return (
     <Container fluid>
@@ -126,15 +135,6 @@ function BusinessForm() {
                 onChange={handleInputChange}
                 name="tagline"
                 placeholder="Tagline (Required)"
-              />
-              <lable for="photos">
-                Select Photos, or click and drag to upload.
-              </lable>
-              <Input
-                type="file"
-                onChange={handleInputChange}
-                name="photos"
-                multiple
               />
               <Input
                 onChange={handleInputChange}

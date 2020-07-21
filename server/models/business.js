@@ -15,8 +15,8 @@ const businessSchema = new Schema({
   hours: { type: String, required: true },
   menuOrServices: { data: Buffer, contentType: String },
   masks: { type: String },
-  photos: { data: Buffer, contentType: String },
   date: { type: Date, default: Date.now },
+  photos: [{ type: String }],
 });
 
 const Business = mongoose.model("Business", businessSchema);
