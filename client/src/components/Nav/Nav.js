@@ -1,52 +1,42 @@
-import React from "react";
-// import "../index.css";
-import "./Nav.css";
-import { Button, Navbar, FormControl, Form } from 'react-bootstrap';
+import React, { Fragment } from "react";
+import { Link } from 'react-router-dom';
+import { Col } from '../Grid';
+import './Nav.css';
 
-function Nav() {
-    return (
-    <>
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-        </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-info">Search</Button>
-        </Form>
-      </Navbar>
-      <br />
-      <Navbar bg="primary" variant="dark">
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-        </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-light">Search</Button>
-        </Form>
-      </Navbar>
 
-      <br />
-      <Navbar bg="light" variant="light">
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-        </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-primary">Search</Button>
-        </Form>
-      </Navbar>
-    </>
-    );
+
+const Nav = (props) => {
+  let greeting;
+
+  if (props.user === null) {
+		greeting = <p>Hello guest</p>
+	} else if (props.user.firstName) {
+		greeting = (
+			<Fragment>
+				Welcome back, <strong>{props.user.firstName}</strong>
+			</Fragment>
+		)
+	} else if (props.user.username) {
+		greeting = (
+			<Fragment>
+				Welcome back, <strong>{props.user.username} </strong>
+			</Fragment>
+		)
   }
   
-  export default Nav
+  return (
+    <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+      <Col size="md-6 sm-6">
+        <Link to="/" className="navbar-brand">HOME</Link>
+      </Col >
+      <Col size="md-6 sm-6">
+        <div className="float-right">
+            <Link to="/Contact" className="navbar-contact px-4">Contact</Link>
+        {greeting} - <Link to="#" className="logout" onClick={props.logout}>Logout</Link>
+        </div>
+      </Col>
+    </nav>
+  )
+};
+
+export default Nav;
