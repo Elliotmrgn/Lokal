@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./profilePgStyles.css";
+import API from "../../utils/API";
 
 // Bootstrap 
 import Container from 'react-bootstrap/Container';
@@ -19,52 +20,63 @@ import SocialMedia from "./profilePgComponents/socialmedia";
 import Tagline from "./profilePgComponents/tagline";
 
 
-function businessPage() {
+function BusinessPage() {
+    const testerbusiness = "5f164573676a1ebfde5e0982";
 
-    // API.getbusiness()
-    //     .then(res => {
-    //     // console.log(res.data.books);
-    //     setBooks(res.data.business);
-    //     })
-    //     .catch(err => console.log(err));
+    const [business, setBusiness] = useState([]);
+
+    useEffect(() => {
+        loadBusiness();
+      }, []);
+
+    function loadBusiness(){
+    API.getBusiness(testerbusiness)
+        .then((res) => {
+        console.log(res.data);
+        setBusiness(res.data);
+        })
+        .catch(err => console.log(err));
+
+    }
+
 
     return (
         <div>
             <Jumbotron />
 
             <Container >
-
                 <Row>
-
                     <Col xs={7} className="mainSection"> 
                         <div className="box header">
-                            <Header />
+                            { business.businessName ? <Header name={business.businessName} website={business.website} /> : null } 
                         </div>
 
                         <div className="box tagline">
-                            <Tagline />
+                            { business.tagline ? <Tagline shortTag={business.tagline}/> : null}
                         </div>
 
                         <div className="box about">
-                            <About />
+                            { business.about ? <About name={business.businessName} about={business.about} /> : null }
                         </div>
-
+                        
                         <div className="box insta">
                             <Insta />
                         </div>
 
                         <div className="box owner">
-                            <Owner />
+                            { business.owner ? <Owner owner={business.owner} /> : null }
+
                         </div>
                     </Col>
 
                     <Col className="aside">
                         <div className="box socialMedia">
-                            <SocialMedia />
+                            { business.insagram ? <SocialMedia insta={business.insagram} fb={business.facebook} /> : null }
                         </div>
                         
                         <div className="box contact">
-                                <ContactButtons />
+                                { business.email ? <ContactButtons name={business.email} /> : null }
+
                         </div>
 
                         <div className="box map">
@@ -75,13 +87,10 @@ function businessPage() {
                             <Hours />
                         </div>
                     </Col>
-
                 </Row>
-
             </Container>
-
         </div>
     )
 }
 
-export default businessPage
+export default BusinessPage

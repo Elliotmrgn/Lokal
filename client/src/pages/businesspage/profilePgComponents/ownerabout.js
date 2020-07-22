@@ -2,11 +2,12 @@
 
 import React from "react";
 
-function ownerPF() {
+function ownerPF(props) {
 
     return (
         <div>
-             owner about section
+            <h3>About the Owner</h3>
+            <p>{props.owner}</p>
         </div>
     )
 }

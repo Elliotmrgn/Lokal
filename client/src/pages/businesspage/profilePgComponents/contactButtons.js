@@ -1,11 +1,11 @@
 // code for contact buttons
 import React from "react";
 
-function contactPF() {
+function contactPF(props) {
 
     return (
         <div>
-            Contact business name section
+            <button>{props.email}</button>
         </div>
     )
 }
