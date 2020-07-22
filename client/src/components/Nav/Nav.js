@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { Col } from '../Grid';
 import './Nav.css';
 
-//test//
-
 const Nav = (props) => {
   let greeting;
 
