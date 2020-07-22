@@ -24,4 +24,7 @@ export default {
   saveBusiness: function (businessData) {
     return axios.post("/api/business", businessData);
   },
+  addressConvert: function(address){
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAxlhuwWiqy25G-TrZ9DnTwFmyJt-5_yD8`) 
+  }
 };
