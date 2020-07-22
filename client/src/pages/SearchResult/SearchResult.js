@@ -2,10 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
-import { Card } from "../../components/Card";
-import { Input, TextArea, FormBtn } from "../../components/Form";
-import DeleteBtn from "../../components/DeleteBtn";
+
+import { ResultCard } from "../../components/ResultCard";
 import API from "../../utils/API";
 
 function SearchResult() {
@@ -23,13 +21,12 @@ function SearchResult() {
         <Col size="md-4">
           <h2>FEATURED</h2>
           {buisnessList.map((business, index) => {
-            console.log("**", business.businessName);
-            return(
-            <Card key={business.id} title={business.businessName}>
-                <ul>
-            <li>{business.email}</li>
-                </ul>
-            </Card>)
+            console.log("**", business);
+            return (
+              <ResultCard key={business.id} data={business}>
+                
+              </ResultCard>
+            );
           })}
         </Col>
         <Col size="md-8">

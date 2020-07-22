@@ -62,8 +62,8 @@ function App() {
           <Nav user={user} logout={logout} />
           <div className="main-view">
             <Switch>
-              <Route exact path="/" component={SearchResult} />
-              <Route exact path="/books" component={Books} />
+              <Route exact path="/" component={Books} />
+              <Route exact path="/results" component={SearchResult} />
               <Route exact path="/books/:id" component={Detail} />
               <Route exact path="/businessForm" component={BusinessForm} />
               <Route component={NoMatch} />
