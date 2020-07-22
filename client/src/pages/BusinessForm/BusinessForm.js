@@ -27,7 +27,7 @@ function BusinessForm() {
       phoneNumber: formObject.phoneNumber,
       email: formObject.email,
       about: formObject.about,
-      /* instagram: formObject.instagram,*/
+      instagram: formObject.instagram,
       facebook: formObject.facebook,
       website: formObject.website,
       hours: formObject.hours,
