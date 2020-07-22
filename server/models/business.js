@@ -17,7 +17,13 @@ const businessSchema = new Schema({
   masks: { type: String },
   date: { type: Date, default: Date.now },
   photos: [{ type: String }],
-  address: { type: String, required: true },
+  address: { type: String },
+  street: { type: String },
+  city: { type: String },
+  state: { type: String },
+  zip: { type: String },
+  county: { type: String },
+  country: { type: String },
 });
 
 const Business = mongoose.model("Business", businessSchema);

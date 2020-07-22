@@ -1,13 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import { Card } from "../../components/Card";
-import {
-  Input,
-  TextArea,
-  FormBtn,
-  Address,
-  InputSocial,
-} from "../../components/Form";
+import { Input, TextArea, FormBtn, Address } from "../../components/Form";
 import API from "../../utils/API";
 
 function BusinessForm() {
@@ -33,8 +27,7 @@ function BusinessForm() {
       phoneNumber: formObject.phoneNumber,
       email: formObject.email,
       about: formObject.about,
-      address: formObject.address,
-      instagram: formObject.instagram,
+      /* instagram: formObject.instagram,*/
       facebook: formObject.facebook,
       website: formObject.website,
       hours: formObject.hours,
@@ -42,6 +35,12 @@ function BusinessForm() {
       tagline: formObject.tagline,
       masks: formObject.masks,
       photos: images,
+      street: formObject.street,
+      city: formObject.city.street,
+      state: formObject.state,
+      zip: formObject.zip,
+      county: formObject.county,
+      country: formObject.country,
     })
       .then((res) => {
         formEl.current.reset();
@@ -111,11 +110,11 @@ function BusinessForm() {
         <Col size="size md-12">
           <Card title="Welcome! Please fill out the following forms to set up your business.">
             <form ref={formEl}>
-              <div class="row">
-                <div class="col-4">
-                  <div class="list-group" id="list-tab" role="tablist">
+              <div className="row">
+                <div className="col-4">
+                  <div className="list-group" id="list-tab" role="tablist">
                     <a
-                      class="list-group-item list-group-item-action active"
+                      className="list-group-item list-group-item-action active"
                       id="list-home-list"
                       data-toggle="list"
                       href="#basic-info"
@@ -125,7 +124,7 @@ function BusinessForm() {
                       Basic Info
                     </a>
                     <a
-                      class="list-group-item list-group-item-action"
+                      className="list-group-item list-group-item-action"
                       id="list-profile-list"
                       data-toggle="list"
                       href="#contact-info"
@@ -135,7 +134,7 @@ function BusinessForm() {
                       Contact Info
                     </a>
                     <a
-                      class="list-group-item list-group-item-action"
+                      className="list-group-item list-group-item-action"
                       id="list-messages-list"
                       data-toggle="list"
                       href="#social-media"
@@ -145,7 +144,7 @@ function BusinessForm() {
                       Social Media
                     </a>
                     <a
-                      class="list-group-item list-group-item-action"
+                      className="list-group-item list-group-item-action"
                       id="list-settings-list"
                       data-toggle="list"
                       href="#list-settings"
@@ -155,7 +154,7 @@ function BusinessForm() {
                       Photos and Services
                     </a>
                     <a
-                      class="list-group-item list-group-item-action"
+                      className="list-group-item list-group-item-action"
                       id="list-settings-list"
                       data-toggle="list"
                       href="#about-more"
@@ -166,11 +165,11 @@ function BusinessForm() {
                     </a>
                   </div>
                 </div>
-                <div class="col-8">
-                  <div class="tab-content" id="nav-tabContent">
+                <div className="col-8">
+                  <div className="tab-content" id="nav-tabContent">
                     {/* Basic Info */}
                     <div
-                      class="tab-pane fade show active"
+                      className="tab-pane fade show active"
                       id="basic-info"
                       role="tabpanel"
                       aria-labelledby="list-home-list"
@@ -198,7 +197,7 @@ function BusinessForm() {
                     </div>
                     {/* Contact Info */}
                     <div
-                      class="tab-pane fade"
+                      className="tab-pane fade"
                       id="contact-info"
                       role="tabpanel"
                       aria-labelledby="list-profile-list"
@@ -218,12 +217,12 @@ function BusinessForm() {
                     </div>
                     {/* Social Media */}
                     <div
-                      class="tab-pane fade"
+                      className="tab-pane fade"
                       id="social-media"
                       role="tabpanel"
                       aria-labelledby="list-messages-list"
                     >
-                      <InputSocial
+                      <Input
                         onChange={handleInputChange}
                         name="instagram"
                         placeholder="Instagram"
@@ -241,7 +240,7 @@ function BusinessForm() {
                     </div>
                     {/* Photos And Services */}
                     <div
-                      class="tab-pane fade"
+                      className="tab-pane fade"
                       id="list-settings"
                       role="tabpanel"
                       aria-labelledby="list-settings-list"
@@ -255,7 +254,7 @@ function BusinessForm() {
                     </div>
                     {/* About and More */}
                     <div
-                      class="tab-pane fade"
+                      className="tab-pane fade"
                       id="about-more"
                       role="tabpanel"
                       aria-labelledby="list-settings-list"
@@ -283,7 +282,13 @@ function BusinessForm() {
                     formObject.email &&
                     formObject.owner &&
                     formObject.tagline &&
-                    formObject.hours
+                    formObject.hours &&
+                    formObject.street &&
+                    formObject.city &&
+                    formObject.state &&
+                    formObject.zip &&
+                    formObject.county &&
+                    formObject.country
                   )
                 }
                 onClick={handleFormSubmit}
