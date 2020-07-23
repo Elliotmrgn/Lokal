@@ -11,14 +11,14 @@ const mapContainerStyle = {
   width: "500px",
   height: "500px",
 };
-const center = {
-  lat: 35.7854203,
-  lng: -78.6590437,
-};
+
+const options = {
+  disableDefaultUI: true,
+  zoomControl:true
+}
 
 export default function Map(props) {
   console.log("Map -> props", props.center)
-  console.log(center)
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY, //.env not working
     libraries,
@@ -33,7 +33,10 @@ export default function Map(props) {
         mapContainerStyle={mapContainerStyle}
         zoom={15}
         center={props.center}
-      ></GoogleMap>
+        options={options}
+      >
+        <Marker position={props.center}/>
+      </GoogleMap>
     </div>
   );
 }

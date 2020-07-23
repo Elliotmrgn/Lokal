@@ -28,7 +28,6 @@ function SearchResult() {
     });
   };
   
-  console.log("COOORDSS", mapCoords);
   return (
     <Container fluid>
       <Row>
