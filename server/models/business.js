@@ -26,6 +26,8 @@ const businessSchema = new Schema({
   country: { type: String },
   logo: [{ type: String }],
   menuOrServices: [{ type: String }],
+  lat: { type: String },
+  lng: { type: String },
 });
 
 const Business = mongoose.model("Business", businessSchema);
