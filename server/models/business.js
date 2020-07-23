@@ -24,6 +24,8 @@ const businessSchema = new Schema({
   zip: { type: String },
   county: { type: String },
   country: { type: String },
+  logo: [{ type: String }],
+  menuOrServices: [{ type: String }],
   lat: { type: String },
   lng: { type: String },
 });

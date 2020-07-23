@@ -8,6 +8,8 @@ function BusinessForm() {
   const [business, setBusiness] = useState([]);
   const [formObject, setFormObject] = useState([]);
   const [images, setImages] = useState([]);
+  const [logo, setLogo] = useState([]);
+  const [menuOrServices, setMenuOrServices] = useState([]);
   const formEl = useRef(null);
 
   useEffect(() => {
@@ -49,6 +51,8 @@ function BusinessForm() {
         country: formObject.country,
         lat: res.data.results[0].geometry.location.lat,
         lng: res.data.results[0].geometry.location.lng,
+        logo: logo,
+        menuOrServices: menuOrServices,
       })
         .then((res) => {
           formEl.current.reset();
@@ -57,8 +61,9 @@ function BusinessForm() {
     });
   }
 
-  function showUploadWidget(event) {
+  function showUploadWidget(name, event) {
     event.preventDefault();
+    window.photoType = name;
     window.cloudinary.openUploadWidget(
       {
         cloudName: "dolssrjeq",
@@ -109,7 +114,19 @@ function BusinessForm() {
   const saveImages = (imageUrl) => {
     imageUrl.forEach((entry) => {
       const imageUrl = entry.uploadInfo.url;
-      setImages((images) => [...images, imageUrl]);
+      switch (window.photoType) {
+        case "logo":
+          setLogo((logo) => [...logo, imageUrl]);
+          break;
+        case "photos":
+          setImages((images) => [...images, imageUrl]);
+          break;
+        case "menuOrServices":
+          setMenuOrServices((menuOrServices) => [...menuOrServices, imageUrl]);
+          break;
+        default:
+          break;
+      }
     });
   };
 
@@ -254,12 +271,26 @@ function BusinessForm() {
                       role="tabpanel"
                       aria-labelledby="list-settings-list"
                     >
-                      <button onClick={showUploadWidget}>Upload Photos</button>
-                      <Input
-                        onChange={handleInputChange}
+                      <button
+                        name="logo"
+                        onClick={(e) => showUploadWidget("logo", e)}
+                      >
+                        Upload Logo
+                      </button>
+                      <br />
+                      <button
+                        name="photos"
+                        onClick={(e) => showUploadWidget("photos", e)}
+                      >
+                        Upload Photos
+                      </button>
+                      <br />
+                      <button
                         name="menuOrServices"
-                        placeholder="A list of Services or Menu"
-                      />
+                        onClick={(e) => showUploadWidget("menuOrServices", e)}
+                      >
+                        Upload Menu or Pricing List
+                      </button>
                     </div>
                     {/* About and More */}
                     <div
