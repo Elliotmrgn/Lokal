@@ -17,6 +17,8 @@ const center = {
 };
 
 export default function Map(props) {
+  console.log("Map -> props", props.center)
+  console.log(center)
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY, //.env not working
     libraries,
@@ -30,7 +32,7 @@ export default function Map(props) {
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={15}
-        center={center}
+        center={props.center}
       ></GoogleMap>
     </div>
   );

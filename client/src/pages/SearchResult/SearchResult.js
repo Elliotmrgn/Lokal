@@ -8,14 +8,27 @@ import API from "../../utils/API";
 
 function SearchResult() {
   const [buisnessList, setBuisnessList] = useState([]);
+  const [mapCoords, setMapCoords] = useState({});
 
   useEffect(() => {
     API.getBuisness().then((res) => {
       setBuisnessList(res.data);
       console.log("Get Business Results", res.data);
-    })
+      setMapCoords({
+        lat: parseFloat(res.data[0].lat),
+        lng: parseFloat(res.data[0].lng),
+      });
+    });
   }, []);
 
+  const onClick = (e) => {
+    setMapCoords({
+      lat: parseFloat(e.target.getAttribute("data-lat")),
+      lng: parseFloat(e.target.getAttribute("data-lng")),
+    });
+  };
+  
+  console.log("COOORDSS", mapCoords);
   return (
     <Container fluid>
       <Row>
@@ -23,12 +36,18 @@ function SearchResult() {
           <h2>FEATURED</h2>
           {buisnessList.map((business, index) => {
             console.log("**", business);
-            return <ResultCard key={business.id} data={business}></ResultCard>;
+            return (
+              <ResultCard
+                key={business.id}
+                data={business}
+                onClick={onClick}
+              ></ResultCard>
+            );
           })}
         </Col>
         <Col size="md-8">
           <h2>SEARCH</h2>
-          <Map/>
+          <Map center={mapCoords} />
         </Col>
       </Row>
     </Container>
