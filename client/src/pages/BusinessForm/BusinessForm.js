@@ -21,31 +21,40 @@ function BusinessForm() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    API.saveBusiness({
-      owner: formObject.owner,
-      businessName: formObject.businessName,
-      phoneNumber: formObject.phoneNumber,
-      email: formObject.email,
-      about: formObject.about,
-      instagram: formObject.instagram,
-      facebook: formObject.facebook,
-      website: formObject.website,
-      hours: formObject.hours,
-      menuOrServices: formObject.menuOrServices,
-      tagline: formObject.tagline,
-      masks: formObject.masks,
-      photos: images,
-      street: formObject.street,
-      city: formObject.city.street,
-      state: formObject.state,
-      zip: formObject.zip,
-      county: formObject.county,
-      country: formObject.country,
-    })
-      .then((res) => {
-        formEl.current.reset();
+
+    API.addressConvert(
+      `${formObject.street}, ${formObject.city}, ${formObject.state}`
+    ).then((res) => {
+      console.log("LAT, LONGGG", res.data.results[0].geometry.location);
+      console.log("DOES THIS PASS DOWN", formObject);
+      API.saveBusiness({
+        owner: formObject.owner,
+        businessName: formObject.businessName,
+        phoneNumber: formObject.phoneNumber,
+        email: formObject.email,
+        about: formObject.about,
+        instagram: formObject.instagram,
+        facebook: formObject.facebook,
+        website: formObject.website,
+        hours: formObject.hours,
+        menuOrServices: formObject.menuOrServices,
+        tagline: formObject.tagline,
+        masks: formObject.masks,
+        photos: images,
+        street: formObject.street,
+        city: formObject.city,
+        state: formObject.state,
+        zip: formObject.zip,
+        county: formObject.county,
+        country: formObject.country,
+        lat: res.data.results[0].geometry.location.lat,
+        lng: res.data.results[0].geometry.location.lng,
       })
-      .catch((err) => console.log(err));
+        .then((res) => {
+          formEl.current.reset();
+        })
+        .catch((err) => console.log(err));
+    });
   }
 
   function showUploadWidget(event) {
