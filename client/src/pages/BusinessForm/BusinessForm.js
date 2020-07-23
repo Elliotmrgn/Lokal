@@ -48,8 +48,9 @@ function BusinessForm() {
       .catch((err) => console.log(err));
   }
 
-  function showUploadWidget(event) {
+  function showUploadWidget(name, event) {
     event.preventDefault();
+    window.photoType = name;
     window.cloudinary.openUploadWidget(
       {
         cloudName: "dolssrjeq",
@@ -100,7 +101,21 @@ function BusinessForm() {
   const saveImages = (imageUrl) => {
     imageUrl.forEach((entry) => {
       const imageUrl = entry.uploadInfo.url;
-      setImages((images) => [...images, imageUrl]);
+
+      switch (window.photoType) {
+        case "logo":
+          console.log("it Works logo!");
+          break;
+        case "photos":
+          setImages((images) => [...images, imageUrl]);
+          console.log("it Works photos!");
+          break;
+        case "menuOrServices":
+          console.log("it Works menus!");
+          break;
+        default:
+          break;
+      }
     });
   };
 
@@ -245,12 +260,26 @@ function BusinessForm() {
                       role="tabpanel"
                       aria-labelledby="list-settings-list"
                     >
-                      <button onClick={showUploadWidget}>Upload Photos</button>
-                      <Input
-                        onChange={handleInputChange}
+                      <button
+                        name="logo"
+                        onClick={(e) => showUploadWidget("logo", e)}
+                      >
+                        Upload Logo
+                      </button>
+                      <br />
+                      <button
+                        name="photos"
+                        onClick={(e) => showUploadWidget("photos", e)}
+                      >
+                        Upload Photos
+                      </button>
+                      <br />
+                      <button
                         name="menuOrServices"
-                        placeholder="A list of Services or Menu"
-                      />
+                        onClick={(e) => showUploadWidget("menuOrServices", e)}
+                      >
+                        Upload Menu or Pricing List
+                      </button>
                     </div>
                     {/* About and More */}
                     <div
