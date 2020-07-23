@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Map from "../../components/Map/Map";
-
 import { Col, Row, Container } from "../../components/Grid";
 
 import { ResultCard } from "../../components/ResultCard";

@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   GoogleMap,
   useLoadScript,
@@ -13,13 +12,13 @@ const mapContainerStyle = {
   height: "500px",
 };
 const center = {
-  lat: 35.7848397,
-  lng: -78.69311739999999,
+  lat: 35.7854203,
+  lng: -78.6590437,
 };
 
 export default function Map(props) {
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyAxlhuwWiqy25G-TrZ9DnTwFmyJt-5_yD8", //.env not working
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY, //.env not working
     libraries,
   })
 
