@@ -8,6 +8,8 @@ function BusinessForm() {
   const [business, setBusiness] = useState([]);
   const [formObject, setFormObject] = useState([]);
   const [images, setImages] = useState([]);
+  const [logo, setLogo] = useState([]);
+  const [menuOrServices, setMenuOrServices] = useState([]);
   const formEl = useRef(null);
 
   useEffect(() => {
@@ -41,6 +43,8 @@ function BusinessForm() {
       zip: formObject.zip,
       county: formObject.county,
       country: formObject.country,
+      logo: logo,
+      menuOrServices: menuOrServices,
     })
       .then((res) => {
         formEl.current.reset();
@@ -101,17 +105,15 @@ function BusinessForm() {
   const saveImages = (imageUrl) => {
     imageUrl.forEach((entry) => {
       const imageUrl = entry.uploadInfo.url;
-
       switch (window.photoType) {
         case "logo":
-          console.log("it Works logo!");
+          setLogo((logo) => [...logo, imageUrl]);
           break;
         case "photos":
           setImages((images) => [...images, imageUrl]);
-          console.log("it Works photos!");
           break;
         case "menuOrServices":
-          console.log("it Works menus!");
+          setMenuOrServices((menuOrServices) => [...menuOrServices, imageUrl]);
           break;
         default:
           break;
