@@ -3,11 +3,12 @@ import { Route, Switch } from "react-router-dom";
 import LoginForm from "./pages/Auth/LoginForm";
 import SignupForm from "./pages/Auth/SignupForm";
 import Nav from "./components/Nav";
-import Books from "./pages/Books";
+import Books from './pages/Books';
+import SearchResult from './pages/SearchResult';
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
-import ProfilePage from "./pages/businesspage/businesspage"
-import 'bootstrap/dist/css/bootstrap.min.css';
+import ProfilePage from "./pages/businesspage/businesspage";
+import "bootstrap/dist/css/bootstrap.min.css";
 import AUTH from "./utils/AUTH";
 import BusinessForm from "./pages/BusinessForm";
 
@@ -64,7 +65,7 @@ function App() {
           <div className="main-view">
             <Switch>
               <Route exact path="/" component={Books} />
-              <Route exact path="/books" component={Books} />
+              <Route exact path="/results" component={SearchResult} />
               <Route exact path="/books/:id" component={Detail} />
               <Route exact path="/businessForm" component={BusinessForm} />
               <Route exact path="/profilepage/:id" component={ProfilePage} />

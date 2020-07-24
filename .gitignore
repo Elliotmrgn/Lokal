@@ -12,6 +12,7 @@
 
 # dotenv
 .env
+.env.local
 
 # IDEs and editors
 /.idea
