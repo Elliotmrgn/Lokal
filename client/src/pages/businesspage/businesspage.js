@@ -22,6 +22,7 @@ import Tagline from "./profilePgComponents/tagline";
 
 function BusinessPage() {
     const testerbusiness = "5f164573676a1ebfde5e0982";
+    //adding something so i can push?
 
     const [business, setBusiness] = useState([]);
 
