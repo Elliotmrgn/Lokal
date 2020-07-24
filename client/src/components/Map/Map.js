@@ -17,16 +17,16 @@ const center = {
 };
 
 export default function Map(props) {
-  console.log("Map -> props", props.center)
-  console.log(center)
+  console.log("Map -> props", props.center);
+  console.log(center);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY, //.env not working
     libraries,
-  })
+  });
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps...";
-  
+
   return (
     <div>
       <GoogleMap
@@ -37,4 +37,3 @@ export default function Map(props) {
     </div>
   );
 }
-

@@ -3,6 +3,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { Card } from "../../components/Card";
 import { Input, TextArea, FormBtn, Address } from "../../components/Form";
 import API from "../../utils/API";
+import { Checkbox } from "../../components/Checkbox";
 
 function BusinessForm() {
   const [business, setBusiness] = useState([]);
@@ -309,6 +310,7 @@ function BusinessForm() {
                         name="masks"
                         placeholder="Masks"
                       />
+                      <Checkbox />
                     </div>
                   </div>
                 </div>
