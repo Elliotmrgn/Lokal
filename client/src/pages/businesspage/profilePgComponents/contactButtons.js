@@ -5,7 +5,7 @@ function contactPF(props) {
 
     return (
         <div>
-            <button>{props.email}</button>
+        {props.email}
         </div>
     )
 }
