@@ -3,7 +3,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { Card } from "../../components/Card";
 import { Input, TextArea, FormBtn, Address } from "../../components/Form";
 import API from "../../utils/API";
-import { Checkbox } from "../../components/Checkbox";
+import Checkbox from "../../components/Checkbox";
 
 function BusinessForm() {
   const [business, setBusiness] = useState([]);
@@ -11,13 +11,22 @@ function BusinessForm() {
   const [images, setImages] = useState([]);
   const [logo, setLogo] = useState([]);
   const [menuOrServices, setMenuOrServices] = useState([]);
+  const [tags, setTags] = useState([]);
   const formEl = useRef(null);
   const checkedTags = [];
 
   function checkClick(event) {
     const tagName = event.target.value;
-    const checkingTags = checkedTags.indexOf(tagName) > -1;
+    console.log("checkClick -> tagName", tagName);
+    const checkingTags = checkedTags.indexOf(tagName);
+    if (checkingTags > -1) {
+      checkedTags.splice(checkingTags, 1);
+    } else {
+      checkedTags.push(tagName);
+      setTags((tags) => [...tags, checkedTags]);
+    }
   }
+
   useEffect(() => {
     console.log("Page Mounted");
   }, []);
@@ -59,6 +68,7 @@ function BusinessForm() {
         lng: res.data.results[0].geometry.location.lng,
         logo: logo,
         menuOrServices: menuOrServices,
+        tags: tags,
       })
         .then((res) => {
           formEl.current.reset();

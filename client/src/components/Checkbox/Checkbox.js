@@ -14,7 +14,7 @@ const tags = [
 ];
 
 let divStyle = {
-  "margin-right": "15px",
+  marginRight: "15px",
 };
 
 const Checkbox = (props) => {
@@ -28,7 +28,7 @@ const Checkbox = (props) => {
           id="defaultCheck1"
           {...props}
         />
-        <label className="form-check-label" for="defaulCheck1">
+        <label className="form-check-label" htmlFor="defaulCheck1">
           {tag}
         </label>
       </div>

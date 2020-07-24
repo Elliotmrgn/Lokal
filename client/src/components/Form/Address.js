@@ -1,10 +1,10 @@
 import React from "react";
 
 export const Address = (props) => (
-  <div class="form-group">
+  <div className="form-group">
     <input
       type="street"
-      class="form-control"
+      className="form-control"
       id="autocomplete"
       placeholder="Street"
       name="street"
@@ -13,7 +13,7 @@ export const Address = (props) => (
 
     <input
       type="city"
-      class="form-control"
+      className="form-control"
       id="inputCity"
       placeholder="City"
       name="city"
@@ -22,7 +22,7 @@ export const Address = (props) => (
 
     <input
       type="state"
-      class="form-control"
+      className="form-control"
       id="inputState"
       placeholder="State"
       name="state"
@@ -31,7 +31,7 @@ export const Address = (props) => (
 
     <input
       type="zip"
-      class="form-control"
+      className="form-control"
       id="inputZip"
       placeholder="Zip"
       name="zip"
@@ -40,7 +40,7 @@ export const Address = (props) => (
 
     <input
       type="county"
-      class="form-control"
+      className="form-control"
       id="inputCounty"
       placeholder="County"
       name="county"
@@ -49,7 +49,7 @@ export const Address = (props) => (
 
     <input
       type="country"
-      class="form-control"
+      className="form-control"
       id="inputCountry"
       placeholder="Country"
       name="country"
