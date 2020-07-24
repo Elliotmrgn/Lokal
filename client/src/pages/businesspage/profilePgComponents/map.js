@@ -2,11 +2,11 @@
 
 import React from "react";
 
-function mapPF(prp) {
+function mapPF(props) {
 
     return (
         <div>
-            Map for business name section?
+            {props.addy}
         </div>
     )
 }

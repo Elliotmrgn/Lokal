@@ -22,6 +22,7 @@ import Tagline from "./profilePgComponents/tagline";
 
 function BusinessPage() {
     const testerbusiness = "5f164573676a1ebfde5e0982";
+    //adding something so i can push?
 
     const [business, setBusiness] = useState([]);
 
@@ -60,7 +61,7 @@ function BusinessPage() {
                         </div>
                         
                         <div className="box insta">
-                            <Insta />
+                            { business.instagram ? <Insta insta={business.instagram} fb={business.facebook} /> : null }
                         </div>
 
                         <div className="box owner">
@@ -71,16 +72,19 @@ function BusinessPage() {
 
                     <Col className="aside">
                         <div className="box socialMedia">
-                            { business.insagram ? <SocialMedia insta={business.insagram} fb={business.facebook} /> : null }
+                            { business.instagram ? <SocialMedia insta={business.instagram} /> : null }
+                            { business.facebook && <SocialMedia  fb={business.facebook} />}
                         </div>
                         
                         <div className="box contact">
-                                { business.email ? <ContactButtons name={business.email} /> : null }
+                          { business.email ? <ContactButtons email={business.email} /> : null }
 
                         </div>
 
                         <div className="box map">
                             <Map />
+                            { business.address && <Map addy={business.address} />}
+
                         </div>
 
                         <div className="box hours">
