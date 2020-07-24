@@ -12,7 +12,12 @@ function BusinessForm() {
   const [logo, setLogo] = useState([]);
   const [menuOrServices, setMenuOrServices] = useState([]);
   const formEl = useRef(null);
+  const checkedTags = [];
 
+  function checkClick(event) {
+    const tagName = event.target.value;
+    const checkingTags = checkedTags.indexOf(tagName) > -1;
+  }
   useEffect(() => {
     console.log("Page Mounted");
   }, []);
@@ -310,7 +315,7 @@ function BusinessForm() {
                         name="masks"
                         placeholder="Masks"
                       />
-                      <Checkbox />
+                      <Checkbox onChange={checkClick} />
                     </div>
                   </div>
                 </div>
