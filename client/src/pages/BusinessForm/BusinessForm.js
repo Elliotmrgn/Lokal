@@ -47,7 +47,7 @@ function BusinessForm() {
     API.addressConvert(
       `${formObject.street}, ${formObject.city}, ${formObject.state}`
     ).then((res) => {
-      console.log("LAT, LONGGG", res.data.results[0].geometry.location);
+      // console.log("LAT, LONGGG", res.data.results[0].geometry.location);
       console.log("DOES THIS PASS DOWN", formObject);
       API.saveBusiness({
         owner: formObject.owner,
@@ -58,7 +58,7 @@ function BusinessForm() {
         instagram: formObject.instagram,
         facebook: formObject.facebook,
         website: formObject.website,
-        hours: formObject.hours,
+        // hours: formObject.hours,
         menuOrServices: formObject.menuOrServices,
         tagline: formObject.tagline,
         masks: formObject.masks,
@@ -69,16 +69,17 @@ function BusinessForm() {
         zip: formObject.zip,
         county: formObject.county,
         country: formObject.country,
-        lat: res.data.results[0].geometry.location.lat,
-        lng: res.data.results[0].geometry.location.lng,
+        // lat: res.data.results[0].geometry.location.lat,
+        // lng: res.data.results[0].geometry.location.lng,
         logo: logo,
         menuOrServices: menuOrServices,
         tags: tags,
+        hours: formObject.hours,
       })
         .then((res) => {
           formEl.current.reset();
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log("aftersave" + err));
     });
   }
 
@@ -246,11 +247,6 @@ function BusinessForm() {
                         name="tagline"
                         placeholder="Tagline (Required)"
                       />
-                      <Input
-                        onChange={handleInputChange}
-                        name="hours"
-                        placeholder="Hours of Operation  (Required)"
-                      />
                     </div>
                     {/* Contact Info */}
                     <div
@@ -302,7 +298,7 @@ function BusinessForm() {
                       role="tabpanel"
                       aria-labelledby="list-messages-list"
                     > 
-                    {/* Monday Hours */}
+                      {/* Monday Hours */}
                       <Row>
                         <Col size="size md-2">
                           <h4>Monday:</h4>
@@ -339,6 +335,7 @@ function BusinessForm() {
                         </Form.Group>
                         </Col>
                       </Row>
+
                       {/* Tuesday Hours */}
                       <Row>
                         <Col size="size md-2">
@@ -622,22 +619,22 @@ function BusinessForm() {
               </div>
 
               <FormBtn
-                disabled={
-                  !(
-                    formObject.businessName &&
-                    formObject.phoneNumber &&
-                    formObject.email &&
-                    formObject.owner &&
-                    formObject.tagline &&
-                    formObject.hours &&
-                    formObject.street &&
-                    formObject.city &&
-                    formObject.state &&
-                    formObject.zip &&
-                    formObject.county &&
-                    formObject.country
-                  )
-                }
+                // disabled={
+                //   !(
+                //     formObject.businessName &&
+                //     formObject.phoneNumber &&
+                //     formObject.email &&
+                //     formObject.owner &&
+                //     formObject.tagline &&
+                //     formObject.hours &&
+                //     formObject.street &&
+                //     formObject.city &&
+                //     formObject.state &&
+                //     formObject.zip &&
+                //     formObject.county &&
+                //     formObject.country
+                //   )
+                // }
                 onClick={handleFormSubmit}
               >
                 Submit Business
