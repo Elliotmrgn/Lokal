@@ -38,7 +38,7 @@ function BusinessForm() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-
+    console.log(formObject);
     API.addressConvert(
       `${formObject.street}, ${formObject.city}, ${formObject.state}`
     ).then((res) => {
