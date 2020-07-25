@@ -35,6 +35,6 @@ module.exports = {
         res.json(foundBusinesses);
         console.log(foundBusinesses);
       })
-      .cat((err) => res.status(422).json(err));
+      .catch((err) => res.status(422).json(err));
   },
 };

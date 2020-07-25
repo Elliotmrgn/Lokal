@@ -11,13 +11,17 @@ function SearchBar() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
+    console.log(formObject.search);
+    API.findViaSearch(formObject.search).then((res) => {
+      console.log(res);
+    });
   }
 
   return (
     <div>
       <form>
         <div className="form-group">
-          <label for="exampleInputEmail1">Email address</label>
+          <label htmlFor="exampleInputEmail1">Business Name</label>
           <input
             type="email"
             className="form-control"
