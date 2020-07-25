@@ -5,14 +5,14 @@ import React from "react";
 import Button from 'react-bootstrap/Button';
 
 
-function headerPF() {
+function headerPF(props) {
 
     return (
         <div>
-            <h1>Business Name</h1>
-            <Button className="ButtonText" variant="info" size="sm" rounded>Tags</Button>
+            <h1>{props.name}</h1>
+            <Button className="ButtonText" variant="info" size="sm" rounded>tags</Button>
             <br></br>
-            <a href="/" className="largeLink">website.com</a>
+            <a href="/" className="largeLink">{props.website}</a>
         </div>
     )
 }

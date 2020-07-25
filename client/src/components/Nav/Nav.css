@@ -1,3 +1,12 @@
 .logout {
   color: #fff;
 }
+
+.navbar-brand img {
+  height: 50px;
+  width: auto;
+}
+
+.navbar  {
+  border-bottom: 5px solid #5B9098;
+}
