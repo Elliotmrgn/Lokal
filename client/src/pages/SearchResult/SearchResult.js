@@ -31,7 +31,7 @@ function SearchResult() {
   return (
     <Container fluid>
       <Row>
-        <Col size="md-4">
+        <Col size="md-6">
           <h2>FEATURED</h2>
           {buisnessList.map((business, index) => {
             console.log("**", business);
@@ -44,7 +44,7 @@ function SearchResult() {
             );
           })}
         </Col>
-        <Col size="md-8">
+        <Col size="md-6 sm-6">
           <h2>SEARCH</h2>
           <Map center={mapCoords} />
         </Col>

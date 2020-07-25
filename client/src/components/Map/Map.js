@@ -5,6 +5,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+import './Map.css'
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -31,7 +32,7 @@ export default function Map(props) {
     <div>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={15}
+        zoom={12}
         center={props.center}
         options={options}
       >
