@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AUTH from "./utils/AUTH";
 import BusinessForm from "./pages/BusinessForm";
 import ContactPage from "./pages/ContactPage";
+import Home from "./pages/Home";
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
               <Route exact path="/" component={Books} />
               <Route exact path="/businessForm" component={BusinessForm} />
               <Route exact path="/contact" component={ContactPage} />
+              <Route exact path="/home" component={Home} />
               <Route component={NoMatch} />
             </Switch>
           </div>
