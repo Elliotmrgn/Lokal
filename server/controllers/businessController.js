@@ -1,4 +1,5 @@
 const db = require("../models");
+const { decodeBase64 } = require("bcryptjs");
 
 module.exports = {
   create: function (req, res) {
@@ -25,5 +26,15 @@ module.exports = {
         })
         .catch((err) => res.status(422).json(err));
     }
+  },
+  findViaSearch: function (req, res) {
+    db.Business.find({
+      businessName: { $regex: req.body, $options: "i" },
+    })
+      .then((foundBusinesses) => {
+        res.json(foundBusinesses);
+        console.log(foundBusinesses);
+      })
+      .cat((err) => res.status(422).json(err));
   },
 };

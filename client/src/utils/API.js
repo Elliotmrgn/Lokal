@@ -10,8 +10,8 @@ export default {
     return axios.get("/api/books/" + id);
   },
 
-  getBuisness: function(){
-    return  axios.get("/api/business");
+  getBuisness: function () {
+    return axios.get("/api/business");
   },
   // Deletes the book with the given id
   deleteBook: function (id) {
@@ -24,7 +24,12 @@ export default {
   saveBusiness: function (businessData) {
     return axios.post("/api/business", businessData);
   },
-  addressConvert: function(address){
-    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`) 
-  }
+  addressConvert: function (address) {
+    return axios.get(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
+    );
+  },
+  findViaSearch: function (search) {
+    return axios.get("/api/business/" + search);
+  },
 };
