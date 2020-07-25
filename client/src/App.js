@@ -13,6 +13,7 @@ import AUTH from "./utils/AUTH";
 import BusinessForm from "./pages/BusinessForm";
 import ContactPage from "./pages/ContactPage";
 import Home from "./pages/Home";
+import SearchResult from "./pages/SearchResult"
 
 
 function App() {
