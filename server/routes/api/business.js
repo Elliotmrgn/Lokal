@@ -7,4 +7,7 @@ router
   .post(businessController.create);
 
 router.route("/:search").get(businessController.findViaSearch);
+
+router.route("/:id").get(businessController.findById);
+
 module.exports = router;

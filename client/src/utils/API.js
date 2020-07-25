@@ -32,4 +32,9 @@ export default {
   findViaSearch: function (search) {
     return axios.get("/api/business/" + search);
   },
+
+  getBusiness: function (id) {
+    return axios.get("/api/business/" + id);
+  },
+  // tester ID: 5f164573676a1ebfde5e0982
 };

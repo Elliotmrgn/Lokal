@@ -1,11 +1,14 @@
 // code for social media links
 import React from "react";
 
-function socialPF() {
+function socialPF(props) {
 
     return (
         <div>
-            social media for business name section
+            social media buttons (soon) for business name section
+            Instagram: {props.insta}
+            <br></br>
+            Facebook: {props.fb}
         </div>
     )
 }

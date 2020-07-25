@@ -25,6 +25,7 @@ function Books() {
       .then((res) => {
         // console.log(res.data.books);
         setBooks(res.data.books);
+        console.log(res.data.books);
       })
       .catch((err) => console.log(err));
   }
