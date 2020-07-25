@@ -20,21 +20,31 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "nodemon": "^2.0.4"
   },
   "dependencies": {
+    "@react-google-maps/api": "^1.9.8",
     "axios": "^0.19.2",
     "bcrypt": "^3.0.2",
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.5.0",
+    "cloudinary": "^1.22.0",
+    "cloudinary-react": "^1.6.2",
     "concurrently": "^5.2.0",
-    "connect-mongo": "^2.0.1",
-    "dotenv": "^8.2.0",
+    "connect-mongo": "^3.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.9.14",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "react-bootstrap": "^1.2.2",
+    "react-google-maps": "^9.4.5",
+    "react-icons": "^3.10.0",
+    "react-scripts": "^3.4.1",
+    "recompose": "^0.30.0",
+    "yarn": "^1.22.4"
   }
 }
