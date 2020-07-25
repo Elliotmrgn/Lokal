@@ -1,12 +1,16 @@
-.navbar {
-  background-color: navy !important;
-  color: white;
-}
-
 .logout {
   color: #fff;
 }
 
-.float-center {
-  text-align: center;
+.navbar-brand img {
+  height: 50px;
+  width: auto;
+}
+
+.navbar  {
+  border-bottom: 5px solid #5B9098;
+}
+
+#contact {
+  color: #5B9098;
 }

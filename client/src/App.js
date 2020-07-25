@@ -11,6 +11,7 @@ import ProfilePage from "./pages/businesspage/businesspage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AUTH from "./utils/AUTH";
 import BusinessForm from "./pages/BusinessForm";
+import ContactPage from "./pages/ContactPage";
 
 
 function App() {
@@ -66,9 +67,8 @@ function App() {
           <div className="main-view">
             <Switch>
               <Route exact path="/" component={Books} />
-              <Route exact path="/books" component={Books} />
-              <Route exact path="/books/:id" component={Detail} />
               <Route exact path="/businessForm" component={BusinessForm} />
+              <Route exact path="/contact" component={ContactPage} />
               <Route component={NoMatch} />
             </Switch>
           </div>

@@ -4,7 +4,7 @@ import './Contact.css';
 
 function Contact() {
     return (
-      <div></div>
+      <div>HELLO WORLD</div>
     );
   }
   
