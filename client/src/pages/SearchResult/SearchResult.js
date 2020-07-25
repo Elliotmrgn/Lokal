@@ -46,7 +46,7 @@ function SearchResult() {
         </Col>
         <Col size="md-6 sm-6">
           <h2>SEARCH</h2>
-          <Map center={mapCoords} />
+          <Map center={mapCoords} businesses={buisnessList}/>
         </Col>
       </Row>
     </Container>
