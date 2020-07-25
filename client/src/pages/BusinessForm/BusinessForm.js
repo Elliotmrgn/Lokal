@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Col, Row, Container } from "../../components/Grid";
+import { Container } from "../../components/Grid";
 import { Card } from "../../components/Card";
 import { Input, TextArea, FormBtn, Address } from "../../components/Form";
 import API from "../../utils/API";
 import Checkbox from "../../components/Checkbox";
+
+
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function BusinessForm() {
   const [business, setBusiness] = useState([]);
@@ -187,6 +192,16 @@ function BusinessForm() {
                     </a>
                     <a
                       className="list-group-item list-group-item-action"
+                      id="list-messages-list"
+                      data-toggle="list"
+                      href="#hours"
+                      role="tab"
+                      aria-controls="Hours"
+                    >
+                      Hours
+                    </a>
+                    <a
+                      className="list-group-item list-group-item-action"
                       id="list-settings-list"
                       data-toggle="list"
                       href="#list-settings"
@@ -279,6 +294,281 @@ function BusinessForm() {
                         name="website"
                         placeholder="Website"
                       />
+                    </div>
+                    {/* Hours */}
+                    <div
+                      className="tab-pane fade"
+                      id="hours"
+                      role="tabpanel"
+                      aria-labelledby="list-messages-list"
+                    > 
+                    {/* Monday Hours */}
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Monday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                        <Input
+                        onChange={handleInputChange}
+                        name="Monday"
+                        placeholder="9"
+                      />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                        </Col>
+                        <h5> -</h5>
+                        <Col size="size md-2">
+                        <Input
+                        onChange={handleInputChange}
+                        name="Monday"
+                        placeholder="5"
+                      />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                        </Col>
+                      </Row>
+                      {/* Tuesday Hours */}
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Tuesday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                        <Input
+                        onChange={handleInputChange}
+                        name="Tuesday"
+                        placeholder="9"
+                      />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                        </Col>
+                        - 
+                        <Col size="size md-2">
+                        <Input
+                        onChange={handleInputChange}
+                        name="Tuesday"
+                        placeholder="5"
+                      />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                        </Col>
+                      </Row>
+                      {/* Wedneday Hours */}
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Wednesday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                        <Input
+                        onChange={handleInputChange}
+                        name="Wednesday"
+                        placeholder="9"
+                      />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                        </Col>
+                        - 
+                        <Col size="size md-2">
+                        <Input
+                        onChange={handleInputChange}
+                        name="Wednesday"
+                        placeholder="5"
+                      />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* Thursday */}
+
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Thursday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                        <Input
+                        onChange={handleInputChange}
+                        name="Thursday"
+                        placeholder="9"
+                      />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                        </Col>
+                        - 
+                        <Col size="size md-2">
+                        <Input
+                        onChange={handleInputChange}
+                        name="Thursday"
+                        placeholder="5"
+                      />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* Friday hours */}
+
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Friday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                        <Input
+                        onChange={handleInputChange}
+                        name="Friday"
+                        placeholder="9"
+                      />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                        </Col>
+                        - 
+                        <Col size="size md-2">
+                        <Input
+                        onChange={handleInputChange}
+                        name="Friday"
+                        placeholder="5"
+                      />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* Saturday hours */}
+
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Saturday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                        <Input
+                        onChange={handleInputChange}
+                        name="Saturday"
+                        placeholder="9"
+                      />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                        </Col>
+                        - 
+                        <Col size="size md-2">
+                        <Input
+                        onChange={handleInputChange}
+                        name="Saturday"
+                        placeholder="5"
+                      />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* sunday hours */}
+
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Sudnay:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                        <Input
+                        onChange={handleInputChange}
+                        name="Sunday"
+                        placeholder="9"
+                      />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                        </Col>
+                        - 
+                        <Col size="size md-2">
+                        <Input
+                        onChange={handleInputChange}
+                        name="Sunday"
+                        placeholder="5"
+                      />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                        </Col>
+                      </Row>
                     </div>
                     {/* Photos And Services */}
                     <div
