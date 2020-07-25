@@ -4,7 +4,9 @@ import LoginForm from "./pages/Auth/LoginForm";
 import SignupForm from "./pages/Auth/SignupForm";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import Books from "./pages/Books";
+
+import Books from './pages/Books';
+
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import ProfilePage from "./pages/businesspage/businesspage";
@@ -13,7 +15,9 @@ import AUTH from "./utils/AUTH";
 import BusinessForm from "./pages/BusinessForm";
 import ContactPage from "./pages/ContactPage";
 import Home from "./pages/Home";
+
 import SearchResult from "./pages/SearchResult";
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -95,6 +99,7 @@ function App() {
       <div>
         <Footer />
       </div>
+
     </div>
   );
 }
