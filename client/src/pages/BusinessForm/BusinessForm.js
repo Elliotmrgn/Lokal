@@ -3,12 +3,29 @@ import { Col, Row, Container } from "../../components/Grid";
 import { Card } from "../../components/Card";
 import { Input, TextArea, FormBtn, Address } from "../../components/Form";
 import API from "../../utils/API";
+import Checkbox from "../../components/Checkbox";
 
 function BusinessForm() {
   const [business, setBusiness] = useState([]);
   const [formObject, setFormObject] = useState([]);
   const [images, setImages] = useState([]);
+  const [logo, setLogo] = useState([]);
+  const [menuOrServices, setMenuOrServices] = useState([]);
+  const [tags, setTags] = useState([]);
   const formEl = useRef(null);
+  const checkedTags = [];
+
+  function checkClick(event) {
+    const tagName = event.target.value;
+    console.log("checkClick -> tagName", tagName);
+    const checkingTags = checkedTags.indexOf(tagName);
+    if (checkingTags > -1) {
+      checkedTags.splice(checkingTags, 1);
+    } else {
+      checkedTags.push(tagName);
+      setTags((tags) => [...tags, checkedTags]);
+    }
+  }
 
   useEffect(() => {
     console.log("Page Mounted");
@@ -21,35 +38,48 @@ function BusinessForm() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    API.saveBusiness({
-      owner: formObject.owner,
-      businessName: formObject.businessName,
-      phoneNumber: formObject.phoneNumber,
-      email: formObject.email,
-      about: formObject.about,
-      instagram: formObject.instagram,
-      facebook: formObject.facebook,
-      website: formObject.website,
-      hours: formObject.hours,
-      menuOrServices: formObject.menuOrServices,
-      tagline: formObject.tagline,
-      masks: formObject.masks,
-      photos: images,
-      street: formObject.street,
-      city: formObject.city.street,
-      state: formObject.state,
-      zip: formObject.zip,
-      county: formObject.county,
-      country: formObject.country,
-    })
-      .then((res) => {
-        formEl.current.reset();
+
+    API.addressConvert(
+      `${formObject.street}, ${formObject.city}, ${formObject.state}`
+    ).then((res) => {
+      console.log("LAT, LONGGG", res.data.results[0].geometry.location);
+      console.log("DOES THIS PASS DOWN", formObject);
+      API.saveBusiness({
+        owner: formObject.owner,
+        businessName: formObject.businessName,
+        phoneNumber: formObject.phoneNumber,
+        email: formObject.email,
+        about: formObject.about,
+        instagram: formObject.instagram,
+        facebook: formObject.facebook,
+        website: formObject.website,
+        hours: formObject.hours,
+        menuOrServices: formObject.menuOrServices,
+        tagline: formObject.tagline,
+        masks: formObject.masks,
+        photos: images,
+        street: formObject.street,
+        city: formObject.city,
+        state: formObject.state,
+        zip: formObject.zip,
+        county: formObject.county,
+        country: formObject.country,
+        lat: res.data.results[0].geometry.location.lat,
+        lng: res.data.results[0].geometry.location.lng,
+        logo: logo,
+        menuOrServices: menuOrServices,
+        tags: tags,
       })
-      .catch((err) => console.log(err));
+        .then((res) => {
+          formEl.current.reset();
+        })
+        .catch((err) => console.log(err));
+    });
   }
 
-  function showUploadWidget(event) {
+  function showUploadWidget(name, event) {
     event.preventDefault();
+    window.photoType = name;
     window.cloudinary.openUploadWidget(
       {
         cloudName: "dolssrjeq",
@@ -100,7 +130,19 @@ function BusinessForm() {
   const saveImages = (imageUrl) => {
     imageUrl.forEach((entry) => {
       const imageUrl = entry.uploadInfo.url;
-      setImages((images) => [...images, imageUrl]);
+      switch (window.photoType) {
+        case "logo":
+          setLogo((logo) => [...logo, imageUrl]);
+          break;
+        case "photos":
+          setImages((images) => [...images, imageUrl]);
+          break;
+        case "menuOrServices":
+          setMenuOrServices((menuOrServices) => [...menuOrServices, imageUrl]);
+          break;
+        default:
+          break;
+      }
     });
   };
 
@@ -245,12 +287,26 @@ function BusinessForm() {
                       role="tabpanel"
                       aria-labelledby="list-settings-list"
                     >
-                      <button onClick={showUploadWidget}>Upload Photos</button>
-                      <Input
-                        onChange={handleInputChange}
+                      <button
+                        name="logo"
+                        onClick={(e) => showUploadWidget("logo", e)}
+                      >
+                        Upload Logo
+                      </button>
+                      <br />
+                      <button
+                        name="photos"
+                        onClick={(e) => showUploadWidget("photos", e)}
+                      >
+                        Upload Photos
+                      </button>
+                      <br />
+                      <button
                         name="menuOrServices"
-                        placeholder="A list of Services or Menu"
-                      />
+                        onClick={(e) => showUploadWidget("menuOrServices", e)}
+                      >
+                        Upload Menu or Pricing List
+                      </button>
                     </div>
                     {/* About and More */}
                     <div
@@ -269,6 +325,7 @@ function BusinessForm() {
                         name="masks"
                         placeholder="Masks"
                       />
+                      <Checkbox onChange={checkClick} />
                     </div>
                   </div>
                 </div>

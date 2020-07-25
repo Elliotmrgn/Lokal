@@ -71,6 +71,10 @@ function App() {
               <Route exact path="/businessForm" component={BusinessForm} />
               <Route exact path="/contact" component={ContactPage} />
               <Route exact path="/home" component={Home} />
+              <Route exact path="/results" component={SearchResult} />
+              <Route exact path="/books/:id" component={Detail} />
+              <Route exact path="/businessForm" component={BusinessForm} />
+              <Route exact path="/profilepage/:id" component={ProfilePage} />
               <Route component={NoMatch} />
             </Switch>
           </div>
