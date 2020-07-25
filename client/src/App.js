@@ -3,14 +3,17 @@ import { Route, Switch } from "react-router-dom";
 import LoginForm from "./pages/Auth/LoginForm";
 import SignupForm from "./pages/Auth/SignupForm";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 import Books from './pages/Books';
-import SearchResult from './pages/SearchResult';
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import ProfilePage from "./pages/businesspage/businesspage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AUTH from "./utils/AUTH";
 import BusinessForm from "./pages/BusinessForm";
+import ContactPage from "./pages/ContactPage";
+import Home from "./pages/Home";
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -65,6 +68,9 @@ function App() {
           <div className="main-view">
             <Switch>
               <Route exact path="/" component={Books} />
+              <Route exact path="/businessForm" component={BusinessForm} />
+              <Route exact path="/contact" component={ContactPage} />
+              <Route exact path="/home" component={Home} />
               <Route exact path="/results" component={SearchResult} />
               <Route exact path="/books/:id" component={Detail} />
               <Route exact path="/businessForm" component={BusinessForm} />
@@ -86,6 +92,10 @@ function App() {
           <Route exact path="/profilepage" component={ProfilePage} />
         </div>
       )}
+      <div>
+        <Footer />
+      </div>
+    
     </div>
   );
 }
