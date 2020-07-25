@@ -26,11 +26,23 @@ module.exports = {
         .catch((err) => res.status(422).json(err));
     }
   },
+  findViaSearch: function (req, res) {
+    const regexSearch = new RegExp(req.body.search);
+    db.Business.find({
+      businessName: { $regex: regexSearch, $options: "i" },
+    })
+      .then((foundBusinesses) => {
+        res.json(foundBusinesses);
+        console.log(foundBusinesses);
+      })
+      .catch((err) => res.status(422).json(err));
+  },
+
   findById: function (req, res) {
-      db.Business.findOne({ _id: req.params.id })
-        .then((business) => {
-          res.json(business);
-        })
-        .catch((err) => res.status(422).json(err));
+    db.Business.findOne({ _id: req.params.id })
+      .then((business) => {
+        res.json(business);
+      })
+      .catch((err) => res.status(422).json(err));
   },
 };

@@ -12,7 +12,6 @@ const businessSchema = new Schema({
   instagram: { type: String },
   facebook: { type: String },
   website: { type: String },
-  hours: { type: String, required: true },
   menuOrServices: { data: Buffer, contentType: String },
   masks: { type: String },
   date: { type: Date, default: Date.now },
