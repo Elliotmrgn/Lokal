@@ -29,6 +29,7 @@ const Nav = (props) => {
       </Col>
       <Col size="md-6 sm-6">
         <div className="float-right">
+        <Link to="/Contact" id="contact" className="navbar-contact px-4">Contact</Link>
         {greeting} - <Link to="#" className="logout" onClick={props.logout}>Logout</Link>
         </div>
       </Col>
