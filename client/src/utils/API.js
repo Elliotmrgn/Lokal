@@ -32,7 +32,9 @@ export default {
   findViaSearch: function (search) {
     return axios.get("/api/business/" + search);
   },
-
+  // findViaTags: function (search){
+  //   return axios.get()
+  // }
   getBusiness: function (id) {
     return axios.get("/api/business/" + id);
   },

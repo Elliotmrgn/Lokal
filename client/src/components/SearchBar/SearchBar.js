@@ -11,13 +11,13 @@ function SearchBar() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log(formObject.search);
-    API.findViaSearch(formObject.search).then((res) => {
+    const search = formObject.search;
+    API.findViaSearch(search).then((res) => {
       console.log(res);
-      API.findViaTags(formObject.search).then((resTags) => {
-        console.log(resTags);
-      });
     });
+    // API.findViaTags(formObject.search).then((resTags) => {
+    //   console.log(resTags);
+    // });
   }
 
   return (

@@ -26,19 +26,22 @@ module.exports = {
         .catch((err) => res.status(422).json(err));
     }
   },
+
   findViaSearch: function (req, res) {
-    const regexSearch = new RegExp(req.body.search);
-    db.Business.find({
-      businessName: { $regex: regexSearch, $options: "i" },
-    })
+    const regexSearch = req.params.search;
+    console.log("regexSearch", regexSearch);
+
+    db.Business.find({ businessName: new RegExp(regexSearch, "i") })
       .then((foundBusinesses) => {
         res.json(foundBusinesses);
         console.log(foundBusinesses);
       })
       .catch((err) => res.status(422).json(err));
   },
+
   findViaTags: function (req, res) {
-    const regexSearch = new RegExp(req.body.search);
+    const regexSearch = new RegExp(req.body);
+
     db.business
       .find({
         tags: { $regex: regexSearch, $options: "i" },
