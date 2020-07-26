@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import { Card } from "../../components/Card";
-import { Input, TextArea, FormBtn, Address } from "../../components/Form";
+import {
+  Input,
+  TextArea,
+  FormBtn,
+  Address,
+  Hours,
+} from "../../components/Form";
 import API from "../../utils/API";
 import Checkbox from "../../components/Checkbox";
 
@@ -236,6 +242,7 @@ function BusinessForm() {
                         name="hours"
                         placeholder="Hours of Operation  (Required)"
                       />
+                      <Hours />
                     </div>
                     {/* Contact Info */}
                     <div

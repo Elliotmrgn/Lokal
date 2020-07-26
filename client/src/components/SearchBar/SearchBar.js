@@ -14,6 +14,9 @@ function SearchBar() {
     console.log(formObject.search);
     API.findViaSearch(formObject.search).then((res) => {
       console.log(res);
+      API.findViaTags(formObject.search).then((resTags) => {
+        console.log(resTags);
+      });
     });
   }
 

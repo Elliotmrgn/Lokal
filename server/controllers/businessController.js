@@ -37,6 +37,17 @@ module.exports = {
       })
       .catch((err) => res.status(422).json(err));
   },
+  findViaTags: function (req, res) {
+    const regexSearch = new RegExp(req.body.search);
+    db.business
+      .find({
+        tags: { $regex: regexSearch, $options: "i" },
+      })
+      .then((foundBussinessByTags) => {
+        res.json(foundBussinessByTags);
+        console.log(foundBussinessByTags);
+      });
+  },
 
   findById: function (req, res) {
     db.Business.findOne({ _id: req.params.id })
