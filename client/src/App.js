@@ -4,9 +4,6 @@ import LoginForm from "./pages/Auth/LoginForm";
 import SignupForm from "./pages/Auth/SignupForm";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-
-import Books from "./pages/Books";
-
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import ProfilePage from "./pages/businesspage/businesspage";
@@ -71,13 +68,11 @@ function App() {
           <Nav user={user} logout={logout} />
           <div className="main-view">
             <Switch>
-              <Route exact path="/" component={Books} />
+              <Route exact path="/" component={Home} />
               <Route exact path="/businessForm" component={BusinessForm} />
               <Route exact path="/contact" component={ContactPage} />
-              <Route exact path="/home" component={Home} />
               <Route exact path="/results" component={SearchResult} />
               <Route exact path="/books/:id" component={Detail} />
-              <Route exact path="/businessForm" component={BusinessForm} />
               <Route exact path="/profilepage/:id" component={ProfilePage} />
               <Route component={NoMatch} />
             </Switch>

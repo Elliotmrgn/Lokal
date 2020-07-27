@@ -77,7 +77,7 @@ function BusinessPage() {
                         </div>
                         
                         <div className="box insta">
-                            { business.instagram ? <Insta insta={business.instagram} fb={business.facebook} /> : null }
+                            { business.instagram && <Insta insta={business.instagram} fb={business.facebook} />}
                         </div>
 
                         <div className="box owner">
