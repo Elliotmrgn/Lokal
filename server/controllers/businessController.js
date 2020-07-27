@@ -29,7 +29,6 @@ module.exports = {
 
   findViaSearch: function (req, res) {
     const regexSearch = req.params.search;
-    console.log("regexSearch", regexSearch);
 
     db.Business.find({ businessName: new RegExp(regexSearch, "i") })
       .then((foundBusinesses) => {
@@ -40,11 +39,9 @@ module.exports = {
   },
 
   findViaTags: function (req, res) {
-    const regexSearch = new RegExp(req.body);
-
     db.business
       .find({
-        tags: { $regex: regexSearch, $options: "i" },
+        tags: new RegExp(regexSearch, "i"),
       })
       .then((foundBussinessByTags) => {
         res.json(foundBussinessByTags);

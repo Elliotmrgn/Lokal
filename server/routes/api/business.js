@@ -7,7 +7,7 @@ router
   .post(businessController.create);
 
 router.route("/:search").get(businessController.findViaSearch);
-
+router.route("/:tags").get(businessController.findViaTags);
 router.route("/:id").get(businessController.findById);
 
 module.exports = router;
