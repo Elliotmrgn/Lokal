@@ -11,8 +11,8 @@ function SearchBar() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log(formObject.search);
-    API.findViaSearch(formObject.search).then((res) => {
+    const search = formObject.search;
+    API.findViaSearch(search).then((res) => {
       console.log(res);
     });
   }

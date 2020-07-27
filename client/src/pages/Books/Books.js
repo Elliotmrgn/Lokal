@@ -8,6 +8,7 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 import SearchBar from "../../components/SearchBar/SearchBar";
+
 function Books() {
   // Setting our component's initial state
   const [books, setBooks] = useState([]);
@@ -66,8 +67,8 @@ function Books() {
       <Row>
         <Col size="md-6">
           <Card title="What Books Should I Read?">
+            <SearchBar />
             <form ref={formEl}>
-              <SearchBar />
               <Input
                 onChange={handleInputChange}
                 name="title"

@@ -2,19 +2,21 @@ const db = require("../models");
 
 module.exports = {
   create: function (req, res) {
-    db.Business.create(req.body)
-      .then((dbBusiness) => {
-        return db.User.findOneAndUpdate(
-          { _id: req.user._id },
-          { $push: { businesses: dbBusiness._id } },
-          { new: true }
-        );
-      })
-      .then((dbUser) => {
-        res.json(dbUser);
-        console.log(dbUser);
-      })
-      .catch((err) => res.status(422).json(err));
+    {
+      db.Business.create(req.body)
+        .then((dbBusiness) => {
+          return db.User.findOneAndUpdate(
+            { _id: req.user._id },
+            { $push: { businesses: dbBusiness._id } },
+            { new: true }
+          );
+        })
+        .then((dbUser) => {
+          res.json(dbUser);
+          console.log(dbUser);
+        })
+        .catch((err) => res.status(422).json(err));
+    }
   },
   findAll: function (req, res) {
     {
@@ -26,16 +28,27 @@ module.exports = {
         .catch((err) => res.status(422).json(err));
     }
   },
+
   findViaSearch: function (req, res) {
-    const regexSearch = new RegExp(req.body.search);
-    db.Business.find({
-      businessName: { $regex: regexSearch, $options: "i" },
-    })
+    const regexSearch = req.params.search;
+
+    db.Business.find({ businessName: new RegExp(regexSearch, "i") })
       .then((foundBusinesses) => {
         res.json(foundBusinesses);
         console.log(foundBusinesses);
       })
       .catch((err) => res.status(422).json(err));
+  },
+
+  findViaTags: function (req, res) {
+    db.business
+      .find({
+        tags: new RegExp(regexSearch, "i"),
+      })
+      .then((foundBussinessByTags) => {
+        res.json(foundBussinessByTags);
+        console.log(foundBussinessByTags);
+      });
   },
 
   findById: function (req, res) {
