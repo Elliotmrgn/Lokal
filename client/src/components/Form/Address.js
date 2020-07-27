@@ -37,23 +37,5 @@ export const Address = (props) => (
       name="zip"
       {...props}
     />
-
-    <input
-      type="county"
-      className="form-control"
-      id="inputCounty"
-      placeholder="County"
-      name="county"
-      {...props}
-    />
-
-    <input
-      type="country"
-      className="form-control"
-      id="inputCountry"
-      placeholder="Country"
-      name="country"
-      {...props}
-    />
   </div>
 );

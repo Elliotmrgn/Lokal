@@ -5,22 +5,23 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+import "./Map.css";
 
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "500px",
   height: "500px",
 };
-const center = {
-  lat: 35.7854203,
-  lng: -78.6590437,
+
+const options = {
+  disableDefaultUI: true,
+  zoomControl: true,
 };
 
 export default function Map(props) {
-  console.log("Map -> props", props.center);
-  console.log(center);
+  console.log("Map -> props", props);
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY, //.env not working
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     libraries,
   });
 
@@ -31,9 +32,20 @@ export default function Map(props) {
     <div>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={15}
+        zoom={12}
         center={props.center}
-      ></GoogleMap>
+        options={options}
+      >
+        {props.businesses.map((business) => (
+          <Marker
+            key={business._id}
+            position={{
+              lat: parseFloat(business.lat),
+              lng: parseFloat(business.lng),
+            }}
+          />
+        ))}
+      </GoogleMap>
     </div>
   );
 }
