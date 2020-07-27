@@ -14,8 +14,6 @@ import ContactPage from "./pages/ContactPage";
 import Home from "./pages/Home";
 import SearchResult from "./pages/SearchResult"
 
-import SearchResult from "./pages/SearchResult";
-
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
