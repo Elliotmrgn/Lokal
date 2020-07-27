@@ -11,9 +11,9 @@ export const Hours = () => {
     "Sunday",
   ];
   const logHours = () => {};
-  const daysList = days.map(function (days) {
+  const daysList = days.map(function (days, index) {
     return (
-      <div className="row">
+      <div className="row" key={index}>
         <div className="col-sm-2">
           <label>{days}: </label>
         </div>

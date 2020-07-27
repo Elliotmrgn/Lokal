@@ -10,7 +10,7 @@ import {
 } from "../../components/Form";
 import API from "../../utils/API";
 import Checkbox from "../../components/Checkbox";
-import SearchBar from "../../components/SearchBar/SearchBar";
+
 function BusinessForm() {
   const [business, setBusiness] = useState([]);
   const [formObject, setFormObject] = useState([]);
@@ -158,7 +158,6 @@ function BusinessForm() {
           <Card title="Welcome! Please fill out the following forms to set up your business.">
             <form ref={formEl}>
               <div className="row">
-                <SearchBar />
                 <div className="col-4">
                   <div className="list-group" id="list-tab" role="tablist">
                     <a

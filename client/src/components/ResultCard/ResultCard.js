@@ -12,7 +12,7 @@ export const ResultCard = (props) => (
       <div class="card-body">
         <h2 class="card-title">{props.data.businessName}</h2>
         <span class="card-author subtle">{props.data.tagline}</span>
-<span class="card-description subtle">{props.data.about}</span>
+        <span class="card-description subtle">{props.data.about}</span>
       </div>
     </div>
     <div class="card-shadow"></div>
