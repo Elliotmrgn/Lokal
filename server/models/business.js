@@ -23,8 +23,8 @@ const businessSchema = new Schema({
   zip: { type: String },
   logo: [{ type: String }],
   menuOrServices: [{ type: String }],
-  lat: { type: String },
-  lng: { type: String },
+  lat: { type: Number },
+  lng: { type: Number },
   tags: [{ type: String }],
 });
 
