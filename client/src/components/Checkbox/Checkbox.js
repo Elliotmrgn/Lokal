@@ -20,7 +20,7 @@ let divStyle = {
 const Checkbox = (props) => {
   const tagList = tags.map(function (tag) {
     return (
-      <div className="form-check" style={divStyle}>
+      <div className="form-check" style={divStyle} key={tags.id}>
         <input
           className="form-check-input tagCheckbox"
           type="checkbox"

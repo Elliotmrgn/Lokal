@@ -10,7 +10,7 @@ import {
 } from "../../components/Form";
 import API from "../../utils/API";
 import Checkbox from "../../components/Checkbox";
-
+import SearchBar from "../../components/SearchBar/SearchBar";
 function BusinessForm() {
   const [business, setBusiness] = useState([]);
   const [formObject, setFormObject] = useState([]);
@@ -23,13 +23,12 @@ function BusinessForm() {
 
   function checkClick(event) {
     const tagName = event.target.value;
-    console.log("checkClick -> tagName", tagName);
     const checkingTags = checkedTags.indexOf(tagName);
-    if (checkingTags > -1) {
-      checkedTags.splice(checkingTags, 1);
-    } else {
+    if (checkingTags === -1) {
       checkedTags.push(tagName);
-      setTags((tags) => [...tags, checkedTags]);
+      setTags((tags) => [...tags, tagName]);
+    } else {
+      checkedTags.splice(checkingTags);
     }
   }
 
@@ -45,6 +44,7 @@ function BusinessForm() {
   function handleFormSubmit(event) {
     event.preventDefault();
     console.log(formObject);
+
     API.addressConvert(
       `${formObject.street}, ${formObject.city}, ${formObject.state}`
     ).then((res) => {
@@ -59,7 +59,6 @@ function BusinessForm() {
         instagram: formObject.instagram,
         facebook: formObject.facebook,
         website: formObject.website,
-        hours: formObject.hours,
         menuOrServices: formObject.menuOrServices,
         tagline: formObject.tagline,
         masks: formObject.masks,
@@ -159,6 +158,7 @@ function BusinessForm() {
           <Card title="Welcome! Please fill out the following forms to set up your business.">
             <form ref={formEl}>
               <div className="row">
+                <SearchBar />
                 <div className="col-4">
                   <div className="list-group" id="list-tab" role="tablist">
                     <a
@@ -350,8 +350,7 @@ function BusinessForm() {
                     formObject.street &&
                     formObject.city &&
                     formObject.state &&
-                    formObject.zip &&
-                    formObject.hours
+                    formObject.zip
                   )
                 }
                 onClick={handleFormSubmit}
