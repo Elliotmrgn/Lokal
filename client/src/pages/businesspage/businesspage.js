@@ -8,7 +8,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 
-
 // components 
 import Jumbotron from "./profilePgComponents/jumbotron";
 import About from "./profilePgComponents/about";
@@ -21,7 +20,6 @@ import InstaIcon from "./profilePgComponents/instaicon";
 import Tagline from "./profilePgComponents/tagline";
 import Fb from "./profilePgComponents/facebook";
 import Tags from "./profilePgComponents/tags";
-// import Photos from "./profilePgComponents/photos"
 
 //carosel 
 import AwesomeSlider from 'react-awesome-slider';
@@ -29,7 +27,9 @@ import 'react-awesome-slider/dist/styles.css';
 
 
 function BusinessPage() {
-    const testerbusiness = "5f203b74c2b1714429ad4a28";
+
+    const testerbusinessfull = "5f203b74c2b1714429ad4a28";
+    const testerbusinessmin = "5f2023bd6804c4437ae34db1";
 
     const [business, setBusiness] = useState([]);
     const [userphotos, setPhotos] = useState([]);
@@ -39,9 +39,9 @@ function BusinessPage() {
       }, []);
 
     function loadBusiness(){
-    API.getProfile(testerbusiness)
+    API.getProfile(testerbusinessfull)
         .then((res) => {
-        console.log("photos?? " + res.data.photos);
+        console.log(res.data);
         setBusiness(res.data);
         setPhotos(res.data.photos)
         })
@@ -101,13 +101,13 @@ function BusinessPage() {
                             { business.about && <About name={business.businessName} about={business.about} />}
                         </div>
 
-                        <div className="box photosdiv">
-
-                        <AwesomeSlider>
-                        {userphotos && userphotos.map((userphoto) =>  <div data-src={userphoto} />)}
-                        </AwesomeSlider>
-
-                        </div>
+                        {userphotos.length > 0 &&
+                            <div className="box photosdiv">
+                                <AwesomeSlider>
+                                { userphotos.map((userphoto) =>  <div data-src={userphoto} />)}
+                                </AwesomeSlider>
+                            </div>
+                        }
 
                         <div className="box owner">
                             { business.owner && <Owner owner={business.owner} />}
