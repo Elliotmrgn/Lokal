@@ -6,8 +6,7 @@ function ownerPF(props) {
 
     return (
         <div>
-            <h3>About the Owner</h3>
-            <p>{props.owner}</p>
+            <span className="Owner">Owned by {props.owner} </span>
         </div>
     )
 }

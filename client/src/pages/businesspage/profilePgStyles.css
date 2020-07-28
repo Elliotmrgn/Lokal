@@ -18,10 +18,11 @@ h1{
 }
 
 Button {
-    background-color: #669999 !important;
+    background-color: #4D898C !important;
     border-color: #669999 !important;
     border-radius: 32px !important;
     min-width: 100px !important;
+    margin-bottom: 5px !important;
 }
 
 .largeLink{
@@ -33,6 +34,8 @@ Button {
     font-size: 25px;
     font-weight: 400;
     margin-top: 50px;
+    color: rgb(134, 135, 141);
+    font-style: italic;
 }
 
 .socialIcon {
@@ -55,17 +58,48 @@ Button {
     position: absolute;
     top: 25%;
     left: 45%;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     padding-bottom: 0px;
 }
 
+.profileName {
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #AED1CD;
+}
+
+.owner {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #B87E8A;
+}
+
+.hoursHead{
+    font-size: 25px;
+    font-weight: 600;
+    color: #B87E8A;
+}
+td {
+    padding: 5px !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: rgb(186, 187, 192);
+
+}
+
+.hours {
+    width: 300px;
+}
 
 /* CODE FOR DEFUALT JUMBOTRON ANIMATION */
 .defaultJumbotron{
-    height: 350px;
+    height: 250px;
     width: 100%;
     position: relative;
-    background: #B9E1DC;  
+    background: #354959;  
     background: -webkit-linear-gradient(to left, #B9E1DC, #D9DBE2);  
  }
 

@@ -23,6 +23,9 @@ export default {
   getProfile: function(id) {
     return axios.get("/api/business/" + id)
   },
+  getProfileSchedule: function(businessId) {
+    return axios.get("/api/business/" + businessId + "schedule")
+  },
   // tester ID: 5f164573676a1ebfde5e0982
 
 };
