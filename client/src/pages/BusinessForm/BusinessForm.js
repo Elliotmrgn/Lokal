@@ -75,7 +75,7 @@ function BusinessForm() {
           SatOpen: formObject.SatOpen,
           SatClose: formObject.SatClose,
           SunOpen: formObject.SunOpen,
-          SunClose: formObject.SunClose
+          SunClose: formObject.SunClose,
         },
         menuOrServices: formObject.menuOrServices,
         tagline: formObject.tagline,
@@ -85,8 +85,6 @@ function BusinessForm() {
         city: formObject.city,
         state: formObject.state,
         zip: formObject.zip,
-        county: formObject.county,
-        country: formObject.country,
         lat: res.data.results[0].geometry.location.lat,
         lng: res.data.results[0].geometry.location.lng,
         logo: logo,
