@@ -42,12 +42,13 @@
     padding: 100px;
 }
 
-#house {
+img {
     width: 15%;
     height: 15%;
     align-items: left;
     padding-bottom: 30px;
 }
+
 
 #explanation {
     color: #4D898C;
@@ -93,7 +94,7 @@
 }
 
 p {
-    font-size: 38px; 
+    font-size: 40px;
 }
 
 ul {
@@ -101,29 +102,26 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-
+  }
 
 .list {
-    font-size: 25px;
-}
-
-
-#search {
-    height: 26%;
-    width: 20%;
+    font-size: 25px;;
 }
 
 #map {
-    height: 26%;
-    width: 20%;
-
+    height: 10%;
+    width: 7%;
 }
 
 #check {
-    height: 26%;
-    width: 20%;
-} 
+    height: 8%;
+    width: 10%;
+}
+
+#search {
+    height: 11%;
+    width: 10%;
+}
 
 /* REGISTER BUSINESS CONTAINER */
 
