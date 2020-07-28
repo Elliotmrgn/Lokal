@@ -1,13 +1,26 @@
 import React from "react";
-import tags from "../../utils/Tags";
+const tags = [
+  "Cafe",
+  "Resteraunt",
+  "Boutique",
+  "Clothing",
+  "Drive Thru",
+  "Mechanic",
+  "Salon",
+  "Gym",
+  "Entertainment",
+  "Hobbies and Crafts",
+  "Books and Music",
+];
+
 let divStyle = {
   marginRight: "15px",
 };
 
 const Checkbox = (props) => {
-  const tagList = tags.map(function (tag, index) {
+  const tagList = tags.map(function (tag) {
     return (
-      <div className="form-check" style={divStyle} key={index}>
+      <div className="form-check" style={divStyle}>
         <input
           className="form-check-input tagCheckbox"
           type="checkbox"
