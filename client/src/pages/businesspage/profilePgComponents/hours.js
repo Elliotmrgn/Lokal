@@ -12,10 +12,11 @@ function hoursPF(props) {
         <div>
             <Table responsive>
             <thead>
+                <tr>
                     <td></td>
                     <td>open</td>
                     <td>close</td>
-                
+                </tr>
             </thead>
 
             <tbody>

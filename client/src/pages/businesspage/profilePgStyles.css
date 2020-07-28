@@ -23,7 +23,15 @@ h3{
     text-transform: uppercase;
 }
 
-Button {
+.tags Button {
+    background-color: #AED1CD!important;
+    border-color: #AED1CD !important;
+    border-radius: 32px !important;
+    min-width: 100px !important;
+    margin-bottom: 8px !important;
+}
+
+.contact Button {
     background-color: #4D898C !important;
     border-color: #669999 !important;
     border-radius: 32px !important;
@@ -31,6 +39,9 @@ Button {
     margin-bottom: 8px !important;
 }
 
+.photosdiv{
+    margin-bottom: 80px;
+}
 .largeLink{
     font-size: 20px;
     color: grey;

@@ -7,8 +7,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import Carousel from 'react-bootstrap/Carousel';
-
 
 
 // components 
@@ -25,10 +23,16 @@ import Fb from "./profilePgComponents/facebook";
 import Tags from "./profilePgComponents/tags";
 // import Photos from "./profilePgComponents/photos"
 
+//carosel 
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
+
+
 function BusinessPage() {
     const testerbusiness = "5f203b74c2b1714429ad4a28";
 
     const [business, setBusiness] = useState([]);
+    const [userphotos, setPhotos] = useState([]);
 
     useEffect(() => {
         loadBusiness();
@@ -37,11 +41,12 @@ function BusinessPage() {
     function loadBusiness(){
     API.getProfile(testerbusiness)
         .then((res) => {
-        console.log(res.data);
+        console.log("photos?? " + res.data.photos);
         setBusiness(res.data);
+        setPhotos(res.data.photos)
         })
         .catch(err => console.log(err));
-    
+        
 
 //     API.getProfileSchedule(testerbusiness)
 //     .then((res) => {
@@ -52,7 +57,6 @@ function BusinessPage() {
     }
 
     // console.log(business.schedule)
-
 
 
     return (
@@ -97,8 +101,11 @@ function BusinessPage() {
                             { business.about && <About name={business.businessName} about={business.about} />}
                         </div>
 
-                        <div className="box photos">
-                            {/* { business.photos && <Photos/>} */}
+                        <div className="box photosdiv">
+
+                        <AwesomeSlider>
+                        {userphotos && userphotos.map((userphoto) =>  <div data-src={userphoto} />)}
+                        </AwesomeSlider>
 
                         </div>
 
