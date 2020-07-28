@@ -28,10 +28,11 @@ function SearchResult() {
     });
   };
   
+  console.log("COOORDSS", mapCoords);
   return (
     <Container fluid>
       <Row>
-        <Col size="md-6">
+        <Col size="md-4">
           <h2>FEATURED</h2>
           {buisnessList.map((business, index) => {
             console.log("**", business);
@@ -44,10 +45,14 @@ function SearchResult() {
             );
           })}
         </Col>
-        <Col size="md-6 sm-6">
+        <Col size="md-8">
           <h2>SEARCH</h2>
+<<<<<<< HEAD
           <SearchBar/>
           <Map center={mapCoords} businesses={buisnessList}/>
+=======
+          <Map center={mapCoords} />
+>>>>>>> parent of 4adf5f1... added search bar to homepage and fixed image sizes
         </Col>
       </Row>
     </Container>

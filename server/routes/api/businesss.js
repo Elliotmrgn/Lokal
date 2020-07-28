@@ -6,8 +6,4 @@ router
   .get(businessController.findAll)
   .post(businessController.create);
 
-router
-  .route("/:id")
-  .get(businessController.findById);
-
 module.exports = router;

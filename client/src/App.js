@@ -13,6 +13,10 @@ import ContactPage from "./pages/ContactPage";
 import Home from "./pages/Home";
 import SearchResult from "./pages/SearchResult"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 4adf5f1... added search bar to homepage and fixed image sizes
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
@@ -90,6 +94,7 @@ function App() {
       <div>
         <Footer />
       </div>
+    
     </div>
   );
 }
