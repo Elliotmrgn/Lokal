@@ -5,15 +5,18 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+import mapStyle from "./mapStyle";
 
 const libraries = ["places"];
 const mapContainerStyle = {
-  width: "500px",
+  width: "100%",
   height: "500px",
 };
-const center = {
-  lat: 35.7854203,
-  lng: -78.6590437,
+
+const options = {
+  styles: mapStyle,
+  disableDefaultUI: true,
+  zoomControl: true,
 };
 
 export default function Map(props) {
@@ -31,7 +34,7 @@ export default function Map(props) {
     <div>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={15}
+        zoom={13}
         center={props.center}
       ></GoogleMap>
     </div>

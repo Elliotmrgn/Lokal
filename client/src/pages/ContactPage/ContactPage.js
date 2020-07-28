@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "../../components/Grid";
 import './Contact.css';
+import axios from 'axios';
 
 class Contact extends Component {
   constructor(props) {
@@ -9,7 +10,28 @@ class Contact extends Component {
   	name: '',
   	email: '',
   	message: ''
-	}
+	  }
+  }
+
+  handleSubmit(event){
+    event.preventDefault();
+    axios({
+      method: "POST", 
+      url:"http://localhost:3000/send", 
+      data:  this.state
+    }).then((response)=>{
+      if (response.data.status === 'success'){
+        alert("Message Sent."); 
+        this.resetForm()
+      }else if(response.data.status === 'fail'){
+        alert("Message failed to send.")
+      }
+    })
+  }
+
+  resetForm(){
+    
+     this.setState({name: '', email: '', message: ''})
   }
 
   render() {
@@ -69,9 +91,6 @@ class Contact extends Component {
 
     onMessageChange(event) {
     this.setState({message: event.target.value})
-    }
-    
-    handleSubmit(event) {
     }
 }
   

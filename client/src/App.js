@@ -4,8 +4,6 @@ import LoginForm from "./pages/Auth/LoginForm";
 import SignupForm from "./pages/Auth/SignupForm";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import Books from './pages/Books';
-import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import ProfilePage from "./pages/businesspage/businesspage";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,8 +11,7 @@ import AUTH from "./utils/AUTH";
 import BusinessForm from "./pages/BusinessForm";
 import ContactPage from "./pages/ContactPage";
 import Home from "./pages/Home";
-import SearchResult from "./pages/SearchResult/SearchResult"
-
+import SearchResult from "./pages/SearchResult"
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -68,13 +65,10 @@ function App() {
           <Nav user={user} logout={logout} />
           <div className="main-view">
             <Switch>
-              <Route exact path="/" component={Books} />
+              <Route exact path="/" component={Home} />
               <Route exact path="/businessForm" component={BusinessForm} />
               <Route exact path="/contact" component={ContactPage} />
-              <Route exact path="/home" component={Home} />
               <Route exact path="/results" component={SearchResult} />
-              <Route exact path="/books/:id" component={Detail} />
-              <Route exact path="/businessForm" component={BusinessForm} />
               <Route exact path="/profilepage/:id" component={ProfilePage} />
               <Route component={NoMatch} />
             </Switch>
@@ -84,11 +78,11 @@ function App() {
       {!loggedIn && (
         <div className="auth-wrapper" style={{ paddingTop: 40 }}>
           <Route exact path="/" component={() => <LoginForm login={login} />} />
-          <Route
+          {/* <Route
             exact
-            path="/books"
+            path="/"
             component={() => <LoginForm user={login} />}
-          />
+          /> */}
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/profilepage" component={ProfilePage} />
         </div>

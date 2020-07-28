@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Map from "../../components/Map/Map";
 import { Col, Row, Container } from "../../components/Grid";
-
+import SearchBar from "../../components/SearchBar/SearchBar";
 import { ResultCard } from "../../components/ResultCard";
 import API from "../../utils/API";
 
@@ -47,7 +47,12 @@ function SearchResult() {
         </Col>
         <Col size="md-8">
           <h2>SEARCH</h2>
+<<<<<<< HEAD
+          <SearchBar/>
+          <Map center={mapCoords} businesses={buisnessList}/>
+=======
           <Map center={mapCoords} />
+>>>>>>> parent of 4adf5f1... added search bar to homepage and fixed image sizes
         </Col>
       </Row>
     </Container>
