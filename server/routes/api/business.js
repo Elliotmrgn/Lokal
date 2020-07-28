@@ -10,9 +10,14 @@ router
   .route("/:id")
   .get(businessController.findById);
 
-  router
+router
   .route("/schedule")
-  .post(businessController.postSchedule);
+  .post(businessController.postSchedule)
+  .get(businessController.getProfileSchedule);
+
+router
+  .route("/:id/schedule")
+  .get(businessController.getProfileSchedule);
 
 
 

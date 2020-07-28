@@ -21,10 +21,10 @@ import Owner from "./profilePgComponents/ownerabout";
 import InstaIcon from "./profilePgComponents/instaicon";
 import Tagline from "./profilePgComponents/tagline";
 import Fb from "./profilePgComponents/facebook";
-
+import Tags from "./profilePgComponents/tags";
 
 function BusinessPage() {
-    const testerbusiness = "5f1f8486a73d0c38b9d27c02";
+    const testerbusiness = "5f2023bd6804c4437ae34db1";
 
     // 0]     5f164573676a1ebfde5e0982,     5f1dbe2c99f408239b1d03fc, 5f1dbe9599f408239b1d03fd
 
@@ -41,8 +41,17 @@ function BusinessPage() {
         setBusiness(res.data);
         })
         .catch(err => console.log(err));
+    
 
+//     API.getProfileSchedule(testerbusiness)
+//     .then((res) => {
+//     console.log("hours" + res.data);
+//     setBusiness(res.data);
+//     })
+//     .catch(err => console.log(err));
     }
+
+    // console.log(business.schedule)
 
 
 
@@ -60,26 +69,35 @@ function BusinessPage() {
                     <li></li>
                     <li></li>
                     </ul></div> } 
-             <Image  className="logo" src="https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/43398007_313377752780140_2610444250214563840_n.png?_nc_cat=107&_nc_sid=09cbfe&_nc_ohc=AwWT7rdFa2QAX_j5IRF&_nc_ht=scontent-iad3-1.xx&oh=bd8fd28ee4516f932387414e952af333&oe=5F3F458C" roundedCircle />
+
+            { business.logo ?  <Image  className="logo" src={business.logo} roundedCircle />: null } 
+
+
+            
 
 
             <Container >
                 <Row>
                     <Col xs={7} className="mainSection"> 
-                        <div className="box header">
-                            { business.businessName ? <Header name={business.businessName} website={business.website} /> : null } 
+                        <div className="box profileHeader">
+                            { business.businessName && <Header name={business.businessName} website={business.website} /> } 
+                        </div>
+
+
+                        <div className="box tags">
+                            {business.tags && <Tags tags={business.tags} />}
                         </div>
 
                         <div className="box tagline">
-                            { business.tagline ? <Tagline shortTag={business.tagline}/> : null}
+                            { business.tagline && <Tagline shortTag={business.tagline}/>}
                         </div>
 
                         <div className="box about">
-                            { business.about ? <About name={business.businessName} about={business.about} /> : null }
+                            { business.about && <About name={business.businessName} about={business.about} />}
                         </div>
 
                         <div className="box owner">
-                            { business.owner ? <Owner owner={business.owner} /> : null }
+                            { business.owner && <Owner owner={business.owner} />}
 
                         </div>
                     </Col>
@@ -91,7 +109,7 @@ function BusinessPage() {
                         </div>
                         
                         <div className="box contact">
-                          { business.email ? <ContactButtons email={business.email} /> : null }
+                          { business.email ? <ContactButtons email={business.email}  phone={business.phoneNumber}/> : null }
 
                         </div>
 
@@ -102,7 +120,24 @@ function BusinessPage() {
                         </div>
 
                         <div className="box hours">
-                            <Hours />
+                            {business.schedule && 
+                             <Hours 
+                                MonOpen={business.schedule.MonOpen}
+                                MonClose={business.schedule.MonClose}
+                                TuesOpen={business.schedule.TuesOpen}
+                                TuesClose={business.schedule.TuesClose}
+                                WedOpen={business.schedule.WedOpen}
+                                WedClose={business.schedule.WedClose}
+                                ThursOpen={business.schedule.ThursOpen}
+                                ThursClose={business.schedule.ThursClose}
+                                FriOpen={business.schedule.FriOpen}
+                                FriClose={business.schedule.FriClose}
+                                // SatOpen={business.schedule.SatOpen}
+                                // SatClose={business.schedule.SatClose}
+                                // SunOpen={business.schedule.SunOpen}
+                                // SunClose={business.schedule.SunClose}
+                            />}
+                           
                         </div>
                     </Col>
                 </Row>
