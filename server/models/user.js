@@ -13,8 +13,9 @@ const userSchema = new Schema({
     {
       // Store ObjectIds in the array
       type: Schema.Types.ObjectId,
-      // The ObjectIds will refer to the ids in the Book model
+      // The ObjectIds will refer to the ids in the Business model
       ref: "Business",
+
     },
   ],
 });

@@ -6,8 +6,14 @@ router
   .get(businessController.findAll)
   .post(businessController.create);
 
-router.route("/:search").get(businessController.findViaSearch);
-router.route("/:tags").get(businessController.findViaTags);
-router.route("/:id").get(businessController.findById);
+router
+  .route("/:id")
+  .get(businessController.findById);
+
+  router
+  .route("/schedule")
+  .post(businessController.postSchedule);
+
+
 
 module.exports = router;

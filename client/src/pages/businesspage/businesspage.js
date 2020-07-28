@@ -16,7 +16,6 @@ import About from "./profilePgComponents/about";
 import ContactButtons from "./profilePgComponents/contactButtons";
 import Header from "./profilePgComponents/header";
 import Hours from "./profilePgComponents/hours";
-import Insta from "./profilePgComponents/instaAPI";
 import Map from "./profilePgComponents/map";
 import Owner from "./profilePgComponents/ownerabout";
 import InstaIcon from "./profilePgComponents/instaicon";
@@ -25,7 +24,9 @@ import Fb from "./profilePgComponents/facebook";
 
 
 function BusinessPage() {
-    const testerbusiness = "5f164573676a1ebfde5e0982";
+    const testerbusiness = "5f1f8486a73d0c38b9d27c02";
+
+    // 0]     5f164573676a1ebfde5e0982,     5f1dbe2c99f408239b1d03fc, 5f1dbe9599f408239b1d03fd
 
     const [business, setBusiness] = useState([]);
 
@@ -34,7 +35,7 @@ function BusinessPage() {
       }, []);
 
     function loadBusiness(){
-    API.getBusiness(testerbusiness)
+    API.getProfile(testerbusiness)
         .then((res) => {
         console.log(res.data);
         setBusiness(res.data);
@@ -44,9 +45,10 @@ function BusinessPage() {
     }
 
 
+
     return (
         <div>
-            { business.photos > 0 ? <Jumbotron bkphoto={business.photos} /> : <div className="defaultJumbotron"><ul class="circles">
+            { business.photos > 0 ? <Jumbotron bkphoto={business.photos} /> : <div className="defaultJumbotron"><ul className="circles">
                     <li></li>
                     <li></li>
                     <li></li>
@@ -74,10 +76,6 @@ function BusinessPage() {
 
                         <div className="box about">
                             { business.about ? <About name={business.businessName} about={business.about} /> : null }
-                        </div>
-                        
-                        <div className="box insta">
-                            { business.instagram && <Insta insta={business.instagram} fb={business.facebook} />}
                         </div>
 
                         <div className="box owner">

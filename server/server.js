@@ -4,7 +4,7 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
-require("dotenv").config();
+console.log("key = " + process.env.REACT_APP_GOOGLE_API_KEY);
 
 const express = require("express");
 const morgan = require("morgan");
