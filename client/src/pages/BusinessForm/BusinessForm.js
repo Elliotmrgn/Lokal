@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import { Card } from "../../components/Card";
-import { Input, TextArea, FormBtn, Address } from "../../components/Form";
+import {
+  Input,
+  TextArea,
+  FormBtn,
+  Address,
+  Hours,
+} from "../../components/Form";
 import API from "../../utils/API";
 import Checkbox from "../../components/Checkbox";
 
@@ -17,13 +23,12 @@ function BusinessForm() {
 
   function checkClick(event) {
     const tagName = event.target.value;
-    console.log("checkClick -> tagName", tagName);
     const checkingTags = checkedTags.indexOf(tagName);
-    if (checkingTags > -1) {
-      checkedTags.splice(checkingTags, 1);
-    } else {
+    if (checkingTags === -1) {
       checkedTags.push(tagName);
-      setTags((tags) => [...tags, checkedTags]);
+      setTags((tags) => [...tags, tagName]);
+    } else {
+      checkedTags.splice(checkingTags);
     }
   }
 
@@ -38,6 +43,7 @@ function BusinessForm() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
+    console.log(formObject);
 
     API.addressConvert(
       `${formObject.street}, ${formObject.city}, ${formObject.state}`
@@ -53,7 +59,6 @@ function BusinessForm() {
         instagram: formObject.instagram,
         facebook: formObject.facebook,
         website: formObject.website,
-        hours: formObject.hours,
         menuOrServices: formObject.menuOrServices,
         tagline: formObject.tagline,
         masks: formObject.masks,
@@ -236,6 +241,7 @@ function BusinessForm() {
                         name="hours"
                         placeholder="Hours of Operation  (Required)"
                       />
+                      <Hours />
                     </div>
                     {/* Contact Info */}
                     <div
@@ -343,9 +349,7 @@ function BusinessForm() {
                     formObject.street &&
                     formObject.city &&
                     formObject.state &&
-                    formObject.zip &&
-                    formObject.county &&
-                    formObject.country
+                    formObject.zip
                   )
                 }
                 onClick={handleFormSubmit}
