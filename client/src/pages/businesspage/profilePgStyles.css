@@ -42,9 +42,11 @@ h3{
 .photosdiv{
     margin-bottom: 80px;
 }
+
 .largeLink{
     font-size: 20px;
     color: grey;
+    font-style: italic;
 }
 
 .taglineShort{
@@ -53,6 +55,11 @@ h3{
     margin-top: 50px;
     color: rgb(134, 135, 141);
     font-style: italic;
+}
+
+.tagline{
+    /* border-bottom: 4px solid #D9DBE2; */
+    padding-bottom: 25px;
 }
 
 .socialIcon {
@@ -86,7 +93,7 @@ h3{
     font-size: 38px;
     font-weight: 700;
     letter-spacing: 2px;
-    color: #AED1CD;
+    color: #EDA694;
 }
 
 .owner {

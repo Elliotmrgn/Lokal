@@ -14,12 +14,12 @@ import About from "./profilePgComponents/about";
 import ContactButtons from "./profilePgComponents/contactButtons";
 import Header from "./profilePgComponents/header";
 import Hours from "./profilePgComponents/hours";
-import Map from "./profilePgComponents/map";
 import Owner from "./profilePgComponents/ownerabout";
 import InstaIcon from "./profilePgComponents/instaicon";
 import Tagline from "./profilePgComponents/tagline";
 import Fb from "./profilePgComponents/facebook";
 import Tags from "./profilePgComponents/tags";
+import Map from "../../components/Map/Map"
 
 //carosel 
 import AwesomeSlider from 'react-awesome-slider';
@@ -33,17 +33,23 @@ function BusinessPage() {
 
     const [business, setBusiness] = useState([]);
     const [userphotos, setPhotos] = useState([]);
+    const [mapCoords, setMapCoords] = useState({});
+
 
     useEffect(() => {
         loadBusiness();
       }, []);
 
     function loadBusiness(){
-    API.getProfile(testerbusinessfull)
+    API.getProfile(testerbusinessmin)
         .then((res) => {
         console.log(res.data);
         setBusiness(res.data);
-        setPhotos(res.data.photos)
+        setPhotos(res.data.photos);
+        setMapCoords({
+            lat: parseFloat(res.data.lat),
+            lng: parseFloat(res.data.lng),
+          });
         })
         .catch(err => console.log(err));
         
@@ -56,7 +62,6 @@ function BusinessPage() {
 //     .catch(err => console.log(err));
     }
 
-    // console.log(business.schedule)
 
 
     return (
@@ -97,10 +102,6 @@ function BusinessPage() {
                             { business.tagline && <Tagline shortTag={business.tagline}/>}
                         </div>
 
-                        <div className="box about">
-                            { business.about && <About name={business.businessName} about={business.about} />}
-                        </div>
-
                         {userphotos.length > 0 &&
                             <div className="box photosdiv">
                                 <AwesomeSlider>
@@ -108,6 +109,10 @@ function BusinessPage() {
                                 </AwesomeSlider>
                             </div>
                         }
+
+                        <div className="box about">
+                            { business.about && <About name={business.businessName} about={business.about} />}
+                        </div>
 
                         <div className="box owner">
                             { business.owner && <Owner owner={business.owner} />}
@@ -126,11 +131,6 @@ function BusinessPage() {
 
                         </div>
 
-                        <div className="box map">
-                            <Map />
-                            { business.address && <Map addy={business.address} />}
-
-                        </div>
 
                         <div className="box hours">
                             {business.schedule && 
@@ -150,8 +150,12 @@ function BusinessPage() {
                                 SunOpen={business.schedule.SunOpen ? business.schedule.SunOpen + "AM " : "Closed"}
                                 SunClose={business.schedule.SunClose ? business.schedule.SunClose + "PM" : null}
                             />}
-                            
-                           
+                        </div>
+
+                        <div className="box map">
+                            <Map center={mapCoords} businesses={business}/>
+                            {/* { business.address && <Map addy={business.address} />} */}
+
                         </div>
                     </Col>
                 </Row>
