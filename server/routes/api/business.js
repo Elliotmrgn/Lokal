@@ -10,4 +10,10 @@ router
   .route("/:id")
   .get(businessController.findById);
 
+  router
+  .route("/schedule")
+  .post(businessController.postSchedule);
+
+
+
 module.exports = router;

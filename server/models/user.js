@@ -15,6 +15,7 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId,
       // The ObjectIds will refer to the ids in the Business model
       ref: "Business",
+
     },
   ],
 });

@@ -1,14 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Col, Row, Container } from "../../components/Grid";
+import { Container } from "../../components/Grid";
 import { Card } from "../../components/Card";
 import { Input, TextArea, FormBtn, Address } from "../../components/Form";
 import API from "../../utils/API";
 import Checkbox from "../../components/Checkbox";
 
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 function BusinessForm() {
   const [business, setBusiness] = useState([]);
   const [formObject, setFormObject] = useState([]);
   const [images, setImages] = useState([]);
+  // const [hours, setHours] = useState([]);
   const [logo, setLogo] = useState([]);
   const [menuOrServices, setMenuOrServices] = useState([]);
   const [tags, setTags] = useState([]);
@@ -42,8 +47,11 @@ function BusinessForm() {
     API.addressConvert(
       `${formObject.street}, ${formObject.city}, ${formObject.state}`
     ).then((res) => {
-      console.log("LAT, LONGGG", res.data.results[0].geometry.location);
+      console.log("LAT, LONGGG", res.data.results);
+      console.log("schedule fix", formObject.MonOpen);
       console.log("DOES THIS PASS DOWN", formObject);
+      console.log("formObject.schedule:", formObject.schedule);
+
       API.saveBusiness({
         owner: formObject.owner,
         businessName: formObject.businessName,
@@ -53,7 +61,22 @@ function BusinessForm() {
         instagram: formObject.instagram,
         facebook: formObject.facebook,
         website: formObject.website,
-        hours: formObject.hours,
+        schedule: {
+          MonOpen: formObject.MonOpen,
+          MonClose: formObject.MonClose,
+          TuesOpen: formObject.TuesOpen,
+          TuesClose: formObject.TuesClose,
+          WedOpen: formObject.WedOpen,
+          WedClose: formObject.WedClose,
+          ThursOpen: formObject.ThursClose,
+          ThursClose: formObject.ThursClose,
+          FriOpen: formObject.FriOpen,
+          FriClose: formObject.FriClose,
+          SatOpen: formObject.SatOpen,
+          SatClose: formObject.SatClose,
+          SunOpen: formObject.SunOpen,
+          SunClose: formObject.SunClose
+        },
         menuOrServices: formObject.menuOrServices,
         tagline: formObject.tagline,
         masks: formObject.masks,
@@ -71,9 +94,10 @@ function BusinessForm() {
         tags: tags,
       })
         .then((res) => {
+          console.log("res!!!!:", res);
           formEl.current.reset();
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log("aftersave" + err));
     });
   }
 
@@ -146,6 +170,11 @@ function BusinessForm() {
     });
   };
 
+  // const saveHours = (event) => {
+  //   const { name, value } = event.target;
+  //   setHours(hours.push(name, value))
+  // };
+
   return (
     <Container fluid>
       <Row>
@@ -184,6 +213,16 @@ function BusinessForm() {
                       aria-controls="Social Media"
                     >
                       Social Media
+                    </a>
+                    <a
+                      className="list-group-item list-group-item-action"
+                      id="list-messages-list"
+                      data-toggle="list"
+                      href="#hours"
+                      role="tab"
+                      aria-controls="Hours"
+                    >
+                      Hours
                     </a>
                     <a
                       className="list-group-item list-group-item-action"
@@ -231,11 +270,6 @@ function BusinessForm() {
                         name="tagline"
                         placeholder="Tagline (Required)"
                       />
-                      <Input
-                        onChange={handleInputChange}
-                        name="hours"
-                        placeholder="Hours of Operation  (Required)"
-                      />
                     </div>
                     {/* Contact Info */}
                     <div
@@ -279,6 +313,287 @@ function BusinessForm() {
                         name="website"
                         placeholder="Website"
                       />
+                    </div>
+                    {/* Hours */}
+                    <div
+                      className="tab-pane fade"
+                      id="hours"
+                      role="tabpanel"
+                      aria-labelledby="list-messages-list"
+                    >
+                      {/* Monday Hours */}
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Monday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="MonOpen"
+                            placeholder="Open"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control
+                              onSelect={handleInputChange}
+                              name="AMorPM"
+                              as="select"
+                            >
+                              <option value="pm">PM</option>
+                              <option value="am">AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                        -
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="MonClose"
+                            placeholder="5"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* Tuesday Hours */}
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Tuesday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="TuesOpen"
+                            placeholder="9"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                        -
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="TuesClose"
+                            placeholder="5"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* Wedneday Hours */}
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Wednesday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="WedOpen"
+                            placeholder="9"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                        -
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="WedClose"
+                            placeholder="5"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* Thursday */}
+
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Thursday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="ThursOpen"
+                            placeholder="9"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                        -
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="ThursClose"
+                            placeholder="5"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* Friday hours */}
+
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Friday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="FriOpen"
+                            placeholder="9"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                        -
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="FriClose"
+                            placeholder="5"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* Saturday hours */}
+
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Saturday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="SatOpen"
+                            placeholder="9"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                        -
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="SatClose"
+                            placeholder="5"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* sunday hours */}
+
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Sudnay:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="SunOpen"
+                            placeholder="9"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                        -
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="SunClose"
+                            placeholder="5"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                      </Row>
                     </div>
                     {/* Photos And Services */}
                     <div
@@ -332,22 +647,22 @@ function BusinessForm() {
               </div>
 
               <FormBtn
-                disabled={
-                  !(
-                    formObject.businessName &&
-                    formObject.phoneNumber &&
-                    formObject.email &&
-                    formObject.owner &&
-                    formObject.tagline &&
-                    formObject.hours &&
-                    formObject.street &&
-                    formObject.city &&
-                    formObject.state &&
-                    formObject.zip &&
-                    formObject.county &&
-                    formObject.country
-                  )
-                }
+                // disabled={
+                //   !(
+                //     formObject.businessName &&
+                //     formObject.phoneNumber &&
+                //     formObject.email &&
+                //     formObject.owner &&
+                //     formObject.tagline &&
+                //     formObject.hours &&
+                //     formObject.street &&
+                //     formObject.city &&
+                //     formObject.state &&
+                //     formObject.zip &&
+                //     formObject.county &&
+                //     formObject.country
+                //   )
+                // }
                 onClick={handleFormSubmit}
               >
                 Submit Business

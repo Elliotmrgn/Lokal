@@ -18,9 +18,9 @@ let divStyle = {
 };
 
 const Checkbox = (props) => {
-  const tagList = tags.map(function (tag) {
+  const tagList = tags.map(function (tag, index) {
     return (
-      <div className="form-check" style={divStyle}>
+      <div className="form-check" style={divStyle} key={index}>
         <input
           className="form-check-input tagCheckbox"
           type="checkbox"
