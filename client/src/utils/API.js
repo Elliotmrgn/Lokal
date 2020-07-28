@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export default {
   // Gets all books
   getBooks: function () {
@@ -22,9 +23,16 @@ export default {
     return axios.post("/api/books", bookData);
   },
   saveBusiness: function (businessData) {
+    console.log("hours testing" + businessData)
     return axios.post("/api/business", businessData);
   },
+  postSchedule: function(schedule) {
+    console.log("API schedule" + schedule)
+    return axios.post("/api/schedule", schedule);
+  },
   addressConvert: function(address){
+    address = encodeURIComponent(address);
+    console.log(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`)
     return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`) 
   },
   getBusiness: function(id) {

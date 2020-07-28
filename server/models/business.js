@@ -8,7 +8,7 @@ const businessSchema = new Schema({
   email: { type: String, required: true },
   about: { type: String, required: false },
   tagline: { type: String, required: true },
-  hours: { type: String, required: true },
+  schedule: [{ type: Schema.Types.ObjectId, ref: 'Schedule' }],
   instagram: { type: String },
   facebook: { type: String },
   website: { type: String },
@@ -25,8 +25,8 @@ const businessSchema = new Schema({
   country: { type: String },
   logo: [{ type: String }],
   menuOrServices: [{ type: String }],
-  lat: { type: String },
-  lng: { type: String },
+  lat: { type: Number },
+  lng: { type: Number },
   tags: [{ type: String }],
 });
 

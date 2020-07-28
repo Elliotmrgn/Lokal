@@ -2,4 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Livvic', sans-serif;
+  min-height: 400px;
+  margin-bottom: 100px;
+  clear: both;
 }

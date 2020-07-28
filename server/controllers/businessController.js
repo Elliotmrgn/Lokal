@@ -33,4 +33,29 @@ module.exports = {
         })
         .catch((err) => res.status(422).json(err));
   },
+  //populate schedule with business 
+  populateSchedule: (req, res) => {
+    db.business.find({})
+    .populate("Schedule")
+    .then((dbschedule) => {
+      res.json(dbschedule)
+    })
+    .catch((err) => res.json(err));
+  },
+  //post schedule 
+  postSchedule: (req, res) => {
+    console.log("REQ HIT here")
+    db.Schedule.create(req.body) 
+    .then((dbschedule) => {
+        return db.Business.findOneAndUpdate({
+          _id: req.params.id
+        }, {
+          schedule: dbschedule._id
+        }, {
+          new: true
+        })
+    })
+    .then( dbBusiness => {console.log("testing here" + dbBusiness)})
+    .catch((err) => res.json(err));
+  }
 };
