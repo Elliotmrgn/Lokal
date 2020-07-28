@@ -4,8 +4,7 @@ import House from "../../components/bighouselogo.png"
 import Check from "../../components/check.png"
 import MapIcon from "../../components/map.png"
 import Search from "../../components/search.png"
-
-// import SearchBar from "../../components/SearchBar";
+import NavSearchBar from "../../components/NavSearchBar/NavSearchBar"
 
 function Home() {
     return (
@@ -17,9 +16,8 @@ function Home() {
             <span class="header" id="discover">DISCOVER</span>
             <span class="header" id="lokal">lokal</span>
             <p id="raleigh">Raleigh Edition</p>
-            <span id="search"> ------INSERT SEARCH BAR HERE------ </span>
           </row>
-          {/* <SearchBar /> */}
+          <NavSearchBar />
         </section>
 
         <section class="welcome-container">
@@ -37,15 +35,15 @@ function Home() {
               <ul class="list">
                 <li> 
                   <img id="search" src={Search} alt="search bar"></img>
-                  <p>Search for a business by category </p>
+                  <p className="search">Search for a business by category </p>
                 </li>
                 <li> 
                   <img id="map" src={MapIcon} alt="map icon"></img>
-                  <p>See all local options on a map </p>
+                  <p className="search"> See all local options on a map </p>
                 </li>
                 <li> 
                   <img id="check" src={Check} alt="check mark"></img>
-                  <p>Select the business page you'd like to view </p>
+                  <p className="search">Select the business page you'd like to view </p>
                  </li>
               </ul>
             <br></br>
