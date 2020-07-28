@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from 'react-router-dom';
 import { Col } from '../Grid';
-// import NavSearchBar from "../../components/NavSearchBar/NavSearchBar"
 import './Nav.css';
 
 const Nav = (props) => {
@@ -30,12 +29,7 @@ const Nav = (props) => {
       </Col>
       <Col size="md-6 sm-6">
         <div className="float-right">
-        {/* <NavSearchBar />   */}
-
         <Link to="/Contact" id="contact" className="navbar-contact px-4">Contact</Link>
-        
-        <Link to="/BusinessForm" id="register" className="navbar-contact px-4">Register</Link>
-
         {greeting} - <Link to="#" className="logout" onClick={props.logout}>Logout</Link>
         </div>
       </Col>
