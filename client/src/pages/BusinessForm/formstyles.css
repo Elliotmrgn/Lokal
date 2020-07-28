@@ -1,0 +1,21 @@
+.title {
+    font-size: 4rem;
+    font-weight: 200;
+    /* letter-spacing: px; */
+    line-height: 1.2em;
+    color: #E98A95;
+    font-style: italic;
+}
+
+.titlecontianer {
+    margin: 5% 20%;
+    text-align: center !important;
+}
+
+.mainContainer{
+    margin: 1% 8% ;
+}
+
+.tab{
+    background-color: purple;
+}

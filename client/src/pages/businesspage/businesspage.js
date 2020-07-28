@@ -41,7 +41,7 @@ function BusinessPage() {
       }, []);
 
     function loadBusiness(){
-    API.getProfile(testerbusinessmin)
+    API.getProfile(testerbusinessfull)
         .then((res) => {
         console.log(res.data);
         setBusiness(res.data);
