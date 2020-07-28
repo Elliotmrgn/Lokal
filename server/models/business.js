@@ -8,7 +8,7 @@ const businessSchema = new Schema({
   email: { type: String, required: true },
   about: { type: String, required: false },
   tagline: { type: String, required: true },
-  schedule: [{ type: Schema.Types.ObjectId, ref: 'Schedule' }],
+  // schedule: [{ type: Schema.Types.ObjectId, ref: 'Schedule' }],
   instagram: { type: String },
   facebook: { type: String },
   website: { type: String },
