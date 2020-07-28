@@ -21,7 +21,6 @@ const options = {
 
 export default function Map(props) {
   console.log("Map -> props", props.center);
-  console.log(center);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY, //.env not working
     libraries,

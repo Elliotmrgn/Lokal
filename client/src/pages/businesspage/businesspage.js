@@ -24,7 +24,7 @@ import Fb from "./profilePgComponents/facebook";
 
 
 function BusinessPage() {
-    const testerbusiness = "5f1f3710dcf16d2bac72b691";
+    const testerbusiness = "5f1f8486a73d0c38b9d27c02";
 
     // 0]     5f164573676a1ebfde5e0982,     5f1dbe2c99f408239b1d03fc, 5f1dbe9599f408239b1d03fd
 
@@ -48,7 +48,7 @@ function BusinessPage() {
 
     return (
         <div>
-            { business.photos > 0 ? <Jumbotron bkphoto={business.photos} /> : <div className="defaultJumbotron"><ul class="circles">
+            { business.photos > 0 ? <Jumbotron bkphoto={business.photos} /> : <div className="defaultJumbotron"><ul className="circles">
                     <li></li>
                     <li></li>
                     <li></li>

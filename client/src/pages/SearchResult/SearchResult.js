@@ -47,12 +47,8 @@ function SearchResult() {
         </Col>
         <Col size="md-8">
           <h2>SEARCH</h2>
-<<<<<<< HEAD
           <SearchBar/>
           <Map center={mapCoords} businesses={buisnessList}/>
-=======
-          <Map center={mapCoords} />
->>>>>>> parent of 4adf5f1... added search bar to homepage and fixed image sizes
         </Col>
       </Row>
     </Container>
