@@ -3,6 +3,8 @@ import { FaFacebook } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import "../profilePgStyles.css"
 
+import Button from 'react-bootstrap/Button';
+
 
 function fbIcon(props) {
 

@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
+import Carousel from 'react-bootstrap/Carousel';
 
 
 
@@ -22,11 +23,10 @@ import InstaIcon from "./profilePgComponents/instaicon";
 import Tagline from "./profilePgComponents/tagline";
 import Fb from "./profilePgComponents/facebook";
 import Tags from "./profilePgComponents/tags";
+// import Photos from "./profilePgComponents/photos"
 
 function BusinessPage() {
-    const testerbusiness = "5f2023bd6804c4437ae34db1";
-
-    // 0]     5f164573676a1ebfde5e0982,     5f1dbe2c99f408239b1d03fc, 5f1dbe9599f408239b1d03fd
+    const testerbusiness = "5f203b74c2b1714429ad4a28";
 
     const [business, setBusiness] = useState([]);
 
@@ -57,7 +57,8 @@ function BusinessPage() {
 
     return (
         <div>
-            { business.photos > 0 ? <Jumbotron bkphoto={business.photos} /> : <div className="defaultJumbotron"><ul className="circles">
+            { business.photos > 0 ? <Jumbotron bkphoto={business.photos} /> : 
+            <div className="defaultJumbotron"><ul className="circles">
                     <li></li>
                     <li></li>
                     <li></li>
@@ -96,6 +97,11 @@ function BusinessPage() {
                             { business.about && <About name={business.businessName} about={business.about} />}
                         </div>
 
+                        <div className="box photos">
+                            {/* { business.photos && <Photos/>} */}
+
+                        </div>
+
                         <div className="box owner">
                             { business.owner && <Owner owner={business.owner} />}
 
@@ -122,21 +128,22 @@ function BusinessPage() {
                         <div className="box hours">
                             {business.schedule && 
                              <Hours 
-                                MonOpen={business.schedule.MonOpen}
-                                MonClose={business.schedule.MonClose}
-                                TuesOpen={business.schedule.TuesOpen}
-                                TuesClose={business.schedule.TuesClose}
-                                WedOpen={business.schedule.WedOpen}
-                                WedClose={business.schedule.WedClose}
-                                ThursOpen={business.schedule.ThursOpen}
-                                ThursClose={business.schedule.ThursClose}
-                                FriOpen={business.schedule.FriOpen}
-                                FriClose={business.schedule.FriClose}
-                                // SatOpen={business.schedule.SatOpen}
-                                // SatClose={business.schedule.SatClose}
-                                // SunOpen={business.schedule.SunOpen}
-                                // SunClose={business.schedule.SunClose}
+                                MonOpen={business.schedule.MonOpen ? business.schedule.MonOpen + "AM" : "Closed"}
+                                MonClose={business.schedule.MonClose ? business.schedule.MonClose + "PM" : null}
+                                TuesOpen={business.schedule.TuesOpen ? business.schedule.TuesOpen + "AM " : "Closed"}
+                                TuesClose={business.schedule.TuesClose ? business.schedule.TuesClose + "PM" : null}
+                                WedOpen={business.schedule.WedOpen ? business.schedule.WedOpen + "AM " : "Closed"}
+                                WedClose={business.schedule.WedClose ? business.schedule.WedClose + "PM" : null}
+                                ThursOpen={business.schedule.ThursOpen ? business.schedule.ThursOpen + "AM" : "Closed"}
+                                ThursClose={business.schedule.ThursClose ? business.schedule.ThursClose + "PM" : null}
+                                FriOpen={business.schedule.FriOpen ? business.schedule.FriOpen + "AM " : "Closed"}
+                                FriClose={business.schedule.FriClose ? business.schedule.FriClose + "PM" : null}
+                                SatOpen={business.schedule.SatOpen ? business.schedule.SatOpen + "AM " : "Closed"}
+                                SatClose={business.schedule.SatClose ? business.schedule.SatClose + "PM" : null }
+                                SunOpen={business.schedule.SunOpen ? business.schedule.SunOpen + "AM " : "Closed"}
+                                SunClose={business.schedule.SunClose ? business.schedule.SunClose + "PM" : null}
                             />}
+                            
                            
                         </div>
                     </Col>

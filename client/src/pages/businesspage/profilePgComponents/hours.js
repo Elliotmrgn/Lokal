@@ -11,77 +11,59 @@ function hoursPF(props) {
     return (
         <div>
             <Table responsive>
-            {/* <thead>
-                <tr className="hoursHead">
-                   {props.name} Hours
-                </tr>
-            </thead> */}
+            <thead>
+                    <td></td>
+                    <td>open</td>
+                    <td>close</td>
+                
+            </thead>
 
             <tbody>
                 <tr>
                     <td>Monday</td>
-                    <td>{props.MonOpen}PM</td>
-                    <td>to</td>
-                    <td>{props.MonClose}PM</td>
+                    <td>{props.MonOpen}</td>
+                    <td>{props.MonClose}</td>
                 </tr>
 
                 <tr>
                     <td>Tuesday</td>
-                    <td>{props.TuesOpen}PM</td>
-                    <td>to</td>
-                    <td>{props.TuesClose}PM</td>
+                    <td>{props.TuesOpen}</td>
+                    <td>{props.TuesClose}</td>
                 </tr>
 
                 <tr>
                     <td>Wednesday</td>
-                    <td>{props.WedOpen}PM</td>
-                    <td>to</td>
-                    <td>{props.WedClose}PM</td>
+                    <td>{props.WedOpen}</td>
+                    <td>{props.WedClose}</td>
                 </tr>
 
                 <tr>
                     <td>Thursday</td>
-                    <td>{props.ThursOpen}PM</td>
-                    <td>to</td>
-                    <td>{props.ThursClose}PM</td>
+                    <td>{props.ThursOpen}</td>
+                    <td>{props.ThursClose}</td>
                 </tr>
 
                 <tr>
                     <td>Friday</td>
-                    <td>{props.FriOpen}PM</td>
-                    <td>to</td>
-                    <td>{props.FriClose}PM</td>
+                    <td>{props.FriOpen}</td>
+                    <td>{props.FriClose}</td>
                 </tr>
 
+    
                 <tr>
                     <td>Saturday</td>
-                    <td>Closed</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-
-                <tr>
-                    <td>Sunday</td>
-                    <td>Closed</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-
-                {/* <tr>
-                    <td>Saturday</td>
-                    <td>9PM</td>
-                    <td>to</td>
-                    <td>5PM</td>
+                    <td>{props.SatOpen}</td>
+                    <td>{props.SatClose}</td>
                 </tr>
 
                 
                  <tr>
                     <td>Sunday</td>
-                    <td>{props.SunOpen}PM</td>
-                    <td>to</td>
-                    <td>{Props.SunClose}PM</td>
+                    <td>{props.SunOpen}</td>
+                    {/* <td>to</td> */}
+                    <td>{props.SunClose}</td>
                 </tr>
-                 */}
+                
      
             </tbody>
             </Table>
