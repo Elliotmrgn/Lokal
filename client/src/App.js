@@ -4,6 +4,7 @@ import LoginForm from "./pages/Auth/LoginForm";
 import SignupForm from "./pages/Auth/SignupForm";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import ProfilePage from "./pages/businesspage/businesspage";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,6 +13,8 @@ import BusinessForm from "./pages/BusinessForm";
 import ContactPage from "./pages/ContactPage";
 import Home from "./pages/Home";
 import SearchResult from "./pages/SearchResult"
+
+import SearchResult from "./pages/SearchResult";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -69,6 +72,7 @@ function App() {
               <Route exact path="/businessForm" component={BusinessForm} />
               <Route exact path="/contact" component={ContactPage} />
               <Route exact path="/results" component={SearchResult} />
+              <Route exact path="/books/:id" component={Detail} />
               <Route exact path="/profilepage/:id" component={ProfilePage} />
               <Route component={NoMatch} />
             </Switch>
@@ -78,11 +82,11 @@ function App() {
       {!loggedIn && (
         <div className="auth-wrapper" style={{ paddingTop: 40 }}>
           <Route exact path="/" component={() => <LoginForm login={login} />} />
-          {/* <Route
+          <Route
             exact
-            path="/"
+            path="/books"
             component={() => <LoginForm user={login} />}
-          /> */}
+          />
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/profilepage" component={ProfilePage} />
         </div>
