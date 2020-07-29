@@ -8,40 +8,51 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 
-
-
 // components 
 import Jumbotron from "./profilePgComponents/jumbotron";
 import About from "./profilePgComponents/about";
 import ContactButtons from "./profilePgComponents/contactButtons";
 import Header from "./profilePgComponents/header";
 import Hours from "./profilePgComponents/hours";
-import Map from "./profilePgComponents/map";
 import Owner from "./profilePgComponents/ownerabout";
 import InstaIcon from "./profilePgComponents/instaicon";
 import Tagline from "./profilePgComponents/tagline";
 import Fb from "./profilePgComponents/facebook";
 import Tags from "./profilePgComponents/tags";
+import Map from "../../components/Map/Map"
+
+//carosel 
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
+
 
 function BusinessPage() {
-    const testerbusiness = "5f2023bd6804c4437ae34db1";
 
-    // 0]     5f164573676a1ebfde5e0982,     5f1dbe2c99f408239b1d03fc, 5f1dbe9599f408239b1d03fd
+    const testerbusinessfull = "5f203b74c2b1714429ad4a28";
+    const testerbusinessmin = "5f2023bd6804c4437ae34db1";
 
     const [business, setBusiness] = useState([]);
+    const [userphotos, setPhotos] = useState([]);
+    const [mapCoords, setMapCoords] = useState({});
+
 
     useEffect(() => {
         loadBusiness();
       }, []);
 
     function loadBusiness(){
-    API.getProfile(testerbusiness)
+    API.getProfile(testerbusinessfull)
         .then((res) => {
         console.log(res.data);
         setBusiness(res.data);
+        setPhotos(res.data.photos);
+        setMapCoords({
+            lat: parseFloat(res.data.lat),
+            lng: parseFloat(res.data.lng),
+          });
         })
         .catch(err => console.log(err));
-    
+        
 
 //     API.getProfileSchedule(testerbusiness)
 //     .then((res) => {
@@ -51,13 +62,12 @@ function BusinessPage() {
 //     .catch(err => console.log(err));
     }
 
-    // console.log(business.schedule)
-
 
 
     return (
         <div>
-            { business.photos > 0 ? <Jumbotron bkphoto={business.photos} /> : <div className="defaultJumbotron"><ul className="circles">
+            { business.photos > 0 ? <Jumbotron bkphoto={business.photos} /> : 
+            <div className="defaultJumbotron"><ul className="circles">
                     <li></li>
                     <li></li>
                     <li></li>
@@ -92,6 +102,14 @@ function BusinessPage() {
                             { business.tagline && <Tagline shortTag={business.tagline}/>}
                         </div>
 
+                        {userphotos.length > 0 &&
+                            <div className="box photosdiv">
+                                <AwesomeSlider>
+                                { userphotos.map((userphoto) =>  <div data-src={userphoto} />)}
+                                </AwesomeSlider>
+                            </div>
+                        }
+
                         <div className="box about">
                             { business.about && <About name={business.businessName} about={business.about} />}
                         </div>
@@ -113,31 +131,31 @@ function BusinessPage() {
 
                         </div>
 
-                        <div className="box map">
-                            <Map />
-                            { business.address && <Map addy={business.address} />}
-
-                        </div>
 
                         <div className="box hours">
                             {business.schedule && 
                              <Hours 
-                                MonOpen={business.schedule.MonOpen}
-                                MonClose={business.schedule.MonClose}
-                                TuesOpen={business.schedule.TuesOpen}
-                                TuesClose={business.schedule.TuesClose}
-                                WedOpen={business.schedule.WedOpen}
-                                WedClose={business.schedule.WedClose}
-                                ThursOpen={business.schedule.ThursOpen}
-                                ThursClose={business.schedule.ThursClose}
-                                FriOpen={business.schedule.FriOpen}
-                                FriClose={business.schedule.FriClose}
-                                // SatOpen={business.schedule.SatOpen}
-                                // SatClose={business.schedule.SatClose}
-                                // SunOpen={business.schedule.SunOpen}
-                                // SunClose={business.schedule.SunClose}
+                                MonOpen={business.schedule.MonOpen ? business.schedule.MonOpen + "AM" : "Closed"}
+                                MonClose={business.schedule.MonClose ? business.schedule.MonClose + "PM" : null}
+                                TuesOpen={business.schedule.TuesOpen ? business.schedule.TuesOpen + "AM " : "Closed"}
+                                TuesClose={business.schedule.TuesClose ? business.schedule.TuesClose + "PM" : null}
+                                WedOpen={business.schedule.WedOpen ? business.schedule.WedOpen + "AM " : "Closed"}
+                                WedClose={business.schedule.WedClose ? business.schedule.WedClose + "PM" : null}
+                                ThursOpen={business.schedule.ThursOpen ? business.schedule.ThursOpen + "AM" : "Closed"}
+                                ThursClose={business.schedule.ThursClose ? business.schedule.ThursClose + "PM" : null}
+                                FriOpen={business.schedule.FriOpen ? business.schedule.FriOpen + "AM " : "Closed"}
+                                FriClose={business.schedule.FriClose ? business.schedule.FriClose + "PM" : null}
+                                SatOpen={business.schedule.SatOpen ? business.schedule.SatOpen + "AM " : "Closed"}
+                                SatClose={business.schedule.SatClose ? business.schedule.SatClose + "PM" : null }
+                                SunOpen={business.schedule.SunOpen ? business.schedule.SunOpen + "AM " : "Closed"}
+                                SunClose={business.schedule.SunClose ? business.schedule.SunClose + "PM" : null}
                             />}
-                           
+                        </div>
+
+                        <div className="box map">
+                            <Map center={mapCoords} businesses={business}/>
+                            {/* { business.address && <Map addy={business.address} />} */}
+
                         </div>
                     </Col>
                 </Row>
