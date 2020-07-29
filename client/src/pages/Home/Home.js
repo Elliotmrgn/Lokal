@@ -5,7 +5,7 @@ import Check from "../../components/check.png";
 import MapIcon from "../../components/map.png";
 import Search from "../../components/search.png";
 
-// import SearchBar from "../../components/SearchBar";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 function Home() {
   return (
@@ -19,9 +19,9 @@ function Home() {
             lokal
           </span>
           <p id="raleigh">Raleigh Edition</p>
-          <span id="search"> ------INSERT SEARCH BAR HERE------ </span>
+          <span id="search"> </span>
         </row>
-        {/* <SearchBar /> */}
+        <SearchBar />
       </section>
 
       <section className="welcome-container">

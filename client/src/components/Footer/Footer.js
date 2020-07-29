@@ -1,7 +1,16 @@
 import React from "react";
 
+const phantomStyle = {
+  display: "block",
+  padding: "20px",
+  height: "150px",
+  width: "100%"
+};
 function Footer() {
     return (
+      <div>
+      <div style={phantomStyle} />
+
       <footer 
       style ={{
           backgroundColor:"#5B9098",
@@ -19,6 +28,7 @@ function Footer() {
         > 
       &copy; {new Date().getFullYear()} Copyright
       </footer>
+      </div>
     );
   }
   

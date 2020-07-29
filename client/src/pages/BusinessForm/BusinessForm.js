@@ -4,16 +4,17 @@ import { Card } from "../../components/Card";
 import { Input, TextArea, FormBtn, Address } from "../../components/Form";
 import API from "../../utils/API";
 import Checkbox from "../../components/Checkbox";
+import "./formstyles.css";
 
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 function BusinessForm() {
   const [business, setBusiness] = useState([]);
   const [formObject, setFormObject] = useState([]);
   const [images, setImages] = useState([]);
-  // const [hours, setHours] = useState([]);
   const [logo, setLogo] = useState([]);
   const [menuOrServices, setMenuOrServices] = useState([]);
   const [tags, setTags] = useState([]);
@@ -125,7 +126,7 @@ function BusinessForm() {
           palette: {
             window: "#FFFFFF",
             windowBorder: "#90A0B3",
-            tabIcon: "#0078FF",
+            tabIcon: "#354959",
             menuIcons: "#5A616A",
             textDark: "#000000",
             textLight: "#FFFFFF",
@@ -175,437 +176,440 @@ function BusinessForm() {
 
   return (
     <Container fluid>
-      <Row>
+      <div className="titlecontianer">
+        <span className="title">Create a listing for your business</span>
+      </div>
+      <Row className="mainContainer">
         <Col size="size md-12">
-          <Card title="Welcome! Please fill out the following forms to set up your business.">
-            <form ref={formEl}>
-              <div className="row">
-                <div className="col-4">
-                  <div className="list-group" id="list-tab" role="tablist">
-                    <a
-                      className="list-group-item list-group-item-action active"
-                      id="list-home-list"
-                      data-toggle="list"
-                      href="#basic-info"
-                      role="tab"
-                      aria-controls="Basic Info"
-                    >
-                      Basic Info
-                    </a>
-                    <a
-                      className="list-group-item list-group-item-action"
-                      id="list-profile-list"
-                      data-toggle="list"
-                      href="#contact-info"
-                      role="tab"
-                      aria-controls="Contact Info"
-                    >
-                      Contact Info
-                    </a>
-                    <a
-                      className="list-group-item list-group-item-action"
-                      id="list-messages-list"
-                      data-toggle="list"
-                      href="#social-media"
-                      role="tab"
-                      aria-controls="Social Media"
-                    >
-                      Social Media
-                    </a>
-                    <a
-                      className="list-group-item list-group-item-action"
-                      id="list-messages-list"
-                      data-toggle="list"
-                      href="#hours"
-                      role="tab"
-                      aria-controls="Hours"
-                    >
-                      Hours
-                    </a>
-                    <a
-                      className="list-group-item list-group-item-action"
-                      id="list-settings-list"
-                      data-toggle="list"
-                      href="#list-settings"
-                      role="tab"
-                      aria-controls="Photos and Services"
-                    >
-                      Photos and Services
-                    </a>
-                    <a
-                      className="list-group-item list-group-item-action"
-                      id="list-settings-list"
-                      data-toggle="list"
-                      href="#about-more"
-                      role="tab"
-                      aria-controls="About and More"
-                    >
-                      About and More
-                    </a>
-                  </div>
+          {/* <Card title="Welcome! Please fill out the following forms to set up your business."> */}
+          <form ref={formEl}>
+            <div className="row">
+              <div className="col-4">
+                <div className="list-group" id="list-tab" role="tablist">
+                  <a
+                    className="list-group-item list-group-item-action active"
+                    id="list-home-list"
+                    data-toggle="list"
+                    href="#basic-info"
+                    role="tab"
+                    aria-controls="Basic Info"
+                  >
+                    Basic Info
+                  </a>
+                  <a
+                    className="list-group-item list-group-item-action"
+                    id="list-profile-list"
+                    data-toggle="list"
+                    href="#contact-info"
+                    role="tab"
+                    aria-controls="Contact Info"
+                  >
+                    Contact Info
+                  </a>
+                  <a
+                    className="list-group-item list-group-item-action"
+                    id="list-messages-list"
+                    data-toggle="list"
+                    href="#social-media"
+                    role="tab"
+                    aria-controls="Social Media"
+                  >
+                    Social Media
+                  </a>
+                  <a
+                    className="list-group-item list-group-item-action"
+                    id="list-messages-list"
+                    data-toggle="list"
+                    href="#hours"
+                    role="tab"
+                    aria-controls="Hours"
+                  >
+                    Hours
+                  </a>
+                  <a
+                    className="list-group-item list-group-item-action"
+                    id="list-settings-list"
+                    data-toggle="list"
+                    href="#list-settings"
+                    role="tab"
+                    aria-controls="Photos and Services"
+                  >
+                    Photos and Services
+                  </a>
+                  <a
+                    className="list-group-item list-group-item-action"
+                    id="list-settings-list"
+                    data-toggle="list"
+                    href="#about-more"
+                    role="tab"
+                    aria-controls="About and More"
+                  >
+                    About and More
+                  </a>
                 </div>
-                <div className="col-8">
-                  <div className="tab-content" id="nav-tabContent">
-                    {/* Basic Info */}
-                    <div
-                      className="tab-pane fade show active"
-                      id="basic-info"
-                      role="tabpanel"
-                      aria-labelledby="list-home-list"
-                    >
-                      <Input
-                        onChange={handleInputChange}
-                        name="businessName"
-                        placeholder="Name of Business (Required)"
-                      />
-                      <Input
-                        onChange={handleInputChange}
-                        name="owner"
-                        placeholder="Owner Name (Required)"
-                      />
-                      <Input
-                        onChange={handleInputChange}
-                        name="tagline"
-                        placeholder="Tagline (Required)"
-                      />
-                    </div>
-                    {/* Contact Info */}
-                    <div
-                      className="tab-pane fade"
-                      id="contact-info"
-                      role="tabpanel"
-                      aria-labelledby="list-profile-list"
-                    >
-                      <Input
-                        onChange={handleInputChange}
-                        name="phoneNumber"
-                        placeholder="Phone Number (Required)"
-                      />
-                      <Input
-                        onChange={handleInputChange}
-                        name="email"
-                        placeholder="Email Address (Required)"
-                      />
+              </div>
+              <div className="col-8">
+                <div className="tab-content" id="nav-tabContent">
+                  {/* Basic Info */}
+                  <div
+                    className="tab-pane fade show active"
+                    id="basic-info"
+                    role="tabpanel"
+                    aria-labelledby="list-home-list"
+                  >
+                    <Input
+                      onChange={handleInputChange}
+                      name="businessName"
+                      placeholder="Name of Business (Required)"
+                    />
+                    <Input
+                      onChange={handleInputChange}
+                      name="owner"
+                      placeholder="Owner Name (Required)"
+                    />
+                    <Input
+                      onChange={handleInputChange}
+                      name="tagline"
+                      placeholder="Tagline (Required) - A short, one sentance description of your business and what is unique about it"
+                    />
+                  </div>
+                  {/* Contact Info */}
+                  <div
+                    className="tab-pane fade"
+                    id="contact-info"
+                    role="tabpanel"
+                    aria-labelledby="list-profile-list"
+                  >
+                    <Input
+                      onChange={handleInputChange}
+                      name="phoneNumber"
+                      placeholder="Phone Number (Required)"
+                    />
+                    <Input
+                      onChange={handleInputChange}
+                      name="email"
+                      placeholder="Email Address (Required)"
+                    />
 
-                      <Address onChange={handleInputChange} />
-                    </div>
-                    {/* Social Media */}
-                    <div
-                      className="tab-pane fade"
-                      id="social-media"
-                      role="tabpanel"
-                      aria-labelledby="list-messages-list"
-                    >
-                      <Input
-                        onChange={handleInputChange}
-                        name="instagram"
-                        placeholder="Instagram"
-                      />
-                      <Input
-                        onChange={handleInputChange}
-                        name="facebook"
-                        placeholder="Facebook"
-                      />
-                      <Input
-                        onChange={handleInputChange}
-                        name="website"
-                        placeholder="Website"
-                      />
-                    </div>
-                    {/* Hours */}
-                    <div
-                      className="tab-pane fade"
-                      id="hours"
-                      role="tabpanel"
-                      aria-labelledby="list-messages-list"
-                    >
-                      {/* Monday Hours */}
-                      <Row>
-                        <Col size="size md-2">
-                          <h4>Monday:</h4>
-                        </Col>
-                        <Col size="size md-2">
-                          <Input
-                            onChange={handleInputChange}
-                            name="MonOpen"
-                            placeholder="Open"
-                          />
-                        </Col>
-                        <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Control
-                              onSelect={handleInputChange}
-                              name="AMorPM"
-                              as="select"
-                            >
-                              <option value="pm">PM</option>
-                              <option value="am">AM</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Col>
-                        -
-                        <Col size="size md-2">
-                          <Input
-                            onChange={handleInputChange}
-                            name="MonClose"
-                            placeholder="5"
-                          />
-                        </Col>
-                        <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Control as="select">
-                              <option>PM</option>
-                              <option>AM</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Col>
-                      </Row>
+                    <Address onChange={handleInputChange} />
+                  </div>
+                  {/* Social Media */}
+                  <div
+                    className="tab-pane fade"
+                    id="social-media"
+                    role="tabpanel"
+                    aria-labelledby="list-messages-list"
+                  >
+                    <Input
+                      onChange={handleInputChange}
+                      name="instagram"
+                      placeholder="Instagram URL"
+                    />
+                    <Input
+                      onChange={handleInputChange}
+                      name="facebook"
+                      placeholder="Facebook URL"
+                    />
+                    <Input
+                      onChange={handleInputChange}
+                      name="website"
+                      placeholder="Website"
+                    />
+                  </div>
+                  {/* Hours */}
+                  <div
+                    className="tab-pane fade"
+                    id="hours"
+                    role="tabpanel"
+                    aria-labelledby="list-messages-list"
+                  >
+                    {/* Monday Hours */}
+                    <Row>
+                      <Col size="size md-2">
+                        <h4>Monday:</h4>
+                      </Col>
+                      <Col size="size md-2">
+                        <Input
+                          onChange={handleInputChange}
+                          name="MonOpen"
+                          placeholder="Open"
+                        />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control
+                            onSelect={handleInputChange}
+                            name="AMorPM"
+                            as="select"
+                          >
+                            <option>AM</option>
+                            <option value="pm">PM</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                      -
+                      <Col size="size md-2">
+                        <Input
+                          onChange={handleInputChange}
+                          name="MonClose"
+                          placeholder="Close"
+                        />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                    </Row>
 
-                      {/* Tuesday Hours */}
-                      <Row>
-                        <Col size="size md-2">
-                          <h4>Tuesday:</h4>
-                        </Col>
-                        <Col size="size md-2">
-                          <Input
-                            onChange={handleInputChange}
-                            name="TuesOpen"
-                            placeholder="9"
-                          />
-                        </Col>
-                        <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Control as="select">
-                              <option>PM</option>
-                              <option>AM</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Col>
-                        -
-                        <Col size="size md-2">
-                          <Input
-                            onChange={handleInputChange}
-                            name="TuesClose"
-                            placeholder="5"
-                          />
-                        </Col>
-                        <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Control as="select">
-                              <option>PM</option>
-                              <option>AM</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Col>
-                      </Row>
+                    {/* Tuesday Hours */}
+                    <Row>
+                      <Col size="size md-2">
+                        <h4>Tuesday:</h4>
+                      </Col>
+                      <Col size="size md-2">
+                        <Input
+                          onChange={handleInputChange}
+                          name="TuesOpen"
+                          placeholder="Open"
+                        />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>AM</option>
+                            <option>PM</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                      -
+                      <Col size="size md-2">
+                        <Input
+                          onChange={handleInputChange}
+                          name="TuesClose"
+                          placeholder="Close"
+                        />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                    </Row>
 
-                      {/* Wedneday Hours */}
-                      <Row>
-                        <Col size="size md-2">
-                          <h4>Wednesday:</h4>
-                        </Col>
-                        <Col size="size md-2">
-                          <Input
-                            onChange={handleInputChange}
-                            name="WedOpen"
-                            placeholder="9"
-                          />
-                        </Col>
-                        <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Control as="select">
-                              <option>PM</option>
-                              <option>AM</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Col>
-                        -
-                        <Col size="size md-2">
-                          <Input
-                            onChange={handleInputChange}
-                            name="WedClose"
-                            placeholder="5"
-                          />
-                        </Col>
-                        <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Control as="select">
-                              <option>PM</option>
-                              <option>AM</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Col>
-                      </Row>
+                    {/* Wedneday Hours */}
+                    <Row>
+                      <Col size="size md-2">
+                        <h4>Wednesday:</h4>
+                      </Col>
+                      <Col size="size md-2">
+                        <Input
+                          onChange={handleInputChange}
+                          name="WedOpen"
+                          placeholder="Open"
+                        />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>AM</option>
+                            <option>PM</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                      -
+                      <Col size="size md-2">
+                        <Input
+                          onChange={handleInputChange}
+                          name="WedClose"
+                          placeholder="Close"
+                        />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                    </Row>
 
-                      {/* Thursday */}
+                    {/* Thursday */}
 
-                      <Row>
-                        <Col size="size md-2">
-                          <h4>Thursday:</h4>
-                        </Col>
-                        <Col size="size md-2">
-                          <Input
-                            onChange={handleInputChange}
-                            name="ThursOpen"
-                            placeholder="9"
-                          />
-                        </Col>
-                        <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Control as="select">
-                              <option>PM</option>
-                              <option>AM</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Col>
-                        -
-                        <Col size="size md-2">
-                          <Input
-                            onChange={handleInputChange}
-                            name="ThursClose"
-                            placeholder="5"
-                          />
-                        </Col>
-                        <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Control as="select">
-                              <option>PM</option>
-                              <option>AM</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Col>
-                      </Row>
+                    <Row>
+                      <Col size="size md-2">
+                        <h4>Thursday:</h4>
+                      </Col>
+                      <Col size="size md-2">
+                        <Input
+                          onChange={handleInputChange}
+                          name="ThursOpen"
+                          placeholder="Open"
+                        />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>AM</option>
+                            <option>PM</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                      -
+                      <Col size="size md-2">
+                        <Input
+                          onChange={handleInputChange}
+                          name="ThursClose"
+                          placeholder="Close"
+                        />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                    </Row>
 
-                      {/* Friday hours */}
+                    {/* Friday hours */}
 
-                      <Row>
-                        <Col size="size md-2">
-                          <h4>Friday:</h4>
-                        </Col>
-                        <Col size="size md-2">
-                          <Input
-                            onChange={handleInputChange}
-                            name="FriOpen"
-                            placeholder="9"
-                          />
-                        </Col>
-                        <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Control as="select">
-                              <option>PM</option>
-                              <option>AM</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Col>
-                        -
-                        <Col size="size md-2">
-                          <Input
-                            onChange={handleInputChange}
-                            name="FriClose"
-                            placeholder="5"
-                          />
-                        </Col>
-                        <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Control as="select">
-                              <option>PM</option>
-                              <option>AM</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Col>
-                      </Row>
+                    <Row>
+                      <Col size="size md-2">
+                        <h4>Friday:</h4>
+                      </Col>
+                      <Col size="size md-2">
+                        <Input
+                          onChange={handleInputChange}
+                          name="FriOpen"
+                          placeholder="Open"
+                        />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>AM</option>
+                            <option>PM</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                      -
+                      <Col size="size md-2">
+                        <Input
+                          onChange={handleInputChange}
+                          name="FriClose"
+                          placeholder="Close"
+                        />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                    </Row>
 
-                      {/* Saturday hours */}
+                    {/* Saturday hours */}
 
-                      <Row>
-                        <Col size="size md-2">
-                          <h4>Saturday:</h4>
-                        </Col>
-                        <Col size="size md-2">
-                          <Input
-                            onChange={handleInputChange}
-                            name="SatOpen"
-                            placeholder="9"
-                          />
-                        </Col>
-                        <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Control as="select">
-                              <option>PM</option>
-                              <option>AM</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Col>
-                        -
-                        <Col size="size md-2">
-                          <Input
-                            onChange={handleInputChange}
-                            name="SatClose"
-                            placeholder="5"
-                          />
-                        </Col>
-                        <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Control as="select">
-                              <option>PM</option>
-                              <option>AM</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Col>
-                      </Row>
+                    <Row>
+                      <Col size="size md-2">
+                        <h4>Saturday:</h4>
+                      </Col>
+                      <Col size="size md-2">
+                        <Input
+                          onChange={handleInputChange}
+                          name="SatOpen"
+                          placeholder="Open"
+                        />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>AM</option>
+                            <option>PM</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                      -
+                      <Col size="size md-2">
+                        <Input
+                          onChange={handleInputChange}
+                          name="SatClose"
+                          placeholder="Close"
+                        />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                    </Row>
 
-                      {/* sunday hours */}
+                    {/* sunday hours */}
 
-                      <Row>
-                        <Col size="size md-2">
-                          <h4>Sudnay:</h4>
-                        </Col>
-                        <Col size="size md-2">
-                          <Input
-                            onChange={handleInputChange}
-                            name="SunOpen"
-                            placeholder="9"
-                          />
-                        </Col>
-                        <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Control as="select">
-                              <option>PM</option>
-                              <option>AM</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Col>
-                        -
-                        <Col size="size md-2">
-                          <Input
-                            onChange={handleInputChange}
-                            name="SunClose"
-                            placeholder="5"
-                          />
-                        </Col>
-                        <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Control as="select">
-                              <option>PM</option>
-                              <option>AM</option>
-                            </Form.Control>
-                          </Form.Group>
-                        </Col>
-                      </Row>
-                    </div>
-                    {/* Photos And Services */}
-                    <div
-                      className="tab-pane fade"
-                      id="list-settings"
-                      role="tabpanel"
-                      aria-labelledby="list-settings-list"
-                    >
-                      <button
+                    <Row>
+                      <Col size="size md-2">
+                        <h4>Sudnay:</h4>
+                      </Col>
+                      <Col size="size md-2">
+                        <Input
+                          onChange={handleInputChange}
+                          name="SunOpen"
+                          placeholder="Open"
+                        />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>AM</option>
+                            <option>PM</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                      -
+                      <Col size="size md-2">
+                        <Input
+                          onChange={handleInputChange}
+                          name="SunClose"
+                          placeholder="Close"
+                        />
+                      </Col>
+                      <Col size="size md-2">
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>PM</option>
+                            <option>AM</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                    </Row>
+                  </div>
+                  {/* Photos And Services */}
+                  <div
+                    className="tab-pane fade"
+                    id="list-settings"
+                    role="tabpanel"
+                    aria-labelledby="list-settings-list"
+                  >
+                    {/* <button
                         name="logo"
                         onClick={(e) => showUploadWidget("logo", e)}
                       >
-                        Upload Logo
-                      </button>
+                        </button>
+
                       <br />
                       <button
                         name="photos"
@@ -619,54 +623,90 @@ function BusinessForm() {
                         onClick={(e) => showUploadWidget("menuOrServices", e)}
                       >
                         Upload Menu or Pricing List
-                      </button>
-                    </div>
-                    {/* About and More */}
-                    <div
-                      className="tab-pane fade"
-                      id="about-more"
-                      role="tabpanel"
-                      aria-labelledby="list-settings-list"
+                      </button> */}
+
+                    <Button
+                      className="ButtonText"
+                      name="logo"
+                      variant="info"
+                      size="sm"
+                      onClick={(e) => showUploadWidget("logo", e)}
                     >
-                      <TextArea
-                        onChange={handleInputChange}
-                        name="about"
-                        placeholder="About Section"
-                      />
-                      <Input
-                        onChange={handleInputChange}
-                        name="masks"
-                        placeholder="Masks"
-                      />
-                      <Checkbox onChange={checkClick} />
-                    </div>
+                      {" "}
+                      Upload Logo
+                    </Button>
+                    <br></br>
+                    <Button
+                      className="ButtonText"
+                      name="photos"
+                      variant="info"
+                      size="sm"
+                      onClick={(e) => showUploadWidget("photos", e)}
+                    >
+                      {" "}
+                      Upload Photos
+                    </Button>
+                    <br></br>
+                    <Button
+                      className="ButtonText"
+                      nname="menuOrServices"
+                      variant="info"
+                      size="sm"
+                      onClick={(e) => showUploadWidget("menuOrServices", e)}
+                    >
+                      {" "}
+                      Upload PDF of Menu or Information
+                    </Button>
+                  </div>
+                  {/* About and More */}
+                  <div
+                    className="tab-pane fade"
+                    id="about-more"
+                    role="tabpanel"
+                    aria-labelledby="list-settings-list"
+                  >
+                    <TextArea
+                      onChange={handleInputChange}
+                      name="about"
+                      placeholder="About Section"
+                    />
+                    <Input
+                      onChange={handleInputChange}
+                      name="masks"
+                      placeholder="Current News or Events (ex: does your business currently require masks?)"
+                    />
+                    <h4>
+                      Select as many tags as apply to you, its how users will be
+                      able to discover your business!
+                    </h4>
+                    <Checkbox onChange={checkClick} />
                   </div>
                 </div>
               </div>
+            </div>
 
-              <FormBtn
-                // disabled={
-                //   !(
-                //     formObject.businessName &&
-                //     formObject.phoneNumber &&
-                //     formObject.email &&
-                //     formObject.owner &&
-                //     formObject.tagline &&
-                //     formObject.hours &&
-                //     formObject.street &&
-                //     formObject.city &&
-                //     formObject.state &&
-                //     formObject.zip &&
-                //     formObject.county &&
-                //     formObject.country
-                //   )
-                // }
-                onClick={handleFormSubmit}
-              >
-                Submit Business
-              </FormBtn>
-            </form>
-          </Card>
+            <FormBtn
+              disabled={
+                !(
+                  formObject.businessName &&
+                  formObject.phoneNumber &&
+                  formObject.email &&
+                  formObject.owner &&
+                  formObject.tagline &&
+                  formObject.street &&
+                  formObject.city &&
+                  formObject.state &&
+                  formObject.zip &&
+                  formObject.county &&
+                  formObject.country
+                )
+              }
+              onClick={handleFormSubmit}
+            >
+              Submit Business
+            </FormBtn>
+          </form>
+          {/* </Card> */}
         </Col>
       </Row>
     </Container>

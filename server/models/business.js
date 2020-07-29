@@ -26,6 +26,22 @@ const businessSchema = new Schema({
   lat: { type: Number },
   lng: { type: Number },
   tags: [{ type: String }],
+  schedule: {
+    MonOpen: { type: Number },
+    MonClose: { type: Number },
+    TuesOpen: { type: Number },
+    TuesClose: { type: Number },
+    WedOpen: { type: Number },
+    WedClose: { type: Number },
+    ThursOpen: { type: Number },
+    ThursClose: { type: Number },
+    FriOpen: { type: Number },
+    FriClose: { type: Number },
+    SatOpen: { type: Number },
+    SatClose: { type: Number },
+    SunOpen: { type: Number },
+    SunClose: { type: Number }
+  }
 });
 
 const Business = mongoose.model("Business", businessSchema);
