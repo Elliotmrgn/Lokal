@@ -12,6 +12,7 @@ import BusinessForm from "./pages/BusinessForm";
 import ContactPage from "./pages/ContactPage";
 import Home from "./pages/Home";
 import SearchResult from "./pages/SearchResult"
+import UserPage from "./pages/UserPage/userpage"
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -69,7 +70,9 @@ function App() {
               <Route exact path="/businessForm" component={BusinessForm} />
               <Route exact path="/contact" component={ContactPage} />
               <Route exact path="/results" component={SearchResult} />
-              <Route exact path="/profilepage/:id" component={ProfilePage} />
+             <Route exact path="/profilepage/:id" component={ProfilePage} />
+              <Route exact path="/user/:id" component={UserPage} />
+
               <Route component={NoMatch} />
             </Switch>
           </div>

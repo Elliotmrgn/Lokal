@@ -9,6 +9,9 @@ router.use("/auth", authRoutes);
 // API Routes
 router.use("/api", apiRoutes);
 
+router.use("/user", apiRoutes);
+
+
 // If no routes are hit, send the React app
 router.use(function (req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
