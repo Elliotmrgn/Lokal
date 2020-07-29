@@ -9,6 +9,7 @@ import "./formstyles.css"
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from 'react-bootstrap/Button';
 
 function BusinessForm() {
   const [business, setBusiness] = useState([]);
@@ -178,7 +179,7 @@ function BusinessForm() {
   return (
     <Container fluid>
       <div className="titlecontianer">
-        <span className="title">Create a listing for your business on lokal</span>
+        <span className="title">Create a listing for your business</span>
       </div>
       <Row className="mainContainer">
         <Col size="size md-12">
@@ -271,7 +272,7 @@ function BusinessForm() {
                       <Input
                         onChange={handleInputChange}
                         name="tagline"
-                        placeholder="Tagline (Required)"
+                        placeholder="Tagline (Required) - A short, one sentance description of your business and what is unique about it"
                       />
                     </div>
                     {/* Contact Info */}
@@ -304,12 +305,12 @@ function BusinessForm() {
                       <Input
                         onChange={handleInputChange}
                         name="instagram"
-                        placeholder="Instagram"
+                        placeholder="Instagram URL"
                       />
                       <Input
                         onChange={handleInputChange}
                         name="facebook"
-                        placeholder="Facebook"
+                        placeholder="Facebook URL"
                       />
                       <Input
                         onChange={handleInputChange}
@@ -605,12 +606,12 @@ function BusinessForm() {
                       role="tabpanel"
                       aria-labelledby="list-settings-list"
                     >
-                      <button
+                      {/* <button
                         name="logo"
                         onClick={(e) => showUploadWidget("logo", e)}
                       >
-                        Upload Logo
-                      </button>
+                        </button>
+
                       <br />
                       <button
                         name="photos"
@@ -624,7 +625,14 @@ function BusinessForm() {
                         onClick={(e) => showUploadWidget("menuOrServices", e)}
                       >
                         Upload Menu or Pricing List
-                      </button>
+                      </button> */}
+
+                      <Button className="ButtonText" name="logo" variant="info" size="sm" onClick={(e) => showUploadWidget("logo", e)} > Upload Logo</Button>
+                      <br></br>
+                      <Button className="ButtonText" name="photos" variant="info" size="sm" onClick={(e) => showUploadWidget("photos", e)} > Upload Photos</Button>
+                      <br></br>
+                      <Button className="ButtonText" nname="menuOrServices" variant="info" size="sm" onClick={(e) => showUploadWidget("menuOrServices", e)} > Upload PDF of Menu or Information</Button>
+
                     </div>
                     {/* About and More */}
                     <div
@@ -641,8 +649,9 @@ function BusinessForm() {
                       <Input
                         onChange={handleInputChange}
                         name="masks"
-                        placeholder="Masks"
+                        placeholder="Current News or Events (ex: does your business currently require masks?)"
                       />
+                      <h4>Select as many tags as apply to you, its how users will be able to discover your business!</h4>
                       <Checkbox onChange={checkClick} />
                     </div>
                   </div>
@@ -657,7 +666,6 @@ function BusinessForm() {
                     formObject.email &&
                     formObject.owner &&
                     formObject.tagline &&
-                    formObject.hours &&
                     formObject.street &&
                     formObject.city &&
                     formObject.state &&
