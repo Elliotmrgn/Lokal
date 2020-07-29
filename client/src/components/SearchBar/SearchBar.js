@@ -12,6 +12,8 @@ function SearchBar() {
   function handleFormSubmit(event) {
     event.preventDefault();
     const search = formObject.search;
+    if (formObject.search === "") {
+    }
     API.findViaSearch(search).then((res) => {
       console.log(res);
     });
@@ -45,4 +47,5 @@ function SearchBar() {
     </div>
   );
 }
+
 export default SearchBar;
