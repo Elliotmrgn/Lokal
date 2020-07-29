@@ -48,6 +48,7 @@ function BusinessList() {
 
   return (
     <Container fluid>
+      <Row> </Row>
       <Row>{businessList}</Row>
     </Container>
   );

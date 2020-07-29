@@ -1,57 +1,57 @@
-import React, { useState } from 'react';
-import { Redirect, Link } from 'react-router-dom';
-import { Container, Row, Col } from '../../components/Grid';
-import { Card } from '../../components/Card';
-import { Input, FormBtn } from '../../components/Form';
-import AUTH from '../../utils/AUTH';
+import React, { useState } from "react";
+import { Redirect, Link } from "react-router-dom";
+import { Container, Row, Col } from "../../components/Grid";
+import { Card } from "../../components/Card";
+import { Input, FormBtn } from "../../components/Form";
+import AUTH from "../../utils/AUTH";
 
 function SignupForm() {
   const [userObject, setUserObject] = useState({
-    firstName: '',
-    lastName: '',
-    username: '',
-    password: '',
-    confirmPassword: '',
-    redirectTo: null
+    firstName: "",
+    lastName: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+    redirectTo: null,
   });
   const [redirectTo, setRedirectTo] = useState(null);
 
   const handleChange = (event) => {
-		setUserObject({
+    setUserObject({
       ...userObject,
-			[event.target.name]: event.target.value
-		});
-	};
-  
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		// TODO - validate!
-		AUTH.signup({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // TODO - validate!
+    AUTH.signup({
       firstName: userObject.firstName,
       lastName: userObject.lastName,
       username: userObject.username,
-      password: userObject.password
-    }).then(response => {
+      password: userObject.password,
+    }).then((response) => {
       // console.log(response);
       if (!response.data.errmsg) {
-        setRedirectTo('/');
+        setRedirectTo("/");
       } else {
-        console.log('duplicate');
+        console.log("duplicate");
       }
     });
   };
-  
+
   if (redirectTo) {
-    return <Redirect to={{ pathname: redirectTo }} />
+    return <Redirect to={{ pathname: redirectTo }} />;
   }
-  
+
   return (
     <Container>
       <Row>
         <Col size="md-3"></Col>
         <Col size="md-6">
           <Card title="Register for React Reading List">
-            <form style={{marginTop: 10}}>
+            <form style={{ marginTop: 10 }}>
               <label htmlFor="username">First name: </label>
               <Input
                 type="text"
@@ -95,7 +95,7 @@ function SignupForm() {
         <Col size="md-3"></Col>
       </Row>
     </Container>
-  )
+  );
 }
 
 export default SignupForm;

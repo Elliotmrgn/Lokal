@@ -696,9 +696,7 @@ function BusinessForm() {
                   formObject.street &&
                   formObject.city &&
                   formObject.state &&
-                  formObject.zip &&
-                  formObject.county &&
-                  formObject.country
+                  formObject.zip
                 )
               }
               onClick={handleFormSubmit}
