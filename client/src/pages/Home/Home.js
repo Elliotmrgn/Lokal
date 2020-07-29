@@ -4,8 +4,7 @@ import House from "../../components/bighouselogo.png";
 import Check from "../../components/check.png";
 import MapIcon from "../../components/map.png";
 import Search from "../../components/search.png";
-
-import SearchBar from "../../components/SearchBar/SearchBar";
+import NavSearchBar from "../../components/NavSearchBar/NavSearchBar";
 
 function Home() {
   return (
@@ -24,7 +23,20 @@ function Home() {
         <SearchBar />
       </section>
 
-      <section className="welcome-container">
+      <section class="search-container">
+        <row size="size md-6">
+          <span class="header" id="discover">
+            DISCOVER
+          </span>
+          <span class="header" id="lokal">
+            lokal
+          </span>
+          <p id="raleigh">Raleigh Edition</p>
+        </row>
+        <NavSearchBar />
+      </section>
+
+      <section class="welcome-container">
         <row size="size md-12">
           <img id="house" align="left" src={House} alt="house image"></img>
           <br></br>
@@ -37,21 +49,23 @@ function Home() {
         </row>
       </section>
 
-      <section className="how-it-works-container">
+      <section class="how-it-works-container">
         <row size="size md-12">
-          <h2 className="subheader">HOW IT WORKS </h2>
-          <ul className="list">
+          <h2 class="subheader">HOW IT WORKS </h2>
+          <ul class="list">
             <li>
               <img id="search" src={Search} alt="search bar"></img>
-              <p>Search for a business by category </p>
+              <p className="search">Search for a business by category </p>
             </li>
             <li>
               <img id="map" src={MapIcon} alt="map icon"></img>
-              <p>See all local options on a map </p>
+              <p className="search"> See all local options on a map </p>
             </li>
             <li>
               <img id="check" src={Check} alt="check mark"></img>
-              <p>Select the business page you'd like to view </p>
+              <p className="search">
+                Select the business page you'd like to view{" "}
+              </p>
             </li>
           </ul>
           <br></br>
