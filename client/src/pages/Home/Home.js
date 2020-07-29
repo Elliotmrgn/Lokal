@@ -5,24 +5,10 @@ import Check from "../../components/check.png";
 import MapIcon from "../../components/map.png";
 import Search from "../../components/search.png";
 import NavSearchBar from "../../components/NavSearchBar/NavSearchBar";
-
+import SearchBar from "../../components/SearchBar/SearchBar";
 function Home() {
   return (
     <div className="home-container">
-      <section className="search-container">
-        <row size="size md-6">
-          <span className="header" id="discover">
-            DISCOVER
-          </span>
-          <span className="header" id="lokal">
-            lokal
-          </span>
-          <p id="raleigh">Raleigh Edition</p>
-          <span id="search"> </span>
-        </row>
-        <SearchBar />
-      </section>
-
       <section class="search-container">
         <row size="size md-6">
           <span class="header" id="discover">

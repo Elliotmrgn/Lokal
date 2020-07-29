@@ -27,7 +27,7 @@ function BusinessList() {
       <div className="card">
         <img
           className="card-img-top"
-          src="https://images-na.ssl-images-amazon.com/images/I/316UtKJvnyL.jpg"
+          src={business.logo}
           alt="Card image cap"
         />
         <div className="card-body">
