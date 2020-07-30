@@ -1,32 +1,6 @@
 import React from "react";
-const tags = [
-  "Bar",
-  "Contractor",
-  "Electrician",
-  "Cleaners",
-  "Landscaping",
-  "Plubmber",
-  "Cafe",
-  "Art",
-  "Shopping",
-  "thrift",
-  "Grocery",
-  "Convenience Store",
-  "Pet Services",
-  "Resteraunt",
-  "Boutique",
-  "Clothing",
-  "Drive Thru",
-  "NonProfit",
-  "Consultant",
-  "Mechanic",
-  "Salon",
-  "Gym",
-  "Entertainment",
-  "Hobbies and Crafts",
-  "Books",
-  "Music",
-];
+
+import tags from "../../utils/Tags";
 
 let divStyle = {
   marginRight: "15px",
