@@ -28,7 +28,6 @@ function SearchResult() {
     });
   };
   
-  console.log("COOORDSS", mapCoords);
   return (
     <Container fluid>
       <Row>
@@ -48,7 +47,7 @@ function SearchResult() {
         <Col size="md-8">
           <h2>SEARCH</h2>
           <SearchBar/>
-          <Map center={mapCoords} businesses={buisnessList}/>
+          <Map center={mapCoords} />
         </Col>
       </Row>
     </Container>

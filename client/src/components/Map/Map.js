@@ -35,7 +35,19 @@ export default function Map(props) {
         mapContainerStyle={mapContainerStyle}
         zoom={13}
         center={props.center}
-      ></GoogleMap>
+        options={options}
+      >
+        <Marker position={props.center} />
+        {props.businesses.map((business) => (
+          <Marker
+            key={business._id}
+            position={{
+              lat: parseFloat(business.lat),
+              lng: parseFloat(business.lng),
+            }}
+          />
+        ))}
+      </GoogleMap>
     </div>
   );
 }
