@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
+import { Link } from "react-router-dom";
 
 function SearchBar() {
   const [formObject, setFormObject] = useState({});
@@ -13,7 +14,7 @@ function SearchBar() {
     event.preventDefault();
     const search = formObject.search;
     API.findViaSearch(search).then((res) => {
-      console.log(res);
+      console.log("*************",res);
     });
   }
 
@@ -36,7 +37,7 @@ function SearchBar() {
           className="btn btn-primary"
           onClick={handleFormSubmit}
         >
-          Search
+          <Link to={{pathname:"/results", search:"test"}}>Search</Link>
         </button>
       </form>
     </div>

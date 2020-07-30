@@ -28,6 +28,16 @@ function SearchResult() {
       lng: parseFloat(e.target.getAttribute("data-lng")),
     });
   };
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    console.log("REEEEEEEE", event.target.value)
+    const search = event.target.value;
+     API.findViaSearch(search).then((res) => {
+       console.log(res);
+       setBuisnessList(res.data)
+     });
+  }
   
   return (
     <Container fluid>
@@ -47,7 +57,7 @@ function SearchResult() {
         </Col>
         <Col size="md-6">
           <h2>SEARCH</h2>
-          <SearchBar/>
+          <SearchBar handleFormSubmit={handleFormSubmit}/>
           <Map center={mapCoords} businesses={buisnessList}/>
         </Col>
       </Row>

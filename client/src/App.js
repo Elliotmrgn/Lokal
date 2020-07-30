@@ -70,7 +70,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/businessForm" component={BusinessForm} />
             <Route exact path="/contact" component={ContactPage} />
-            <Route exact path="/results" component={SearchResult} />
+            <Route exact path="/results/:search" component={SearchResult} />
             <Route exact path="/profilepage/:id" component={ProfilePage} />
             <Route exact path="/user/:id" component={UserPage} />
             <Route exact path="/businessList" component={BusinessList} />

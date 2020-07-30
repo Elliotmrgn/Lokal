@@ -1,49 +1,48 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
 
-function SearchBar() {
+function SearchBar(props) {
   const [formObject, setFormObject] = useState({});
 
   function handleInputChange(event) {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
   }
-  useEffect(() => {}, []);
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    const search = formObject.search;
-    console.log("handleFormSubmit -> search", search);
-    console.log(typeof search);
+    console.log("REEEEEEEE",event.target)
+    // const search = formObject.search;
 
-    API.findViaSearch(search).then((res) => {
-      console.log(res);
-    });
+    // API.findViaSearch(search).then((res) => {
+    //   console.log(res);
+    // });
   }
 
   return (
     <div>
       <form>
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Business Name</label>
+          <label htmlFor="searchBar">Business Name</label>
           <input
-            type="email"
+            type="text"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            id="searchBar"
+            aria-describedby="searchHelp"
             name="search"
             onChange={handleInputChange}
           />
-          <small id="emailHelp" className="form-text text-muted">
+          <small id="searchHelp" className="form-text text-muted">
             Please search what you would like to find.
           </small>
         </div>
         <button
           type="submit"
           className="btn btn-primary"
-          onClick={handleFormSubmit}
+          value={formObject.search}
+          onClick={props.handleFormSubmit}
         >
-          Submit
+            Submit
         </button>
       </form>
     </div>
