@@ -9,12 +9,14 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import tags from "../../utils/Tags";
 
 function BusinessList() {
   const [business, setBusiness] = useState([]);
-
+  const [formObject, setFormObject] = useState([]);
   useEffect(() => {
     loadBusiness();
+    setFormObject({ Tag: "" });
   }, []);
 
   function loadBusiness() {
@@ -22,9 +24,24 @@ function BusinessList() {
       setBusiness(res.data);
     });
   }
+
+  function handleInputChange(event) {
+    const { value } = event.target;
+    setFormObject({ Tag: value });
+    console.log(formObject);
+  }
+
+  const tagList = tags.map(function (tag, index) {
+    return (
+      <option key={index} value={tag} name="Selected Tag">
+        {tag}
+      </option>
+    );
+  });
+
   const businessList = business.map((business) => {
     return (
-      <div className="card">
+      <div className="card" key={business._id}>
         <img
           className="card-img-top"
           src={business.logo}
@@ -48,7 +65,16 @@ function BusinessList() {
 
   return (
     <Container fluid>
-      <Row> </Row>
+      <Row>
+        <Col size="size md-2">
+          <Form.Group controlId="exampleForm.ControlSelect1">
+            <Form.Control as="select" onChange={handleInputChange}>
+              <option value="">Pick an option</option>
+              {tagList}
+            </Form.Control>
+          </Form.Group>
+        </Col>
+      </Row>
       <Row>{businessList}</Row>
     </Container>
   );
