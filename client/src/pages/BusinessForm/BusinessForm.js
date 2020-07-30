@@ -175,6 +175,7 @@ function BusinessForm() {
   // };
 
   return (
+    <main>
     <Container fluid>
       <div className="titlecontianer">
         <span className="title">Create a listing for your business</span>
@@ -708,6 +709,7 @@ function BusinessForm() {
         </Col>
       </Row>
     </Container>
+    </main>
   );
 }
 
