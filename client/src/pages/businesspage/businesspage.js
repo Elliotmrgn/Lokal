@@ -26,10 +26,11 @@ import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 
 
-function BusinessPage() {
+function BusinessPage(props) {
 
     const testerbusinessfull = "5f203b74c2b1714429ad4a28";
     const testerbusinessmin = "5f2023bd6804c4437ae34db1";
+    const toLoad= props.match.params.id
 
     const [business, setBusiness] = useState([]);
     const [userphotos, setPhotos] = useState([]);
@@ -41,7 +42,7 @@ function BusinessPage() {
       }, []);
 
     function loadBusiness(){
-    API.getProfile(testerbusinessfull)
+    API.getProfile(toLoad)
         .then((res) => {
         console.log(res.data);
         setBusiness(res.data);
