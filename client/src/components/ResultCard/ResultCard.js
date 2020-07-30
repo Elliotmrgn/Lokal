@@ -25,3 +25,4 @@ export const ResultCard = (props) => (
     <div className="card-shadow"></div>
   </div>
 );
+

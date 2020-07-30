@@ -10,7 +10,7 @@ import mapStyle from "./mapStyle";
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "100%",
-  height: "500px",
+  height: "50vh",
 };
 
 const options = {
@@ -22,7 +22,7 @@ const options = {
 export default function Map(props) {
   console.log("Map -> props", props.center);
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY, //.env not working
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     libraries,
   });
 

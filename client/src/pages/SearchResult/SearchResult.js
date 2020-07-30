@@ -6,6 +6,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import { ResultCard } from "../../components/ResultCard";
 import API from "../../utils/API";
 
+
 function SearchResult() {
   const [buisnessList, setBuisnessList] = useState([]);
   const [mapCoords, setMapCoords] = useState({});
@@ -31,9 +32,9 @@ function SearchResult() {
   return (
     <Container fluid>
       <Row>
-        <Col size="md-4">
-          <h2>FEATURED</h2>
-          {buisnessList.map((business, index) => {
+        <Col size="md-6">
+          <h2 class="featured-title">FEATURED</h2>
+          {buisnessList.map((business) => {
             console.log("**", business);
             return (
               <ResultCard
@@ -44,10 +45,10 @@ function SearchResult() {
             );
           })}
         </Col>
-        <Col size="md-8">
+        <Col size="md-6">
           <h2>SEARCH</h2>
           <SearchBar/>
-          <Map center={mapCoords} />
+          <Map center={mapCoords} businesses={buisnessList}/>
         </Col>
       </Row>
     </Container>
