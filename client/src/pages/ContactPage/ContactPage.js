@@ -36,14 +36,12 @@ class Contact extends Component {
 
   render() {
     return (
-      <main>
+      <main className="main-container">
 
         <Container fluid>
             <Row>
             <Col size="size md-12">
-                <h1>GET IN TOUCH</h1>
-                <h2>Have a question for us? Ask away!</h2>
-                <p>We’d also love to hear your suggestions on new categories you’d like to see. </p>
+                <h1 id="getintouch" >GET IN TOUCH</h1>
               </Col>
             </Row>
           
@@ -74,7 +72,7 @@ class Contact extends Component {
                     <textarea className="form-control" rows="5" value=  {this.state.message} onChange={this.onMessageChange.bind(this)}   />
                 </div>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button id="contact-button" type="submit" className="btn btn-primary">Submit</button>
               
               </form>
             </div>

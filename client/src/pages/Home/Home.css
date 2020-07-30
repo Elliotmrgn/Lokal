@@ -9,6 +9,11 @@
     background-color: #354959;
     padding: 80px;
 }
+
+.discover-local {
+    text-align: center;
+}
+
 .header {
     color: #F8DACC;
     font-size: 90px;
@@ -117,7 +122,6 @@ ul {
 #map {
     height: 26%;
     width: 20%;
-
 }
 
 #check {
@@ -126,6 +130,14 @@ ul {
 } 
 
 /* REGISTER BUSINESS CONTAINER */
+
+#registerbtn {
+    background-color: #AED1CD!important;
+    border-color: #AED1CD !important;
+    border-radius: 32px !important;
+    min-width: 100px !important;
+    margin-bottom: 8px !important;
+}
 
 .container-sign-up {
     background-color: #F8DACC;
