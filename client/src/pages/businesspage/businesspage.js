@@ -25,21 +25,26 @@ import Map from "../../components/Map/Map";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
 
-function BusinessPage() {
-  const testerbusinessfull = "5f203b74c2b1714429ad4a28";
-  const testerbusinessmin = "5f2023bd6804c4437ae34db1";
+function BusinessPage(props) {
 
-  const [business, setBusiness] = useState([]);
-  const [userphotos, setPhotos] = useState([]);
-  const [mapCoords, setMapCoords] = useState({});
+    const testerbusinessfull = "5f203b74c2b1714429ad4a28";
+    const testerbusinessmin = "5f2023bd6804c4437ae34db1";
+    const toLoad= props.match.params.id
+
+    const [business, setBusiness] = useState([]);
+    const [userphotos, setPhotos] = useState([]);
+    const [mapCoords, setMapCoords] = useState({});
+
+
 
   useEffect(() => {
     loadBusiness();
   }, []);
 
-  function loadBusiness() {
-    API.getProfile(testerbusinessfull)
-      .then((res) => {
+
+    function loadBusiness(){
+    API.getProfile(toLoad)
+        .then((res) => {
         console.log(res.data);
         setBusiness(res.data);
         setPhotos(res.data.photos);

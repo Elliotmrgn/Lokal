@@ -625,39 +625,14 @@ function BusinessForm() {
                         Upload Menu or Pricing List
                       </button> */}
 
-                    <Button
-                      className="ButtonText"
-                      name="logo"
-                      variant="info"
-                      size="sm"
-                      onClick={(e) => showUploadWidget("logo", e)}
-                    >
-                      {" "}
-                      Upload Logo
-                    </Button>
-                    <br></br>
-                    <Button
-                      className="ButtonText"
-                      name="photos"
-                      variant="info"
-                      size="sm"
-                      onClick={(e) => showUploadWidget("photos", e)}
-                    >
-                      {" "}
-                      Upload Photos
-                    </Button>
-                    <br></br>
-                    <Button
-                      className="ButtonText"
-                      nname="menuOrServices"
-                      variant="info"
-                      size="sm"
-                      onClick={(e) => showUploadWidget("menuOrServices", e)}
-                    >
-                      {" "}
-                      Upload PDF of Menu or Information
-                    </Button>
-                  </div>
+                      <Button className="ButtonText" id="uploadButton" name="logo" variant="info" size="sm" onClick={(e) => showUploadWidget("logo", e)} > Upload Logo</Button>
+                      <br></br>
+                      <Button className="ButtonText" id="uploadButton" name="photos" variant="info" size="sm" onClick={(e) => showUploadWidget("photos", e)} > Upload Photos</Button>
+                      <br></br>
+                      <Button className="ButtonText" id="uploadButton" name="menuOrServices" variant="info" size="sm" onClick={(e) => showUploadWidget("menuOrServices", e)} > Upload PDF of Menu or Information</Button>
+
+                    </div>
+
                   {/* About and More */}
                   <div
                     className="tab-pane fade"
