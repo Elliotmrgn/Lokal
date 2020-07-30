@@ -41,6 +41,7 @@ function BusinessList() {
       </option>
     );
   });
+  // Figure out way to set conditional for business render
 
   const businessList = business.map((business) => {
     const businessesTags = business.tags;
