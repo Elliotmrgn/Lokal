@@ -45,7 +45,7 @@ function BusinessList() {
 
   const businessList = business.map((business) => {
     const businessesTags = business.tags;
-    if (businessesTags.includes(formObject)) {
+    if (businessesTags.includes(formObject) === true) {
       return (
         <div className="card" key={business._id}>
           <img
