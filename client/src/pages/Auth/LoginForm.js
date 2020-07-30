@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
-import { Redirect, Link } from 'react-router-dom';
-import { Container, Row, Col } from '../../components/Grid';
-import { Card } from '../../components/Card';
-import { Input, FormBtn } from '../../components/Form';
+import React, { useState } from "react";
+import { Redirect, Link } from "react-router-dom";
+import { Container, Row, Col } from "../../components/Grid";
+import { Card } from "../../components/Card";
+import { Input, FormBtn } from "../../components/Form";
 
-function LoginForm({login}) {
+function LoginForm({ login }) {
   const [userObject, setUserObject] = useState({
-    username: '',
-    password: ''
+    username: "",
+    password: "",
   });
   const [redirectTo, setRedirectTo] = useState(null);
 
-	const handleChange = (event) => {
-		setUserObject({
+  const handleChange = (event) => {
+    setUserObject({
       ...userObject,
-			[event.target.name]: event.target.value
-		});
-	};
+      [event.target.name]: event.target.value,
+    });
+  };
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		login(userObject.username, userObject.password);
-		setRedirectTo('/');
-	};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    login(userObject.username, userObject.password);
+    setRedirectTo("/");
+  };
 
   if (redirectTo) {
-    return <Redirect to={{ pathname: redirectTo }} />
+    return <Redirect to={{ pathname: redirectTo }} />;
   } else {
     return (
       <Container>
@@ -33,7 +33,7 @@ function LoginForm({login}) {
           <Col size="md-3"></Col>
           <Col size="md-6">
             <Card title="Login to React Reading List">
-              <form style={{marginTop: 10}}>
+              <form style={{ marginTop: 10 }}>
                 <label htmlFor="username">Username: </label>
                 <Input
                   type="text"
@@ -56,7 +56,7 @@ function LoginForm({login}) {
           <Col size="md-3"></Col>
         </Row>
       </Container>
-    )
+    );
   }
 }
 
