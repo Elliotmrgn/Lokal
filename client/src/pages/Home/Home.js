@@ -11,39 +11,36 @@ function Home() {
     <main>
       {/* <div className="home-container"> */}
 
-        <section class="search-container">
-          <div class="discover-local"size="size md-6">
-            <span class="header" id="discover">
-              DISCOVER
-            </span>
-            <span class="header" id="lokal">
-              lokal
-            </span>
-          </div>
-            <p id="raleigh">Raleigh Edition</p>
-          
-          <NavSearchBar />
-        </section>
+      <section className="search-container">
+        <div className="discover-local" size="size md-6">
+          <span className="header" id="discover">
+            DISCOVER
+          </span>
+          <span className="header" id="lokal">
+            lokal
+          </span>
+        </div>
+        <p id="raleigh">Raleigh Edition</p>
 
-        {/* NEED TO FIX CSS FOR GRID-CONTAINER */}
-        {/* https://www.w3schools.com/css/css_grid_item.asp */}
-        <section className="grid-container">
+        <NavSearchBar />
+      </section>
 
-        
-
+      {/* NEED TO FIX CSS FOR GRID-CONTAINER */}
+      {/* https://www.w3schools.com/css/css_grid_item.asp */}
+      <section className="grid-container">
         <section className="welcome-container">
           <row size="size md-12">
             <img id="house" align="left" src={House} alt="house image"></img>
             <br></br>
             <p id="explanation">
-              Now more than ever, its important to support our local communities.
-              We’ve created a place where you can find the hidden gems in your
-              community.
+              Now more than ever, its important to support our local
+              communities. We’ve created a place where you can find the hidden
+              gems in your community.
             </p>
             <br></br>
           </row>
         </section>
-  {/* 
+        {/* 
         <section class="how-it-works-container">
           <row size="size md-12">
             <h2 class="subheader">HOW IT WORKS </h2>
@@ -81,8 +78,7 @@ function Home() {
             <br></br>
           </row>
         </section>
-
-        </section>
+      </section>
 
       {/* </div> */}
     </main>

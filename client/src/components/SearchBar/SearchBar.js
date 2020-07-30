@@ -8,12 +8,14 @@ function SearchBar() {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
   }
+  useEffect(() => {}, []);
 
   function handleFormSubmit(event) {
     event.preventDefault();
     const search = formObject.search;
-    if (formObject.search === "") {
-    }
+    console.log("handleFormSubmit -> search", search);
+    console.log(typeof search);
+
     API.findViaSearch(search).then((res) => {
       console.log(res);
     });
