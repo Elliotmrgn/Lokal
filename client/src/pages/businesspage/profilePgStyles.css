@@ -29,6 +29,11 @@ h3{
     border-radius: 32px !important;
     min-width: 100px !important;
     margin-bottom: 8px !important;
+    margin-right: 8px;
+}
+
+.tags {
+    display:table-cell
 }
 
 .contact Button {

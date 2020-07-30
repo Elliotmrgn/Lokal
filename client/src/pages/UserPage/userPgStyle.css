@@ -1,6 +1,8 @@
 .userPageContainer{
-    margin: 0% 30% ;
-    /* width: 40% */
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    padding: 40px;
 }
 
 .userPageContainer a {
@@ -13,6 +15,7 @@
     font-style: italic;
     margin-bottom: 30px;
     color: #4D898C;
+    text-align: center;
 }
 
 .ghost{
@@ -26,4 +29,17 @@
     text-transform: uppercase;
     letter-spacing: 2px;
 }
+/* .card {
+    max-width: 600px !important;
+    width: 100%;
+} */
 
+.cardStyles {
+    max-width: 600px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+}
+
+.centerText{
+    text-align: center;
+}
