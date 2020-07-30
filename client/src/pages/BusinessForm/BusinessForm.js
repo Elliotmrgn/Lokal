@@ -604,26 +604,6 @@ function BusinessForm() {
                     role="tabpanel"
                     aria-labelledby="list-settings-list"
                   >
-                    {/* <button
-                        name="logo"
-                        onClick={(e) => showUploadWidget("logo", e)}
-                      >
-                        </button>
-
-                      <br />
-                      <button
-                        name="photos"
-                        onClick={(e) => showUploadWidget("photos", e)}
-                      >
-                        Upload Photos
-                      </button>
-                      <br />
-                      <button
-                        name="menuOrServices"
-                        onClick={(e) => showUploadWidget("menuOrServices", e)}
-                      >
-                        Upload Menu or Pricing List
-                      </button> */}
 
                       <Button className="ButtonText" id="uploadButton" name="logo" variant="info" size="sm" onClick={(e) => showUploadWidget("logo", e)} > Upload Logo</Button>
                       <br></br>

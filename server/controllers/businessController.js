@@ -40,8 +40,8 @@ module.exports = {
     {
       db.Business.find({})
         .then((businesses) => {
+          console.log(req.query);
           res.json(businesses);
-          console.log(businesses);
         })
         .catch((err) => res.status(422).json(err));
     }

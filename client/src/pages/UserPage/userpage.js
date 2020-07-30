@@ -8,9 +8,12 @@ import Button from 'react-bootstrap/Button';
 import "./userPgStyle.css";
 
 
-function Userpage() {
+function Userpage(props) {
 
-    const meee = "5f0fa2b679ec7a7d8825ec2c"
+    const toLoad= props.match.params.id
+
+
+    const meee = "5f2230741ddb428570b739fa"
     const [user, setuser] = useState([]);
     const [business, getBusiness] = useState([]);
     const [businesss, setBusiness] = useState([]);
@@ -20,7 +23,7 @@ function Userpage() {
       }, []);
 
     function loaduser(){
-        API.getUser(meee)
+        API.getUser(toLoad)
             .then((res) => {
             console.log(res.data);
             setuser(res.data);

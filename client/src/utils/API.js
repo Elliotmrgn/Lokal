@@ -4,7 +4,7 @@ import axios from "axios";
 export default {
 
   getBuisness: function(){
-    return  axios.get("/api/business");
+    return  axios.get("/api/business?test=abc");
   },
   saveBusiness: function (businessData) {
     console.log("hours testing" + businessData)
