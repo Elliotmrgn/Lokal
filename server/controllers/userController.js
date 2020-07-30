@@ -12,7 +12,6 @@ module.exports = {
   },
 
   findById: function (req, res) {
-    console.log("you find me????????????")
     db.User.findOne({ _id: req.params.id })
       .then((user) => {
         res.json(user);

@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
+import ListGroup from 'react-bootstrap/ListGroup';
+import Card from 'react-bootstrap/Card';
+import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
+
+import "./userPgStyle.css";
 
 
 function Userpage() {
@@ -29,13 +35,52 @@ function Userpage() {
                 .catch(err => console.log(err));
         }
 
+        const businessName = businesss.map(function(data, _id) {
+            console.log(data._id)
+            return <ListGroup.Item key={_id}> <a href={"/profilepage/" + data._id}> {data.businessName}</a> </ListGroup.Item>;
+        });
+
+        const busi2 = businesss.map(function(data, _id) {
+            console.log(data._id)
+            return (
+                <Card>
+                <Card.Header >
+                <Accordion.Toggle className="cardHead" as={Button} variant="link" eventKey={_id}>
+                    {data.businessName}
+                </Accordion.Toggle>
+                </Card.Header>
+                <Accordion.Collapse eventKey={_id}>
+                <Card.Body>
+                    <a href={"/profilepage/" + data._id}> View Page</a>
+                    <br></br>
+                    <a href={"/form/" + data._id}> Edit</a>
+                </Card.Body>
+                </Accordion.Collapse>
+                </Card> )
+        });
+
+
+
     return (
         <div>
-            <p>hello {user.firstName}</p> 
-            <h4>edit your busiensses babe</h4>
-            { businesss.map((busienssNames) =>  <p>{businesss.businessName}</p>)}
+            <div className="userPageContainer">
+                <span className="hello">hello, {user.firstName}!</span> 
+                <div className="ghost"></div>
+                <h4>Manage My Businesses:</h4>
+                
+                {/* <ListGroup>
+                <h4>{businessName}</h4>
+                </ListGroup> */}
+
+                {/* take two */}
+                <Accordion>
+                        {busi2}
+                </Accordion>
+            </div>
+
        </div>
     );
 }
 
 export default Userpage
+

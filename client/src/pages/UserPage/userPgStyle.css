@@ -1,0 +1,29 @@
+.userPageContainer{
+    margin: 0% 30% ;
+    /* width: 40% */
+}
+
+.userPageContainer a {
+    color: #4D898C;
+}
+
+.hello {
+    font-size: 60px;
+    font-weight: 200;
+    font-style: italic;
+    margin-bottom: 30px;
+    color: #4D898C;
+}
+
+.ghost{
+    height: 20px
+}
+
+.cardHead{
+    font-size: 20px;
+    color: #4D898C;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
