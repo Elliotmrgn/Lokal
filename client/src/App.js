@@ -11,8 +11,10 @@ import AUTH from "./utils/AUTH";
 import BusinessForm from "./pages/BusinessForm";
 import ContactPage from "./pages/ContactPage";
 import Home from "./pages/Home";
-import SearchResult from "./pages/SearchResult";
+import SearchResult from "./pages/SearchResult"
+import UserPage from "./pages/UserPage/userpage"
 import BusinessList from "./pages/BusinessList";
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
@@ -63,27 +65,29 @@ function App() {
       {loggedIn && (
         <div>
           <Nav user={user} logout={logout} />
-          <div className="main-view">
+          {/* <div className="main-view"> */}
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/businessForm" component={BusinessForm} />
               <Route exact path="/contact" component={ContactPage} />
               <Route exact path="/results" component={SearchResult} />
-              <Route exact path="/profilepage/:id" component={ProfilePage} />
+             <Route exact path="/profilepage/:id" component={ProfilePage} />
+              <Route exact path="/user/:id" component={UserPage} />
               <Route exact path="/businessList" component={BusinessList} />
+
               <Route component={NoMatch} />
             </Switch>
-          </div>
+          {/* </div> */}
         </div>
       )}
       {!loggedIn && (
         <div className="auth-wrapper" style={{ paddingTop: 40 }}>
           <Route exact path="/" component={() => <LoginForm login={login} />} />
-          {/* <Route
+          <Route
             exact
             path="/"
             component={() => <LoginForm user={login} />}
-          /> */}
+          />
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/profilepage" component={ProfilePage} />
         </div>
