@@ -55,7 +55,7 @@ module.exports = {
   },
   //get schedule data
   getProfileSchedule: function (req, res) {
-    console.log("here??")
+    console.log("here??");
     res.json("Whoa");
     db.Schedule.findOne({ businessId: req.params.id })
       .then((schedule) => {
@@ -94,5 +94,28 @@ module.exports = {
         console.log("testing here" + dbBusiness);
       })
       .catch((err) => res.json(err));
+  },
+
+  findViaSearch: function (req, res) {
+    const regexSearch = req.params.search;
+    console.log("regexSearch", regexSearch);
+
+    db.Business.find({ businessName: new RegExp(regexSearch, "i") })
+      .then((foundBusinesses) => {
+        res.json(foundBusinesses);
+        console.log(foundBusinesses);
+      })
+      .catch((err) => res.status(422).json(err));
+  },
+
+  findViaTags: function (req, res) {
+    db.business
+      .find({
+        tags: new RegExp(regexSearch, "i"),
+      })
+      .then((foundBussinessByTags) => {
+        res.json(foundBussinessByTags);
+        console.log(foundBussinessByTags);
+      });
   },
 };
