@@ -37,8 +37,14 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   findAll: function (req, res) {
+    const email = req.query.email;
+    let query = {};
+    if(email) {
+      query.email = email;
+    }
+
     {
-      db.Business.find({})
+      db.Business.find(query)
         .then((businesses) => {
           res.json(businesses);
           console.log(businesses);
@@ -46,6 +52,8 @@ module.exports = {
         .catch((err) => res.status(422).json(err));
     }
   },
+
+  
   findById: function (req, res) {
     db.Business.findOne({ _id: req.params.id })
       .then((business) => {

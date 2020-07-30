@@ -4,7 +4,9 @@ const businessController = require("../../controllers/businessController");
 router
   .route("/")
   .get(businessController.findAll)
-  .post(businessController.create);
+  .post(businessController.create)
+  // .get(businessController.findByEmail);
+
 
 router.route("/:id").get(businessController.findById);
 
