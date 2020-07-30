@@ -12,15 +12,16 @@ function Home() {
       {/* <div className="home-container"> */}
 
         <section class="search-container">
-          <row size="size md-6">
+          <div class="discover-local"size="size md-6">
             <span class="header" id="discover">
               DISCOVER
             </span>
             <span class="header" id="lokal">
               lokal
             </span>
+          </div>
             <p id="raleigh">Raleigh Edition</p>
-          </row>
+          
           <NavSearchBar />
         </section>
 

@@ -18,5 +18,13 @@ main {
   justify-content: space-between !important;
 }
 
+button {
+  color: white;
+  background-color: #AED1CD!important;
+  border-color: #AED1CD !important;
+  border-radius: 32px !important;
+}
+
+
 
 
