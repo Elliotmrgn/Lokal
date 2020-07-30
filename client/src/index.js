@@ -10,3 +10,5 @@ ReactDOM.render(
 	</BrowserRouter>,
 	document.getElementById('root')
 );
+
+console.log("test")

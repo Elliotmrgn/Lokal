@@ -12,8 +12,6 @@ function SearchBar() {
   function handleFormSubmit(event) {
     event.preventDefault();
     const search = formObject.search;
-    if (formObject.search === "") {
-    }
     API.findViaSearch(search).then((res) => {
       console.log(res);
     });
@@ -23,29 +21,25 @@ function SearchBar() {
     <div>
       <form>
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Business Name</label>
           <input
             type="email"
             className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             name="search"
+            placeholder="Search by business name or category"
             onChange={handleInputChange}
           />
-          <small id="emailHelp" className="form-text text-muted">
-            Please search what you would like to find.
-          </small>
         </div>
         <button
           type="submit"
           className="btn btn-primary"
           onClick={handleFormSubmit}
         >
-          Submit
+          Search
         </button>
       </form>
     </div>
   );
 }
-
 export default SearchBar;

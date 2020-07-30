@@ -13,6 +13,7 @@ import ContactPage from "./pages/ContactPage";
 import Home from "./pages/Home";
 import SearchResult from "./pages/SearchResult"
 import UserPage from "./pages/UserPage/userpage"
+import BusinessList from "./pages/BusinessList";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -72,6 +73,7 @@ function App() {
               <Route exact path="/results" component={SearchResult} />
              <Route exact path="/profilepage/:id" component={ProfilePage} />
               <Route exact path="/user/:id" component={UserPage} />
+              <Route exact path="/businessList" component={BusinessList} />
 
               <Route component={NoMatch} />
             </Switch>
@@ -93,7 +95,6 @@ function App() {
       <div>
         <Footer />
       </div>
-    
     </div>
   );
 }
