@@ -9,6 +9,11 @@
     background-color: #354959;
     padding: 80px;
 }
+
+.discover-local {
+    text-align: center;
+}
+
 .header {
     color: #F8DACC;
     font-size: 90px;
@@ -117,7 +122,6 @@ ul {
 #map {
     height: 26%;
     width: 20%;
-
 }
 
 #check {
@@ -127,8 +131,16 @@ ul {
 
 /* REGISTER BUSINESS CONTAINER */
 
+#registerbtn {
+    background-color: #AED1CD!important;
+    border-color: #AED1CD !important;
+    border-radius: 32px !important;
+    min-width: 100px !important;
+    margin-bottom: 8px !important;
+}
+
 .container-sign-up {
-    background-color: white;
+    background-color: #F8DACC;
     color: #354959;
     width: 100%;
     padding: 70px;
@@ -155,27 +167,21 @@ ul {
         width: 40%;
         margin: 5em auto 4em 15%;
     }
-
     .container {
         width: 70%;
     }
-
     .how-it-works-container {
         padding: 7em 0 2em;
     }
-
     .how-it-works-container ul li p, blockquote {
         font-size: 1.3em;
     }
-
     h2 {
         margin-top: 4em;
     }
-
     .how-it-works-container img {
         width: 15%;
     }
-
     how-it-works-container ul li:nth-child(3) img {
         width: 8%;
         margin-top: -4px;

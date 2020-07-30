@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Col, Row, Container } from "../../components/Grid";
+import { Container } from "../../components/Grid";
 import { Card } from "../../components/Card";
-import {
-  Input,
-  TextArea,
-  FormBtn,
-  Address,
-  Hours,
-} from "../../components/Form";
+import { Input, TextArea, FormBtn, Address } from "../../components/Form";
 import API from "../../utils/API";
 import Checkbox from "../../components/Checkbox";
+import "./formstyles.css";
+
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 function BusinessForm() {
   const [business, setBusiness] = useState([]);
@@ -19,22 +19,19 @@ function BusinessForm() {
   const [menuOrServices, setMenuOrServices] = useState([]);
   const [tags, setTags] = useState([]);
   const formEl = useRef(null);
-  const checkedTags = [];
 
   function checkClick(event) {
     const tagName = event.target.value;
-    const checkingTags = checkedTags.indexOf(tagName);
-    if (checkingTags === -1) {
-      checkedTags.push(tagName);
+
+    if (tags.includes(tagName) === false) {
       setTags((tags) => [...tags, tagName]);
     } else {
-      checkedTags.splice(checkingTags);
     }
   }
 
   useEffect(() => {
-    console.log("Page Mounted");
-  }, []);
+    console.log(tags);
+  }, [tags]);
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -43,13 +40,15 @@ function BusinessForm() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log(formObject);
 
     API.addressConvert(
       `${formObject.street}, ${formObject.city}, ${formObject.state}`
     ).then((res) => {
-      console.log("LAT, LONGGG", res.data.results[0].geometry.location);
+      console.log("LAT, LONGGG", res.data.results);
+      console.log("schedule fix", formObject.MonOpen);
       console.log("DOES THIS PASS DOWN", formObject);
+      console.log("formObject.schedule:", formObject.schedule);
+
       API.saveBusiness({
         owner: formObject.owner,
         businessName: formObject.businessName,
@@ -59,7 +58,22 @@ function BusinessForm() {
         instagram: formObject.instagram,
         facebook: formObject.facebook,
         website: formObject.website,
-        menuOrServices: formObject.menuOrServices,
+        schedule: {
+          MonOpen: formObject.MonOpen,
+          MonClose: formObject.MonClose,
+          TuesOpen: formObject.TuesOpen,
+          TuesClose: formObject.TuesClose,
+          WedOpen: formObject.WedOpen,
+          WedClose: formObject.WedClose,
+          ThursOpen: formObject.ThursClose,
+          ThursClose: formObject.ThursClose,
+          FriOpen: formObject.FriOpen,
+          FriClose: formObject.FriClose,
+          SatOpen: formObject.SatOpen,
+          SatClose: formObject.SatClose,
+          SunOpen: formObject.SunOpen,
+          SunClose: formObject.SunClose,
+        },
         tagline: formObject.tagline,
         masks: formObject.masks,
         photos: images,
@@ -67,8 +81,6 @@ function BusinessForm() {
         city: formObject.city,
         state: formObject.state,
         zip: formObject.zip,
-        county: formObject.county,
-        country: formObject.country,
         lat: res.data.results[0].geometry.location.lat,
         lng: res.data.results[0].geometry.location.lng,
         logo: logo,
@@ -76,9 +88,10 @@ function BusinessForm() {
         tags: tags,
       })
         .then((res) => {
+          console.log("res!!!!:", res);
           formEl.current.reset();
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log("aftersave" + err));
     });
   }
 
@@ -108,7 +121,7 @@ function BusinessForm() {
           palette: {
             window: "#FFFFFF",
             windowBorder: "#90A0B3",
-            tabIcon: "#0078FF",
+            tabIcon: "#354959",
             menuIcons: "#5A616A",
             textDark: "#000000",
             textLight: "#FFFFFF",
@@ -151,11 +164,20 @@ function BusinessForm() {
     });
   };
 
+  // const saveHours = (event) => {
+  //   const { name, value } = event.target;
+  //   setHours(hours.push(name, value))
+  // };
+
   return (
-    <Container fluid>
-      <Row>
-        <Col size="size md-12">
-          <Card title="Welcome! Please fill out the following forms to set up your business.">
+    <main>
+      <Container fluid>
+        <div className="titlecontianer">
+          <span className="title">Create a listing for your business</span>
+        </div>
+        <Row className="mainContainer">
+          <Col size="size md-12">
+            {/* <Card title="Welcome! Please fill out the following forms to set up your business."> */}
             <form ref={formEl}>
               <div className="row">
                 <div className="col-4">
@@ -189,6 +211,16 @@ function BusinessForm() {
                       aria-controls="Social Media"
                     >
                       Social Media
+                    </a>
+                    <a
+                      className="list-group-item list-group-item-action"
+                      id="list-messages-list"
+                      data-toggle="list"
+                      href="#hours"
+                      role="tab"
+                      aria-controls="Hours"
+                    >
+                      Hours
                     </a>
                     <a
                       className="list-group-item list-group-item-action"
@@ -234,14 +266,8 @@ function BusinessForm() {
                       <Input
                         onChange={handleInputChange}
                         name="tagline"
-                        placeholder="Tagline (Required)"
+                        placeholder="Tagline (Required) - A short, one sentance description of your business and what is unique about it"
                       />
-                      <Input
-                        onChange={handleInputChange}
-                        name="hours"
-                        placeholder="Hours of Operation  (Required)"
-                      />
-                      <Hours />
                     </div>
                     {/* Contact Info */}
                     <div
@@ -254,6 +280,7 @@ function BusinessForm() {
                         onChange={handleInputChange}
                         name="phoneNumber"
                         placeholder="Phone Number (Required)"
+                        type="number"
                       />
                       <Input
                         onChange={handleInputChange}
@@ -273,18 +300,299 @@ function BusinessForm() {
                       <Input
                         onChange={handleInputChange}
                         name="instagram"
-                        placeholder="Instagram"
+                        placeholder="Instagram URL"
                       />
                       <Input
                         onChange={handleInputChange}
                         name="facebook"
-                        placeholder="Facebook"
+                        placeholder="Facebook URL"
                       />
                       <Input
                         onChange={handleInputChange}
                         name="website"
                         placeholder="Website"
                       />
+                    </div>
+                    {/* Hours */}
+                    <div
+                      className="tab-pane fade"
+                      id="hours"
+                      role="tabpanel"
+                      aria-labelledby="list-messages-list"
+                    >
+                      {/* Monday Hours */}
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Monday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="MonOpen"
+                            placeholder="Open"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control
+                              onSelect={handleInputChange}
+                              name="AMorPM"
+                              as="select"
+                            >
+                              <option>AM</option>
+                              <option value="pm">PM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                        -
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="MonClose"
+                            placeholder="Close"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* Tuesday Hours */}
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Tuesday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="TuesOpen"
+                            placeholder="Open"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>AM</option>
+                              <option>PM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                        -
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="TuesClose"
+                            placeholder="Close"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* Wedneday Hours */}
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Wednesday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="WedOpen"
+                            placeholder="Open"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>AM</option>
+                              <option>PM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                        -
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="WedClose"
+                            placeholder="Close"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* Thursday */}
+
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Thursday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="ThursOpen"
+                            placeholder="Open"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>AM</option>
+                              <option>PM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                        -
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="ThursClose"
+                            placeholder="Close"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* Friday hours */}
+
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Friday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="FriOpen"
+                            placeholder="Open"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>AM</option>
+                              <option>PM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                        -
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="FriClose"
+                            placeholder="Close"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* Saturday hours */}
+
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Saturday:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="SatOpen"
+                            placeholder="Open"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>AM</option>
+                              <option>PM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                        -
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="SatClose"
+                            placeholder="Close"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                      </Row>
+
+                      {/* sunday hours */}
+
+                      <Row>
+                        <Col size="size md-2">
+                          <h4>Sudnay:</h4>
+                        </Col>
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="SunOpen"
+                            placeholder="Open"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>AM</option>
+                              <option>PM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                        -
+                        <Col size="size md-2">
+                          <Input
+                            onChange={handleInputChange}
+                            name="SunClose"
+                            placeholder="Close"
+                          />
+                        </Col>
+                        <Col size="size md-2">
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Control as="select">
+                              <option>PM</option>
+                              <option>AM</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Col>
+                      </Row>
                     </div>
                     {/* Photos And Services */}
                     <div
@@ -293,27 +601,40 @@ function BusinessForm() {
                       role="tabpanel"
                       aria-labelledby="list-settings-list"
                     >
-                      <button
+                      <Button
+                        className="ButtonText"
+                        id="uploadButton"
                         name="logo"
+                        variant="info"
+                        size="sm"
                         onClick={(e) => showUploadWidget("logo", e)}
                       >
                         Upload Logo
-                      </button>
-                      <br />
-                      <button
+                      </Button>
+                      <br></br>
+                      <Button
+                        className="ButtonText"
+                        id="uploadButton"
                         name="photos"
+                        variant="info"
+                        size="sm"
                         onClick={(e) => showUploadWidget("photos", e)}
                       >
                         Upload Photos
-                      </button>
-                      <br />
-                      <button
+                      </Button>
+                      <br></br>
+                      <Button
+                        className="ButtonText"
+                        id="uploadButton"
                         name="menuOrServices"
+                        variant="info"
+                        size="sm"
                         onClick={(e) => showUploadWidget("menuOrServices", e)}
                       >
-                        Upload Menu or Pricing List
-                      </button>
+                        Upload PDF of Menu or Information
+                      </Button>
                     </div>
+
                     {/* About and More */}
                     <div
                       className="tab-pane fade"
@@ -329,8 +650,12 @@ function BusinessForm() {
                       <Input
                         onChange={handleInputChange}
                         name="masks"
-                        placeholder="Masks"
+                        placeholder="Current News or Events (ex: does your business currently require masks?)"
                       />
+                      <h4>
+                        Select as many tags as apply to you, its how users will
+                        be able to discover your business!
+                      </h4>
                       <Checkbox onChange={checkClick} />
                     </div>
                   </div>
@@ -345,7 +670,6 @@ function BusinessForm() {
                     formObject.email &&
                     formObject.owner &&
                     formObject.tagline &&
-                    formObject.hours &&
                     formObject.street &&
                     formObject.city &&
                     formObject.state &&
@@ -357,10 +681,11 @@ function BusinessForm() {
                 Submit Business
               </FormBtn>
             </form>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+            {/* </Card> */}
+          </Col>
+        </Row>
+      </Container>
+    </main>
   );
 }
 

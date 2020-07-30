@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Map from "../../components/Map/Map";
 import { Col, Row, Container } from "../../components/Grid";
-
+import SearchBar from "../../components/SearchBar/SearchBar";
 import { ResultCard } from "../../components/ResultCard";
 import API from "../../utils/API";
 
@@ -28,10 +28,11 @@ function SearchResult() {
     });
   };
   
+  console.log("COOORDSS", mapCoords);
   return (
     <Container fluid>
       <Row>
-        <Col size="md-6">
+        <Col size="md-4">
           <h2>FEATURED</h2>
           {buisnessList.map((business, index) => {
             console.log("**", business);
@@ -44,8 +45,9 @@ function SearchResult() {
             );
           })}
         </Col>
-        <Col size="md-6 sm-6">
+        <Col size="md-8">
           <h2>SEARCH</h2>
+          <SearchBar/>
           <Map center={mapCoords} businesses={buisnessList}/>
         </Col>
       </Row>

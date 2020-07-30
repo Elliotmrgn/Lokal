@@ -6,7 +6,7 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server/server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "start:dev": " concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "install": "cd client && yarn install",
     "build": "cd client && npm run build",
@@ -42,11 +42,16 @@
     "nodemailer": "^6.4.10",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "react-awesome-slider": "^4.1.0",
     "react-bootstrap": "^1.2.2",
+    "react-functional-select": "^2.6.0",
     "react-google-maps": "^9.4.5",
     "react-icons": "^3.10.0",
     "react-scripts": "^3.4.1",
+    "react-select": "^3.1.0",
+    "react-window": "^1.8.5",
     "recompose": "^0.30.0",
+    "styled-components": "^5.1.1",
     "yarn": "^1.22.4"
   }
 }

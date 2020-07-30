@@ -1,0 +1,17 @@
+li {
+  background-color: black;
+  color: black;
+}
+.card {
+  width: 18rem;
+  margin: 10px;
+}
+.btn-primary {
+  text-align: center;
+}
+.card-img-top {
+  height: 250px;
+}
+p {
+  font-size: inherit;
+}
