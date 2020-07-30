@@ -10,6 +10,7 @@ function SignupForm() {
     firstName: "",
     lastName: "",
     username: "",
+    email: "",
     password: "",
     confirmPassword: "",
     redirectTo: null,
@@ -30,6 +31,7 @@ function SignupForm() {
       firstName: userObject.firstName,
       lastName: userObject.lastName,
       username: userObject.username,
+      email: userObject.email,
       password: userObject.password,
     }).then((response) => {
       // console.log(response);
@@ -71,6 +73,13 @@ function SignupForm() {
                 type="text"
                 name="username"
                 value={userObject.username}
+                onChange={handleChange}
+              />
+              <label htmlFor="email">Email: </label>
+              <Input
+                type="text"
+                name="email"
+                value={userObject.email}
                 onChange={handleChange}
               />
               <label htmlFor="password">Password: </label>
