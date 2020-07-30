@@ -24,6 +24,7 @@ const Nav = (props) => {
   }
 
   return (
+
     <nav className="navbar navbar-expand-lg">
       <Col size="md-6 sm-6">
         <Link to="/" className="navbar-brand">
@@ -51,6 +52,27 @@ const Nav = (props) => {
       </Col>
     </nav>
   );
+
+    <header>
+      <nav className="navbar navbar-expand-lg">
+        <Col size="md-6 sm-6">
+          <Link to="/" className="navbar-brand"><img src="https://i.ibb.co/DMGWXh0/logo-01.png" alt="logo"></img></Link>
+        </Col>
+        <Col size="md-6 sm-6">
+          <div className="float-right">
+          {/* <NavSearchBar />   */}
+
+          <Link to="/Contact" id="contact" className="navbar-contact px-4">Contact</Link>
+          
+          <Link to="/BusinessForm" id="register" className="navbar-contact px-4">Register</Link>
+
+          {greeting} - <Link to="#" className="logout" onClick={props.logout}>Logout</Link>
+          </div>
+        </Col>
+      </nav>
+    </header>
+  )
+
 };
 
 export default Nav;

@@ -1,21 +1,25 @@
-h1 {
+#getintouch {
     text-align: center !important;
-    color: #5B9098;
+    color: #354959;
     padding-top: 40px; 
+    font-size: 4rem;
+    font-weight: 200;
+    letter-spacing: 4px;
+    line-height: 1.2em;
+    color: #354959;
+    text-transform: uppercase;
 }
 
-h2 {
-    text-align: center;
-    font-size: 20px;
-    word-wrap: break-word 
+#contact-button {
+    color: white;
+    background-color: #AED1CD!important;
+    border-color: #AED1CD !important;
+    border-radius: 32px !important;
+    min-width: 100px !important;
+    margin-bottom: 8px !important;
 }
 
-p {
-    text-align: center;
-    font-size: 20px;
+.main-container {
+    padding:30px;
 }
 
-button {
-   background-color: #5B9098;
-   color: white;
-}

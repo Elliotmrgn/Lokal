@@ -1,5 +1,7 @@
 import React from "react";
+
 import tags from "../../utils/Tags";
+
 let divStyle = {
   marginRight: "15px",
 };

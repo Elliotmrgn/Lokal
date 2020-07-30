@@ -3,7 +3,6 @@ import axios from "axios";
 
 export default {
 
-
   getBuisness: function(){
     return  axios.get("/api/business");
   },
@@ -26,6 +25,7 @@ export default {
   getProfileSchedule: function(businessId) {
     return axios.get("/api/business/" + businessId + "schedule")
   },
-  // tester ID: 5f164573676a1ebfde5e0982
-
+  getUser: function(id) {
+    return axios.get("/api/user/" + id )
+  },
 };
