@@ -43,13 +43,13 @@ function Userpage() {
         const busi2 = businesss.map(function(data, _id) {
             console.log(data._id)
             return (
-                <Card>
+                <Card className="cardStyles" key={data._id}>
                 <Card.Header >
-                <Accordion.Toggle className="cardHead" as={Button} variant="link" eventKey={_id}>
+                <Accordion.Toggle className="cardHead" as={Button} variant="link" eventKey={data._id}>
                     {data.businessName}
                 </Accordion.Toggle>
                 </Card.Header>
-                <Accordion.Collapse eventKey={_id}>
+                <Accordion.Collapse eventKey={data._id}>
                 <Card.Body>
                     <a href={"/profilepage/" + data._id}> View Page</a>
                     <br></br>
@@ -62,12 +62,9 @@ function Userpage() {
 
 
     return (
-        <div>
             <div className="userPageContainer">
-                <span className="hello">hello, {user.firstName}!</span> 
-                <div className="ghost"></div>
-                <h4>Manage My Businesses:</h4>
-                
+                <div className="hello">hello, {user.firstName}!</div> 
+                <h4 className="centerText">Manage My Businesses:</h4>
                 {/* <ListGroup>
                 <h4>{businessName}</h4>
                 </ListGroup> */}
@@ -78,7 +75,6 @@ function Userpage() {
                 </Accordion>
             </div>
 
-       </div>
     );
 }
 
