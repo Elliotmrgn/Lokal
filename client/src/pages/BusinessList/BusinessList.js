@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Container } from "../../components/Grid";
-import { Card } from "../../components/Card";
-import { Input, TextArea, FormBtn, Address } from "../../components/Form";
+
 import API from "../../utils/API";
-import Checkbox from "../../components/Checkbox";
+
 import "./businessList.css";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -13,11 +12,15 @@ import tags from "../../utils/Tags";
 
 function BusinessList() {
   const [business, setBusiness] = useState([]);
+  const [renderedBusiness, setRenderedBusiness] = useState([]);
   const [formObject, setFormObject] = useState([]);
+
   useEffect(() => {
     loadBusiness();
     setFormObject({ Tag: "" });
   }, []);
+
+  useEffect(() => {}, [formObject]);
 
   function loadBusiness() {
     API.getBuisness().then((res) => {
@@ -33,34 +36,59 @@ function BusinessList() {
 
   const tagList = tags.map(function (tag, index) {
     return (
-      <option key={index} value={tag} name="Selected Tag">
+      <option key={index} value={tag} name="Tag">
         {tag}
       </option>
     );
   });
 
   const businessList = business.map((business) => {
-    return (
-      <div className="card" key={business._id}>
-        <img
-          className="card-img-top"
-          src={business.logo}
-          alt="Card image cap"
-        />
-        <div className="card-body">
-          <h1 className="card-title">{business.businessName}</h1>
-          <p className="card-text">{business.tagline}</p>
-          <div className="text-center">
-            <a
-              href={"/profilepage/" + business._id}
-              className="btn btn-primary"
-            >
-              Visit Page
-            </a>
+    const businessesTags = business.tags;
+    if (businessesTags.includes(formObject)) {
+      return (
+        <div className="card" key={business._id}>
+          <img
+            className="card-img-top"
+            src={business.logo}
+            alt="Card image cap"
+          />
+          <div className="card-body">
+            <h1 className="card-title">{business.businessName}</h1>
+            <h5 className="card-text">{business.tagline}</h5>
+            <div className="text-center">
+              <a
+                href={"/profilepage/" + business._id}
+                className="btn btn-primary"
+              >
+                Visit Page
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="card" key={business._id}>
+          <img
+            className="card-img-top"
+            src={business.logo}
+            alt="Card image cap"
+          />
+          <div className="card-body">
+            <h1 className="card-title">{business.businessName}</h1>
+            <h5 className="card-text">{business.tagline}</h5>
+            <div className="text-center">
+              <a
+                href={"/profilepage/" + business._id}
+                className="btn btn-primary"
+              >
+                Visit Page
+              </a>
+            </div>
+          </div>
+        </div>
+      );
+    }
   });
 
   return (
