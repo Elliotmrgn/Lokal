@@ -6,6 +6,9 @@ export default {
   getBuisness: function(){
     return  axios.get("/api/business");
   },
+  getUserBuisnesses: function(email){
+    return  axios.get("/api/business/?email=" + email );
+  },
   saveBusiness: function (businessData) {
     console.log("hours testing" + businessData)
     return axios.post("/api/business", businessData);
