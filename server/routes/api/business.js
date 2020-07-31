@@ -16,6 +16,6 @@ router
 router.route("/:id/schedule").get(businessController.getProfileSchedule);
 
 router.route("/viaSearch/:search").get(businessController.findViaSearch);
-router.route("/:tags").get(businessController.findViaTags);
+router.route("/viaTags/:tags").get(businessController.findViaTags);
 
 module.exports = router;

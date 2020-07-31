@@ -109,13 +109,12 @@ module.exports = {
   },
 
   findViaTags: function (req, res) {
-    db.business
-      .find({
-        tags: new RegExp(regexSearch, "i"),
-      })
-      .then((foundBussinessByTags) => {
-        res.json(foundBussinessByTags);
-        console.log(foundBussinessByTags);
-      });
+    console.log(req.params);
+    db.Business.find({
+      tags: req.params.tags,
+    }).then((foundBussinessByTags) => {
+      res.json(foundBussinessByTags);
+      console.log(foundBussinessByTags);
+    });
   },
 };
