@@ -17,9 +17,7 @@ export default {
   },
   addressConvert: function (address) {
     address = encodeURIComponent(address);
-    console.log(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
-    );
+
     return axios.get(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
     );
