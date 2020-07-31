@@ -36,4 +36,7 @@ export default {
   findViaSearch: function (search) {
     return axios.get("/api/business/viaSearch/" + search);
   },
+  findViaTags: function (tags) {
+    return axios.get("/api/business/viaTags/" + tags);
+  },
 };

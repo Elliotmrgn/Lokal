@@ -20,7 +20,10 @@ function BusinessList() {
     setFormObject({ Tag: "" });
   }, []);
 
-  useEffect(() => {}, [formObject]);
+  useEffect(() => {
+    console.log(formObject.Tag);
+    reRender();
+  }, [formObject]);
 
   function loadBusiness() {
     API.getBuisness().then((res) => {
@@ -28,10 +31,23 @@ function BusinessList() {
     });
   }
 
+  function reRender() {
+    const tag = formObject.Tag;
+    console.log("reRender -> tag", tag);
+    if (tag === "") {
+      API.getBuisness().then((res) => {
+        setBusiness(res.data);
+      });
+    } else {
+      API.findViaTags(tag).then((res) => {
+        setBusiness(res.data);
+      });
+    }
+  }
+
   function handleInputChange(event) {
     const { value } = event.target;
     setFormObject({ Tag: value });
-    console.log(formObject);
   }
 
   const tagList = tags.map(function (tag, index) {
