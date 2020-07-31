@@ -10,7 +10,7 @@ import mapStyle from "./mapStyle";
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "100%",
-  height: "500px",
+  height: "50vh",
 };
 
 const options = {
@@ -20,9 +20,9 @@ const options = {
 };
 
 export default function Map(props) {
-  console.log("Map -> props", props.center);
+  console.log("BUSINESS LIST FOR MAP", props.business);
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY, //.env not working
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     libraries,
   });
 
@@ -35,7 +35,19 @@ export default function Map(props) {
         mapContainerStyle={mapContainerStyle}
         zoom={13}
         center={props.center}
-      ></GoogleMap>
+        options={options}
+      >
+        <Marker position={props.center} />
+        {props.businesses.map((business) => (
+          <Marker
+            key={business._id}
+            position={{
+              lat: parseFloat(business.lat),
+              lng: parseFloat(business.lng),
+            }}
+          />
+        ))}
+      </GoogleMap>
     </div>
   );
 }
