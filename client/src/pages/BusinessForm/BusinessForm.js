@@ -11,7 +11,31 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-function BusinessForm() {
+
+
+function BusinessForm(props) {
+
+  //IF edit mode
+  const editMode = props.match.params.id;
+  const [editBusiness, setEditBusiness] = useState([]);
+
+  useEffect(() => {
+    if(editMode) {
+      loadBusiness();
+    }
+  }, []);
+
+  function loadBusiness(){
+    API.getProfile(editMode)
+        .then((res) => {
+        console.log(res.data);
+        setEditBusiness(res.data);
+      })
+      .catch((err) => console.log(err));
+    }
+
+
+
   const [business, setBusiness] = useState([]);
   const [formObject, setFormObject] = useState([]);
   const [images, setImages] = useState([]);
@@ -257,16 +281,20 @@ function BusinessForm() {
                         onChange={handleInputChange}
                         name="businessName"
                         placeholder="Name of Business (Required)"
+                        defaultValue={editMode ? editBusiness.businessName : ""}
+                        // { ...editBusiness ? value= :  placeholder="Name of Business (Required)" }
                       />
                       <Input
                         onChange={handleInputChange}
                         name="owner"
                         placeholder="Owner Name (Required)"
+                        defaultValue={editMode ? editBusiness.owner : ""}
                       />
                       <Input
                         onChange={handleInputChange}
                         name="tagline"
                         placeholder="Tagline (Required) - A short, one sentance description of your business and what is unique about it"
+                        defaultValue={editMode ? editBusiness.tagline : ""}
                       />
                     </div>
                     {/* Contact Info */}
@@ -281,11 +309,14 @@ function BusinessForm() {
                         name="phoneNumber"
                         placeholder="Phone Number (Required)"
                         type="number"
+                        defaultValue={editMode ? editBusiness.phoneNumber : ""}
+
                       />
                       <Input
                         onChange={handleInputChange}
                         name="email"
                         placeholder="Email Address (Required)"
+                        defaultValue={editMode ? editBusiness.email : ""}
                       />
 
                       <Address onChange={handleInputChange} />
@@ -301,16 +332,20 @@ function BusinessForm() {
                         onChange={handleInputChange}
                         name="instagram"
                         placeholder="Instagram URL"
+                        defaultValue={editMode ? editBusiness.instagram : ""}
                       />
                       <Input
                         onChange={handleInputChange}
                         name="facebook"
                         placeholder="Facebook URL"
+                        defaultValue={editMode ? editBusiness.facebook : ""}
+
                       />
                       <Input
                         onChange={handleInputChange}
                         name="website"
                         placeholder="Website"
+                        defaultValue={editMode ? editBusiness.website : ""}
                       />
                     </div>
                     {/* Hours */}
@@ -330,6 +365,8 @@ function BusinessForm() {
                             onChange={handleInputChange}
                             name="MonOpen"
                             placeholder="Open"
+                            defaultValue={editMode ? editBusiness.MonOpen : ""}
+
                           />
                         </Col>
                         <Col size="size md-2">
@@ -350,6 +387,7 @@ function BusinessForm() {
                             onChange={handleInputChange}
                             name="MonClose"
                             placeholder="Close"
+                            defaultValue={editMode ? editBusiness.MonClose : ""}
                           />
                         </Col>
                         <Col size="size md-2">
@@ -372,6 +410,7 @@ function BusinessForm() {
                             onChange={handleInputChange}
                             name="TuesOpen"
                             placeholder="Open"
+                            defaultValue={editMode ? editBusiness.TuesOpen : ""}
                           />
                         </Col>
                         <Col size="size md-2">
@@ -388,6 +427,7 @@ function BusinessForm() {
                             onChange={handleInputChange}
                             name="TuesClose"
                             placeholder="Close"
+                            defaultValue={editMode ? editBusiness.TuesClose : ""}
                           />
                         </Col>
                         <Col size="size md-2">
@@ -410,6 +450,7 @@ function BusinessForm() {
                             onChange={handleInputChange}
                             name="WedOpen"
                             placeholder="Open"
+                            defaultValue={editMode ? editBusiness.WedOpen : ""}
                           />
                         </Col>
                         <Col size="size md-2">
@@ -426,7 +467,9 @@ function BusinessForm() {
                             onChange={handleInputChange}
                             name="WedClose"
                             placeholder="Close"
+                            defaultValue={editMode ? editBusiness.WedClose : ""}
                           />
+                          
                         </Col>
                         <Col size="size md-2">
                           <Form.Group controlId="exampleForm.ControlSelect1">
@@ -449,6 +492,7 @@ function BusinessForm() {
                             onChange={handleInputChange}
                             name="ThursOpen"
                             placeholder="Open"
+                            defaultValue={editMode ? editBusiness.ThursOpen : ""}
                           />
                         </Col>
                         <Col size="size md-2">
@@ -465,6 +509,7 @@ function BusinessForm() {
                             onChange={handleInputChange}
                             name="ThursClose"
                             placeholder="Close"
+                            defaultValue={editMode ? editBusiness.ThursClose : ""}
                           />
                         </Col>
                         <Col size="size md-2">
@@ -488,6 +533,7 @@ function BusinessForm() {
                             onChange={handleInputChange}
                             name="FriOpen"
                             placeholder="Open"
+                            defaultValue={editMode ? editBusiness.FriOpen : ""}
                           />
                         </Col>
                         <Col size="size md-2">
@@ -504,6 +550,7 @@ function BusinessForm() {
                             onChange={handleInputChange}
                             name="FriClose"
                             placeholder="Close"
+                            defaultValue={editMode ? editBusiness.FriClose : ""}
                           />
                         </Col>
                         <Col size="size md-2">
@@ -527,6 +574,7 @@ function BusinessForm() {
                             onChange={handleInputChange}
                             name="SatOpen"
                             placeholder="Open"
+                            defaultValue={editMode ? editBusiness.SatOpen : ""}
                           />
                         </Col>
                         <Col size="size md-2">
@@ -543,6 +591,7 @@ function BusinessForm() {
                             onChange={handleInputChange}
                             name="SatClose"
                             placeholder="Close"
+                            defaultValue={editMode ? editBusiness.SatClose : ""}
                           />
                         </Col>
                         <Col size="size md-2">
@@ -566,6 +615,7 @@ function BusinessForm() {
                             onChange={handleInputChange}
                             name="SunOpen"
                             placeholder="Open"
+                            defaultValue={editMode ? editBusiness.SunOpen : ""}
                           />
                         </Col>
                         <Col size="size md-2">
@@ -582,6 +632,7 @@ function BusinessForm() {
                             onChange={handleInputChange}
                             name="SunClose"
                             placeholder="Close"
+                            defaultValue={editMode ? editBusiness.SunClose : ""}
                           />
                         </Col>
                         <Col size="size md-2">
@@ -646,11 +697,13 @@ function BusinessForm() {
                         onChange={handleInputChange}
                         name="about"
                         placeholder="About Section"
+                        defaultValue={editMode ? editBusiness.about : ""}
                       />
                       <Input
                         onChange={handleInputChange}
                         name="masks"
                         placeholder="Current News or Events (ex: does your business currently require masks?)"
+                        defaultValue={editMode ? editBusiness.masks : ""}
                       />
                       <h4>
                         Select as many tags as apply to you, its how users will
