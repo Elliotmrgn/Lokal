@@ -9,15 +9,6 @@ function SearchBar(props) {
     setFormObject({ ...formObject, [name]: value });
   }
 
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    console.log("REEEEEEEE",event.target)
-    // const search = formObject.search;
-
-    // API.findViaSearch(search).then((res) => {
-    //   console.log(res);
-    // });
-  }
 
   return (
     <div>

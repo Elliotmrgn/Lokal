@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Map from "../../components/Map/Map";
 import { Col, Row, Container } from "../../components/Grid";
 import SearchBar from "../../components/SearchBar/SearchBar";
@@ -10,16 +10,26 @@ import API from "../../utils/API";
 function SearchResult() {
   const [buisnessList, setBuisnessList] = useState([]);
   const [mapCoords, setMapCoords] = useState({});
-
+  let searchQuery = useParams()
+  
   useEffect(() => {
-    API.getBuisness().then((res) => {
+    console.log("SearchResult -> searchQuery", searchQuery.search)
+    API.findViaSearch(searchQuery.search).then((res) => {
+    console.log("8888888888SearchResult -> res", res)
       setBuisnessList(res.data);
-      console.log("Get Business Results", res.data);
-      setMapCoords({
-        lat: parseFloat(res.data[0].lat),
-        lng: parseFloat(res.data[0].lng),
-      });
-    });
+      if(res.data.length != 0){
+        setMapCoords({
+          lat: parseFloat(res.data[0].lat),
+          lng: parseFloat(res.data[0].lng),
+        });
+      }
+      else{
+        setMapCoords({
+          lat:35.7796,
+          lng:-78.6382,
+        });
+      }
+    })
   }, []);
 
   const onClick = (e) => {
@@ -31,10 +41,9 @@ function SearchResult() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log("REEEEEEEE", event.target.value)
     const search = event.target.value;
+    console.log("handleFormSubmit -> search", search)
      API.findViaSearch(search).then((res) => {
-       console.log(res);
        setBuisnessList(res.data)
      });
   }
@@ -45,7 +54,6 @@ function SearchResult() {
         <Col size="md-6">
           <h2 class="featured-title">FEATURED</h2>
           {buisnessList.map((business) => {
-            console.log("**", business);
             return (
               <ResultCard
                 key={business.id}
@@ -64,4 +72,6 @@ function SearchResult() {
     </Container>
   );
 }
+
+
 export default SearchResult;
