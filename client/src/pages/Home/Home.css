@@ -33,10 +33,9 @@
 #raleigh { 
     color: #B87E8A;
     font-style: italic;
+    font-size: 40px;
+    padding-bottom: 50px; 
     text-align: center;
-    padding-top: 10px;
-    padding-bottom: 20px; 
-    font-size:5vw;
 }
 
 #search {
@@ -47,23 +46,18 @@
 .welcome-container {
     padding: 100px;
     align-items: center;
-    text-align: center;
-
-    
+    text-align: center;   
 }
 
 #house {
-    /* width: 14vw;
-    height: 14vw; */
-    width: 150px;
-    height: 150px;
+    width: 30%;
+    height: 15%;
     align-items: left;
 }
 
 #explanation {
     color: #4D898C;
-    font-size: 30px;
-    /* font-size:2.35vw; */
+    font-size: 45px;
 }
 
 /* REGISTER BUSINESS CONTAINER */
@@ -82,18 +76,26 @@
     margin-bottom: 8px !important;
 }
 
-#registerbiz {
-    padding-top: 65px;
-    text-align: center;
-    font-weight: bold;
-    padding-bottom: 17px;
+.container-sign-up {
+    background-color: #F8DACC;
+    color: #354959;
+    width: 100vw;
+    /* padding: 70px; */
+    height: 10px;
+  }
+
+  #registerbiz {
+    padding-top: 20px;
     font-size: 50px;
-    /* font-size: 4vw; */
-}
+    font-weight: 200;
+    padding-bottom: 17px;
+    text-align: center;
+  }
 
 #registerbtn {
     margin: 0 auto;
     display: block;
     text-align: center;
-    font-size: 30px;
+    font-size: 15px;
+    text-transform: uppercase;
 }

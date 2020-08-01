@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
+import Button from 'react-bootstrap/Button';
 
 // components
 import Jumbotron from "./profilePgComponents/jumbotron";
@@ -34,12 +35,12 @@ function BusinessPage(props) {
     const [business, setBusiness] = useState([]);
     const [userphotos, setPhotos] = useState([]);
     const [mapCoords, setMapCoords] = useState({});
+    const [allTags, setTags] = useState([]);
 
 
-
-  useEffect(() => {
-    loadBusiness();
-  }, []);
+    useEffect(() => {
+        loadBusiness();
+    }, []);
 
 
     function loadBusiness(){
@@ -48,6 +49,7 @@ function BusinessPage(props) {
         console.log(res.data);
         setBusiness(res.data);
         setPhotos(res.data.photos);
+        setTags(res.data.tags);
         setMapCoords({
           lat: parseFloat(res.data.lat),
           lng: parseFloat(res.data.lng),
@@ -63,11 +65,12 @@ function BusinessPage(props) {
     //     .catch(err => console.log(err));
   }
 
+
   return (
     <div>
-      {business.photos > 0 ? (
+      {/* {business.photos === 0 ? (
         <Jumbotron bkphoto={business.photos} />
-      ) : (
+      ) : ( */}
         <div className="defaultJumbotron">
           <ul className="circles">
             <li></li>
@@ -82,7 +85,7 @@ function BusinessPage(props) {
             <li></li>
           </ul>
         </div>
-      )}
+      )
 
       {business.logo ? (
         <Image className="logo" src={business.logo} roundedCircle />
@@ -101,7 +104,11 @@ function BusinessPage(props) {
             </div>
 
             <div className="box tags">
-              {business.tags && <Tags tags={business.tags} />}
+              {business.tags &&  
+                business.tags.map(function(data, i) {return <Button className="ButtonText" key={i} variant="info" size="sm" >{data} </Button> }) }
+                 {/* <Tags key={i} tags={data} /> }) */}
+
+            
             </div>
 
             <div className="box tagline">
@@ -111,8 +118,8 @@ function BusinessPage(props) {
             {userphotos.length > 0 && (
               <div className="box photosdiv">
                 <AwesomeSlider>
-                  {userphotos.map((userphoto) => (
-                    <div data-src={userphoto} />
+                  {userphotos.map((userphoto, i) => (
+                    <div key={i} data-src={userphoto} />
                   ))}
                 </AwesomeSlider>
               </div>
@@ -224,8 +231,8 @@ function BusinessPage(props) {
             </div>
 
             <div className="box map">
-              <Map center={mapCoords} businesses={business} />
-              {/* { business.address && <Map addy={business.address} />} */}
+              {/* <Map center={mapCoords} businesses={business} /> */}
+              { business.address && <Map center={mapCoords} businesses={business} />}
             </div>
           </Col>
         </Row>

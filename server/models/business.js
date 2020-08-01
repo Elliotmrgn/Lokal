@@ -12,11 +12,9 @@ const businessSchema = new Schema({
   instagram: { type: String },
   facebook: { type: String },
   website: { type: String },
-  menuOrServices: { data: Buffer, contentType: String },
   masks: { type: String },
   date: { type: Date, default: Date.now },
   photos: [{ type: String }],
-  address: { type: String },
   street: { type: String },
   city: { type: String },
   state: { type: String },
@@ -40,8 +38,8 @@ const businessSchema = new Schema({
     SatOpen: { type: Number },
     SatClose: { type: Number },
     SunOpen: { type: Number },
-    SunClose: { type: Number }
-  }
+    SunClose: { type: Number },
+  },
 });
 
 const Business = mongoose.model("Business", businessSchema);
