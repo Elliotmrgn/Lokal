@@ -22,9 +22,9 @@ function Home() {
       <section className="grid-container">
 
         <section className="welcome-container">
-          <img id="house" align="center" src={House} alt="house image"></img>
+          {/* <img id="house" align="center" src={House} alt="house image"></img> */}
           <p id="explanation">
-            Now, more than ever, it's important to support our local communities. Here at Lokal you can find the hidden gems in yourneighborhood. Search for in a business by either name or category and you'll have quick access to all their information in one convenient location.
+            Now, more than ever, it's important to support our local communities. Here at Lokal you can find the hidden gems in your neighborhood. Search for in a business by either name or category and you'll have quick access to all their information in one convenient location.
           </p>
         </section>
 

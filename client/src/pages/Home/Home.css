@@ -61,7 +61,7 @@
 
 #explanation {
     color: #4D898C;
-    font-size:2.35vw;
+    font-size:10px;
 }
 
 /* REGISTER BUSINESS CONTAINER */
@@ -109,18 +109,18 @@
 
 /* EXPLANATION CONTAINER */
 .welcome-container {
-    padding: 30px;
+    padding: 100px;
     align-items: center;
     text-align: center;   
 }
 
-/* #house {
+#house {
     display: none;
-} */
+}
 
 #explanation {
     color: #4D898C;
-    font-size:5vw;
+    font-size:2vw;
 }
 
 #registerbiz {
@@ -138,5 +138,4 @@
     color: #354959;
     width: 100vw;
     /* padding: 0px; */
- 
-  }
+}
