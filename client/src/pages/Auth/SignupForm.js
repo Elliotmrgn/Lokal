@@ -4,6 +4,7 @@ import { Container, Row, Col } from "../../components/Grid";
 import { Card } from "../../components/Card";
 import { Input, FormBtn } from "../../components/Form";
 import AUTH from "../../utils/AUTH";
+import Nav from "../../components/Nav/Nav"
 
 function SignupForm() {
   const [userObject, setUserObject] = useState({
@@ -47,7 +48,10 @@ function SignupForm() {
     return <Redirect to={{ pathname: redirectTo }} />;
   }
 
-  return (
+  return ( 
+    <>
+    <Nav />
+    <main>
     <Container>
       <Row>
         <Col size="md-3"></Col>
@@ -119,6 +123,8 @@ function SignupForm() {
         <Col size="md-3"></Col>
       </Row>
     </Container>
+    </main>
+    </>
   );
 }
 
