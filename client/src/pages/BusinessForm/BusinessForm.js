@@ -342,6 +342,7 @@ function BusinessForm(props) {
                       <Input
                         onChange={handleInputChange}
                         name="businessName"
+                        class="form__field"
                         placeholder="Name of Business (Required)"
                         defaultValue={editMode ? editBusiness.businessName : ""}
                         // { ...editBusiness ? value= :  placeholder="Name of Business (Required)" }
