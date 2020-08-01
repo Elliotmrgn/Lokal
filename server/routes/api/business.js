@@ -8,7 +8,9 @@ router
   // .get(businessController.findByEmail);
 
 
-router.route("/:id").get(businessController.findById);
+router.route("/:id")
+  .get(businessController.findById)
+  .put(businessController.update);
 
 router
   .route("/schedule")

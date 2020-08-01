@@ -45,7 +45,7 @@ p {
 }
 
 .listName {
-  font-size: 3vw;
+  font-size: 2rem;
   font-weight: 300;
   letter-spacing: 1px;
   color: #4D898C;
@@ -56,17 +56,16 @@ p {
   font-style: italic;
 }
 
-.button {
+.textRight .button {
   color: white;
   background-color: #AED1CD!important;
   border-color: #AED1CD !important;
   border-radius: 32px !important;
 }
 
-.mainContainer {
-  margin: 0 auto;
+/* .mainContainer {
   width: 90%
-}
+} */
 
 .titleContainer {
   margin: 0 auto !important;
@@ -74,7 +73,7 @@ p {
   text-align: center;
 }
 .title{
-  margin-bottom: 10px;
+  margin: 30px 0px;
 }
 
 .tagPicker{
@@ -87,6 +86,8 @@ p {
   background-color: #AED1CD;
   border: 1px solid transparent;
   border-radius: 20px;
+  width: 52%;
+    margin: 0 auto;
 }
 
 .textRight .btn {

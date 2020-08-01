@@ -36,6 +36,19 @@ module.exports = {
       })
       .catch((err) => res.status(422).json(err));
   },
+
+  update: function (req, res) {
+    let updateme = req.params.id
+    db.Business.updateOne({ _id: updateme }, req.body  )
+      .then((dbBusiness) => {
+        res.json(dbBusiness);
+        console.log( "Oooooooooooooooooo")
+        console.log(dbBusiness);
+      })
+      .catch((err) => res.status(422).json(err));
+  },
+
+
   findAll: function (req, res) {
     const email = req.query.email;
     let query = {};

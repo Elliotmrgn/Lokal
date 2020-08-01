@@ -40,8 +40,8 @@ function Home() {
             <br></br>
           </row>
         </section>
-        {/* 
-        <section class="how-it-works-container">
+        
+        {/* <section class="how-it-works-container">
           <row size="size md-12">
             <h2 class="subheader">HOW IT WORKS </h2>
             <ul class="list">
@@ -64,7 +64,8 @@ function Home() {
           </row>
         </section> */}
 
-        <section className="container-sign-up">
+        <section >
+          <div className="container-sign-up"></div>
           <row size="size md-12">
             <h2 id="registerbiz">REGISTER YOUR BUSINESS </h2>
             <button

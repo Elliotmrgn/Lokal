@@ -4,6 +4,9 @@ export default {
   getBuisness: function () {
     return axios.get("/api/business");
   },
+  updateBusiness: function (updateme, data) {
+    return axios.put("/api/business/" + updateme, data );
+  },
   getUserBuisnesses: function(email){
     return  axios.get("/api/business/?email=" + email );
   },
@@ -37,4 +40,5 @@ export default {
   findViaTags: function (tags) {
     return axios.get("/api/business/viaTags/" + tags);
   },
+ 
 };
