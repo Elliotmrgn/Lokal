@@ -18,7 +18,7 @@ function Userpage(props) {
     API.getUser().then((res) => {
       setuser(res.data);
       console.log("here " + res.data.email);
-      // search all business and bring back matching email
+
       API.getUserBuisnesses(res.data.email)
         .then((res) => {
           console.log(res.data);
