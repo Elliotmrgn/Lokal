@@ -11,8 +11,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-import { useHistory } from 'react-router-dom';
-
+import { useHistory } from "react-router-dom";
 
 function BusinessForm(props) {
   let history = useHistory();
@@ -22,21 +21,19 @@ function BusinessForm(props) {
   const [editBusiness, setEditBusiness] = useState([]);
 
   useEffect(() => {
-    if(editMode) {
+    if (editMode) {
       loadBusiness();
     }
   }, []);
 
-  function loadBusiness(){
+  function loadBusiness() {
     API.getProfile(editMode)
-        .then((res) => {
+      .then((res) => {
         console.log(res.data);
         setEditBusiness(res.data);
       })
       .catch((err) => console.log(err));
-    }
-
-
+  }
 
   const [business, setBusiness] = useState([]);
   const [formObject, setFormObject] = useState([]);
@@ -65,121 +62,119 @@ function BusinessForm(props) {
   }
 
   function handleFormSubmit(event) {
-    if(editMode) {
+    if (editMode) {
       event.preventDefault();
 
-    API.addressConvert(
-      `${formObject.street}, ${formObject.city}, ${formObject.state}`
-    ).then((res) => {
-      console.log("LAT, LONGGG", res.data.results);
-      console.log("schedule fix", formObject.MonOpen);
-      console.log("DOES THIS PASS DOWN", formObject);
-      console.log("formObject.schedule:", formObject.schedule);
+      API.addressConvert(
+        `${formObject.street}, ${formObject.city}, ${formObject.state}`
+      ).then((res) => {
+        console.log("LAT, LONGGG", res.data.results);
+        console.log("schedule fix", formObject.MonOpen);
+        console.log("DOES THIS PASS DOWN", formObject);
+        console.log("formObject.schedule:", formObject.schedule);
 
-      API.updateBusiness(editMode, {
-        owner: formObject.owner,
-        businessName: formObject.businessName,
-        phoneNumber: formObject.phoneNumber,
-        email: formObject.email,
-        about: formObject.about,
-        instagram: formObject.instagram,
-        facebook: formObject.facebook,
-        website: formObject.website,
-        schedule: {
-          MonOpen: formObject.MonOpen,
-          MonClose: formObject.MonClose,
-          TuesOpen: formObject.TuesOpen,
-          TuesClose: formObject.TuesClose,
-          WedOpen: formObject.WedOpen,
-          WedClose: formObject.WedClose,
-          ThursOpen: formObject.ThursClose,
-          ThursClose: formObject.ThursClose,
-          FriOpen: formObject.FriOpen,
-          FriClose: formObject.FriClose,
-          SatOpen: formObject.SatOpen,
-          SatClose: formObject.SatClose,
-          SunOpen: formObject.SunOpen,
-          SunClose: formObject.SunClose,
-        },
-        tagline: formObject.tagline,
-        masks: formObject.masks,
-        photos: images,
-        street: formObject.street,
-        city: formObject.city,
-        state: formObject.state,
-        zip: formObject.zip,
-        lat: res.data.results[0].geometry.location.lat,
-        lng: res.data.results[0].geometry.location.lng,
-        logo: logo,
-        menuOrServices: menuOrServices,
-        tags: tags,
-      })
-        .then((res) => {
-          console.log("res!!!!:", res);
-          formEl.current.reset();
-          history.push('/profilepage/' + editMode)
+        API.updateBusiness(editMode, {
+          owner: formObject.owner,
+          businessName: formObject.businessName,
+          phoneNumber: formObject.phoneNumber,
+          email: formObject.email,
+          about: formObject.about,
+          instagram: formObject.instagram,
+          facebook: formObject.facebook,
+          website: formObject.website,
+          schedule: {
+            MonOpen: formObject.MonOpen,
+            MonClose: formObject.MonClose,
+            TuesOpen: formObject.TuesOpen,
+            TuesClose: formObject.TuesClose,
+            WedOpen: formObject.WedOpen,
+            WedClose: formObject.WedClose,
+            ThursOpen: formObject.ThursClose,
+            ThursClose: formObject.ThursClose,
+            FriOpen: formObject.FriOpen,
+            FriClose: formObject.FriClose,
+            SatOpen: formObject.SatOpen,
+            SatClose: formObject.SatClose,
+            SunOpen: formObject.SunOpen,
+            SunClose: formObject.SunClose,
+          },
+          tagline: formObject.tagline,
+          masks: formObject.masks,
+          photos: images,
+          street: formObject.street,
+          city: formObject.city,
+          state: formObject.state,
+          zip: formObject.zip,
+          lat: res.data.results[0].geometry.location.lat,
+          lng: res.data.results[0].geometry.location.lng,
+          logo: logo,
+          menuOrServices: menuOrServices,
+          tags: tags,
         })
-        .catch((err) => console.log("aftersave" + err));
-    });
-  
-
+          .then((res) => {
+            console.log("res!!!!:", res);
+            formEl.current.reset();
+            history.push("/profilepage/" + editMode);
+          })
+          .catch((err) => console.log("aftersave" + err));
+      });
     } else {
-    event.preventDefault();
+      event.preventDefault();
 
-    API.addressConvert(
-      `${formObject.street}, ${formObject.city}, ${formObject.state}`
-    ).then((res) => {
-      console.log("LAT, LONGGG", res.data.results);
-      console.log("schedule fix", formObject.MonOpen);
-      console.log("DOES THIS PASS DOWN", formObject);
-      console.log("formObject.schedule:", formObject.schedule);
+      API.addressConvert(
+        `${formObject.street}, ${formObject.city}, ${formObject.state}`
+      ).then((res) => {
+        console.log("LAT, LONGGG", res.data.results);
+        console.log("schedule fix", formObject.MonOpen);
+        console.log("DOES THIS PASS DOWN", formObject);
+        console.log("formObject.schedule:", formObject.schedule);
 
-      API.saveBusiness({
-        owner: formObject.owner,
-        businessName: formObject.businessName,
-        phoneNumber: formObject.phoneNumber,
-        email: formObject.email,
-        about: formObject.about,
-        instagram: formObject.instagram,
-        facebook: formObject.facebook,
-        website: formObject.website,
-        schedule: {
-          MonOpen: formObject.MonOpen,
-          MonClose: formObject.MonClose,
-          TuesOpen: formObject.TuesOpen,
-          TuesClose: formObject.TuesClose,
-          WedOpen: formObject.WedOpen,
-          WedClose: formObject.WedClose,
-          ThursOpen: formObject.ThursClose,
-          ThursClose: formObject.ThursClose,
-          FriOpen: formObject.FriOpen,
-          FriClose: formObject.FriClose,
-          SatOpen: formObject.SatOpen,
-          SatClose: formObject.SatClose,
-          SunOpen: formObject.SunOpen,
-          SunClose: formObject.SunClose,
-        },
-        tagline: formObject.tagline,
-        masks: formObject.masks,
-        photos: images,
-        street: formObject.street,
-        city: formObject.city,
-        state: formObject.state,
-        zip: formObject.zip,
-        lat: res.data.results[0].geometry.location.lat,
-        lng: res.data.results[0].geometry.location.lng,
-        logo: logo,
-        menuOrServices: menuOrServices,
-        tags: tags,
-      })
-        .then((res) => {
-          console.log("res!!!!:", res);
-          formEl.current.reset();
+        API.saveBusiness({
+          owner: formObject.owner,
+          businessName: formObject.businessName,
+          phoneNumber: formObject.phoneNumber,
+          email: formObject.email,
+          about: formObject.about,
+          instagram: formObject.instagram,
+          facebook: formObject.facebook,
+          website: formObject.website,
+          schedule: {
+            MonOpen: formObject.MonOpen,
+            MonClose: formObject.MonClose,
+            TuesOpen: formObject.TuesOpen,
+            TuesClose: formObject.TuesClose,
+            WedOpen: formObject.WedOpen,
+            WedClose: formObject.WedClose,
+            ThursOpen: formObject.ThursClose,
+            ThursClose: formObject.ThursClose,
+            FriOpen: formObject.FriOpen,
+            FriClose: formObject.FriClose,
+            SatOpen: formObject.SatOpen,
+            SatClose: formObject.SatClose,
+            SunOpen: formObject.SunOpen,
+            SunClose: formObject.SunClose,
+          },
+          tagline: formObject.tagline,
+          masks: formObject.masks,
+          photos: images,
+          street: formObject.street,
+          city: formObject.city,
+          state: formObject.state,
+          zip: formObject.zip,
+          lat: res.data.results[0].geometry.location.lat,
+          lng: res.data.results[0].geometry.location.lng,
+          logo: logo,
+          menuOrServices: menuOrServices,
+          tags: tags,
         })
-        .catch((err) => console.log("aftersave" + err));
-    });
+          .then((res) => {
+            console.log("res!!!!:", res);
+            formEl.current.reset();
+          })
+          .catch((err) => console.log("aftersave" + err));
+      });
+    }
   }
-}
 
   function showUploadWidget(name, event) {
     event.preventDefault();
@@ -373,7 +368,6 @@ function BusinessForm(props) {
                         placeholder="Phone Number (Required)"
                         type="number"
                         defaultValue={editMode ? editBusiness.phoneNumber : ""}
-
                       />
                       <Input
                         onChange={handleInputChange}
@@ -402,7 +396,6 @@ function BusinessForm(props) {
                         name="facebook"
                         placeholder="Facebook URL"
                         defaultValue={editMode ? editBusiness.facebook : ""}
-
                       />
                       <Input
                         onChange={handleInputChange}
@@ -429,7 +422,6 @@ function BusinessForm(props) {
                             name="MonOpen"
                             placeholder="Open"
                             defaultValue={editMode ? editBusiness.MonOpen : ""}
-
                           />
                         </Col>
                         <Col size="size col-md-2">
@@ -490,7 +482,9 @@ function BusinessForm(props) {
                             onChange={handleInputChange}
                             name="TuesClose"
                             placeholder="Close"
-                            defaultValue={editMode ? editBusiness.TuesClose : ""}
+                            defaultValue={
+                              editMode ? editBusiness.TuesClose : ""
+                            }
                           />
                         </Col>
                         <Col size="size col-md-2">
@@ -532,7 +526,6 @@ function BusinessForm(props) {
                             placeholder="Close"
                             defaultValue={editMode ? editBusiness.WedClose : ""}
                           />
-                          
                         </Col>
                         <Col size="size col-md-2">
                           <Form.Group controlId="exampleForm.ControlSelect1">
@@ -555,7 +548,9 @@ function BusinessForm(props) {
                             onChange={handleInputChange}
                             name="ThursOpen"
                             placeholder="Open"
-                            defaultValue={editMode ? editBusiness.ThursOpen : ""}
+                            defaultValue={
+                              editMode ? editBusiness.ThursOpen : ""
+                            }
                           />
                         </Col>
                         <Col size="size col-md-2">
@@ -572,7 +567,9 @@ function BusinessForm(props) {
                             onChange={handleInputChange}
                             name="ThursClose"
                             placeholder="Close"
-                            defaultValue={editMode ? editBusiness.ThursClose : ""}
+                            defaultValue={
+                              editMode ? editBusiness.ThursClose : ""
+                            }
                           />
                         </Col>
                         <Col size="size col-md-2">
@@ -779,7 +776,7 @@ function BusinessForm(props) {
               </div>
 
               <FormBtn
-              className="form-button"
+                className="form-button"
                 // disabled={
                 //   !(
                 //     formObject.businessName &&
