@@ -15,3 +15,85 @@ li {
 p {
   font-size: inherit;
 }
+
+.carousel-caption {
+  bottom: 25%;
+  font-size: 9vw;
+  letter-spacing: 8px;
+  font-family: 'Livvic', sans-serif;
+  font-weight: 900;
+  line-height: 7vw;
+  text-transform: uppercase;
+  left: 10%;
+  right: 10%
+}
+
+.largeText {
+  font-size: 6vw;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.xlText{
+  font-size: 5vw;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.textRight{
+  font-family: 'Livvic', sans-serif;
+}
+
+.listName {
+  font-size: 3vw;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #4D898C;
+}
+
+.listTagline{
+  color: grey;
+  font-style: italic;
+}
+
+.button {
+  color: white;
+  background-color: #AED1CD!important;
+  border-color: #AED1CD !important;
+  border-radius: 32px !important;
+}
+
+.mainContainer {
+  margin: 0 auto;
+  width: 90%
+}
+
+.titleContainer {
+  margin: 0 auto !important;
+  width: 60%;
+  text-align: center;
+}
+.title{
+  margin-bottom: 10px;
+}
+
+.tagPicker{
+  margin: 0 auto;
+  width: 30%;
+  margin-bottom: 30px;
+}
+
+.tagDrops{
+  background-color: #AED1CD;
+  border: 1px solid transparent;
+  border-radius: 20px;
+}
+
+.textRight .btn {
+  background-color: #AED1CD!important;
+  border-color: #AED1CD !important;
+  border-radius: 32px !important;
+  min-width: 100px !important;
+  margin-bottom: 8px !important;
+  margin-right: 8px;
+}

@@ -8,13 +8,23 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import ListGroup from "react-bootstrap/ListGroup";
+
+//icons
+import { IoIosCafe } from "react-icons/io";
+import { AiFillShop } from "react-icons/ai";
+import { BsBook } from "react-icons/bs";
+import { RiScissors2Line } from "react-icons/ri";
+import { FaWrench, FaTheaterMasks } from "react-icons/fa";
+import { GiHanger, GiHamburger, GiWeightLiftingUp, GiKnifeFork, GiLargePaintBrush } from "react-icons/gi";
+
+
 import tags from "../../utils/Tags";
 
 function BusinessList() {
   const [business, setBusiness] = useState([]);
   const [renderedBusiness, setRenderedBusiness] = useState([]);
   const [formObject, setFormObject] = useState([]);
-
   useEffect(() => {
     loadBusiness();
     setFormObject({ Tag: "" });
@@ -57,71 +67,120 @@ function BusinessList() {
       </option>
     );
   });
+  
   // Figure out way to set conditional for business render
 
-  const businessList = business.map((business) => {
-    const businessesTags = business.tags;
-    if (businessesTags.includes(formObject) === true) {
-      return (
-        <div className="card" key={business._id}>
-          <img
-            className="card-img-top"
-            src={business.logo}
-            alt="Card image cap"
-          />
-          <div className="card-body">
-            <h1 className="card-title">{business.businessName}</h1>
-            <h5 className="card-text">{business.tagline}</h5>
-            <div className="text-center">
-              <a
-                href={"/profilepage/" + business._id}
-                className="btn btn-primary"
-              >
-                Visit Page
-              </a>
-            </div>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div className="card" key={business._id}>
-          <img
-            className="card-img-top"
-            src={business.logo}
-            alt="Card image cap"
-          />
-          <div className="card-body">
-            <h1 className="card-title">{business.businessName}</h1>
-            <h5 className="card-text">{business.tagline}</h5>
-            <div className="text-center">
-              <a
-                href={"/profilepage/" + business._id}
-                className="btn btn-primary"
-              >
-                Visit Page
-              </a>
-            </div>
-          </div>
-        </div>
-      );
-    }
-  });
-
   return (
-    <Container fluid>
-      <Row>
+    <div >
+      <div className="titleContainer">
+        <Row>
+        <span className="title">Discover lokal businesses</span>
+        </Row>
+      <Row >
         <Col size="size md-2">
-          <Form.Group controlId="exampleForm.ControlSelect1">
-            <Form.Control as="select" onChange={handleInputChange}>
-              <option value="">Pick an option</option>
+          <Form.Group className="tagPicker" controlId="exampleForm.ControlSelect1">
+            <Form.Control className="tagDrops" as="select" onChange={handleInputChange}>
+              <option className="options" value="">Pick an option</option>
               {tagList}
             </Form.Control>
           </Form.Group>
         </Col>
-      </Row>
-      <Row>{businessList}</Row>
-    </Container>
+      </Row> 
+      </div>
+      {/* <Row>{businessList}</Row> */}
+
+      <div className="mainContainer">
+        <Row>
+             { formObject.Tag === "Cafe" && <Col> <img className="coverImg" src="https://i.ibb.co/h1zQP3V/cafe.jpg" alt="cafe"></img> 
+              <div class="carousel-caption">
+              <p>CAFE</p> 
+              <IoIosCafe /> 
+              </div> </Col> } 
+
+              { formObject.Tag === "Boutique" && <Col> <img className="coverImg" src="https://i.ibb.co/Vjqt999/boutique.jpg" alt="Boutique"></img> 
+              <div class="carousel-caption" >
+              <p className="largeText">BOUTIQUE </p>
+              <p className="largeText"><AiFillShop /> </p> 
+              </div> </Col> } 
+
+              { formObject.Tag === "Books and Music" && <Col> <img className="coverImg" src="https://i.ibb.co/fC2zc0q/books.jpg" alt="Books"></img> 
+              <div class="carousel-caption" >
+              <p >Books
+              <BsBook /> </p> 
+              </div> </Col> } 
+
+              { formObject.Tag === "Clothing" && <Col> <img className="coverImg" src="https://i.ibb.co/Jcd59KK/clothing.jpg" alt="Clothing"></img> 
+              <div class="carousel-caption" >
+              <p className="largeText">Clothing</p>
+              <p className="largeText"><GiHanger /> </p> 
+              </div> </Col> } 
+
+              { formObject.Tag === "Entertainment" && <Col> <img className="coverImg" src="https://i.ibb.co/qWR9Z7Y/entertainment.jpg" alt="Entertainment"></img> 
+              <div class="carousel-caption" >
+              <p >Fun</p>
+              <FaTheaterMasks /> 
+              </div> </Col> } 
+
+              { formObject.Tag === "Drive Thru" && <Col> <img className="coverImg" src="https://i.ibb.co/GdZyp87/fastfood.jpg" alt="Drive Thru"></img> 
+              <div class="carousel-caption" >
+              <p className="largeText">Drive Thru</p>
+              <p><GiHamburger /> </p> 
+              </div> </Col> } 
+
+              
+              { formObject.Tag === "Gym" && <Col> <img className="coverImg" src="https://i.ibb.co/VDVBBDL/gym.jpg" alt="Gym"></img> 
+              <div class="carousel-caption" >
+              <p >Gym</p>
+              <p><GiWeightLiftingUp /> </p> 
+              </div> </Col> } 
+
+              { formObject.Tag === "Hobbies and Crafts" && <Col> <img className="coverImg" src="https://i.ibb.co/MsSsXmP/hobbies.jpg" alt="Hobbies"></img> 
+              <div class="carousel-caption" >
+              <p className="largeText" >Hobbies & Crafts</p>
+              <p className="largeText" > <GiLargePaintBrush /> </p> 
+              </div> </Col> } 
+
+              { formObject.Tag === "Mechanic" && <Col> <img className="coverImg" src="https://i.ibb.co/zJgPHTj/mechanic.jpg" alt="Mechanic"></img> 
+              <div class="carousel-caption" >
+              <p className="largeText" >Mechanic
+              <FaWrench /> </p> 
+              </div> </Col> } 
+
+              { formObject.Tag === "Resteraunt" && <Col> <img className="coverImg" src="https://i.ibb.co/FkQLmMV/resturant.jpg" alt="Resteraunt"></img> 
+              <div class="carousel-caption" >
+              <p className="xlText" >Resteraunt
+              <GiKnifeFork /> </p> 
+              </div> </Col> } 
+
+              { formObject.Tag === "Salon" && <Col> <img className="coverImg" src="https://i.ibb.co/DD9q56n/salon.jpg" alt="Salon"></img> 
+              <div class="carousel-caption" >
+              <p >Salon
+              <RiScissors2Line /> </p> 
+              </div> </Col> } 
+
+
+            <Col>
+
+            <ListGroup variant="flush">
+            { business && business.map((business, i) => 
+             {return  <ListGroup.Item key={i}>
+                  <div className="textRight" >
+                    <h1 className="listName">{business.businessName}</h1>
+                    <h5 className="listTagline" >{business.tagline}</h5>
+                  </div>
+                  <div className="textRight" >
+                    <Button href={"/profilepage/" + business._id}  variant="info" size="sm" > Visit Page</Button>
+                  </div>
+                    </ListGroup.Item> } )}
+            </ListGroup>
+
+             </Col> 
+             </Row>
+         </div>
+
+
+    </div>
   );
 }
+
 export default BusinessList;

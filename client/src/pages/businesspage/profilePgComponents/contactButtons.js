@@ -7,8 +7,8 @@ function contactPF(props) {
 
     return (
         <div>
-            <Button className="ButtonText" variant="info" size="sm" rounded> {props.email}</Button>
-            <Button className="ButtonText" variant="info" size="sm" rounded> {props.phone}</Button>
+            <Button className="ButtonText" variant="info" size="sm" > {props.email}</Button>
+            <Button className="ButtonText" variant="info" size="sm" > {props.phone}</Button>
 
         </div>
     )

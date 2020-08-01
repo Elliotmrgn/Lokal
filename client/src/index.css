@@ -8,6 +8,7 @@ body {
 
 main {
   min-height: calc(100vh - 166px);
+  font-family: 'Livvic', sans-serif;
 }
 
 .grid-container {

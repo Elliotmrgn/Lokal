@@ -68,9 +68,9 @@ function BusinessPage(props) {
 
   return (
     <div>
-      {business.photos > 0 ? (
+      {/* {business.photos === 0 ? (
         <Jumbotron bkphoto={business.photos} />
-      ) : (
+      ) : ( */}
         <div className="defaultJumbotron">
           <ul className="circles">
             <li></li>
@@ -85,7 +85,7 @@ function BusinessPage(props) {
             <li></li>
           </ul>
         </div>
-      )}
+      )
 
       {business.logo ? (
         <Image className="logo" src={business.logo} roundedCircle />
@@ -118,8 +118,8 @@ function BusinessPage(props) {
             {userphotos.length > 0 && (
               <div className="box photosdiv">
                 <AwesomeSlider>
-                  {userphotos.map((userphoto) => (
-                    <div data-src={userphoto} />
+                  {userphotos.map((userphoto, i) => (
+                    <div key={i} data-src={userphoto} />
                   ))}
                 </AwesomeSlider>
               </div>
@@ -231,8 +231,8 @@ function BusinessPage(props) {
             </div>
 
             <div className="box map">
-              <Map center={mapCoords} businesses={business} />
-              {/* { business.address && <Map addy={business.address} />} */}
+              {/* <Map center={mapCoords} businesses={business} /> */}
+              { business.address && <Map center={mapCoords} businesses={business} />}
             </div>
           </Col>
         </Row>
