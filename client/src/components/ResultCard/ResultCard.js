@@ -20,9 +20,9 @@ export const ResultCard = (props) => (
         </h2>
         <span className="card-author subtle">{props.data.tagline}</span>
         <span className="card-description subtle">{props.data.about}</span>
+        <button>Visit Page</button>
       </div>
     </div>
     <div className="card-shadow"></div>
   </div>
 );
-

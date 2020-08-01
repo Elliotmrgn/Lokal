@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import LoginForm from "./pages/Auth/LoginForm";
 import SignupForm from "./pages/Auth/SignupForm";
-import Nav from "./components/Nav";
+import Navbar from "./components/Nav";
 import Footer from "./components/Footer";
 import NoMatch from "./pages/NoMatch";
 import ProfilePage from "./pages/businesspage/businesspage";
@@ -64,7 +64,7 @@ function App() {
     <div className="App">
       {loggedIn && (
         <div>
-          <Nav user={user} logout={logout} />
+          <Navbar user={user} logout={logout} />
           {/* <div className="main-view"> */}
           <Switch>
             <Route exact path="/" component={Home} />
@@ -75,18 +75,29 @@ function App() {
             <Route exact path="/profilepage/:id" component={ProfilePage} />
             <Route exact path="/user/:id" component={UserPage} />
             <Route exact path="/businessList" component={BusinessList} />
-
             <Route component={NoMatch} />
           </Switch>
           {/* </div> */}
         </div>
       )}
       {!loggedIn && (
-        <div className="auth-wrapper" >
-          <Route exact path="/" component={() => <LoginForm login={login} />} />
-
-          <Route exact path="/signup" component={SignupForm} />
-          <Route exact path="/profilepage" component={ProfilePage} />
+        <div className="auth-wrapper">
+          <Navbar user={user} logout={logout} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/login"
+              component={() => <LoginForm login={login} />}
+            />
+            <Route exact path="/businessForm" component={Home} />
+            <Route exact path="/results/:search" component={SearchResult} />
+            <Route exact path="/profilepage/:id" component={ProfilePage} />
+            <Route exact path="/businessList" component={BusinessList} />
+            <Route exact path="/signup" component={SignupForm} />
+            <Route exact path="/profilepage" component={ProfilePage} />
+            <Route exact path="/contact" component={ContactPage} />
+          </Switch>
         </div>
       )}
       <div>
