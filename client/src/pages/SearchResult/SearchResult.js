@@ -49,6 +49,7 @@ function SearchResult() {
   }
   
   return (
+    <main>
     <Container fluid>
       <Row>
         <Col size="md-6">
@@ -70,6 +71,7 @@ function SearchResult() {
         </Col>
       </Row>
     </Container>
+    </main>
   );
 }
 

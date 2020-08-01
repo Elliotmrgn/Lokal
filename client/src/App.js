@@ -82,7 +82,7 @@ function App() {
         </div>
       )}
       {!loggedIn && (
-        <div className="auth-wrapper" style={{ paddingTop: 40 }}>
+        <div className="auth-wrapper" >
           <Route exact path="/" component={() => <LoginForm login={login} />} />
 
           <Route exact path="/signup" component={SignupForm} />

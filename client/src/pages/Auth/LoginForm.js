@@ -3,6 +3,7 @@ import { Redirect, Link } from "react-router-dom";
 import { Container, Row, Col } from "../../components/Grid";
 import { Card } from "../../components/Card";
 import { Input, FormBtn } from "../../components/Form";
+import Nav from "../../components/Nav/Nav"
 
 function LoginForm({ login }) {
   const [userObject, setUserObject] = useState({
@@ -27,8 +28,11 @@ function LoginForm({ login }) {
   if (redirectTo) {
     return <Redirect to={{ pathname: redirectTo }} />;
   } else {
-    return (
+    return ( 
+      < >
+      <Nav />
       <main>
+       
        <Container>
         <Row>
           <Col size="md-3"></Col>
@@ -42,7 +46,7 @@ function LoginForm({ login }) {
                   value={userObject.username}
                   onChange={handleChange}
                   placeholder="username"
-                  class="form__field"
+                  className="form__field"
                 />
                 {/* <label class="form__label" htmlFor="password">Password: </label> */}
                 <Input
@@ -51,7 +55,7 @@ function LoginForm({ login }) {
                   value={userObject.password}
                   onChange={handleChange}
                   placeholder="password"
-                  class="form__field"
+                  className="form__field"
                 />
                 <Link to="/signup">Register</Link>
                 <FormBtn onClick={handleSubmit}>LOGIN</FormBtn>
@@ -62,6 +66,7 @@ function LoginForm({ login }) {
         </Row>
       </Container>
       </main>
+      </ >
     );
   }
 }

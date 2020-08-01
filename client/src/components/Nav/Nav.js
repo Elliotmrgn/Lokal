@@ -7,7 +7,7 @@ import "./Nav.css";
 const Nav = (props) => {
   let greeting;
 
-  if (props.user === null) {
+  if (props.user === null || props.user === undefined ) {
     greeting = <p>Hello guest</p>;
   } else if (props.user.firstName) {
     greeting = (
@@ -33,6 +33,7 @@ const Nav = (props) => {
           </Link>
         </Col>
         <Col size="md-6 sm-6">
+          { props.user != null || props.user != undefined  ?
           <div className="float-right">
             {/* <NavSearchBar />   */}
             <Link to="/Contact" id="contact" className="navbar-contact px-4">
@@ -49,7 +50,7 @@ const Nav = (props) => {
             <Link to="#" className="logout" onClick={props.logout}>
               Logout
             </Link>
-          </div>
+          </div> : null }
         </Col>
       </nav>
     </header>
