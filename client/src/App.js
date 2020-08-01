@@ -11,8 +11,8 @@ import AUTH from "./utils/AUTH";
 import BusinessForm from "./pages/BusinessForm";
 import ContactPage from "./pages/ContactPage";
 import Home from "./pages/Home";
-import SearchResult from "./pages/SearchResult"
-import UserPage from "./pages/UserPage/userpage"
+import SearchResult from "./pages/SearchResult";
+import UserPage from "./pages/UserPage/userpage";
 import BusinessList from "./pages/BusinessList";
 
 function App() {
@@ -65,28 +65,26 @@ function App() {
       {loggedIn && (
         <div>
           <Nav user={user} logout={logout} />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/businessForm" component={BusinessForm} />
-              <Route exact path="/contact" component={ContactPage} />
-              <Route exact path="/results" component={SearchResult} />
-              <Route exact path="/profilepage/:id" component={ProfilePage} />
-              <Route exact path="/user/:id" component={UserPage} />
-              <Route exact path="/businessList" component={BusinessList} />
+          {/* <div className="main-view"> */}
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/businessForm" component={BusinessForm} />
+            <Route exact path="/businessForm/:id" component={BusinessForm} />
+            <Route exact path="/contact" component={ContactPage} />
+            <Route exact path="/results/:search" component={SearchResult} />
+            <Route exact path="/profilepage/:id" component={ProfilePage} />
+            <Route exact path="/user/:id" component={UserPage} />
+            <Route exact path="/businessList" component={BusinessList} />
 
-              <Route component={NoMatch} />
-            </Switch>
-
+            <Route component={NoMatch} />
+          </Switch>
+          {/* </div> */}
         </div>
       )}
       {!loggedIn && (
         <div className="auth-wrapper" style={{ paddingTop: 40 }}>
           <Route exact path="/" component={() => <LoginForm login={login} />} />
-          <Route
-            exact
-            path="/"
-            component={() => <LoginForm user={login} />}
-          />
+
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/profilepage" component={ProfilePage} />
         </div>
