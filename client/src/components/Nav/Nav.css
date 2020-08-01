@@ -8,9 +8,13 @@
 }
 
 .navbar  {
-  border-bottom: 5px solid #5B9098;
+  border-bottom: 6px solid #B87E8A;
 }
 
 #contact {
+  color: #5B9098;
+}
+
+#register {
   color: #5B9098;
 }

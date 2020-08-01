@@ -2,115 +2,243 @@ import React, { useState, useEffect } from "react";
 import "./profilePgStyles.css";
 import API from "../../utils/API";
 
-// Bootstrap 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
+// Bootstrap
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
+import Button from 'react-bootstrap/Button';
 
-
-
-// components 
+// components
 import Jumbotron from "./profilePgComponents/jumbotron";
 import About from "./profilePgComponents/about";
 import ContactButtons from "./profilePgComponents/contactButtons";
 import Header from "./profilePgComponents/header";
 import Hours from "./profilePgComponents/hours";
-import Insta from "./profilePgComponents/instaAPI";
-import Map from "./profilePgComponents/map";
 import Owner from "./profilePgComponents/ownerabout";
 import InstaIcon from "./profilePgComponents/instaicon";
 import Tagline from "./profilePgComponents/tagline";
 import Fb from "./profilePgComponents/facebook";
+import Tags from "./profilePgComponents/tags";
+import Map from "../../components/Map/Map";
 
+//carosel
+import AwesomeSlider from "react-awesome-slider";
+import "react-awesome-slider/dist/styles.css";
 
-function BusinessPage() {
-    const testerbusiness = "5f164573676a1ebfde5e0982";
+function BusinessPage(props) {
+
+    const testerbusinessfull = "5f203b74c2b1714429ad4a28";
+    const testerbusinessmin = "5f2023bd6804c4437ae34db1";
+    const toLoad= props.match.params.id
 
     const [business, setBusiness] = useState([]);
+    const [userphotos, setPhotos] = useState([]);
+    const [mapCoords, setMapCoords] = useState({});
+    const [allTags, setTags] = useState([]);
+
 
     useEffect(() => {
         loadBusiness();
-      }, []);
+    }, []);
+
 
     function loadBusiness(){
-    API.getBusiness(testerbusiness)
+    API.getProfile(toLoad)
         .then((res) => {
         console.log(res.data);
         setBusiness(res.data);
-        })
-        .catch(err => console.log(err));
+        setPhotos(res.data.photos);
+        setTags(res.data.tags);
+        setMapCoords({
+          lat: parseFloat(res.data.lat),
+          lng: parseFloat(res.data.lng),
+        });
+      })
+      .catch((err) => console.log(err));
 
-    }
-
-
-    return (
-        <div>
-            { business.photos > 0 ? <Jumbotron bkphoto={business.photos} /> : <div className="defaultJumbotron"><ul class="circles">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    </ul></div> } 
-             <Image  className="logo" src="https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/43398007_313377752780140_2610444250214563840_n.png?_nc_cat=107&_nc_sid=09cbfe&_nc_ohc=AwWT7rdFa2QAX_j5IRF&_nc_ht=scontent-iad3-1.xx&oh=bd8fd28ee4516f932387414e952af333&oe=5F3F458C" roundedCircle />
+    //     API.getProfileSchedule(testerbusiness)
+    //     .then((res) => {
+    //     console.log("hours" + res.data);
+    //     setBusiness(res.data);
+    //     })
+    //     .catch(err => console.log(err));
+  }
 
 
-            <Container >
-                <Row>
-                    <Col xs={7} className="mainSection"> 
-                        <div className="box header">
-                            { business.businessName ? <Header name={business.businessName} website={business.website} /> : null } 
-                        </div>
-
-                        <div className="box tagline">
-                            { business.tagline ? <Tagline shortTag={business.tagline}/> : null}
-                        </div>
-
-                        <div className="box about">
-                            { business.about ? <About name={business.businessName} about={business.about} /> : null }
-                        </div>
-                        
-                        <div className="box insta">
-                            { business.instagram ? <Insta insta={business.instagram} fb={business.facebook} /> : null }
-                        </div>
-
-                        <div className="box owner">
-                            { business.owner ? <Owner owner={business.owner} /> : null }
-
-                        </div>
-                    </Col>
-
-                    <Col className="aside">
-                        <div className="box socialMedia">
-                            { business.instagram ? <InstaIcon insta={business.instagram} /> : null }
-                            { business.instagram && <Fb  fb={business.facebook} />}
-                        </div>
-                        
-                        <div className="box contact">
-                          { business.email ? <ContactButtons email={business.email} /> : null }
-
-                        </div>
-
-                        <div className="box map">
-                            <Map />
-                            { business.address && <Map addy={business.address} />}
-
-                        </div>
-
-                        <div className="box hours">
-                            <Hours />
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+  return (
+    <div>
+      {/* {business.photos === 0 ? (
+        <Jumbotron bkphoto={business.photos} />
+      ) : ( */}
+        <div className="defaultJumbotron">
+          <ul className="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
         </div>
-    )
+      )
+
+      {business.logo ? (
+        <Image className="logo" src={business.logo} roundedCircle />
+      ) : null}
+
+      <Container>
+        <Row>
+          <Col xs={7} className="mainSection">
+            <div className="box profileHeader">
+              {business.businessName && (
+                <Header
+                  name={business.businessName}
+                  website={business.website}
+                />
+              )}
+            </div>
+
+            <div className="box tags">
+              {business.tags &&  
+                business.tags.map(function(data, i) {return <Button className="ButtonText" key={i} variant="info" size="sm" >{data} </Button> }) }
+                 {/* <Tags key={i} tags={data} /> }) */}
+
+            
+            </div>
+
+            <div className="box tagline">
+              {business.tagline && <Tagline shortTag={business.tagline} />}
+            </div>
+
+            {userphotos.length > 0 && (
+              <div className="box photosdiv">
+                <AwesomeSlider>
+                  {userphotos.map((userphoto, i) => (
+                    <div key={i} data-src={userphoto} />
+                  ))}
+                </AwesomeSlider>
+              </div>
+            )}
+
+            <div className="box about">
+              {business.about && (
+                <About name={business.businessName} about={business.about} />
+              )}
+            </div>
+
+            <div className="box owner">
+              {business.owner && <Owner owner={business.owner} />}
+            </div>
+          </Col>
+
+          <Col className="aside">
+            <div className="box socialMedia">
+              {business.instagram ? (
+                <InstaIcon insta={business.instagram} />
+              ) : null}
+              {business.instagram && <Fb fb={business.facebook} />}
+            </div>
+
+            <div className="box contact">
+              {business.email ? (
+                <ContactButtons
+                  email={business.email}
+                  phone={business.phoneNumber}
+                />
+              ) : null}
+            </div>
+
+            <div className="box hours">
+              {business.schedule && (
+                <Hours
+                  MonOpen={
+                    business.schedule.MonOpen
+                      ? business.schedule.MonOpen + "AM"
+                      : "Closed"
+                  }
+                  MonClose={
+                    business.schedule.MonClose
+                      ? business.schedule.MonClose + "PM"
+                      : null
+                  }
+                  TuesOpen={
+                    business.schedule.TuesOpen
+                      ? business.schedule.TuesOpen + "AM "
+                      : "Closed"
+                  }
+                  TuesClose={
+                    business.schedule.TuesClose
+                      ? business.schedule.TuesClose + "PM"
+                      : null
+                  }
+                  WedOpen={
+                    business.schedule.WedOpen
+                      ? business.schedule.WedOpen + "AM "
+                      : "Closed"
+                  }
+                  WedClose={
+                    business.schedule.WedClose
+                      ? business.schedule.WedClose + "PM"
+                      : null
+                  }
+                  ThursOpen={
+                    business.schedule.ThursOpen
+                      ? business.schedule.ThursOpen + "AM"
+                      : "Closed"
+                  }
+                  ThursClose={
+                    business.schedule.ThursClose
+                      ? business.schedule.ThursClose + "PM"
+                      : null
+                  }
+                  FriOpen={
+                    business.schedule.FriOpen
+                      ? business.schedule.FriOpen + "AM "
+                      : "Closed"
+                  }
+                  FriClose={
+                    business.schedule.FriClose
+                      ? business.schedule.FriClose + "PM"
+                      : null
+                  }
+                  SatOpen={
+                    business.schedule.SatOpen
+                      ? business.schedule.SatOpen + "AM "
+                      : "Closed"
+                  }
+                  SatClose={
+                    business.schedule.SatClose
+                      ? business.schedule.SatClose + "PM"
+                      : null
+                  }
+                  SunOpen={
+                    business.schedule.SunOpen
+                      ? business.schedule.SunOpen + "AM "
+                      : "Closed"
+                  }
+                  SunClose={
+                    business.schedule.SunClose
+                      ? business.schedule.SunClose + "PM"
+                      : null
+                  }
+                />
+              )}
+            </div>
+
+            <div className="box map">
+              {/* <Map center={mapCoords} businesses={business} /> */}
+              { business.address && <Map center={mapCoords} businesses={business} />}
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
 }
 
-export default BusinessPage
+export default BusinessPage;

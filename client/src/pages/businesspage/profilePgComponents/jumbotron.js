@@ -4,7 +4,7 @@ function jumbotronPF(props) {
 
     return (
         <div>
-            <img classNmae="jumbotron" alt="jumbotron" src={props.bkphoto}/>
+            <img className="jumbotron" alt="jumbotron" src={props.bkphoto}/>
             {/* buisness Logo */}
         </div>
     )

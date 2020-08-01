@@ -1,0 +1,44 @@
+.title {
+    font-size: 4rem;
+    font-weight: 200;
+    letter-spacing: 4px;
+    line-height: 1.2em;
+    color: #354959;
+    text-transform: uppercase;
+}
+
+ .titlecontianer {
+    padding: 5% 20%;
+    text-align: center !important;
+}
+
+.mainContainer{
+    margin: 1% 8% ;
+}
+
+.list-group-item.active{
+    background-color: #AED1CD;
+    border-color: #AED1CD;
+}
+.list-group-item{
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#uploadButton {
+    background-color: #AED1CD!important;
+    border-color: #AED1CD !important;
+    border-radius: 32px !important;
+    min-width: 100px !important;
+    margin-bottom: 8px !important;
+}
+
+h4 {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 17px;
+    margin-top: 13px;
+    color: #EDA694;
+}

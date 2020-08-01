@@ -1,0 +1,47 @@
+[
+  {
+    "photos": [
+      "http://res.cloudinary.com/dolssrjeq/image/upload/v1596257078/cloudinary/wfiun2v5bi6f4rcrkga5.jpg"
+    ],
+    "logo": [
+      "http://res.cloudinary.com/dolssrjeq/image/upload/v1596257072/cloudinary/yggl6xvtzlq3z0vl4uoa.jpg"
+    ],
+    "menuOrServices": [
+      "http://res.cloudinary.com/dolssrjeq/image/upload/v1596257082/cloudinary/rre36dkkju1z9yt9q3op.jpg"
+    ],
+    "tags": ["Cafe", "Resteraunt", "Drive Thru"],
+    "owner": "Colin Johnson",
+    "businessName": "Burger Time",
+    "phoneNumber": 9197471503.0,
+    "email": "blisk76@gmail.com",
+    "about": "We make yummy burgers!",
+    "instagram": "Insta",
+    "facebook": "Facebook",
+    "website": "https://www.google.com/",
+    "schedule": {
+      "MonOpen": 11,
+      "MonClose": 2,
+      "TuesOpen": 11,
+      "TuesClose": 2,
+      "WedOpen": 11,
+      "WedClose": 2,
+      "ThursOpen": 11,
+      "ThursClose": 2,
+      "FriOpen": 11,
+      "FriClose": 2,
+      "SatOpen": 11,
+      "SatClose": 2,
+      "SunOpen": 11,
+      "SunClose": 2
+    },
+    "tagline": "Yummy Yummy Burger",
+    "street": "835 Mill Street",
+    "city": "Wake Forest",
+    "state": "North Carolina",
+    "zip": "27587",
+    "lat": 35.989793,
+    "lng": -78.5016757,
+
+    "__v": 0
+  }
+]

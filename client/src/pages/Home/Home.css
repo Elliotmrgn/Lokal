@@ -1,0 +1,142 @@
+/* OVERVIEW */
+.home-container {
+    text-align: center;
+    width: 100%;
+}
+
+/* HEADER */
+.search-container {
+    background-color: #354959;
+    padding: 80px;
+}
+
+.discover-local {
+    text-align: center;
+}
+
+.header {
+    color: #F8DACC;
+    font-size: 90px;
+    font-weight: bold;
+    font-size:8vw;
+}
+
+#discover {
+   letter-spacing: 7px;
+   font-weight: bold;
+}
+
+#lokal {
+    font-weight: lighter;
+    letter-spacing: 1px;
+}
+
+#raleigh { 
+    color: #B87E8A;
+    font-style: italic;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 20px; 
+    font-size:5vw;
+}
+
+#search {
+    color: white;
+}
+
+/* EXPLANATION CONTAINER */
+.welcome-container {
+    padding: 100px;
+    align-items: center;
+    text-align: center;   
+}
+
+#house {
+    width: 14vw;
+    height: 14vw;
+    /* width: 150px;
+    height: 150px; */
+    align-items: left;
+}
+
+#explanation {
+    color: #4D898C;
+    font-size:2.35vw;
+}
+
+/* REGISTER BUSINESS CONTAINER */
+#registerbtn {
+    background-color: #AED1CD!important;
+    border-color: #AED1CD !important;
+    border-radius: 32px !important;
+    min-width: 100px !important;
+    margin-bottom: 8px !important;
+}
+
+.container-sign-up {
+    background-color: #F8DACC;
+    color: #354959;
+    width: 100vw;
+    padding: 200px;
+    /* height: 10px; */
+    width: 100%;
+  }
+
+  #registerbiz {
+    color: #354959;
+    padding-top: 65px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 30px;
+    font-size: 4vw;
+}
+
+#registerbtn {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    font-size: 30px;
+}
+
+/* ********MOBILE RESPONSIVE******* */
+/* *********************************/
+
+@media only screen and (max-width:660px) {
+    body {
+      margin: 0 !important
+    }
+}
+
+/* EXPLANATION CONTAINER */
+.welcome-container {
+    padding: 30px;
+    align-items: center;
+    text-align: center;   
+}
+
+/* #house {
+    display: none;
+} */
+
+#explanation {
+    color: #4D898C;
+    font-size:5vw;
+}
+
+#registerbiz {
+    color: #354959;
+    /* padding-top: 65px; */
+    text-align: center;
+    font-weight: bold;
+    /* padding-bottom: 30px; */
+    font-size: 10vw;
+}
+
+.container-sign-up {
+    background-color: #F8DACC;
+    text-align: center !important;
+    color: #354959;
+    width: 100vw;
+    /* padding: 0px; */
+ 
+  }

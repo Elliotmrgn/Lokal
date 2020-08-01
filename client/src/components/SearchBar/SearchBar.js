@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
 
-function SearchBar() {
+function SearchBar(props) {
   const [formObject, setFormObject] = useState({});
 
   function handleInputChange(event) {
@@ -9,40 +9,35 @@ function SearchBar() {
     setFormObject({ ...formObject, [name]: value });
   }
 
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    console.log(formObject.search);
-    API.findViaSearch(formObject.search).then((res) => {
-      console.log(res);
-    });
-  }
 
   return (
     <div>
       <form>
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Business Name</label>
+          <label htmlFor="searchBar">Business Name</label>
           <input
-            type="email"
+            type="text"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            id="searchBar"
+            aria-describedby="searchHelp"
             name="search"
             onChange={handleInputChange}
           />
-          <small id="emailHelp" className="form-text text-muted">
+          <small id="searchHelp" className="form-text text-muted">
             Please search what you would like to find.
           </small>
         </div>
         <button
           type="submit"
           className="btn btn-primary"
-          onClick={handleFormSubmit}
+          value={formObject.search}
+          onClick={props.handleFormSubmit}
         >
-          Submit
+            Submit
         </button>
       </form>
     </div>
   );
 }
+
 export default SearchBar;
