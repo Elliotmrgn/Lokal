@@ -28,11 +28,12 @@ function LoginForm({login}) {
     return <Redirect to={{ pathname: redirectTo }} />
   } else {
     return (
+      <main>
       <Container>
         <Row>
           <Col size="md-3"></Col>
           <Col size="md-6">
-            <Card title="Login to React Reading List">
+            <Card title="Login to Your Business">
               <form style={{marginTop: 10}}>
                 <label htmlFor="username">Username: </label>
                 <Input
@@ -56,6 +57,7 @@ function LoginForm({login}) {
           <Col size="md-3"></Col>
         </Row>
       </Container>
+      </main>
     )
   }
 }

@@ -24,10 +24,10 @@ function SearchBar() {
           <input
             type="email"
             className="form-control"
-            id="exampleInputEmail1"
+            id="home-search"
             aria-describedby="emailHelp"
             name="search"
-            placeholder="Search by business name or category"
+            placeholder="search lokal"
             onChange={handleInputChange}
           />
         </div>

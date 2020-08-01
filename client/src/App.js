@@ -65,19 +65,18 @@ function App() {
       {loggedIn && (
         <div>
           <Nav user={user} logout={logout} />
-          {/* <div className="main-view"> */}
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/businessForm" component={BusinessForm} />
               <Route exact path="/contact" component={ContactPage} />
               <Route exact path="/results" component={SearchResult} />
-             <Route exact path="/profilepage/:id" component={ProfilePage} />
+              <Route exact path="/profilepage/:id" component={ProfilePage} />
               <Route exact path="/user/:id" component={UserPage} />
               <Route exact path="/businessList" component={BusinessList} />
 
               <Route component={NoMatch} />
             </Switch>
-          {/* </div> */}
+
         </div>
       )}
       {!loggedIn && (
