@@ -1,0 +1,20 @@
+#searchMain{
+    padding: 22px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    margin: 0 auto;
+    width: 68%;
+}
+
+/* .searchBtn{
+    float: right;
+    position: absolute;
+    padding: 22px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    margin: 0 auto;
+} */
+
+.form-group{
+    display: inline;
+}

@@ -33,8 +33,8 @@
     color: #B87E8A;
     font-style: italic;
     font-size: 40px;
-    padding-top: 10px;
-    padding-bottom: 20px; 
+    padding-bottom: 50px; 
+    text-align: center;
 }
 
 #search {
@@ -48,7 +48,7 @@
 }
 
 #house {
-    width: 15%;
+    width: 30%;
     height: 15%;
     align-items: left;
     padding-bottom: 30px;
@@ -56,7 +56,7 @@
 
 #explanation {
     color: #4D898C;
-    font-size: 30px;
+    font-size: 45px;
 }
 
 /* HOW IT WORKS */
@@ -142,22 +142,25 @@ ul {
 .container-sign-up {
     background-color: #F8DACC;
     color: #354959;
-    width: 100%;
-    padding: 70px;
+    width: 100vw;
+    /* padding: 70px; */
+    height: 10px;
   }
 
   #registerbiz {
     padding-top: 20px;
     font-size: 50px;
-    font-weight: bold;
+    font-weight: 200;
     padding-bottom: 17px;
+    text-align: center;
   }
 
   #registerbtn {
     margin: 0 auto;
     display: block;
     text-align: center;
-    font-size: 30px;
+    font-size: 15px;
+    text-transform: uppercase;
 }
 
 /* MOBILE DISPLAY */

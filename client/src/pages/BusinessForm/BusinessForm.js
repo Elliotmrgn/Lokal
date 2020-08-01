@@ -11,9 +11,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
+import { useHistory } from 'react-router-dom';
 
 
 function BusinessForm(props) {
+  let history = useHistory();
 
   //IF edit mode
   const editMode = props.match.params.id;
@@ -63,6 +65,65 @@ function BusinessForm(props) {
   }
 
   function handleFormSubmit(event) {
+    if(editMode) {
+      event.preventDefault();
+
+    API.addressConvert(
+      `${formObject.street}, ${formObject.city}, ${formObject.state}`
+    ).then((res) => {
+      console.log("LAT, LONGGG", res.data.results);
+      console.log("schedule fix", formObject.MonOpen);
+      console.log("DOES THIS PASS DOWN", formObject);
+      console.log("formObject.schedule:", formObject.schedule);
+
+      API.updateBusiness(editMode, {
+        owner: formObject.owner,
+        businessName: formObject.businessName,
+        phoneNumber: formObject.phoneNumber,
+        email: formObject.email,
+        about: formObject.about,
+        instagram: formObject.instagram,
+        facebook: formObject.facebook,
+        website: formObject.website,
+        schedule: {
+          MonOpen: formObject.MonOpen,
+          MonClose: formObject.MonClose,
+          TuesOpen: formObject.TuesOpen,
+          TuesClose: formObject.TuesClose,
+          WedOpen: formObject.WedOpen,
+          WedClose: formObject.WedClose,
+          ThursOpen: formObject.ThursClose,
+          ThursClose: formObject.ThursClose,
+          FriOpen: formObject.FriOpen,
+          FriClose: formObject.FriClose,
+          SatOpen: formObject.SatOpen,
+          SatClose: formObject.SatClose,
+          SunOpen: formObject.SunOpen,
+          SunClose: formObject.SunClose,
+        },
+        tagline: formObject.tagline,
+        masks: formObject.masks,
+        photos: images,
+        street: formObject.street,
+        city: formObject.city,
+        state: formObject.state,
+        zip: formObject.zip,
+        lat: res.data.results[0].geometry.location.lat,
+        lng: res.data.results[0].geometry.location.lng,
+        logo: logo,
+        menuOrServices: menuOrServices,
+        tags: tags,
+      })
+        .then((res) => {
+          console.log("res!!!!:", res);
+          formEl.current.reset();
+          history.push('/profilepage/' + editMode)
+        })
+        .catch((err) => console.log("aftersave" + err));
+    });
+  
+
+    } else {
     event.preventDefault();
 
     API.addressConvert(
@@ -118,6 +179,7 @@ function BusinessForm(props) {
         .catch((err) => console.log("aftersave" + err));
     });
   }
+}
 
   function showUploadWidget(name, event) {
     event.preventDefault();
@@ -716,19 +778,19 @@ function BusinessForm(props) {
               </div>
 
               <FormBtn
-                disabled={
-                  !(
-                    formObject.businessName &&
-                    formObject.phoneNumber &&
-                    formObject.email &&
-                    formObject.owner &&
-                    formObject.tagline &&
-                    formObject.street &&
-                    formObject.city &&
-                    formObject.state &&
-                    formObject.zip
-                  )
-                }
+                // disabled={
+                //   !(
+                //     formObject.businessName &&
+                //     formObject.phoneNumber &&
+                //     formObject.email &&
+                //     formObject.owner &&
+                //     formObject.tagline &&
+                //     formObject.street &&
+                //     formObject.city &&
+                //     formObject.state &&
+                //     formObject.zip
+                //   )
+                // }
                 onClick={handleFormSubmit}
               >
                 Submit Business
