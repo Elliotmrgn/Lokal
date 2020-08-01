@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import { Col } from "../Grid";
 // import NavSearchBar from "../../components/NavSearchBar/NavSearchBar"
 import "./Nav.css";
+import { Nav, NavDropdown, NavItem, NavLink, Dropdown } from "react-bootstrap";
 
-const Nav = (props) => {
+const Navbar = (props) => {
   let greeting;
-
+  let userStatus;
+  let businessForm;
+  let dropdown;
   if (props.user === null) {
     greeting = <p>Hello guest</p>;
   } else if (props.user.firstName) {
@@ -23,8 +26,31 @@ const Nav = (props) => {
     );
   }
 
-  return (
+  if (props.user === null) {
+    userStatus = (
+      <Link to="/login" className="login" onClick={props.login}>
+        Login
+      </Link>
+    );
+  } else {
+    userStatus = (
+      <Link to="#" className="logout" onClick={props.logout}>
+        Logout
+      </Link>
+    );
+  }
 
+  if (props.user === null) {
+    businessForm = "";
+  } else {
+    businessForm = (
+      <Link to="/BusinessForm" id="register" className="navbar-contact px-4">
+        Register
+      </Link>
+    );
+  }
+
+  return (
     <header>
       <nav className="navbar navbar-expand-lg">
         <Col size="md-6 sm-6">
@@ -39,21 +65,20 @@ const Nav = (props) => {
               Contact
             </Link>
             <Link
-              to="/BusinessForm"
-              id="register"
-              className="navbar-contact px-4"
+              to="/businessList"
+              id="businessList"
+              className="navbar-businesslist px4"
             >
-              Register
+              Browse Categories
             </Link>
+            {businessForm}
             {greeting}
-            <Link to="#" className="logout" onClick={props.logout}>
-              Logout
-            </Link>
+            {userStatus}
           </div>
         </Col>
       </nav>
     </header>
-  )
+  );
 };
 
-export default Nav;
+export default Navbar;
