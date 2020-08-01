@@ -42,7 +42,7 @@ function SearchBar() {
             aria-describedby="emailHelp"
             name="search"
             value={search}
-            placeholder="Search by business name or category"
+            placeholder="Search lokal"
             onChange={handleInputChange}
             // onChange={handleInputChange}
             // onKeyUp={submit}

@@ -24,7 +24,8 @@ const Nav = (props) => {
   }
 
   return (
-    <div>
+
+    <header>
       <nav className="navbar navbar-expand-lg">
         <Col size="md-6 sm-6">
           <Link to="/" className="navbar-brand">
@@ -51,8 +52,8 @@ const Nav = (props) => {
           </div>
         </Col>
       </nav>
-    </div>
-  );
+    </header>
+  )
 };
 
 export default Nav;

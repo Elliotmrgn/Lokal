@@ -26,8 +26,27 @@ button {
   border-radius: 32px !important;
 }
 
+#home-search {
+  font-size: 30px;
+  width: 40%;
+  border-radius: 32px !important;
+  align-items: center;
+}
 
-/* styles for inputs */
+.bg-secondary {
+  background-color: #4D898C!important;
+  border-color: #4D898C !important;
+}
+
+a { 
+  color: #4D898C;
+}
+
+h5 {
+  text-align: center;
+}
+
+styles for inputs
 .form__field {
   width: 100%;
   border: 0;

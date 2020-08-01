@@ -3,7 +3,6 @@ import { Redirect, Link } from "react-router-dom";
 import { Container, Row, Col } from "../../components/Grid";
 import { Card } from "../../components/Card";
 import { Input, FormBtn } from "../../components/Form";
-import Nav from "../../components/Nav/Nav"
 
 function LoginForm({ login }) {
   const [userObject, setUserObject] = useState({
@@ -29,6 +28,7 @@ function LoginForm({ login }) {
     return <Redirect to={{ pathname: redirectTo }} />;
   } else {
     return (
+      <main>
        <Container>
         <Row>
           <Col size="md-3"></Col>
@@ -61,6 +61,7 @@ function LoginForm({ login }) {
           <Col size="md-3"></Col>
         </Row>
       </Container>
+      </main>
     );
   }
 }
