@@ -1,43 +1,61 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
+import { Link } from "react-router-dom";
+import "./navStyles.css"
+import { useHistory } from 'react-router-dom';
+
 
 function SearchBar() {
   const [formObject, setFormObject] = useState({});
+  const [search, setSearch] = useState("");
+  let history = useHistory();
 
-  function handleInputChange(event) {
-    const { name, value } = event.target;
-    setFormObject({ ...formObject, [name]: value });
-  }
 
-  function handleFormSubmit(event) {
+  // function handleInputChange(event) {
+  //   const { name, value } = event.target;
+  //   setFormObject({ ...formObject, [name]: value });
+  // }
+
+  const handleInputChange = event => {
+    const { value } = event.target;
+    setSearch(value);
+  };
+
+  function submit(event) {
     event.preventDefault();
-    const search = formObject.search;
-    API.findViaSearch(search).then((res) => {
-      console.log(res);
-    });
-  }
+    let url = 'results/' + search;
+    console.log(url); 
+    history.push(url)
+      // <Redirect to={url} />
+}
+  
 
   return (
     <div>
-      <form>
+      <form  onSubmit={submit}>
+
         <div className="form-group">
           <input
-            type="email"
+            type="text"
             className="form-control"
-            id="home-search"
+            id="searchMain"
             aria-describedby="emailHelp"
             name="search"
-            placeholder="search lokal"
+            value={search}
+            placeholder="Search by business name or category"
             onChange={handleInputChange}
+            // onChange={handleInputChange}
+            // onKeyUp={submit}
           />
-        </div>
-        <button
+          {/* <button
           type="submit"
-          className="btn btn-primary"
-          onClick={handleFormSubmit}
+          value={formObject.search}
+          className="searchBtn"
         >
-          Search
-        </button>
+          <Link to={`/results/${formObject.search}`}>Search</Link>
+        </button> */}
+        </div>
+        
       </form>
     </div>
   );
