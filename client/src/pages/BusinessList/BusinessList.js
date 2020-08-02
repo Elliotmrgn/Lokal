@@ -10,11 +10,14 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
 import Fade from "react-bootstrap/Fade";
+import Dropdown from "react-bootstrap/Dropdown";
+
+
 //icons
 import { IoIosCafe } from "react-icons/io";
 import { AiFillShop } from "react-icons/ai";
 import { BsBook } from "react-icons/bs";
-import { RiScissors2Line } from "react-icons/ri";
+import { RiScissors2Line, RiArrowRightUpLine} from "react-icons/ri";
 import { FaWrench, FaTheaterMasks } from "react-icons/fa";
 import {
   GiHanger,
@@ -23,6 +26,7 @@ import {
   GiKnifeFork,
   GiLargePaintBrush,
 } from "react-icons/gi";
+
 
 import tags from "../../utils/Tags";
 
@@ -61,8 +65,10 @@ function BusinessList() {
   }
 
   function handleInputChange(event) {
-    const { value } = event.target;
-    setFormObject({ Tag: value });
+    console.log("butts")
+    console.log(event)
+  //   const { value } = event.target;
+    setFormObject({ Tag: event });
   }
 
   const tagList = tags.map(function (tag, index) {
@@ -74,18 +80,14 @@ function BusinessList() {
   });
 
   return (
-    <div>
-      <div className="titleContainer">
-        <Row>
-          <span className="title">Discover lokal businesses</span>
-        </Row>
-        <Row>
-          <Col size="size md-2">
-            <Form.Group
+    <main>
+          <div className="titleBox">
+            <span className="title" >Discover businesses by Category</span>
+    
+            {/* <Form.Group
               className="tagPicker"
               controlId="exampleForm.ControlSelect1"
-              appear="true"
-            >
+              appear="true" >
               <Form.Control
                 className="tagDrops"
                 as="select"
@@ -96,23 +98,31 @@ function BusinessList() {
                 </option>
                 {tagList}
               </Form.Control>
-            </Form.Group>
-          </Col>
-        </Row>
-      </div>
+            </Form.Group> */}
+
+            <Dropdown className="tagPicker">
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                <span className="butts"> Select a Category</span>
+              </Dropdown.Toggle >
+              <Dropdown.Menu className="menu-items">
+                { tags.map(function (tag, i) { return ( <Dropdown.Item  eventKey={tag} onSelect={handleInputChange} className="options" key={i} value={tag} name="Tag">  {tag} </Dropdown.Item> )} )}
+              </Dropdown.Menu>
+            </Dropdown>
+            </div>
+
       {/* <Row>{businessList}</Row> */}
 
-      <div className="mainContainer">
+      <div className="discoverBody">
         <Row>
           {formObject.Tag === "Cafe" && (
-            <Col>
+            <Col md="auto" >
               {" "}
               <img
                 className="coverImg"
                 src="https://i.ibb.co/h1zQP3V/cafe.jpg"
                 alt="cafe"
               ></img>
-              <div className="carousel-caption">
+              <div className="Tagcaption">
                 <p>CAFE</p>
                 <IoIosCafe />
               </div>{" "}
@@ -120,14 +130,14 @@ function BusinessList() {
           )}
 
           {formObject.Tag === "Boutique" && (
-            <Col>
+            <Col md="auto">
               {" "}
               <img
                 className="coverImg"
                 src="https://i.ibb.co/Vjqt999/boutique.jpg"
                 alt="Boutique"
               ></img>
-              <div className="carousel-caption">
+              <div className="Tagcaption">
                 <p className="largeText">BOUTIQUE </p>
                 <p className="largeText">
                   <AiFillShop />{" "}
@@ -137,14 +147,14 @@ function BusinessList() {
           )}
 
           {formObject.Tag === "Books and Music" && (
-            <Col>
+            <Col md="auto" >
               {" "}
               <img
                 className="coverImg"
                 src="https://i.ibb.co/fC2zc0q/books.jpg"
                 alt="Books"
               ></img>
-              <div className="carousel-caption">
+              <div className="Tagcaption">
                 <p>
                   Books
                   <BsBook />{" "}
@@ -154,14 +164,14 @@ function BusinessList() {
           )}
 
           {formObject.Tag === "Clothing" && (
-            <Col>
+            <Col md="auto">
               {" "}
               <img
                 className="coverImg"
                 src="https://i.ibb.co/Jcd59KK/clothing.jpg"
                 alt="Clothing"
               ></img>
-              <div className="carousel-caption">
+              <div className="Tagcaption">
                 <p className="largeText">Clothing</p>
                 <p className="largeText">
                   <GiHanger />{" "}
@@ -171,14 +181,14 @@ function BusinessList() {
           )}
 
           {formObject.Tag === "Entertainment" && (
-            <Col>
+            <Col md="auto">
               {" "}
               <img
                 className="coverImg"
                 src="https://i.ibb.co/qWR9Z7Y/entertainment.jpg"
                 alt="Entertainment"
               ></img>
-              <div className="carousel-caption">
+              <div className="Tagcaption">
                 <p>Fun</p>
                 <FaTheaterMasks />
               </div>{" "}
@@ -186,14 +196,14 @@ function BusinessList() {
           )}
 
           {formObject.Tag === "Drive Thru" && (
-            <Col>
+            <Col md="auto">
               {" "}
               <img
                 className="coverImg"
                 src="https://i.ibb.co/GdZyp87/fastfood.jpg"
                 alt="Drive Thru"
               ></img>
-              <div className="carousel-caption">
+              <div className="Tagcaption">
                 <p className="largeText">Drive Thru</p>
                 <p>
                   <GiHamburger />{" "}
@@ -203,14 +213,14 @@ function BusinessList() {
           )}
 
           {formObject.Tag === "Gym" && (
-            <Col>
+            <Col md="auto">
               {" "}
               <img
                 className="coverImg"
                 src="https://i.ibb.co/VDVBBDL/gym.jpg"
                 alt="Gym"
               ></img>
-              <div className="carousel-caption">
+              <div className="Tagcaption">
                 <p>Gym</p>
                 <p>
                   <GiWeightLiftingUp />{" "}
@@ -220,14 +230,14 @@ function BusinessList() {
           )}
 
           {formObject.Tag === "Hobbies and Crafts" && (
-            <Col>
+            <Col md="auto">
               {" "}
               <img
                 className="coverImg"
                 src="https://i.ibb.co/MsSsXmP/hobbies.jpg"
                 alt="Hobbies"
               ></img>
-              <div className="carousel-caption">
+              <div className="Tagcaption">
                 <p className="largeText">Hobbies & Crafts</p>
                 <p className="largeText">
                   {" "}
@@ -238,14 +248,14 @@ function BusinessList() {
           )}
 
           {formObject.Tag === "Mechanic" && (
-            <Col>
+            <Col md="auto">
               {" "}
               <img
                 className="coverImg"
                 src="https://i.ibb.co/zJgPHTj/mechanic.jpg"
                 alt="Mechanic"
               ></img>
-              <div className="carousel-caption">
+              <div className="Tagcaption">
                 <p className="largeText">
                   Mechanic
                   <FaWrench />{" "}
@@ -255,14 +265,14 @@ function BusinessList() {
           )}
 
           {formObject.Tag === "Resteraunt" && (
-            <Col>
+            <Col md="auto">
               {" "}
               <img
                 className="coverImg"
                 src="https://i.ibb.co/FkQLmMV/resturant.jpg"
                 alt="Resteraunt"
               ></img>
-              <div className="carousel-caption">
+              <div className="Tagcaption">
                 <p className="xlText">
                   Resteraunt
                   <GiKnifeFork />{" "}
@@ -272,14 +282,14 @@ function BusinessList() {
           )}
 
           {formObject.Tag === "Salon" && (
-            <Col>
+            <Col md="auto">
               {" "}
               <img
                 className="coverImg"
                 src="https://i.ibb.co/DD9q56n/salon.jpg"
                 alt="Salon"
               ></img>
-              <div className="carousel-caption">
+              <div className="Tagcaption">
                 <p>
                   Salon
                   <RiScissors2Line />{" "}
@@ -288,36 +298,20 @@ function BusinessList() {
             </Col>
           )}
 
-          <Col>
-            <Fade in>
-              <ListGroup variant="flush">
-                {business &&
-                  business.map((business, i) => {
-                    return (
-                      <ListGroup.Item key={i}>
-                        <div className="textRight">
-                          <h1 className="listName">{business.businessName}</h1>
-                          <h5 className="listTagline">{business.tagline}</h5>
-                        </div>
-                        <div className="textRight">
-                          <Button
-                            href={"/profilepage/" + business._id}
-                            variant="info"
-                            size="sm"
-                          >
-                            {" "}
-                            Visit Page
-                          </Button>
-                        </div>
-                      </ListGroup.Item>
-                    );
-                  })}
-              </ListGroup>
-            </Fade>
+          <Col className="listingCol">
+
+              {business && business.map((business, i) => { 
+                return ( <div className="resultCard2"> 
+                < div key={i} className="idk2" > <a href={"/profilepage/" + business._id}  > < RiArrowRightUpLine />  </a> </div>
+                <div className="idk">
+                <a href={"/profilepage/" + business._id}  ><h1 className="listName">{business.businessName}</h1> </a>
+                </div>
+                <h5 className="listTagline">{business.tagline}</h5>
+                </div>) } ) } 
           </Col>
         </Row>
       </div>
-    </div>
+    </main>
   );
 }
 

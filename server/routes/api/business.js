@@ -5,7 +5,6 @@ router
   .route("/")
   .get(businessController.findAll)
   .post(businessController.create)
-  // .get(businessController.findByEmail);
 
 
 router.route("/:id")
