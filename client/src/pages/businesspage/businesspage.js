@@ -10,7 +10,6 @@ import Image from "react-bootstrap/Image";
 import Button from 'react-bootstrap/Button';
 
 // components
-import Jumbotron from "./profilePgComponents/jumbotron";
 import About from "./profilePgComponents/about";
 import ContactButtons from "./profilePgComponents/contactButtons";
 import Header from "./profilePgComponents/header";
@@ -19,7 +18,6 @@ import Owner from "./profilePgComponents/ownerabout";
 import InstaIcon from "./profilePgComponents/instaicon";
 import Tagline from "./profilePgComponents/tagline";
 import Fb from "./profilePgComponents/facebook";
-import Tags from "./profilePgComponents/tags";
 import Map from "../../components/Map/Map";
 
 //carosel
@@ -28,8 +26,8 @@ import "react-awesome-slider/dist/styles.css";
 
 function BusinessPage(props) {
 
-    const testerbusinessfull = "5f203b74c2b1714429ad4a28";
-    const testerbusinessmin = "5f2023bd6804c4437ae34db1";
+    // const testerbusinessfull = "5f203b74c2b1714429ad4a28";
+    // const testerbusinessmin = "5f2023bd6804c4437ae34db1";
     const toLoad= props.match.params.id
 
     const [business, setBusiness] = useState([]);
@@ -47,7 +45,6 @@ function BusinessPage(props) {
     function loadBusiness(){
     API.getProfile(toLoad)
         .then((res) => {
-        console.log(res.data);
         setBusiness(res.data);
         setPhotos(res.data.photos);
         setTags(res.data.tags);

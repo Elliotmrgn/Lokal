@@ -5,8 +5,8 @@ import AUTH from "../../utils/AUTH";
 // import NavSearchBar from "../../components/NavSearchBar/NavSearchBar"
 import "./Nav.css";
 
-import { Nav, NavDropdown, NavItem, NavLink, Dropdown } from "react-bootstrap";
-import UserPage from "../../pages/UserPage/userpage";
+// import { Nav, NavDropdown, NavItem, NavLink, Dropdown } from "react-bootstrap";
+// import UserPage from "../../pages/UserPage/userpage";
 const Navbar = (props) => {
   let greeting;
 
