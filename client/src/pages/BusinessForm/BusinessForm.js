@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Container } from "../../components/Grid";
+// import { Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn, Address } from "../../components/Form";
 import API from "../../utils/API";
 import Checkbox from "../../components/Checkbox";
 import "./formstyles.css";
 
-import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+
+import Form from "react-bootstrap/Form";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
 import { useHistory } from "react-router-dom";
@@ -120,6 +124,7 @@ function BusinessForm(props) {
     } else {
       event.preventDefault();
 
+<<<<<<< HEAD
       API.addressConvert(
         `${formObject.street}, ${formObject.city}, ${formObject.state}`
       ).then((res) => {
@@ -165,6 +170,58 @@ function BusinessForm(props) {
           logo: logo,
           menuOrServices: menuOrServices,
           tags: tags,
+=======
+    API.addressConvert(
+      `${formObject.street}, ${formObject.city}, ${formObject.state}`
+    ).then((res) => {
+      console.log("LAT, LONGGG", res.data.results);
+      console.log("schedule fix", formObject.MonOpen);
+      console.log("DOES THIS PASS DOWN", formObject);
+      console.log("formObject.schedule:", formObject.schedule);
+
+      API.saveBusiness({
+        owner: formObject.owner,
+        businessName: formObject.businessName,
+        phoneNumber: formObject.phoneNumber,
+        email: formObject.email,
+        about: formObject.about,
+        instagram: formObject.instagram,
+        facebook: formObject.facebook,
+        website: formObject.website,
+        schedule: {
+          MonOpen: formObject.MonOpen,
+          MonClose: formObject.MonClose,
+          TuesOpen: formObject.TuesOpen,
+          TuesClose: formObject.TuesClose,
+          WedOpen: formObject.WedOpen,
+          WedClose: formObject.WedClose,
+          ThursOpen: formObject.ThursClose,
+          ThursClose: formObject.ThursClose,
+          FriOpen: formObject.FriOpen,
+          FriClose: formObject.FriClose,
+          SatOpen: formObject.SatOpen,
+          SatClose: formObject.SatClose,
+          SunOpen: formObject.SunOpen,
+          SunClose: formObject.SunClose,
+        },
+        tagline: formObject.tagline,
+        masks: formObject.masks,
+        photos: images,
+        street: formObject.street,
+        city: formObject.city,
+        state: formObject.state,
+        zip: formObject.zip,
+        lat: res.data.results[0].geometry.location.lat,
+        lng: res.data.results[0].geometry.location.lng,
+        logo: logo,
+        menuOrServices: menuOrServices,
+        tags: tags,
+      })
+        .then((res) => {
+          console.log("res!!!!:", res.data.businesses[res.data.businesses.length - 1]);
+          formEl.current.reset();
+          history.push(`/profilepage/${res.data.businesses[res.data.businesses.length - 1]}`)
+>>>>>>> 398f51d7250f44f8972fafa56235769ec6d37129
         })
           .then((res) => {
             console.log("res!!!!:", res);
