@@ -5,28 +5,28 @@ import { Card } from "../../components/Card";
 import { Input, FormBtn } from "../../components/Form";
 import Nav from "../../components/Nav/Nav";
 
-function LoginForm({ login }) {
+function LoginForm({login}) {
   const [userObject, setUserObject] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: ''
   });
   const [redirectTo, setRedirectTo] = useState(null);
 
-  const handleChange = (event) => {
-    setUserObject({
+	const handleChange = (event) => {
+		setUserObject({
       ...userObject,
-      [event.target.name]: event.target.value,
-    });
-  };
+			[event.target.name]: event.target.value
+		});
+	};
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    login(userObject.username, userObject.password);
-    setRedirectTo("/");
-  };
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		login(userObject.username, userObject.password);
+		setRedirectTo('/');
+	};
 
   if (redirectTo) {
-    return <Redirect to={{ pathname: redirectTo }} />;
+    return <Redirect to={{ pathname: redirectTo }} />
   } else {
     return (
       <>

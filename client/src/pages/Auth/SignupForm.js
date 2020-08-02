@@ -5,49 +5,49 @@ import { Card } from "../../components/Card";
 import { Input, FormBtn } from "../../components/Form";
 import AUTH from "../../utils/AUTH";
 import Nav from "../../components/Nav/Nav";
+import firebase from '../../components/OTP/firebase'
 
 function SignupForm() {
   const [userObject, setUserObject] = useState({
-    firstName: "",
-    lastName: "",
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    redirectTo: null,
+    firstName: '',
+    lastName: '',
+    username: '',
+    password: '',
+    confirmPassword: '',
+    phoneNumber:'',
+    redirectTo: null
   });
   const [redirectTo, setRedirectTo] = useState(null);
-
   const handleChange = (event) => {
-    setUserObject({
+		setUserObject({
       ...userObject,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // TODO - validate!
-    AUTH.signup({
+			[event.target.name]: event.target.value
+		});
+	};
+ 
+	const handleSubmit  = (event) => {
+    
+  event.preventDefault();
+		// TODO - validate!
+		AUTH.signup({
       firstName: userObject.firstName,
       lastName: userObject.lastName,
       username: userObject.username,
-      email: userObject.email,
       password: userObject.password,
-    }).then((response) => {
+    }).then(response => {
       // console.log(response);
       if (!response.data.errmsg) {
-        setRedirectTo("/");
+        setRedirectTo('/Otp');
       } else {
-        console.log("duplicate");
+        console.log('duplicate');
       }
     });
   };
-
+  
   if (redirectTo) {
-    return <Redirect to={{ pathname: redirectTo }} />;
+    return <Redirect to={{ pathname: redirectTo }} />
   }
-
+  
   return (
     <>
       <main>
