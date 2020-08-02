@@ -95,7 +95,6 @@ function App() {
             <Route exact path="/profilepage/:id" component={ProfilePage} />
             <Route exact path="/businessList" component={BusinessList} />
             <Route exact path="/signup" component={SignupForm} />
-            <Route exact path="/profilepage" component={ProfilePage} />
             <Route exact path="/contact" component={ContactPage} />
           </Switch>
         </div>

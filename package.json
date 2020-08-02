@@ -10,7 +10,8 @@
     "client": "cd client && npm run start",
     "install": "cd client && yarn install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "seed": "node server/seeders/seed.js"
   },
   "engines": {
     "node": "12.10.0",
@@ -39,6 +40,7 @@
     "express-session": "^1.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.9.14",
+    "mongoose-data-seed": "^2.1.6",
     "morgan": "^1.10.0",
     "nodemailer": "^6.4.10",
     "passport": "^0.4.1",
