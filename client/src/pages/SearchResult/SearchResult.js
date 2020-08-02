@@ -5,8 +5,6 @@ import { Col, Row, Container } from "../../components/Grid";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { ResultCard } from "../../components/ResultCard";
 import API from "../../utils/API";
-import "./searchStyle.css";
-
 
 
 function SearchResult() {
@@ -55,15 +53,13 @@ function SearchResult() {
     <Container fluid>
       <Row>
         <Col size="md-6">
-          <h2>SEARCH</h2>
+          <h2 className="search-text">SEARCH</h2>
           <SearchBar handleFormSubmit={handleFormSubmit}/>
           <Map center={mapCoords} businesses={buisnessList}/>
         </Col>
-
-        <Col size="md-6">
-        <div className="resultCardContainer2">
-          <h2 class="featured-title">FEATURED</h2>
-          {buisnessList.map((business, i) => {
+        <Col classsize="md-6">
+          {/* <h2 class="featured-title">FEATURED</h2> */}
+          {buisnessList.map((business) => {
             return (
               <ResultCard
                 key={business.id}
@@ -72,7 +68,6 @@ function SearchResult() {
               ></ResultCard>
             );
           })}
-          </div>
         </Col>
       </Row>
     </Container>
@@ -82,3 +77,4 @@ function SearchResult() {
 
 
 export default SearchResult;
+

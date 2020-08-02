@@ -1,4 +1,8 @@
-.resultCardContainer2{
+#resultCardContainer2{
     overflow: scroll;
     height:76vh;
   }
+
+.search-text{
+  color:greenyellow;
+}
