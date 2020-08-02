@@ -9,7 +9,7 @@ function contactPF(props) {
         <div>
             <Button className="ButtonText" variant="info" size="sm" > {props.email}</Button>
             <Button className="ButtonText" variant="info" size="sm" > {props.phone}</Button>
-
+            <Button className="ButtonText" variant="info" size="sm" > {props.street}</Button>
         </div>
     )
 }

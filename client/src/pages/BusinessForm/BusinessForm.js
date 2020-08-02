@@ -258,15 +258,15 @@ function BusinessForm(props) {
   return (
     <main>
       <Container fluid>
-        <div className="titlecontainer">
-          <span className="title">Create a listing for your business</span>
-        </div>
+          {editMode ? <div className="title">Edit information for {editBusiness.businessName} </div> : 
+          <div className="title">Create a listing for your business </div>}
+    
         <Row className="mainContainer">
-          <Col size="size-md-12">
+          <Col size="size md-12">
             {/* <Card title="Welcome! Please fill out the following forms to set up your business."> */}
             <form ref={formEl}>
               <div className="row">
-                <div className="col-md-4">
+                <div className="col-4">
                   <div className="list-group" id="list-tab" role="tablist">
                     <a
                       className="list-group-item list-group-item-action active"
@@ -330,7 +330,7 @@ function BusinessForm(props) {
                     </a>
                   </div>
                 </div>
-                <div className="col-md-8">
+                <div className="col-8">
                   <div className="tab-content" id="nav-tabContent">
                     {/* Basic Info */}
                     <div
@@ -342,7 +342,7 @@ function BusinessForm(props) {
                       <Input
                         onChange={handleInputChange}
                         name="businessName"
-                        class="form__field"
+                        className="form__field"
                         placeholder="Name of Business (Required)"
                         defaultValue={editMode ? editBusiness.businessName : ""}
                         // { ...editBusiness ? value= :  placeholder="Name of Business (Required)" }
@@ -350,12 +350,14 @@ function BusinessForm(props) {
                       <Input
                         onChange={handleInputChange}
                         name="owner"
+                        className="form__field"
                         placeholder="Owner Name (Required)"
                         defaultValue={editMode ? editBusiness.owner : ""}
                       />
                       <Input
                         onChange={handleInputChange}
                         name="tagline"
+                        className="form__field"
                         placeholder="Tagline (Required) - A short, one sentance description of your business and what is unique about it"
                         defaultValue={editMode ? editBusiness.tagline : ""}
                       />
@@ -372,17 +374,19 @@ function BusinessForm(props) {
                         name="phoneNumber"
                         placeholder="Phone Number (Required)"
                         type="number"
+                        className="form__field"
                         defaultValue={editMode ? editBusiness.phoneNumber : ""}
 
                       />
                       <Input
                         onChange={handleInputChange}
                         name="email"
+                        className="form__field"
                         placeholder="Email Address (Required)"
                         defaultValue={editMode ? editBusiness.email : ""}
                       />
 
-                      <Address onChange={handleInputChange} />
+                      <Address className="form__field" onChange={handleInputChange} />
                     </div>
                     {/* Social Media */}
                     <div
@@ -394,12 +398,14 @@ function BusinessForm(props) {
                       <Input
                         onChange={handleInputChange}
                         name="instagram"
+                        className="form__field"
                         placeholder="Instagram URL"
                         defaultValue={editMode ? editBusiness.instagram : ""}
                       />
                       <Input
                         onChange={handleInputChange}
                         name="facebook"
+                        className="form__field"
                         placeholder="Facebook URL"
                         defaultValue={editMode ? editBusiness.facebook : ""}
 
@@ -407,6 +413,7 @@ function BusinessForm(props) {
                       <Input
                         onChange={handleInputChange}
                         name="website"
+                        className="form__field"
                         placeholder="Website"
                         defaultValue={editMode ? editBusiness.website : ""}
                       />
@@ -420,10 +427,10 @@ function BusinessForm(props) {
                     >
                       {/* Monday Hours */}
                       <Row>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <h4>Monday:</h4>
                         </Col>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Input
                             onChange={handleInputChange}
                             name="MonOpen"
@@ -432,7 +439,7 @@ function BusinessForm(props) {
 
                           />
                         </Col>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Control
                               onSelect={handleInputChange}
@@ -445,7 +452,7 @@ function BusinessForm(props) {
                           </Form.Group>
                         </Col>
                         -
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Input
                             onChange={handleInputChange}
                             name="MonClose"
@@ -453,8 +460,8 @@ function BusinessForm(props) {
                             defaultValue={editMode ? editBusiness.MonClose : ""}
                           />
                         </Col>
-                        <Col size="size col-md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
+                        <Col size="size md-2">
+                          <Form.Group  controlId="exampleForm.ControlSelect1">
                             <Form.Control as="select">
                               <option>PM</option>
                               <option>AM</option>
@@ -465,10 +472,10 @@ function BusinessForm(props) {
 
                       {/* Tuesday Hours */}
                       <Row>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <h4>Tuesday:</h4>
                         </Col>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Input
                             onChange={handleInputChange}
                             name="TuesOpen"
@@ -476,7 +483,7 @@ function BusinessForm(props) {
                             defaultValue={editMode ? editBusiness.TuesOpen : ""}
                           />
                         </Col>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Control as="select">
                               <option>AM</option>
@@ -485,7 +492,7 @@ function BusinessForm(props) {
                           </Form.Group>
                         </Col>
                         -
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Input
                             onChange={handleInputChange}
                             name="TuesClose"
@@ -493,7 +500,7 @@ function BusinessForm(props) {
                             defaultValue={editMode ? editBusiness.TuesClose : ""}
                           />
                         </Col>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Control as="select">
                               <option>PM</option>
@@ -505,10 +512,10 @@ function BusinessForm(props) {
 
                       {/* Wedneday Hours */}
                       <Row>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <h4>Wednesday:</h4>
                         </Col>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Input
                             onChange={handleInputChange}
                             name="WedOpen"
@@ -516,7 +523,7 @@ function BusinessForm(props) {
                             defaultValue={editMode ? editBusiness.WedOpen : ""}
                           />
                         </Col>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Control as="select">
                               <option>AM</option>
@@ -525,7 +532,7 @@ function BusinessForm(props) {
                           </Form.Group>
                         </Col>
                         -
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Input
                             onChange={handleInputChange}
                             name="WedClose"
@@ -534,7 +541,7 @@ function BusinessForm(props) {
                           />
                           
                         </Col>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Control as="select">
                               <option>PM</option>
@@ -547,7 +554,7 @@ function BusinessForm(props) {
                       {/* Thursday */}
 
                       <Row>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <h4>Thursday:</h4>
                         </Col>
                         <Col size="size md-2">
@@ -558,7 +565,7 @@ function BusinessForm(props) {
                             defaultValue={editMode ? editBusiness.ThursOpen : ""}
                           />
                         </Col>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Control as="select">
                               <option>AM</option>
@@ -567,7 +574,7 @@ function BusinessForm(props) {
                           </Form.Group>
                         </Col>
                         -
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Input
                             onChange={handleInputChange}
                             name="ThursClose"
@@ -575,7 +582,7 @@ function BusinessForm(props) {
                             defaultValue={editMode ? editBusiness.ThursClose : ""}
                           />
                         </Col>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Control as="select">
                               <option>PM</option>
@@ -588,7 +595,7 @@ function BusinessForm(props) {
                       {/* Friday hours */}
 
                       <Row>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <h4>Friday:</h4>
                         </Col>
                         <Col size="size md-2">
@@ -599,7 +606,7 @@ function BusinessForm(props) {
                             defaultValue={editMode ? editBusiness.FriOpen : ""}
                           />
                         </Col>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Control as="select">
                               <option>AM</option>
@@ -608,7 +615,7 @@ function BusinessForm(props) {
                           </Form.Group>
                         </Col>
                         -
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Input
                             onChange={handleInputChange}
                             name="FriClose"
@@ -616,7 +623,7 @@ function BusinessForm(props) {
                             defaultValue={editMode ? editBusiness.FriClose : ""}
                           />
                         </Col>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Control as="select">
                               <option>PM</option>
@@ -629,10 +636,10 @@ function BusinessForm(props) {
                       {/* Saturday hours */}
 
                       <Row>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <h4>Saturday:</h4>
                         </Col>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Input
                             onChange={handleInputChange}
                             name="SatOpen"
@@ -640,7 +647,7 @@ function BusinessForm(props) {
                             defaultValue={editMode ? editBusiness.SatOpen : ""}
                           />
                         </Col>
-                        <Col size="size col-md-2">
+                        <Col size="size md-2">
                           <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Control as="select">
                               <option>AM</option>
@@ -759,12 +766,14 @@ function BusinessForm(props) {
                       <TextArea
                         onChange={handleInputChange}
                         name="about"
+                        className="form__fieldBox"
                         placeholder="About Section"
                         defaultValue={editMode ? editBusiness.about : ""}
                       />
                       <Input
                         onChange={handleInputChange}
                         name="masks"
+                        className="form__field"
                         placeholder="Current News or Events (ex: does your business currently require masks?)"
                         defaultValue={editMode ? editBusiness.masks : ""}
                       />
@@ -779,7 +788,7 @@ function BusinessForm(props) {
               </div>
 
               <FormBtn
-              className="form-button"
+                className="submitBtn"
                 // disabled={
                 //   !(
                 //     formObject.businessName &&

@@ -8,10 +8,15 @@
     text-align: center;
 }
 
- .titlecontainer {
-    padding: 5% 20%;
-    text-align: center !important;
+.btn-success{
+    background-color: #AED1CD!important;
+    border-color: #AED1CD !important;
+    border-radius: 32px !important;
+    min-width: 100px !important;
+    margin-bottom: 8px !important;
+    margin-right: 8px;
 }
+
 
 .mainContainer{
     margin: 1% 8% ;

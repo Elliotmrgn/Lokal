@@ -36,6 +36,7 @@ function BusinessPage(props) {
     const [userphotos, setPhotos] = useState([]);
     const [mapCoords, setMapCoords] = useState({});
     const [allTags, setTags] = useState([]);
+    const busiArray = [];
 
 
     useEffect(() => {
@@ -50,19 +51,15 @@ function BusinessPage(props) {
         setBusiness(res.data);
         setPhotos(res.data.photos);
         setTags(res.data.tags);
+        busiArray.push(res.data);
         setMapCoords({
           lat: parseFloat(res.data.lat),
           lng: parseFloat(res.data.lng),
         });
-      })
+      }, [])
       .catch((err) => console.log(err));
 
-    //     API.getProfileSchedule(testerbusiness)
-    //     .then((res) => {
-    //     console.log("hours" + res.data);
-    //     setBusiness(res.data);
-    //     })
-    //     .catch(err => console.log(err));
+
   }
 
 
@@ -85,15 +82,14 @@ function BusinessPage(props) {
             <li></li>
           </ul>
         </div>
-      )
 
       {business.logo ? (
-        <Image className="logo" src={business.logo} roundedCircle />
+        <Image className="logo" src={business.logo}  />
       ) : null}
 
       <Container>
         <Row>
-          <Col xs={7} className="mainSection">
+          <Col  sm={12} md={7} className="mainSection">
             <div className="box profileHeader">
               {business.businessName && (
                 <Header
@@ -106,13 +102,19 @@ function BusinessPage(props) {
             <div className="box tags">
               {business.tags &&  
                 business.tags.map(function(data, i) {return <Button className="ButtonText" key={i} variant="info" size="sm" >{data} </Button> }) }
-                 {/* <Tags key={i} tags={data} /> }) */}
 
             
             </div>
 
             <div className="box tagline">
+            {/* <Button className="ButtonText" variant="info" size="sm" >TEST</Button> */}
               {business.tagline && <Tagline shortTag={business.tagline} />}
+            </div>
+
+            <div className="box about">
+              {business.about && (
+                <About name={business.businessName} about={business.about}  />
+              )}
             </div>
 
             {userphotos.length > 0 && (
@@ -125,18 +127,12 @@ function BusinessPage(props) {
               </div>
             )}
 
-            <div className="box about">
-              {business.about && (
-                <About name={business.businessName} about={business.about} />
-              )}
-            </div>
-
             <div className="box owner">
               {business.owner && <Owner owner={business.owner} />}
             </div>
           </Col>
 
-          <Col className="aside">
+          <Col sm={12} md={5} className="aside">
             <div className="box socialMedia">
               {business.instagram ? (
                 <InstaIcon insta={business.instagram} />
@@ -149,8 +145,13 @@ function BusinessPage(props) {
                 <ContactButtons
                   email={business.email}
                   phone={business.phoneNumber}
+                  street={business.street}
                 />
               ) : null}
+            </div>
+
+            <div className="box map">
+            <Map center={mapCoords} businesses={busiArray}/>
             </div>
 
             <div className="box hours">
@@ -230,10 +231,6 @@ function BusinessPage(props) {
               )}
             </div>
 
-            <div className="box map">
-              {/* <Map center={mapCoords} businesses={business} /> */}
-              { business.address && <Map center={mapCoords} businesses={business} />}
-            </div>
           </Col>
         </Row>
       </Container>

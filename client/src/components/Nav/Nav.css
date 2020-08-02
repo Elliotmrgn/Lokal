@@ -18,3 +18,19 @@
 #register {
   color: #5b9098;
 }
+
+
+
+@media only screen and (max-width:560px) {
+
+.navbar-brand {
+  width: 100vw;
+}
+
+.myLinks{
+  font-size: 4vw;
+}
+#register{
+  width: 100vw;
+}
+}
