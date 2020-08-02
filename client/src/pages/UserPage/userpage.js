@@ -9,13 +9,14 @@ import "./userPgStyle.css";
 function Userpage(props) {
   const [user, setuser] = useState([]);
   const [businesss, setBusiness] = useState([]);
+  const toLoad= props.match.params.id
 
   useEffect(() => {
     loaduser();
   }, []);
 
   function loaduser() {
-    API.getUser().then((res) => {
+    API.getUser(toLoad).then((res) => {
       setuser(res.data);
       console.log("here " + res.data.email);
 
@@ -29,6 +30,7 @@ function Userpage(props) {
   }
 
   return (
+    <main>
     <div className="userPageContainer">
       <div className="hello">hello, {user.firstName}!</div>
       <h4 className="centerText">Manage My Businesses:</h4>
@@ -50,9 +52,9 @@ function Userpage(props) {
                 </Card.Header>
                 <Accordion.Collapse eventKey={data._id}>
                   <Card.Body>
-                    <a href={"/profilepage/" + data._id}> View Page</a>
+                    <a href={"/profilepage/" + data._id} classNam="cardHeader"> View Page</a>
                     <br></br>
-                    <a href={"/form/" + data._id}> Edit</a>
+                    <a href={"/businessForm/" + data._id}> Edit</a>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
@@ -60,6 +62,7 @@ function Userpage(props) {
           })}
       </Accordion>
     </div>
+    </main>
   );
 }
 

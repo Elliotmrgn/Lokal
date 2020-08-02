@@ -6,12 +6,17 @@
     color: #354959;
     text-transform: uppercase;
     text-align: center;
+    padding: 20px;
+}
+.btn-success{
+    background-color: #AED1CD!important;
+    border-color: #AED1CD !important;
+    border-radius: 32px !important;
+    min-width: 100px !important;
+    margin-bottom: 8px !important;
+    margin-right: 8px;
 }
 
- .titlecontainer {
-    padding: 5% 20%;
-    text-align: center !important;
-}
 
 .mainContainer{
     margin: 1% 8% ;

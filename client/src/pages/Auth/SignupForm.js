@@ -114,7 +114,7 @@ function SignupForm() {
                   placeholder="confirm password"
                   class="form__field"
                 />
-                <Link to="/">Login</Link>
+                <Link to="/login">Login</Link>
                 <FormBtn onClick={handleSubmit}>Register</FormBtn>
               </form>
               {/* </Card> */}

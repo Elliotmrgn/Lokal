@@ -83,22 +83,6 @@ function BusinessList() {
     <main>
           <div className="titleBox">
             <span className="title" >Discover businesses by Category</span>
-    
-            {/* <Form.Group
-              className="tagPicker"
-              controlId="exampleForm.ControlSelect1"
-              appear="true" >
-              <Form.Control
-                className="tagDrops"
-                as="select"
-                onChange={handleInputChange}
-              >
-                <option className="options" value="">
-                  Pick an option
-                </option>
-                {tagList}
-              </Form.Control>
-            </Form.Group> */}
 
             <Dropdown className="tagPicker">
               <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -264,7 +248,7 @@ function BusinessList() {
             </Col>
           )}
 
-          {formObject.Tag === "Resteraunt" && (
+          {formObject.Tag === "Restaurant" && (
             <Col md="auto">
               {" "}
               <img

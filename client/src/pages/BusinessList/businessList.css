@@ -108,3 +108,11 @@ h5{
   font-size: 1.1rem;
 }
    
+.tagPicker button{
+  background-color: #AED1CD!important;
+  border-color: #AED1CD !important;
+  border-radius: 32px !important;
+  min-width: 100px !important;
+  margin-bottom: 8px !important;
+  margin-right: 8px;
+}
