@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import API from "../../utils/API";
+import React, {  useState } from "react";
 
 function SearchBar(props) {
   const [formObject, setFormObject] = useState({});

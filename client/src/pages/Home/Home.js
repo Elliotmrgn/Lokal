@@ -33,9 +33,9 @@ function Home() {
       {/* https://www.w3schools.com/css/css_grid_item.asp */}
 
       <section className="grid-container">
-        <Row>
+        {/* <Row>
         <img id="house" align="center" src={House} alt="house image"></img>
-        </Row>
+        </Row> */}
 
         <Row className="welcome-container" size="size md-12">
             <br></br>

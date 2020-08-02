@@ -49,7 +49,6 @@
     padding: 90px 150px;
     /* width: 87%; */
     /* align-items: left; */
-    background-color: #ebd9d0;
     width: 100vw;
 }
 
@@ -79,6 +78,7 @@
 
 /* Makers CONTAINER */
 .makers-container {
+    background-color: #dfd3cd;
     padding: 90px ;
     font-size: 2.3rem;
     text-align: center;

@@ -1,15 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Container } from "../../components/Grid";
+import React, { useState, useEffect } from "react";
 
 import API from "../../utils/API";
 
 import "./businessList.css";
-import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import ListGroup from "react-bootstrap/ListGroup";
-import Fade from "react-bootstrap/Fade";
 import Dropdown from "react-bootstrap/Dropdown";
 
 
@@ -32,7 +27,7 @@ import tags from "../../utils/Tags";
 
 function BusinessList() {
   const [business, setBusiness] = useState([]);
-  const [renderedBusiness, setRenderedBusiness] = useState([]);
+  // const [renderedBusiness, setRenderedBusiness] = useState([]);
   const [formObject, setFormObject] = useState([]);
   useEffect(() => {
     loadBusiness();
@@ -285,11 +280,11 @@ function BusinessList() {
           <Col className="listingCol">
 
               {business && business.map((business, i) => { 
-                return ( <div className="resultCard2"> 
-                < div key={i} className="idk2" > <a href={"/profilepage/" + business._id}  > < RiArrowRightUpLine />  </a> </div>
+                return ( <div  key={i} className="resultCard2"> 
+                < div className="idk2" > <a href={"/profilepage/" + business._id}  > < RiArrowRightUpLine />  </a> </div>
                 <div className="idk">
-                <a href={"/profilepage/" + business._id}  ><h1 className="listName">{business.businessName}</h1> </a>
-                </div>
+                <a  href={"/profilepage/" + business._id}  ><h1  className="listName">{business.businessName}</h1> </a>
+                </div >
                 <h5 className="listTagline">{business.tagline}</h5>
                 </div>) } ) } 
           </Col>

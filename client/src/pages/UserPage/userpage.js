@@ -52,7 +52,7 @@ function Userpage(props) {
                 </Card.Header>
                 <Accordion.Collapse eventKey={data._id}>
                   <Card.Body>
-                    <a href={"/profilepage/" + data._id} classNam="cardHeader"> View Page</a>
+                    <a href={"/profilepage/" + data._id} > View Page</a>
                     <br></br>
                     <a href={"/businessForm/" + data._id}> Edit</a>
                   </Card.Body>

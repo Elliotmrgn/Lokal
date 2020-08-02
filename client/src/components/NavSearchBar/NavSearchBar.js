@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
-import API from "../../utils/API";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import "./navStyles.css";
 import { useHistory } from "react-router-dom";
 
 function SearchBar() {
-  const [formObject, setFormObject] = useState({});
+  // const [formObject, setFormObject] = useState({});
   const [search, setSearch] = useState("");
   let history = useHistory();
 
