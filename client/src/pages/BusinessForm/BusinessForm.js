@@ -258,9 +258,9 @@ function BusinessForm(props) {
   return (
     <main>
       <Container fluid>
-        <div className="titlecontianer">
-          <span className="title">Create a listing for your business</span>
-        </div>
+          {editMode ? <div className="title">Edit information for {editBusiness.businessName} </div> : 
+          <div className="title">Create a listing for your business </div>}
+    
         <Row className="mainContainer">
           <Col size="size md-12">
             {/* <Card title="Welcome! Please fill out the following forms to set up your business."> */}
@@ -342,6 +342,7 @@ function BusinessForm(props) {
                       <Input
                         onChange={handleInputChange}
                         name="businessName"
+                        className="form__field"
                         placeholder="Name of Business (Required)"
                         defaultValue={editMode ? editBusiness.businessName : ""}
                         // { ...editBusiness ? value= :  placeholder="Name of Business (Required)" }
@@ -349,12 +350,14 @@ function BusinessForm(props) {
                       <Input
                         onChange={handleInputChange}
                         name="owner"
+                        className="form__field"
                         placeholder="Owner Name (Required)"
                         defaultValue={editMode ? editBusiness.owner : ""}
                       />
                       <Input
                         onChange={handleInputChange}
                         name="tagline"
+                        className="form__field"
                         placeholder="Tagline (Required) - A short, one sentance description of your business and what is unique about it"
                         defaultValue={editMode ? editBusiness.tagline : ""}
                       />
@@ -371,17 +374,19 @@ function BusinessForm(props) {
                         name="phoneNumber"
                         placeholder="Phone Number (Required)"
                         type="number"
+                        className="form__field"
                         defaultValue={editMode ? editBusiness.phoneNumber : ""}
 
                       />
                       <Input
                         onChange={handleInputChange}
                         name="email"
+                        className="form__field"
                         placeholder="Email Address (Required)"
                         defaultValue={editMode ? editBusiness.email : ""}
                       />
 
-                      <Address onChange={handleInputChange} />
+                      <Address className="form__field" onChange={handleInputChange} />
                     </div>
                     {/* Social Media */}
                     <div
@@ -393,12 +398,14 @@ function BusinessForm(props) {
                       <Input
                         onChange={handleInputChange}
                         name="instagram"
+                        className="form__field"
                         placeholder="Instagram URL"
                         defaultValue={editMode ? editBusiness.instagram : ""}
                       />
                       <Input
                         onChange={handleInputChange}
                         name="facebook"
+                        className="form__field"
                         placeholder="Facebook URL"
                         defaultValue={editMode ? editBusiness.facebook : ""}
 
@@ -406,6 +413,7 @@ function BusinessForm(props) {
                       <Input
                         onChange={handleInputChange}
                         name="website"
+                        className="form__field"
                         placeholder="Website"
                         defaultValue={editMode ? editBusiness.website : ""}
                       />
@@ -453,7 +461,7 @@ function BusinessForm(props) {
                           />
                         </Col>
                         <Col size="size md-2">
-                          <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Group  controlId="exampleForm.ControlSelect1">
                             <Form.Control as="select">
                               <option>PM</option>
                               <option>AM</option>
@@ -758,12 +766,14 @@ function BusinessForm(props) {
                       <TextArea
                         onChange={handleInputChange}
                         name="about"
+                        className="form__fieldBox"
                         placeholder="About Section"
                         defaultValue={editMode ? editBusiness.about : ""}
                       />
                       <Input
                         onChange={handleInputChange}
                         name="masks"
+                        className="form__field"
                         placeholder="Current News or Events (ex: does your business currently require masks?)"
                         defaultValue={editMode ? editBusiness.masks : ""}
                       />
@@ -778,6 +788,7 @@ function BusinessForm(props) {
               </div>
 
               <FormBtn
+                className="submitBtn"
                 // disabled={
                 //   !(
                 //     formObject.businessName &&

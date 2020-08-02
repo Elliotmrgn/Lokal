@@ -59,12 +59,7 @@ function BusinessPage(props) {
       }, [])
       .catch((err) => console.log(err));
 
-    //     API.getProfileSchedule(testerbusiness)
-    //     .then((res) => {
-    //     console.log("hours" + res.data);
-    //     setBusiness(res.data);
-    //     })
-    //     .catch(err => console.log(err));
+
   }
 
 
@@ -87,7 +82,6 @@ function BusinessPage(props) {
             <li></li>
           </ul>
         </div>
-      )
 
       {business.logo ? (
         <Image className="logo" src={business.logo}  />
@@ -108,13 +102,12 @@ function BusinessPage(props) {
             <div className="box tags">
               {business.tags &&  
                 business.tags.map(function(data, i) {return <Button className="ButtonText" key={i} variant="info" size="sm" >{data} </Button> }) }
-                 {/* <Tags key={i} tags={data} /> }) */}
 
             
             </div>
 
             <div className="box tagline">
-            <Button className="ButtonText" variant="info" size="sm" >STUFF</Button>
+            {/* <Button className="ButtonText" variant="info" size="sm" >TEST</Button> */}
               {business.tagline && <Tagline shortTag={business.tagline} />}
             </div>
 
