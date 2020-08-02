@@ -17,13 +17,12 @@ const Navbar = (props) => {
 
   const [user, setUser] = useState();
   useEffect(() => {
-     AUTH.getUser().then((response) => {
-        if (!!response.data.user) {
+    AUTH.getUser().then((response) => {
+      if (!!response.data.user) {
         setUser(response.data.user._id);
-        }
-    }) });
-
-
+      }
+    });
+  }, []);
 
   if (props.user === null || props.user === undefined) {
     greeting = <p>Hello guest</p>;
@@ -59,7 +58,11 @@ const Navbar = (props) => {
     businessForm = "";
   } else {
     businessForm = (
-      <Link to="/BusinessForm" id="register" className="navbar-contact  myLinks px-4">
+      <Link
+        to="/BusinessForm"
+        id="register"
+        className="navbar-contact  myLinks px-4"
+      >
         Register
       </Link>
     );
@@ -69,7 +72,11 @@ const Navbar = (props) => {
     userAccount = "";
   } else {
     userAccount = (
-      <Link to={"/user/" + user} id="userAccount" className="navbar-contact myLinks px-4">
+      <Link
+        to={"/user/" + user}
+        id="userAccount"
+        className="navbar-contact myLinks px-4"
+      >
         Account
       </Link>
     );
@@ -82,7 +89,11 @@ const Navbar = (props) => {
           <Link to="/" className="navbar-brand">
             <img src="https://i.ibb.co/DMGWXh0/logo-01.png" alt="logo"></img>
           </Link>
-          <Link to="/contact" id="contact" className="navbar-contact myLinks px-4">
+          <Link
+            to="/contact"
+            id="contact"
+            className="navbar-contact myLinks px-4"
+          >
             Contact
           </Link>
           <Link
@@ -102,7 +113,6 @@ const Navbar = (props) => {
             {userStatus}
           </div>
         </Col>
-
       </nav>
     </header>
   );
