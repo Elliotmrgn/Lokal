@@ -8,7 +8,7 @@
   letter-spacing: 8px;
   font-family: 'Livvic', sans-serif;
   font-weight: 900;
-  line-height: 7vw;
+  line-height: 8vw;
   text-transform: uppercase;
   text-align: center;
   color: white;
@@ -55,7 +55,7 @@
 .titleBox{
   margin: 0px 0px;
   width: 100%;
-  padding: 10px;
+  padding: 21px;
   text-align: center;
 }
 
@@ -118,5 +118,14 @@ h5{
 }
 
 .tagPicker{
-  margin: 10px;
+  margin: 14px;
+}
+
+@media only screen and (max-width:770px) {
+
+.Tagcaption {
+  font-size: 3rem;
+  line-height: 4rem;
+  left: 54%;
+}
 }

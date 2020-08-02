@@ -39,11 +39,11 @@ function Home() {
 
         <Row className="welcome-container" size="size md-12">
             <br></br>
-            <p id="bold">
+            <p className="centerText" id="bold">
               Now more than ever, its important to support our local
               communities.
               </p>
-              <p id="explanation">
+              <p  id="explanation">
               We’ve created a place where you can find the hidden
                 gems in your community. Search for in a business by either name
                or category and you'll have quick access to all their information 
@@ -52,7 +52,7 @@ function Home() {
           </Row>
           <Row className="makers-container">
        
-              <p id="bold">
+              <p className="centerText"id="bold">
                 We help makers build a page thats easy to manage so anyone can increase online presence  
               </p>
          
