@@ -13,9 +13,9 @@
     "heroku-postbuild": "npm run build"
   },
   "engines": {
-    "node": "12.10.0",
+    "node": "12.14.1",
     "npm": "6.11.3",
-    "yarn": "1.19.1"
+    "yarn": "1.22.4"
   },
   "author": "",
   "license": "ISC",
@@ -36,6 +36,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "firebase": "^7.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.9.14",
     "morgan": "^1.10.0",
