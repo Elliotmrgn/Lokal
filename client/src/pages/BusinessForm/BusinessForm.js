@@ -172,8 +172,9 @@ function BusinessForm(props) {
         tags: tags,
       })
         .then((res) => {
-          console.log("res!!!!:", res);
+          console.log("res!!!!:", res.data.businesses[res.data.businesses.length - 1]);
           formEl.current.reset();
+          history.push(`/profilepage/${res.data.businesses[res.data.businesses.length - 1]}`)
         })
         .catch((err) => console.log("aftersave" + err));
     });
