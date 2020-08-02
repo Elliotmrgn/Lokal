@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import LoginForm from "./pages/Auth/LoginForm";
 import SignupForm from "./pages/Auth/SignupForm";
 import Navbar from "./components/Nav";
+import Otp from "./pages/Auth/Otp";
 import Footer from "./components/Footer";
 import NoMatch from "./pages/NoMatch";
 import ProfilePage from "./pages/businesspage/businesspage";
@@ -90,6 +91,7 @@ function App() {
               path="/login"
               component={() => <LoginForm login={login} />}
             />
+            <Route exact path="/Otp" component={Otp} />
             <Route exact path="/businessForm" component={Home} />
             <Route exact path="/results/:search" component={SearchResult} />
             <Route exact path="/profilepage/:id" component={ProfilePage} />
