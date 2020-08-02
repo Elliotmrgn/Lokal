@@ -46,6 +46,32 @@ h5 {
   text-align: center;
 }
 
+/* SEARCH RESULT PAGE */
+.search-text {
+  color: #354959;
+  text-transform: uppercase;
+  padding-top: 40px;
+  font-size: 4rem;
+  font-weight: 200;
+  letter-spacing: 4px;
+  line-height: 1.2em;
+  font-family: 'Livvic', sans-serif;
+  text-align: center;
+}
+
+.form-group {
+  font-size: 1.25rem;
+  color: #495057;
+}
+
+#searchHelp {
+  font-size: .90rem;
+}
+
+#search-page-button {
+  margin-bottom: 20px;
+}
+
 .form__field {
   width: 100%;
   border: 0;

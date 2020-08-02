@@ -4,7 +4,7 @@ import { Container, Row, Col } from "../../components/Grid";
 import './Contact.css';
 import axios from 'axios';
 
-const EmailJSID = process.env.REACT_APP_EMAILJS_USERID;
+// const EmailJSID = process.env.REACT_APP_EMAILJS_USERID;
 const Email_address = process.env.TO_NAME;
 
 class Contact extends Component {

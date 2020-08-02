@@ -23,3 +23,4 @@ router.route("/viaSearch/:search").get(businessController.findViaSearch);
 router.route("/viaTags/:tags").get(businessController.findViaTags);
 
 module.exports = router;
+
