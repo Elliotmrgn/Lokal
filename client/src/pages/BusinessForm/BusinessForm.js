@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Container } from "../../components/Grid";
+// import { Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn, Address } from "../../components/Form";
 import API from "../../utils/API";
 import Checkbox from "../../components/Checkbox";
 import "./formstyles.css";
 
-import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+
+import Form from "react-bootstrap/Form";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
 import { useHistory } from 'react-router-dom';

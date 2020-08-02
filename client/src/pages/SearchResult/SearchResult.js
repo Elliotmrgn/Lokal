@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import Map from "../../components/Map/Map";
-import { Col, Row, Container } from "../../components/Grid";
+// import { Col, Row, Container } from "../../components/Grid";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { ResultCard } from "../../components/ResultCard";
 import API from "../../utils/API";
+import "./searchStyle.css"
+
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 
 function SearchResult() {
@@ -57,7 +62,7 @@ function SearchResult() {
           <SearchBar handleFormSubmit={handleFormSubmit}/>
           <Map center={mapCoords} businesses={buisnessList}/>
         </Col>
-        <Col size="md-6">
+        <Col classsize="md-6" className="resultCardContainer2">
           {/* <h2 class="featured-title">FEATURED</h2> */}
           {buisnessList.map((business) => {
             return (
