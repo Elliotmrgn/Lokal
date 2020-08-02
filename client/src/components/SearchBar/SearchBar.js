@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import API from "../../utils/API";
+import React, {  useState } from "react";
 
 function SearchBar(props) {
   const [formObject, setFormObject] = useState({});
@@ -29,6 +28,7 @@ function SearchBar(props) {
         </div>
         <button
           type="submit"
+          id="search-page-button"
           className="btn btn-primary"
           value={formObject.search}
           onClick={props.handleFormSubmit}

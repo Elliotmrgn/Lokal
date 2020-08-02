@@ -49,10 +49,16 @@ function SearchResult() {
   }
   
   return (
+    <main>
     <Container fluid>
       <Row>
         <Col size="md-6">
-          <h2 class="featured-title">FEATURED</h2>
+          <h2 className="search-text">SEARCH</h2>
+          <SearchBar handleFormSubmit={handleFormSubmit}/>
+          <Map center={mapCoords} businesses={buisnessList}/>
+        </Col>
+        <Col size="md-6">
+          {/* <h2 class="featured-title">FEATURED</h2> */}
           {buisnessList.map((business) => {
             return (
               <ResultCard
@@ -63,15 +69,12 @@ function SearchResult() {
             );
           })}
         </Col>
-        <Col size="md-6">
-          <h2>SEARCH</h2>
-          <SearchBar handleFormSubmit={handleFormSubmit}/>
-          <Map center={mapCoords} businesses={buisnessList}/>
-        </Col>
       </Row>
     </Container>
+    </main>
   );
 }
 
 
 export default SearchResult;
+

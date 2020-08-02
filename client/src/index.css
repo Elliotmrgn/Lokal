@@ -19,12 +19,12 @@ main {
   justify-content: space-between !important;
 }
 
-button {
+/* button {
   color: white;
   background-color: #AED1CD!important;
   border-color: #AED1CD !important;
   border-radius: 32px !important;
-}
+} */
 
 #home-search {
   font-size: 30px;
@@ -42,11 +42,36 @@ a {
   color: #4D898C;
 }
 
-h5 {
+/* h5 {
+  text-align: center;
+} */
+
+/* SEARCH RESULT PAGE */
+.search-text {
+  color: #354959;
+  text-transform: uppercase;
+  padding-top: 40px;
+  font-size: 4rem;
+  font-weight: 200;
+  letter-spacing: 4px;
+  line-height: 1.2em;
+  font-family: 'Livvic', sans-serif;
   text-align: center;
 }
 
-styles for inputs
+.form-group {
+  font-size: 1.25rem;
+  color: #495057;
+}
+
+#searchHelp {
+  font-size: .90rem;
+}
+
+#search-page-button {
+  margin-bottom: 20px;
+}
+
 .form__field {
   width: 100%;
   border: 0;
@@ -70,6 +95,28 @@ styles for inputs
     top: 20px;
   }
 
+  .form__fieldBox{
+    width: 100%;
+    border: 0;
+    border: 2px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: black;
+    letter-spacing: 1px;
+    padding: 7px 07px;
+    background: transparent;
+    transition: border-color 0.2s; }
+
+    .form__fieldBox::placeholder {
+      color: grey;
+    }
+  
+   .form__fieldBox:placeholder-shown  {
+      font-size: 1.3rem;
+      cursor: text;
+      /* color: blue; */
+      top: 20px;
+    }
 /* 
  .form__label {
   top: 0;
@@ -89,6 +136,14 @@ styles for inputs
     font-weight:700;    
   } */
 .form__field:focus{
+  padding-bottom: 6px;  
+  font-weight: 700;
+  color: #4D898C;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #4D898C, #AED1CD);
+  border-image-slice: 1;
+} 
+.form__fieldBox:focus{
   padding-bottom: 6px;  
   font-weight: 700;
   color: #4D898C;

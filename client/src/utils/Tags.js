@@ -1,6 +1,6 @@
 const tags = [
   "Cafe",
-  "Resteraunt",
+  "Restaurant",
   "Boutique",
   "Clothing",
   "Drive Thru",
