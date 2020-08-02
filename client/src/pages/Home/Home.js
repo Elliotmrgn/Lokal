@@ -53,7 +53,7 @@ function Home() {
           <Row className="makers-container">
        
               <p className="centerText"id="bold">
-                We help makers build a page thats easy to manage so anyone can increase online presence  
+                We help makers build a page thats easy to manage so anyone can increase their online presence  
               </p>
          
 

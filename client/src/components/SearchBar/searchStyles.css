@@ -1,0 +1,22 @@
+.resultSearch {
+    display: inline-flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.searchBar{
+    flex: 2 0px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    margin: 2px auto;
+}
+
+.btn-result{
+    margin-top: 5px;
+    width: min-content;
+    flex: 0 auto;
+    background-color: #AED1CD!important;
+    border-color: #AED1CD !important;
+    border-radius: 32px !important;
+
+}
