@@ -28,6 +28,7 @@ function SearchBar(props) {
         </div>
         <button
           type="submit"
+          id="search-page-button"
           className="btn btn-primary"
           value={formObject.search}
           onClick={props.handleFormSubmit}
