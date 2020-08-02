@@ -381,7 +381,7 @@ function BusinessForm(props) {
                         onChange={handleInputChange}
                         name="email"
                         className="form__field"
-                        placeholder="Email Address (Required)"
+                        placeholder="Your Email Address (Required)"
                         defaultValue={editMode ? editBusiness.email : ""}
                       />
 

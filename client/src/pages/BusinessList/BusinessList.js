@@ -249,11 +249,11 @@ function BusinessList() {
               <img
                 className="coverImg"
                 src="https://i.ibb.co/FkQLmMV/resturant.jpg"
-                alt="Resteraunt"
+                alt="estuarant"
               ></img>
               <div className="Tagcaption">
                 <p className="xlText">
-                  Resteraunt
+                    Restuarant
                   <GiKnifeFork />{" "}
                 </p>
               </div>{" "}

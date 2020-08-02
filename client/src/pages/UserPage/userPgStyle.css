@@ -10,15 +10,18 @@
 }
 
 .hello {
-    font-size: 3em;
+    font-size: 2.5em;
     font-weight: 200;
     font-style: italic;
     margin-bottom: 30px;
     color: #4D898C;
     text-align: center;
-    line-height: 3.9rem;
+    line-height: 3.5rem;
 }
 
+.noBiz{
+    margin-bottom: 25px;
+}
 
 .cardHead{
     font-size: 1.4rem !important;
