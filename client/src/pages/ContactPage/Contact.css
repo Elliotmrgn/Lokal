@@ -1,34 +1,40 @@
 #getintouch {
     text-align: center !important;
     color: #354959;
-    padding-top: 40px; 
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 200;
     letter-spacing: 4px;
     line-height: 1.2em;
     color: #354959;
     text-transform: uppercase;
+    padding-top: 20px;
 }
 
-#contact-button {
+.uibutton {
     color: white;
     background-color: #AED1CD!important;
-    border-color: #AED1CD !important;
+    border: none;
     border-radius: 32px !important;
     min-width: 100px !important;
     margin-bottom: 8px !important;
+    padding: 10px;
 }
 
 .main-container {
-    padding:30px;
+    padding:0px;
 }
 
 #getintouch {
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 
-#contact-button {
-    padding: 20px;
-    border: none;
+
+/*  MOBILE ONLY */
+@media only screen and (max-width: 660px) {
+    #getintouch {
+        font-size: 2rem;
+        line-height: 1.2em;
+        padding-top: 10px;
+    }
 }
 

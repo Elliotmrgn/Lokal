@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import AUTH from "../../utils/AUTH";
 import "./Nav.css";
 // import NavSearchBar from "../NavSearchBar/NavSearchBar"
@@ -42,15 +42,15 @@ const Navbarcomponent = (props) => {
 
   if (props.user === null || props.user === undefined) {
     userStatus = (
-      <Link to="/login" className="login myLinks" onClick={props.login}>
+      <NavLink href="/login" className="login myLinks" onClick={props.login}>
         Login
-      </Link>
+      </NavLink>
     );
   } else {
     userStatus = (
-      <Link to="#" className="logout myLinks" onClick={props.logout}>
+      <NavLink href="#" className="logout myLinks" onClick={props.logout}>
         Logout
-      </Link>
+      </NavLink>
     );
   }
 
@@ -58,9 +58,9 @@ const Navbarcomponent = (props) => {
     businessForm = "";
   } else {
     businessForm = (
-      <Link to="/BusinessForm" id="register" className="navbar-contact  myLinks px-4">
+      <NavLink href="/BusinessForm" id="register" className="navbar-contact  myLinks px-4">
         Register Business
-      </Link>
+      </NavLink>
     );
   }
 
@@ -68,9 +68,9 @@ const Navbarcomponent = (props) => {
     userAccount = "";
   } else {
     userAccount = (
-      <Link to={"/user/" + user} id="userAccount" className="navbar-contact myLinks px-4">
+      <NavLink href={"/user/" + user} id="userAccount" className="navbar-contact myLinks px-4">
         Account
-      </Link>
+      </NavLink>
     );
   }
 

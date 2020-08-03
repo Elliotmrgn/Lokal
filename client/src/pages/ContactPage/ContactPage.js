@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import * as emailjs from "emailjs-com";
 import { Container, Row, Col } from "../../components/Grid";
 import "./Contact.css";
-import axios from "axios";
 
-// const EmailJSID = process.env.REACT_APP_EMAILJS_USERID;
+const EmailJSID = process.env.REACT_APP_EMAILJS_USERID;
 const Email_address = process.env.TO_NAME;
 
 class Contact extends Component {
@@ -41,7 +40,7 @@ class Contact extends Component {
         "gmail",
         "template_KwPnGaq2",
         templateParams,
-        "user_yP8uEfDR2X4Xt6sILRoXI"
+        `${EmailJSID}`
       )
       .then(
         function (response) {
@@ -130,13 +129,14 @@ class Contact extends Component {
                 }}
               />
               <br />
-              <input
-                type="button"
-                value=" Send "
-                id="contact-button"
-                className="uibutton"
-                onClick={this.sendMessage.bind(this)}
-              />
+
+                <input
+                  type="button"
+                  id="#contact-button"
+                  value=" SEND "
+                  className="uibutton"
+                  onClick={this.sendMessage.bind(this)}
+                />
             </form>
           </div>
         </Container>

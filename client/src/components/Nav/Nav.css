@@ -1,7 +1,7 @@
 
 .logout {
   color: #5b9098;
-  padding-left: 24px;
+  padding-left: 24px !important;
 } 
 
 .navbar-brand img {
