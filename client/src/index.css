@@ -156,3 +156,8 @@ a {
   &:required,&:invalid { box-shadow:none; }
 } */
 /* demo */
+
+
+#contact-link {
+  float: right;
+}

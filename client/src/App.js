@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import LoginForm from "./pages/Auth/LoginForm";
 import SignupForm from "./pages/Auth/SignupForm";
-import Navbar from "./components/Nav";
+import Navbarcomponent from "./components/Nav";
 import Otp from "./pages/Auth/Otp";
 import Footer from "./components/Footer";
 import NoMatch from "./pages/NoMatch";
@@ -65,7 +65,7 @@ function App() {
     <div className="App">
       {loggedIn && (
         <div>
-          <Navbar user={user} logout={logout} />
+          <Navbarcomponent user={user} logout={logout} />
           {/* <div className="main-view"> */}
           <Switch>
             <Route exact path="/" component={Home} />
@@ -83,7 +83,7 @@ function App() {
       )}
       {!loggedIn && (
         <div className="auth-wrapper">
-          <Navbar user={user} logout={logout} />
+          <Navbarcomponent user={user} logout={logout} />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route
