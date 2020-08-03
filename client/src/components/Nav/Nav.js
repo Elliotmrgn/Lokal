@@ -16,7 +16,7 @@ const Navbarcomponent = (props) => {
         if (!!response.data.user) {
         setUser(response.data.user._id);
         }
-    }) });
+    }) }, []);
   const [collapsed, setCollapsed] = useState(true);
   const toggleNavbar = () => setCollapsed(!collapsed);
   if (props.user === null || props.user === undefined) {
