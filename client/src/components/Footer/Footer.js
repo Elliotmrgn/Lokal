@@ -1,11 +1,5 @@
 import React from "react";
 
-const phantomStyle = {
-  display: "block",
-  padding: "20px",
-  height: "150px",
-  width: "100%"
-};
 function Footer() {
     return (
       <div>
@@ -13,15 +7,25 @@ function Footer() {
       style ={{
           backgroundColor:"#5B9098",
           color: "white",
-          padding: "30px",
-          textAlign: "center",
+          padding: "20px",
           bottom: "0",
           left: "0",
           width: "100%",
           flexShrink: "0"
         }}
         > 
-      &copy; {new Date().getFullYear()} Copyright
+        <div className="footer-container">
+          <span 
+          id="copyright">&copy; {new Date().getFullYear()} 
+          &nbsp;COPYRIGHT </span>
+
+          <span 
+          id="contact-link" 
+          onClick={(event) => (window.location.href = "/contact")}>
+          CONTACT </span>
+
+        </div>
+
       </footer>
       </div>
     );

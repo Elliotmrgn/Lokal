@@ -265,7 +265,7 @@ function BusinessForm(props) {
             {/* <Card title="Welcome! Please fill out the following forms to set up your business."> */}
             <form ref={formEl}>
               <div className="row">
-                <div className="col-4">
+                <div className="col-md-4">
                   <div className="list-group" id="list-tab" role="tablist">
                     <a
                       className="list-group-item list-group-item-action active"
@@ -329,7 +329,7 @@ function BusinessForm(props) {
                     </a>
                   </div>
                 </div>
-                <div className="col-8">
+                <div className="col-md-8">
                   <div className="tab-content" id="nav-tabContent">
                     {/* Basic Info */}
                     <div

@@ -19,13 +19,6 @@ main {
   justify-content: space-between !important;
 }
 
-/* button {
-  color: white;
-  background-color: #AED1CD!important;
-  border-color: #AED1CD !important;
-  border-radius: 32px !important;
-} */
-
 #home-search {
   font-size: 30px;
   width: 40%;
@@ -41,10 +34,6 @@ main {
 a { 
   color: #4D898C;
 }
-
-/* h5 {
-  text-align: center;
-} */
 
 /* SEARCH RESULT PAGE */
 .search-text {
@@ -82,59 +71,41 @@ a {
   letter-spacing: 1px;
   padding: 7px 0;
   background: transparent;
+
   transition: border-color 0.2s; }
-
-  .form__field::placeholder {
-    color: grey;
-  }
-
- .form__field:placeholder-shown  {
-    font-size: 1.3rem;
-    cursor: text;
-    /* color: blue; */
-    top: 20px;
-  }
-
-  .form__fieldBox{
-    width: 100%;
-    border: 0;
-    border: 2px solid gray;
-    outline: 0;
-    font-size: 1.3rem;
-    color: black;
-    letter-spacing: 1px;
-    padding: 7px 07px;
-    background: transparent;
-    transition: border-color 0.2s; }
-
-    .form__fieldBox::placeholder {
-      color: grey;
-    }
-  
-   .form__fieldBox:placeholder-shown  {
-      font-size: 1.3rem;
-      cursor: text;
-      /* color: blue; */
-      top: 20px;
-    }
-/* 
- .form__label {
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: gray;
+.form__field::placeholder {
+  color: grey;
 }
 
-.form__label:focus  {
-    position: absolute;
-    top: 10;
-    display: none;
-    transition: 0.2s;
-    font-size: 1rem;
-    color: white;
-    font-weight:700;    
-  } */
+.form__field:placeholder-shown  {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form__fieldBox{
+  width: 100%;
+  border: 0;
+  border: 2px solid gray;
+  outline: 0;
+  font-size: 1.3rem;
+  color: black;
+  letter-spacing: 1px;
+  padding: 7px 07px;
+  background: transparent;
+  transition: border-color 0.2s; }
+
+.form__fieldBox::placeholder {
+   color: grey;
+}
+  
+.form__fieldBox:placeholder-shown  {
+       font-size: 1.3rem;
+       cursor: text;
+       /* color: blue; */
+       top: 20px;
+}
+
 .form__field:focus{
   padding-bottom: 6px;  
   font-weight: 700;
@@ -143,6 +114,7 @@ a {
   border-image: linear-gradient(to right, #4D898C, #AED1CD);
   border-image-slice: 1;
 } 
+
 .form__fieldBox:focus{
   padding-bottom: 6px;  
   font-weight: 700;
@@ -151,8 +123,10 @@ a {
   border-image: linear-gradient(to right, #4D898C, #AED1CD);
   border-image-slice: 1;
 } 
-/* reset input */
-/* .form__field:{
-  &:required,&:invalid { box-shadow:none; }
-} */
-/* demo */
+
+/* FOOTER PAGE */
+
+
+#contact-link {
+  float: right;
+}

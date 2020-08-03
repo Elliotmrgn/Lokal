@@ -40,7 +40,7 @@ function Home() {
         <Row className="welcome-container" size="size md-12">
             <br></br>
             <p id="bold">
-              Now more than ever, its important to support our local
+              Now more than ever, it's important to support our local
               communities.
               </p>
               <p id="explanation">

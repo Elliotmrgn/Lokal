@@ -1,18 +1,16 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
-import { Col } from "../Grid";
 import AUTH from "../../utils/AUTH";
-// import NavSearchBar from "../../components/NavSearchBar/NavSearchBar"
 import "./Nav.css";
+// import NavSearchBar from "../NavSearchBar/NavSearchBar"
 
-// import { Nav, NavDropdown, NavItem, NavLink, Dropdown } from "react-bootstrap";
-// import UserPage from "../../pages/UserPage/userpage";
-const Navbar = (props) => {
+// import { Nav } from "react-bootstrap";
+import { Nav, Navbar, NavbarToggler, Collapse, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, NavbarBrand, DropdownItem, NavLink } from 'reactstrap';
+
+const Navbarcomponent = (props) => {
   let greeting;
-
   let userStatus;
   let businessForm;
-
   let userAccount;
 
   const [user, setUser] = useState();
@@ -23,10 +21,11 @@ const Navbar = (props) => {
         }
     }) });
 
-
+  const [collapsed, setCollapsed] = useState(true);
+  const toggleNavbar = () => setCollapsed(!collapsed);
 
   if (props.user === null || props.user === undefined) {
-    greeting = <p>Hello guest</p>;
+    greeting = <p id="hello">Hello guest</p>;
   } else if (props.user.firstName) {
     greeting = (
       <Fragment>
@@ -60,7 +59,7 @@ const Navbar = (props) => {
   } else {
     businessForm = (
       <Link to="/BusinessForm" id="register" className="navbar-contact  myLinks px-4">
-        Register
+        Register Business
       </Link>
     );
   }
@@ -77,35 +76,45 @@ const Navbar = (props) => {
 
   return (
     <header>
-      <nav className="navbar navbar-expand-lg">
-        <Col size="md-6 sm-12">
-          <Link to="/" className="navbar-brand">
+      <Navbar id="navbar-border" color="#5b9098" light expand="md">
+          <NavbarBrand href="/" className="navbar-brand">
             <img src="https://i.ibb.co/DMGWXh0/logo-01.png" alt="logo"></img>
-          </Link>
-          <Link to="/contact" id="contact" className="navbar-contact myLinks px-4">
-            Contact
-          </Link>
-          <Link
-            to="/businessList"
-            id="businessList"
-            className="navbar-businesslist myLinks px4"
-          >
-            Browse Categories
-          </Link>
-        </Col>
-        <Col size="md-6 sm-12">
-          <div className="float-right myLinks">
-            {/* <NavSearchBar />   */}
-            {userAccount}
-            {businessForm}
-            {greeting}
-            {userStatus}
-          </div>
-        </Col>
+          </NavbarBrand>
 
-      </nav>
+          {/* <InputGroup >
+            <Input> {NavSearchBar} </Input>
+          </InputGroup> */}
+
+          <NavbarToggler onClick={toggleNavbar}/>
+          <Collapse isOpen={!collapsed} navbar>
+            <Nav className="ml-auto p-2" navbar>
+              <NavItem>
+                <NavLink href="/businessList" id="categories">
+                  BROWSE CATEGORIES
+                </NavLink>
+              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  <div style={{ textTransform: 'uppercase',color:"#354959"}}>{greeting}</div>
+                </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem>
+                      <div>{userAccount}</div>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <div>{businessForm}</div>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <div>{userStatus}</div>
+                    </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Collapse>
+      </Navbar>
+
     </header>
   );
 };
 
-export default Navbar;
+export default Navbarcomponent;

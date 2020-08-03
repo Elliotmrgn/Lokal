@@ -1,14 +1,21 @@
+
 .logout {
   color: #5b9098;
-}
+  padding-left: 24px;
+} 
 
 .navbar-brand img {
   height: 50px;
   width: auto;
+  align-items: left;
 }
 
-.navbar {
+#navbar-border {
   border-bottom: 6px solid #b87e8a;
+}
+
+#categories{
+  color: #5b9098 !important;
 }
 
 #contact {
@@ -17,20 +24,4 @@
 
 #register {
   color: #5b9098;
-}
-
-
-
-@media only screen and (max-width:560px) {
-
-.navbar-brand {
-  width: 100vw;
-}
-
-.myLinks{
-  font-size: 4vw;
-}
-#register{
-  width: 100vw;
-}
 }

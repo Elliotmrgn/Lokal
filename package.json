@@ -45,8 +45,10 @@
     "nodemailer": "^6.4.10",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "react": "^16.13.1",
     "react-awesome-slider": "^4.1.0",
     "react-bootstrap": "^1.2.2",
+    "react-dom": "^16.13.1",
     "react-functional-select": "^2.6.0",
     "react-google-maps": "^9.4.5",
     "react-icons": "^3.10.0",
@@ -54,6 +56,7 @@
     "react-select": "^3.1.0",
     "react-transition-group": "^4.4.1",
     "react-window": "^1.8.5",
+    "reactstrap": "^8.5.1",
     "recompose": "^0.30.0",
     "styled-components": "^5.1.1",
     "yarn": "^1.22.4"
