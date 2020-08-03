@@ -7,10 +7,7 @@ function SearchBar() {
   const [search, setSearch] = useState("");
   let history = useHistory();
 
-  // function handleInputChange(event) {
-  //   const { name, value } = event.target;
-  //   setFormObject({ ...formObject, [name]: value });
-  // }
+
 
   const handleInputChange = (event) => {
     const { value } = event.target;
@@ -20,9 +17,7 @@ function SearchBar() {
   function submit(event) {
     event.preventDefault();
     let url = "results/" + search;
-    console.log(url);
     history.push(url);
-    // <Redirect to={url} />
   }
 
   return (
@@ -38,16 +33,7 @@ function SearchBar() {
             value={search}
             placeholder="Search lokal"
             onChange={handleInputChange}
-            // onChange={handleInputChange}
-            // onKeyUp={submit}
           />
-          {/* <button
-          type="submit"
-          value={formObject.search}
-          className="searchBtn"
-        >
-          <Link to={`/results/${formObject.search}`}>Search</Link>
-        </button> */}
         </div>
       </form>
     </div>

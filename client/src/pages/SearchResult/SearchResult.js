@@ -18,9 +18,7 @@ function SearchResult() {
   let searchQuery = useParams()
   
   useEffect(() => {
-    console.log("SearchResult -> searchQuery", searchQuery.search)
     API.findViaSearch(searchQuery.search).then((res) => {
-    console.log("8888888888SearchResult -> res", res)
       setBuisnessList(res.data);
       if(res.data.length != 0){
         setMapCoords({
@@ -47,7 +45,6 @@ function SearchResult() {
   function handleFormSubmit(event) {
     event.preventDefault();
     const search = event.target.value;
-    console.log("handleFormSubmit -> search", search)
      API.findViaSearch(search).then((res) => {
        setBuisnessList(res.data)
      });

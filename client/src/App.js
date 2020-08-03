@@ -22,7 +22,6 @@ function App() {
 
   useEffect(() => {
     AUTH.getUser().then((response) => {
-      // console.log(response.data);
       if (!!response.data.user) {
         setLoggedIn(true);
         setUser(response.data.user);
@@ -42,7 +41,6 @@ function App() {
     event.preventDefault();
 
     AUTH.logout().then((response) => {
-      // console.log(response.data);
       if (response.status === 200) {
         setLoggedIn(false);
         setUser(null);
@@ -52,7 +50,6 @@ function App() {
 
   const login = (username, password) => {
     AUTH.login(username, password).then((response) => {
-      console.log(response.data);
       if (response.status === 200) {
         // update the state
         setLoggedIn(true);

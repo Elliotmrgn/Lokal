@@ -24,7 +24,6 @@ function TagList() {
         }, []);
       
         useEffect(() => {
-          console.log(formObject.Tag);
           reRender();
         }, [formObject]);
       

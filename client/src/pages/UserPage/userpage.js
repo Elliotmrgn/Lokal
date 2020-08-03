@@ -21,7 +21,6 @@ function Userpage(props) {
   function loaduser() {
     API.getUser(toLoad).then((res) => {
       setuser(res.data);
-      console.log("here " + res.data.email);
 
       API.getUserBuisnesses(res.data.email)
         .then((res) => {

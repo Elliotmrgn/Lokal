@@ -20,7 +20,6 @@ const options = {
 };
 
 export default function Map(props) {
-  console.log("BUSINESS LIST FOR MAP", props.business);
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     libraries,

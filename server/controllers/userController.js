@@ -3,7 +3,6 @@ const db = require("../models");
 // Defining methods for the userController
 module.exports = {
   getUser: (req, res, next) => {
-    // console.log(req.user);
     if (req.user) {
       return res.json({ user: req.user });
     } else {
@@ -53,7 +52,6 @@ module.exports = {
   },
 
   auth: function (req, res, next) {
-    // console.log(req.body);
     next();
   },
 
@@ -61,7 +59,6 @@ module.exports = {
     const user = JSON.parse(JSON.stringify(req.user)); // hack
     const cleanUser = Object.assign({}, user);
     if (cleanUser) {
-      // console.log(`Deleting ${cleanUser.password}`);
       delete cleanUser.password;
     }
     res.json({ user: cleanUser });

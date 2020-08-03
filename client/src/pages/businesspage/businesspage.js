@@ -45,7 +45,6 @@ function BusinessPage(props) {
     function loadBusiness(){
     API.getProfile(toLoad)
         .then((res) => {
-          console.log("LOAD DATA RES", res)
         setBusiness(res.data);
         setPhotos(res.data.photos);
         setTags(res.data.tags);

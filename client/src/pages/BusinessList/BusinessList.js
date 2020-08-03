@@ -35,7 +35,6 @@ function BusinessList() {
   }, []);
 
   useEffect(() => {
-    console.log(formObject.Tag);
     reRender();
   }, [formObject]);
 
@@ -47,7 +46,6 @@ function BusinessList() {
 
   function reRender() {
     const tag = formObject.Tag;
-    console.log("reRender -> tag", tag);
     if (tag === "") {
       API.getBuisness().then((res) => {
         setBusiness(res.data);
@@ -60,8 +58,7 @@ function BusinessList() {
   }
 
   function handleInputChange(event) {
-    console.log("butts")
-    console.log(event)
+
   //   const { value } = event.target;
     setFormObject({ Tag: event });
   }

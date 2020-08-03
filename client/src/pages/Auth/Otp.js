@@ -42,7 +42,6 @@ function Otp() {
 
     Show();
     let number = "+1" + userObject.phoneNumber;
-    console.log(number);
     // let recaptcha=new firebase.auth.RecaptchaVerifier('recaptcha');
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       "recaptcha",
@@ -61,14 +60,12 @@ function Otp() {
       }
     );
     var recaptcha = window.recaptchaVerifier;
-    console.log(recaptcha);
     firebase
       .auth()
       .signInWithPhoneNumber(number, recaptcha)
       .then(function (e) {
         let code = prompt("Enter Code", "");
         if (code == null) {
-          console.log("asasa");
           recaptcha.clear();
           return;
         }
