@@ -11,11 +11,9 @@ export default {
     return  axios.get("/api/business/?email=" + email );
   },
   saveBusiness: function (businessData) {
-    console.log("hours testing" + businessData);
     return axios.post("/api/business", businessData);
   },
   postSchedule: function (schedule) {
-    console.log("API schedule" + schedule);
     return axios.post("/api/schedule", schedule);
   },
   addressConvert: function (address) {

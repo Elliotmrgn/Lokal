@@ -56,7 +56,6 @@ function BusinessForm(props) {
   }
 
   useEffect(() => {
-    console.log(tags);
   }, [tags]);
 
   function handleInputChange(event) {
@@ -71,10 +70,6 @@ function BusinessForm(props) {
       API.addressConvert(
         `${formObject.street}, ${formObject.city}, ${formObject.state}`
       ).then((res) => {
-        console.log("LAT, LONGGG", res.data.results);
-        console.log("schedule fix", formObject.MonOpen);
-        console.log("DOES THIS PASS DOWN", formObject);
-        console.log("formObject.schedule:", formObject.schedule);
 
         API.updateBusiness(editMode, {
           owner: formObject.owner,
@@ -115,7 +110,6 @@ function BusinessForm(props) {
           tags: tags,
         })
           .then((res) => {
-            console.log("res!!!!:", res);
             formEl.current.reset();
             history.push("/profilepage/" + editMode);
           })
@@ -127,10 +121,6 @@ function BusinessForm(props) {
     API.addressConvert(
       `${formObject.street}, ${formObject.city}, ${formObject.state}`
     ).then((res) => {
-      console.log("LAT, LONGGG", res.data.results);
-      console.log("schedule fix", formObject.MonOpen);
-      console.log("DOES THIS PASS DOWN", formObject);
-      console.log("formObject.schedule:", formObject.schedule);
 
       API.saveBusiness({
         owner: formObject.owner,
@@ -171,12 +161,11 @@ function BusinessForm(props) {
         tags: tags,
       })
         .then((res) => {
-          console.log("res!!!!:", res.data.businesses[res.data.businesses.length - 1]);
+         
           formEl.current.reset();
           history.push(`/profilepage/${res.data.businesses[res.data.businesses.length - 1]}`)
         })
           .then((res) => {
-            console.log("res!!!!:", res);
             formEl.current.reset();
           })
           .catch((err) => console.log("aftersave" + err));

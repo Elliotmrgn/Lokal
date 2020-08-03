@@ -35,11 +35,9 @@ function SignupForm() {
       username: userObject.username,
       password: userObject.password,
     }).then(response => {
-      // console.log(response);
       if (!response.data.errmsg) {
         setRedirectTo('/Otp');
       } else {
-        console.log('duplicate');
       }
     });
   };

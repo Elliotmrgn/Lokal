@@ -35,7 +35,6 @@ app.use(passport.session()); // will call the deserializeUser
 // If its production environment!
 if (process.env.NODE_ENV === "production") {
   const path = require("path");
-  // console.log('YOU ARE IN THE PRODUCTION ENV');
   app.use(
     "/static",
     express.static(path.join(__dirname, "../client/build/static"))

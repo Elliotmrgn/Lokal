@@ -11,4 +11,3 @@ ReactDOM.render(
 	document.getElementById('root')
 );
 
-console.log("test")
