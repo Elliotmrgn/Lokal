@@ -36,7 +36,7 @@ function LoginForm({ login }) {
               <Col size="md-3"></Col>
               <Col size="md-6">
                 <div className="title">Login to lokal</div>
-                <form style={{ marginTop: 50 }}>
+                <form>
                   {/* <label class="form__label" htmlFor="username">Username: </label> */}
                   <Input
                     type="text"

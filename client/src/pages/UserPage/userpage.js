@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
 
 import "./userPgStyle.css";
 
@@ -10,6 +11,8 @@ function Userpage(props) {
   const [user, setuser] = useState([]);
   const [businesss, setBusiness] = useState([]);
   const toLoad= props.match.params.id
+  const history = useHistory();
+
 
   useEffect(() => {
     loaduser();
@@ -36,6 +39,14 @@ function Userpage(props) {
       <h4 className="centerText">Manage My Businesses:</h4>
 
       <Accordion>
+        {businesss.length === 0 && <> <div className=" hello centerText noBiz" > you dont have any listings yet!</div>
+          <button
+              id="registerbtn"
+              type="submit"
+              className="btn btn-primary"
+              onClick={(event) => (history.push("/businessform"))}
+            > Register Now!</button>
+         </>}
         {businesss &&
           businesss.map(function (data, i) {
             return (
@@ -59,7 +70,7 @@ function Userpage(props) {
                 </Accordion.Collapse>
               </Card>
             );
-          })}
+          }) }
       </Accordion>
     </div>
     </main>

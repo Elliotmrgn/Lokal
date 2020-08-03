@@ -49,7 +49,7 @@
     padding: 90px 150px;
     /* width: 87%; */
     /* align-items: left; */
-    width: 100vw;
+    width: 100%;
 }
 
 #house {
@@ -61,8 +61,9 @@
 }
 
 #explanation {
+    font-weight: 200;
     color: grey;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     text-align: center;
     /* margin-right: 80px; */
 }
@@ -92,9 +93,10 @@
 
 .aside-container .aside{
     padding: 20px;
-    font-size: 30px;
     text-align: center;
     font-weight: 200;
+    color: grey;
+    font-size: 1.6rem;
 }
 
 /* REGISTER BUSINESS CONTAINER */
