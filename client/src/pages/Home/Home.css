@@ -7,7 +7,8 @@
 /* HEADER */
 .search-container {
     background-color: #354959;
-    padding: 80px;
+    padding: 60px;
+    width: 100vw;
 }
 
 .discover-local {
@@ -18,7 +19,7 @@
     color: #F8DACC;
     font-size: 90px;
     font-weight: bold;
-    font-size:8vw;
+    font-size: 5.5rem;
 }
 
 #discover {
@@ -35,9 +36,8 @@
     color: #B87E8A;
     font-style: italic;
     text-align: center;
-    padding-top: 10px;
-    padding-bottom: 20px; 
-    font-size:5vw;
+    padding-bottom: 38px;
+    font-size:2rem;
 }
 
 #search {
@@ -46,49 +46,83 @@
 
 /* EXPLANATION CONTAINER */
 .welcome-container {
-    padding: 100px;
-    align-items: center;
-    text-align: center;   
+    padding: 90px 150px;
+    /* width: 87%; */
+    /* align-items: left; */
+    width: 100%;
 }
 
 #house {
-    width: 14vw;
-    height: 14vw;
-    /* width: 150px;
-    height: 150px; */
-    align-items: left;
+    width: 15vw;
+    height: 15vw;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 30px;
 }
 
 #explanation {
-    color: #4D898C;
-    font-size:2.35vw;
+    font-weight: 200;
+    color: grey;
+    font-size: 1.6rem;
+    text-align: center;
+    /* margin-right: 80px; */
+}
+
+#bold{
+    font-weight: 600;
+    color: #354959;
+    font-size: 2.5rem;
+    text-align: center !important;
+    /* margin-right: 80px; */
+    padding-bottom: 30px;
+}
+
+/* Makers CONTAINER */
+.makers-container {
+    background-color: #dfd3cd;
+    padding: 90px ;
+    font-size: 2.3rem;
+    text-align: center;
+    width: 100%;
+}
+
+.aside-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.aside-container .aside{
+    padding: 20px;
+    text-align: center;
+    font-weight: 200;
+    color: grey;
+    font-size: 1.6rem;
 }
 
 /* REGISTER BUSINESS CONTAINER */
 #registerbtn {
-    background-color: #AED1CD!important;
-    border-color: #AED1CD !important;
+    background-color: #4D898C!important;
+    border-color: #4D898C!important;
     border-radius: 32px !important;
     min-width: 100px !important;
     margin-bottom: 8px !important;
 }
 
 .container-sign-up {
-    background-color: #F8DACC;
     color: #354959;
     width: 100vw;
-    padding: 200px;
+    padding-bottom: 80px;
     /* height: 10px; */
-    width: 100%;
   }
 
   #registerbiz {
     color: #354959;
     padding-top: 65px;
     text-align: center;
-    font-weight: bold;
+    font-weight: 200;
+    letter-spacing: 2px;
     padding-bottom: 30px;
-    font-size: 4vw;
+    font-size: 3rem;
 }
 
 #registerbtn {
@@ -96,39 +130,62 @@
     display: block;
     text-align: center;
     font-size: 30px;
+    padding: 0px 13px;
+    letter-spacing: 2px;
 }
 
 /* ********MOBILE RESPONSIVE******* */
 /* *********************************/
 
-@media only screen and (max-width:660px) {
+@media only screen and (max-width:760px) {
     body {
       margin: 0 !important
     }
+
+    .header {
+      font-size: 9.5vw;
+    }
+
+    .search-container {
+        padding: 60px 10px;
+    }
+
+    .welcome-container {
+        padding: 60px 10px;
+    }
+
+    #house{
+        display: none;
+    }
+
+    .aside-container {
+        display: grid;
+        grid-template-columns: auto;
+    }
+
+    .makers-container {
+        padding: 29px;
+    }
 }
 
+
 /* EXPLANATION CONTAINER */
-.welcome-container {
-    padding: 30px;
+/* .welcome-container {
+    padding: 100px;
     align-items: center;
     text-align: center;   
 }
 
-/* #house {
-    display: none;
-} */
 
 #explanation {
     color: #4D898C;
-    font-size:5vw;
+    font-size:2vw;
 }
 
 #registerbiz {
     color: #354959;
-    /* padding-top: 65px; */
     text-align: center;
     font-weight: bold;
-    /* padding-bottom: 30px; */
     font-size: 10vw;
 }
 
@@ -137,6 +194,8 @@
     text-align: center !important;
     color: #354959;
     width: 100vw;
-    /* padding: 0px; */
- 
-  }
+} */
+
+
+
+

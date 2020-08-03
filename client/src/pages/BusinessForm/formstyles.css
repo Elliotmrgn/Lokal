@@ -1,16 +1,24 @@
 .title {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 200;
     letter-spacing: 4px;
     line-height: 1.2em;
     color: #354959;
     text-transform: uppercase;
+    text-align: center;
+    padding: 20px;
+    margin: 26px 0px;
 }
 
- .titlecontianer {
-    padding: 5% 20%;
-    text-align: center !important;
+.btn-success{
+    background-color: #AED1CD!important;
+    border-color: #AED1CD !important;
+    border-radius: 32px !important;
+    min-width: 100px !important;
+    margin-bottom: 8px !important;
+    margin-right: 8px;
 }
+
 
 .mainContainer{
     margin: 1% 8% ;
@@ -41,4 +49,40 @@ h4 {
     font-size: 17px;
     margin-top: 13px;
     color: #EDA694;
+}
+
+/* ********MOBILE RESPONSIVE******* */
+/* *********************************/
+
+@media only screen and (max-width:660px) {
+    body {
+      margin: 0 !important
+    }
+
+    .title {
+        font-size: 2rem;
+        font-weight: 200;
+        letter-spacing: 4px;
+        line-height: 1.2em;
+        color: #354959;
+        text-transform: uppercase;
+    }
+
+    .mainContainer{
+        margin: 1%;
+        display: flex !important;
+        flex-direction: column;
+        height: 100% !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+    }
+
+    .col-md-8 {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .form-button {
+        padding-top: 20px;
+    }
 }

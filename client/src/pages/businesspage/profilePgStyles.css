@@ -14,35 +14,48 @@ h1{
 h3{
     font-size: 20px;
     font-weight: 900;
-    color: #B87E8A;
 }
 
 .ButtonText{
     font-weight: 500;
     letter-spacing: 3px;
     text-transform: uppercase;
+        color: #354959;
 }
 
-.tags Button {
-    background-color: #AED1CD!important;
-    border-color: #AED1CD !important;
+.ButtonText {
+    background-color: #D9DBE2!important;
+    border-color: #D9DBE2 !important;
     border-radius: 32px !important;
     min-width: 100px !important;
     margin-bottom: 8px !important;
     margin-right: 8px;
 }
 
+.map{
+    width: 80%;
+    margin-bottom: 20px;
+}
+
 .tags {
     display:table-cell
 }
 
-.contact Button {
-    background-color: #4D898C !important;
-    border-color: #669999 !important;
+.contact button {
+    background-color: #AED1CD !important;
+    border-color: #AED1CD !important;
     border-radius: 32px !important;
     min-width: 100px !important;
     margin-bottom: 8px !important;
+    width: 80%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: .8rem;
+    text-align: left;
+    padding-left: 20px;;
 }
+
+
 
 .photosdiv{
     margin-bottom: 80px;
@@ -58,7 +71,7 @@ h3{
     font-size: 25px;
     font-weight: 400;
     margin-top: 50px;
-    color: rgb(134, 135, 141);
+    color:#AED1CD;
     font-style: italic;
 }
 
@@ -69,7 +82,7 @@ h3{
 
 .socialIcon {
     font-size: 4em;
-    color: #D8E1DC;
+    color: #AED1CD;
     padding-left: 10px;
 }
 
@@ -88,17 +101,20 @@ h3{
     width: 130px;
     height: auto;
     position: absolute;
-    top: 18%;
-    left: 45%;
+    /* top: 18%;
+    left: 45%; */
+    top: 23%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     /* border: 2px solid white; */
     padding-bottom: 0px;
 }
 
 .profileName {
-    font-size: 38px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #EDA694;
+    font-size: 2.6rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #4D898C;
 }
 
 .owner {
@@ -109,7 +125,7 @@ h3{
 }
 
 .hoursHead{
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 600;
     color: #B87E8A;
 }
@@ -123,12 +139,13 @@ td {
 }
 
 .hours {
-    width: 300px;
+    width: 80%;
+    font-size: 20px;
 }
 
 /* CODE FOR DEFUALT JUMBOTRON ANIMATION */
 .defaultJumbotron{
-    height: 250px;
+    height: 200px;
     width: 100%;
     position: relative;
     background: #354959;  
@@ -249,4 +266,27 @@ td {
         border-radius: 50%;
     }
 
+}
+
+/*   
+
+  @media (max-width: 758px) {
+    .container, .container-md, .container-sm {
+        max-width: 100% !important;
+    }
+    .mainSection{
+        width: 100%;
+    }
+  }    
+
+  @media (min-width: 770px) {
+.col-sm-8 {
+    flex: 1 0 66.666667%;
+    max-width: 92.666667% !important;
+}
+  } */
+  @media (max-width: 576px) {
+    .logo {
+        top: 26%;
+    }
 }

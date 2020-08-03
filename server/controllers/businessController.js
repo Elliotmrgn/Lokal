@@ -38,21 +38,20 @@ module.exports = {
   },
 
   update: function (req, res) {
-    let updateme = req.params.id
-    db.Business.updateOne({ _id: updateme }, req.body  )
+    let updateme = req.params.id;
+    db.Business.updateOne({ _id: updateme }, req.body)
       .then((dbBusiness) => {
         res.json(dbBusiness);
-        console.log( "Oooooooooooooooooo")
+        console.log("Oooooooooooooooooo");
         console.log(dbBusiness);
       })
       .catch((err) => res.status(422).json(err));
   },
 
-
   findAll: function (req, res) {
     const email = req.query.email;
     let query = {};
-    if(email) {
+    if (email) {
       query.email = email;
     }
 
@@ -66,7 +65,6 @@ module.exports = {
     }
   },
 
-  
   findById: function (req, res) {
     db.Business.findOne({ _id: req.params.id })
       .then((business) => {
@@ -86,8 +84,7 @@ module.exports = {
   },
   //populate schedule with business
   populateSchedule: (req, res) => {
-    db.business
-      .find({})
+    db.Business.find({})
       .populate("Schedule")
       .then((dbschedule) => {
         res.json(dbschedule);
