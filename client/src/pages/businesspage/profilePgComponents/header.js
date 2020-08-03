@@ -1,5 +1,6 @@
 // code for business name, website and tags 
 import React from "react";
+import { Link } from "react-router-dom";
 
 // Bootstrap
 
@@ -10,7 +11,7 @@ function headerPF(props) {
         <div>
             <span className="profileName">{props.name}</span>
             <br></br>
-            <a href="/" className="largeLink">{props.website}</a>
+            <Link to="/" className="largeLink">{props.website}</Link>
         </div>
     )
 }

@@ -4,6 +4,8 @@ import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 import "./userPgStyle.css";
 
@@ -63,9 +65,9 @@ function Userpage(props) {
                 </Card.Header>
                 <Accordion.Collapse eventKey={data._id}>
                   <Card.Body>
-                    <a href={"/profilepage/" + data._id} > View Page</a>
+                    <Link to={"/profilepage/" + data._id} > View Page</Link>
                     <br></br>
-                    <a href={"/businessForm/" + data._id}> Edit</a>
+                    <Link to={"/businessForm/" + data._id}> Edit</Link>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>

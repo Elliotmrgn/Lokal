@@ -1,6 +1,8 @@
 import React from "react";
 import "./ResultCard.css";
 import {  RiArrowRightUpLine} from "react-icons/ri";
+import { Link } from "react-router-dom";
+
 
 export const ResultCard = (props) => (
       <div className="resultCard2" 
@@ -10,9 +12,9 @@ export const ResultCard = (props) => (
           onClick={props.onClick}
           > 
           < div className="idk2" > 
-          <a href={"/profilepage/" + props.data._id}  > < RiArrowRightUpLine />  </a> </div>
+          <Link to={"/profilepage/" + props.data._id}  > < RiArrowRightUpLine />  </Link> </div>
           <div className="idk">
-          <a href={"/profilepage/" + props.data._id}  ><h1 className="listName">{props.data.businessName}</h1> </a>
+          <Link to={"/profilepage/" + props.data._id}  ><h1 className="listName">{props.data.businessName}</h1> </Link>
           </div>
           <h5 className="listTagline">{props.data.tagline}</h5>
           <h5 className="listTagline">{props.data.street}</h5>
