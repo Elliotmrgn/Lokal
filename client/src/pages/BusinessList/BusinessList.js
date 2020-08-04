@@ -6,6 +6,7 @@ import "./businessList.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
+import { Link } from "react-router-dom";
 
 //icons
 import { IoIosCafe } from "react-icons/io";
