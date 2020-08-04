@@ -292,15 +292,15 @@ function BusinessList() {
                   <div key={i} className="resultCard2">
                     <div className="idk2">
                       {" "}
-                      <a href={"/profilepage/" + business._id}>
+                      <Link to={"/profilepage/" + business._id}>
                         {" "}
                         <RiArrowRightUpLine />{" "}
-                      </a>{" "}
+                      </Link>{" "}
                     </div>
                     <div className="idk">
-                      <a href={"/profilepage/" + business._id}>
+                      <Link to={"/profilepage/" + business._id}>
                         <h1 className="listName">{business.businessName}</h1>{" "}
-                      </a>
+                      </Link>
                     </div>
                     <h5 className="listTagline">{business.tagline}</h5>
                   </div>
