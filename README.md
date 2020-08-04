@@ -6,7 +6,7 @@ Lokal is a place where local businesses can easily create a web presence for the
 </h2>
 
 ## Collaborators: 
-* [ColinJohnson747L](https://github.com/ColinJohnson747) | Backend Developer
+* [ColinJohnson747](https://github.com/ColinJohnson747) | Backend Developer
 * [Elliotmrgn](https://github.com/Elliotmrgn) | Front End Developer
 * [lolo-bc](https://github.com/lolo-bc) | Front-End Developer
 * [TiffanyCasey](https://github.com/TiffanyCasey) | Front-End Developer
