@@ -78,10 +78,11 @@ const Navbarcomponent = (props) => {
           <Collapse isOpen={!collapsed} navbar>
             <Nav className="ml-auto p-2" navbar>
               <NavItem>
-                <NavLink href="/businessList" id="categories">
+                <Link to="/businessList" id="categories">
                   BROWSE CATEGORIES
-                </NavLink>
+                </Link>
               </NavItem>
+
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   <div style={{ textTransform: 'uppercase',color:"#354959"}}>{greeting}</div>
