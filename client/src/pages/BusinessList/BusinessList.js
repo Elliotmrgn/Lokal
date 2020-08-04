@@ -290,6 +290,10 @@ function BusinessList() {
           )}
 
           <Col className="listingCol">
+<<<<<<< HEAD
+=======
+
+>>>>>>> a879bd025eec65515072772eadab0666c73b050d
             {business &&
               business.map((business, i) => {
                 return (
@@ -308,6 +312,10 @@ function BusinessList() {
                   </div>
                 );
               })}
+<<<<<<< HEAD
+=======
+
+>>>>>>> a879bd025eec65515072772eadab0666c73b050d
           </Col>
         </Row>
       </div>
