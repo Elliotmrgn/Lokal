@@ -8,12 +8,11 @@ import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Link } from "react-router-dom";
 
-
 //icons
 import { IoIosCafe } from "react-icons/io";
 import { AiFillShop } from "react-icons/ai";
 import { BsBook } from "react-icons/bs";
-import { RiScissors2Line, RiArrowRightUpLine} from "react-icons/ri";
+import { RiScissors2Line, RiArrowRightUpLine } from "react-icons/ri";
 import { FaWrench, FaTheaterMasks } from "react-icons/fa";
 import {
   GiHanger,
@@ -22,7 +21,6 @@ import {
   GiKnifeFork,
   GiLargePaintBrush,
 } from "react-icons/gi";
-
 
 import tags from "../../utils/Tags";
 
@@ -59,8 +57,7 @@ function BusinessList() {
   }
 
   function handleInputChange(event) {
-
-  //   const { value } = event.target;
+    //   const { value } = event.target;
     setFormObject({ Tag: event });
   }
 
@@ -74,25 +71,39 @@ function BusinessList() {
 
   return (
     <main>
-          <div className="titleBox">
-            <span className="title" >Discover businesses by Category</span>
+      <div className="titleBox">
+        <span className="title">Discover businesses by Category</span>
 
-            <Dropdown className="tagPicker">
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                <span className="butts"> Select a Category</span>
-              </Dropdown.Toggle >
-              <Dropdown.Menu className="menu-items">
-                { tags.map(function (tag, i) { return ( <Dropdown.Item  eventKey={tag} onSelect={handleInputChange} className="options" key={i} value={tag} name="Tag">  {tag} </Dropdown.Item> )} )}
-              </Dropdown.Menu>
-            </Dropdown>
-            </div>
+        <Dropdown className="tagPicker">
+          <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <span className="butts"> Select a Category</span>
+          </Dropdown.Toggle>
+          <Dropdown.Menu className="menu-items">
+            {tags.map(function (tag, i) {
+              return (
+                <Dropdown.Item
+                  eventKey={tag}
+                  onSelect={handleInputChange}
+                  className="options"
+                  key={i}
+                  value={tag}
+                  name="Tag"
+                >
+                  {" "}
+                  {tag}{" "}
+                </Dropdown.Item>
+              );
+            })}
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
 
       {/* <Row>{businessList}</Row> */}
 
       <div className="discoverBody">
         <Row>
           {formObject.Tag === "Cafe" && (
-            <Col md="auto" >
+            <Col md="auto">
               {" "}
               <img
                 className="coverImg"
@@ -124,7 +135,7 @@ function BusinessList() {
           )}
 
           {formObject.Tag === "Books and Music" && (
-            <Col md="auto" >
+            <Col md="auto">
               {" "}
               <img
                 className="coverImg"
@@ -251,7 +262,7 @@ function BusinessList() {
               ></img>
               <div className="Tagcaption">
                 <p className="xlText">
-                    Restuarant
+                  Restuarant
                   <GiKnifeFork />{" "}
                 </p>
               </div>{" "}
@@ -276,15 +287,26 @@ function BusinessList() {
           )}
 
           <Col className="listingCol">
-
-              {business && business.map((business, i) => { 
-                return ( <div  key={i} className="resultCard2"> 
-                < div className="idk2" > <Link to={"/profilepage/" + business._id}  > < RiArrowRightUpLine />  </Link> </div>
-                <div className="idk">
-                <Link to={"/profilepage/" + business._id}  ><h1  className="listName">{business.businessName}</h1> </Link>
-                </div >
-                <h5 className="listTagline">{business.tagline}</h5>
-                </div>) } ) } 
+            {business &&
+              business.map((business, i) => {
+                return (
+                  <div key={i} className="resultCard2">
+                    <div className="idk2">
+                      {" "}
+                      <Link to={"/profilepage/" + business._id}>
+                        {" "}
+                        <RiArrowRightUpLine />{" "}
+                      </Link>{" "}
+                    </div>
+                    <div className="idk">
+                      <Link to={"/profilepage/" + business._id}>
+                        <h1 className="listName">{business.businessName}</h1>{" "}
+                      </Link>
+                    </div>
+                    <h5 className="listTagline">{business.tagline}</h5>
+                  </div>
+                );
+              })}
           </Col>
         </Row>
       </div>
