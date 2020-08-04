@@ -73,7 +73,7 @@ function Home() {
         <section className="container-sign-up">
           <div size="size md-12">
             <h2 id="registerbiz">REGISTER YOUR BUSINESS NOW </h2>
-            <Link to="/businessform" style={{ alignItems: "center" }}>
+            <Link to="/businessform" className="registerbtn">
               REGISTER
             </Link>
           </div>
