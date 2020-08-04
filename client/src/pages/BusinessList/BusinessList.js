@@ -6,6 +6,7 @@ import "./businessList.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
+import { Link } from "react-router-dom";
 
 
 //icons
@@ -278,9 +279,9 @@ function BusinessList() {
 
               {business && business.map((business, i) => { 
                 return ( <div  key={i} className="resultCard2"> 
-                < div className="idk2" > <a href={"/profilepage/" + business._id}  > < RiArrowRightUpLine />  </a> </div>
+                < div className="idk2" > <Link to={"/profilepage/" + business._id}  > < RiArrowRightUpLine />  </Link> </div>
                 <div className="idk">
-                <a  href={"/profilepage/" + business._id}  ><h1  className="listName">{business.businessName}</h1> </a>
+                <Link to={"/profilepage/" + business._id}  ><h1  className="listName">{business.businessName}</h1> </Link>
                 </div >
                 <h5 className="listTagline">{business.tagline}</h5>
                 </div>) } ) } 
