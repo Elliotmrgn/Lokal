@@ -276,8 +276,8 @@ function BusinessList() {
           )}
 
           <Col className="listingCol">
-
-              {business && business.map((business, i) => { 
+              
+              {formObject.Tag && business.map((business, i) => { 
                 return ( <div  key={i} className="resultCard2"> 
                 < div className="idk2" > <Link to={"/profilepage/" + business._id}  > < RiArrowRightUpLine />  </Link> </div>
                 <div className="idk">
