@@ -28,33 +28,36 @@ function BusinessList() {
   const [business, setBusiness] = useState([]);
   // const [renderedBusiness, setRenderedBusiness] = useState([]);
   const [formObject, setFormObject] = useState([]);
+
   useEffect(() => {
-    loadBusiness();
+    let mounted = true;
+    API.getBuisness().then((res) => {
+      if (mounted) {
+        setBusiness(res.data);
+      }
+    });
+    return function cleanup() {
+      mounted = false;
+    };
+    // for some ungodly reason this doesnt create an error
+    //please no touchy
     setFormObject({ Tag: "" });
   }, []);
 
   useEffect(() => {
-    reRender();
-  }, [formObject]);
-
-  function loadBusiness() {
-    API.getBuisness().then((res) => {
-      setBusiness(res.data);
-    });
-  }
-
-  function reRender() {
+    let mounted = true;
     const tag = formObject.Tag;
-    if (tag === "") {
-      API.getBuisness().then((res) => {
+
+    API.findViaTags(tag).then((res) => {
+      if (mounted) {
         setBusiness(res.data);
-      });
-    } else {
-      API.findViaTags(tag).then((res) => {
-        setBusiness(res.data);
-      });
-    }
-  }
+      }
+    });
+
+    return function cleanup() {
+      mounted = false;
+    };
+  }, [formObject]);
 
   function handleInputChange(event) {
     //   const { value } = event.target;
@@ -287,15 +290,26 @@ function BusinessList() {
           )}
 
           <Col className="listingCol">
-              
-              {formObject.Tag && business.map((business, i) => { 
-                return ( <div  key={i} className="resultCard2"> 
-                < div className="idk2" > <Link to={"/profilepage/" + business._id}  > < RiArrowRightUpLine />  </Link> </div>
-                <div className="idk">
-                <Link to={"/profilepage/" + business._id}  ><h1  className="listName">{business.businessName}</h1> </Link>
-                </div >
-                <h5 className="listTagline">{business.tagline}</h5>
-                </div>) } ) } 
+
+            {business &&
+              business.map((business, i) => {
+                return (
+                  <div key={i} className="resultCard2">
+                    <div className="idk2">
+                      <Link to={"/profilepage/" + business._id}>
+                        <RiArrowRightUpLine />
+                      </Link>
+                    </div>
+                    <div className="idk">
+                      <Link to={"/profilepage/" + business._id}>
+                        <h1 className="listName">{business.businessName}</h1>{" "}
+                      </Link>
+                    </div>
+                    <h5 className="listTagline">{business.tagline}</h5>
+                  </div>
+                );
+              })}
+
           </Col>
         </Row>
       </div>
