@@ -287,26 +287,15 @@ function BusinessList() {
           )}
 
           <Col className="listingCol">
-            {business &&
-              business.map((business, i) => {
-                return (
-                  <div key={i} className="resultCard2">
-                    <div className="idk2">
-                      {" "}
-                      <Link to={"/profilepage/" + business._id}>
-                        {" "}
-                        <RiArrowRightUpLine />{" "}
-                      </Link>{" "}
-                    </div>
-                    <div className="idk">
-                      <Link to={"/profilepage/" + business._id}>
-                        <h1 className="listName">{business.businessName}</h1>{" "}
-                      </Link>
-                    </div>
-                    <h5 className="listTagline">{business.tagline}</h5>
-                  </div>
-                );
-              })}
+              
+              {formObject.Tag && business.map((business, i) => { 
+                return ( <div  key={i} className="resultCard2"> 
+                < div className="idk2" > <Link to={"/profilepage/" + business._id}  > < RiArrowRightUpLine />  </Link> </div>
+                <div className="idk">
+                <Link to={"/profilepage/" + business._id}  ><h1  className="listName">{business.businessName}</h1> </Link>
+                </div >
+                <h5 className="listTagline">{business.tagline}</h5>
+                </div>) } ) } 
           </Col>
         </Row>
       </div>
