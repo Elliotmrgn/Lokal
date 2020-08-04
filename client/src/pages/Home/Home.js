@@ -3,6 +3,7 @@ import "./Home.css";
 import House from "../../components/bighouselogo.png";
 import NavSearchBar from "../../components/NavSearchBar/NavSearchBar";
 import { Redirect, Link } from "react-router-dom";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { RiPagesLine } from "react-icons/ri";
@@ -72,7 +73,7 @@ function Home() {
         <section className="container-sign-up">
           <div size="size md-12">
             <h2 id="registerbiz">REGISTER YOUR BUSINESS NOW </h2>
-            <Link to="/businessform" style={{ alignItems: "center" }}>
+            <Link to="/businessform" className="registerbtn">
               REGISTER
             </Link>
           </div>
