@@ -290,6 +290,7 @@ function BusinessList() {
           )}
 
           <Col className="listingCol">
+
             {business &&
               business.map((business, i) => {
                 return (
@@ -308,6 +309,7 @@ function BusinessList() {
                   </div>
                 );
               })}
+
           </Col>
         </Row>
       </div>
