@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import House from "../../components/bighouselogo.png";
 import NavSearchBar from "../../components/NavSearchBar/NavSearchBar";
+import { Link } from "react-router-dom";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
