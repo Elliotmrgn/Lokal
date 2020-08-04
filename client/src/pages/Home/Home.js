@@ -3,6 +3,7 @@ import "./Home.css";
 import House from "../../components/bighouselogo.png";
 import NavSearchBar from "../../components/NavSearchBar/NavSearchBar";
 import { Redirect, Link } from "react-router-dom";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { RiPagesLine } from "react-icons/ri";
