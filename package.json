@@ -27,7 +27,7 @@
   "dependencies": {
     "@react-google-maps/api": "^1.9.8",
     "axios": "^0.19.2",
-    "bcrypt": "^3.0.2",
+    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.5.0",
     "cloudinary": "^1.22.0",
